@@ -9,6 +9,7 @@ import { Image } from 'react-datocms/image';
 import { format } from 'date-fns';
 import DraftMode from '@lib/dato-nextjs-utils/components/DraftMode';
 import { draftMode } from 'next/headers';
+import Link from 'next/link';
 
 export async function generateStaticParams() {
   const { allPolitics } = await apiQuery<AllPoliticQuery, AllPoliticQueryVariables>(AllPoliticDocument, { generateTags: true });
@@ -39,6 +40,9 @@ export default async function Page({ params: { slug } }: { params: { slug: strin
       <section className={s.content}>
         <StructuredContent content={content} id={id} />
       </section>
+      <Link href={`/${category.slug}`}>
+        <button>Visa alla {category.title}</button>
+      </Link>
       <DraftMode draftMode={draftMode().isEnabled} draftUrl={draftUrl} tag={id} />
     </>
   );

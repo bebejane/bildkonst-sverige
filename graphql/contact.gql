@@ -1,0 +1,13 @@
+query Contact {
+	contact {
+		id
+		intro {
+			blocks
+			links
+			value
+		}
+		staff {
+			...StaffFragment
+		}
+	}
+}

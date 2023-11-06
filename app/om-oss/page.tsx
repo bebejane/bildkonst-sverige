@@ -1,5 +1,6 @@
 'use server'
 
+import { StructuredContent } from '@components';
 import s from './page.module.scss'
 import { AboutDocument } from "@graphql";
 import { apiQuery } from "@lib/client";
@@ -12,9 +13,8 @@ export default async function About() {
 
   return (
     <>
-      <section className={s.container}>
-        About page
-      </section>
+      <h1>{about.headline}</h1>
+      <StructuredContent content={about.content} id={about.id} />
       <DraftMode draftMode={draftMode().isEnabled} draftUrl={draftUrl} tag={about.id} />
     </>
   );

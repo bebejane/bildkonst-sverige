@@ -8,6 +8,24 @@ declare module '*/about.gql' {
 }
     
 
+declare module '*/board.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const Board: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/contact.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const Contact: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/ImageFragment.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -66,6 +84,15 @@ declare module '*/SiteFragment.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const SiteFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/StaffFragment.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const StaffFragment: DocumentNode;
 
   export default defaultDocument;
 }

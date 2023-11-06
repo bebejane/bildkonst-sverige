@@ -1,0 +1,13 @@
+query Board {
+	board {
+		id
+		intro {
+			blocks
+			links
+			value
+		}
+		staff {
+			...StaffFragment
+		}
+	}
+}

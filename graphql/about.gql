@@ -1,6 +1,7 @@
 query About {
 	about {
 		id
+		headline
 		content {
 			blocks
 			links

@@ -20,6 +20,8 @@ query Politic($slug: String!) {
 query AllPoliticByCategory($slug: String!) {
 	politicCategory(filter: { slug: { eq: $slug } }) {
 		id
+		title
+		slug
 		_allReferencingPolitics(first: 100) {
 			...PoliticFragment
 		}

@@ -1,4 +1,4 @@
-fragment PoliticFragment on PoliticRecord {
+fragment PoliticLightFragment on PoliticRecord {
 	id
 	title
 	category {
@@ -9,14 +9,8 @@ fragment PoliticFragment on PoliticRecord {
 		value
 		links
 	}
-	content {
-		value
-		links
-	}
 	image {
 		...ImageFragment
 	}
 	slug
-	_createdAt
-	_publishedAt
 }

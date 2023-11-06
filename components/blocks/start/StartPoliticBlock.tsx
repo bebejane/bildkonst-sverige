@@ -1,13 +1,29 @@
+import s from './StartPoliticBlock.module.scss'
+import cn from 'classnames'
 import Link from "next/link"
+import { Image } from "react-datocms"
+import { format } from "date-fns"
+import StructuredContent from '@components/common/StructuredContent'
 
 type Props = {
-  data: StartPoliticBlockRecord
+  data: StartPoliticBlockRecord & {
+    layout: 'big' | 'column' | 'headline'
+  }
 }
 
-export default function StartPoliticBlock({ data: { record: politic } }: Props) {
+export default function StartPoliticBlock({ data: { record: { id, slug, category, intro, image, title }, layout } }: Props) {
+
   return (
-    <div>
-      <Link href={`/${politic.category.slug}/${politic.slug}`}>{politic.title}</Link>
-    </div>
+    <Link href={`/${category.slug}/${slug}`} className={cn(s.container, s[layout])}>
+      {image && layout !== 'headline' &&
+        <figure>
+          <Image data={image.responsiveImage} />
+        </figure>
+      }
+      <div>
+        <h1>{title}</h1>
+        <StructuredContent content={intro} id={id} />
+      </div>
+    </Link>
   )
 }

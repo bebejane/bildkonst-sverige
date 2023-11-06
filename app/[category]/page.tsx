@@ -1,6 +1,7 @@
 'use server'
 
 import s from './page.module.scss'
+
 import { AllPoliticByCategoryDocument, AllPoliticCategoriesDocument } from "@graphql";
 import { apiQuery } from "@lib/client";
 import Link from 'next/link';
@@ -18,7 +19,7 @@ export default async function Page({ params }: { params: { category: string } })
   if (!politicCategory) return notFound()
 
   return (
-    <section className={s.container}>
+    <>
       {politicCategory?._allReferencingPolitics.length > 0 ?
         <ul>
           {politicCategory?._allReferencingPolitics.map(({ title, slug, category }, idx) =>
@@ -32,6 +33,6 @@ export default async function Page({ params }: { params: { category: string } })
           Det finnsinga poster i den här kategorin
         </p>
       }
-    </section>
+    </>
   );
 }

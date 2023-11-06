@@ -7,6 +7,8 @@
 	--navbar-height: calc(1em + calc(2 * var(--outer-margin)));
 	--background: var(--white);
 	--foreground: var(--black);
+	--z-navbar: 10000;
+	--z-navbar-pane: 10001;
 
 	@include mq($from: tablet) {}
 
@@ -29,7 +31,10 @@ html {
 	box-sizing: border-box;
 }
 
-main {}
+main {
+	padding-top: var(--navbar-height);
+	min-height: calc(100vh - var(--navbar-height));
+}
 
 ::-webkit-scrollbar {
 	-webkit-appearance: none;

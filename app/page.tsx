@@ -13,9 +13,12 @@ export default async function Home() {
 
   return (
     <>
-      <div className={s.content}>
+      <div className={s.container}>
         {start?.content?.map((block, idx) =>
-          <Block key={idx} data={block} />
+          <>
+            <Block key={idx} data={block} />
+            <hr />
+          </>
         )}
       </div>
       <DraftMode draftMode={draftMode().isEnabled} draftUrl={draftUrl} tag={start?.id} />

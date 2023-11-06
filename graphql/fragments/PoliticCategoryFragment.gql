@@ -1,0 +1,6 @@
+fragment PoliticCategoryFragment on PoliticCategoryRecord {
+	id
+	title
+	slug
+	position
+}

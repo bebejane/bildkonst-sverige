@@ -14,7 +14,29 @@ fragment SiteFragment on Site {
 			title
 			twitterCard
 			image {
-				...ImageFragment
+				alt
+				basename
+				format
+				height
+				id
+				mimeType
+				size
+				title
+				url
+				width
+				responsiveImage {
+					alt
+					aspectRatio
+					base64
+					bgColor
+					height
+					sizes
+					src
+					srcSet
+					webpSrcSet
+					title
+					width
+				}
 			}
 		}
 	}

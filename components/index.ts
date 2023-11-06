@@ -4,5 +4,9 @@
 
 export { default as index } from "./blocks/index";
 export * from "./blocks/index";
+export { default as StartPoliticBlock } from "./blocks/start/StartPoliticBlock";
+export * from "./blocks/start/StartPoliticBlock";
+export { default as Footer } from "./nav/Footer";
+export * from "./nav/Footer";
 export { default as NavBar } from "./nav/NavBar";
 export * from "./nav/NavBar";

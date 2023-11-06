@@ -1,7 +1,7 @@
 'use server'
 
 import '@styles/index.scss'
-import { NavBar } from '@components';
+import { Footer, NavBar } from '@components';
 import { apiQuery } from '@lib/client';
 import { GlobalDocument } from '@graphql';
 import { Metadata } from 'next';
@@ -21,6 +21,7 @@ export default async function RootLayout({ children }: LayoutProps) {
           <main>
             {children}
           </main>
+          <Footer />
         </body>
       </html >
 
@@ -29,7 +30,8 @@ export default async function RootLayout({ children }: LayoutProps) {
 }
 
 export async function generateMetadata() {
-  const { site: { globalSeo, favicon } } = await apiQuery<GlobalQuery, GlobalQueryVariables>(GlobalDocument, { generateTags: false });
+  const { site: { globalSeo, favicon }, site } = await apiQuery<GlobalQuery, GlobalQueryVariables>(GlobalDocument, { generateTags: false });
+
   return {
     title: globalSeo?.siteName,
     description: globalSeo?.fallbackSeo?.description,

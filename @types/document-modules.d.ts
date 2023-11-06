@@ -17,10 +17,19 @@ declare module '*/ImageThumbnailFragment.gql' {
 }
     
 
-declare module '*/PostFragment.gql' {
+declare module '*/PoliticCategoryFragment.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
-  export const PostFragment: DocumentNode;
+  export const PoliticCategoryFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/PoliticFragment.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const PoliticFragment: DocumentNode;
 
   export default defaultDocument;
 }
@@ -57,16 +66,6 @@ declare module '*/global.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const Global: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/post.gql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const AllPosts: DocumentNode;
-export const Post: DocumentNode;
 
   export default defaultDocument;
 }

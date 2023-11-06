@@ -37,9 +37,9 @@
 		"react-markdown": "^8.0.7",
 		"remark-breaks": "^3.0.3",
 		"remark-gfm": "^3.0.1",
-		"rooks": "^7.14.1",
 		"sass": "^1.69.5",
 		"swiper": "^8.4.7",
+		"usehooks-ts": "^2.9.1",
 		"zustand": "^4.4.6"
 	},
 	"devDependencies": {

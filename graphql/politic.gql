@@ -17,6 +17,12 @@ query Politic($slug: String!) {
 	}
 }
 
+query PoliticCategory($slug: String, $id: ItemId) {
+	politicCategory(filter: { OR: [{ slug: { eq: $slug } }, { id: { eq: $id } }] }) {
+		...PoliticCategoryFragment
+	}
+}
+
 query AllPoliticByCategory($slug: String!) {
 	politicCategory(filter: { slug: { eq: $slug } }) {
 		id

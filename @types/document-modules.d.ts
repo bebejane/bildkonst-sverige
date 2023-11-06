@@ -121,6 +121,7 @@ declare module '*/politic.gql' {
   const defaultDocument: DocumentNode;
   export const AllPolitic: DocumentNode;
 export const Politic: DocumentNode;
+export const PoliticCategory: DocumentNode;
 export const AllPoliticByCategory: DocumentNode;
 export const AllPoliticCategories: DocumentNode;
 

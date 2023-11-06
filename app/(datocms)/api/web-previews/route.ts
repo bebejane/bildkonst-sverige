@@ -1,6 +1,8 @@
 import { NextRequest } from 'next/server';
 import webPreviews from '@lib/dato-nextjs-utils/route-handlers/web-previews'
 import cors from '@lib/dato-nextjs-utils/route-handlers/cors'
+import { apiQuery } from '@lib/client';
+import { PoliticCategoryDocument } from '@graphql';
 
 export const runtime = "edge"
 
@@ -16,11 +18,24 @@ export async function POST(req: NextRequest) {
       case 'start':
         path = `/`
         break;
-      case 'post':
-        path = `/posts/${slug}`
+      case 'politic':
+        const { politicCategory } = await apiQuery<PoliticCategoryQuery, PoliticCategoryQueryVariables>(PoliticCategoryDocument, { variables: { id: item.attributes.politicCategory } })
+        path = `/${politicCategory.slug}/${slug}`
         break;
-      case 'user':
-        path = `/users/${slug}`
+      case 'politic_category':
+        path = `/${slug}`
+        break;
+      case 'contact':
+        path = `/kontakt`
+        break;
+      case 'about':
+        path = `/om-oss`
+        break;
+      case 'board':
+        path = `/styrelse`
+        break;
+      case 'membership':
+        path = `/bli-medlem`
         break;
       default:
         break;

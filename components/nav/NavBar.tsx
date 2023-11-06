@@ -34,7 +34,7 @@ export default function NavBar({ allPoliticCategories }: Props) {
           <Link href={'/om-oss'}>Om oss</Link>
         </li>
         <li className={cn(pane !== 'left' && pathname === '/medlemskap' && s.selected)}>
-          <Link href={'/medlemskap'}>Medlemskap</Link>
+          <Link href={'/bli-medlem'}>Medlemskap</Link>
         </li>
       </ul>
       <nav className={cn(s.pane, s.left, pane === 'left' && s.show)} >

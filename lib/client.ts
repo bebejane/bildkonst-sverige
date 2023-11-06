@@ -107,6 +107,9 @@ const dedupedFetch = cache(async (options: DedupeOptions) => {
       )}`,
     );
   }
+  if (responseBody.errors) {
+    throw new Error(responseBody.errors.map((e: any) => e.message).join('\n'));
+  }
 
   return responseBody;
 })

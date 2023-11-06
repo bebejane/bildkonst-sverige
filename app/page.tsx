@@ -10,7 +10,7 @@ import Block from '@components/blocks';
 export default async function Home() {
 
   const { start, draftUrl } = await apiQuery<StartQuery, StartQueryVariables>(StartDocument, { includeDrafts: draftMode().isEnabled });
-  console.log(start)
+
   return (
     <>
       <div className={s.content}>

@@ -24,7 +24,7 @@ const defaultApiQueryOptions = {
   generateTags: true
 };
 
-export async function apiQuery<T, V>(query: DocumentNode, options: ApiQueryOptions<V>): Promise<T & { draftUrl: string | null }> {
+export async function apiQuery<T, V>(query: DocumentNode, options?: ApiQueryOptions<V>): Promise<T & { draftUrl: string | null }> {
 
   options = { ...defaultApiQueryOptions, ...options }
 

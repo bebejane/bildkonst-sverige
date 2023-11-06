@@ -1,0 +1,10 @@
+query About {
+	about {
+		id
+		content {
+			blocks
+			links
+			value
+		}
+	}
+}

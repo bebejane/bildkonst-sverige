@@ -4,8 +4,9 @@ import cors from '@lib/dato-nextjs-utils/route-handlers/cors'
 import { buildClient } from '@datocms/cma-client-browser';
 import { PoliticCategoryDocument } from '@graphql';
 
-export const runtime = "edge"
 const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN })
+
+export const runtime = "edge"
 
 export async function POST(req: NextRequest) {
 
@@ -20,7 +21,7 @@ export async function POST(req: NextRequest) {
         path = `/`
         break;
       case 'politic':
-        const politic_category = await client.items.find(item.attributes.politic_category)
+        const politic_category = await client.items.find(item.attributes.category)
         path = `/${politic_category.slug}/${slug}`
         break;
       case 'politic_category':

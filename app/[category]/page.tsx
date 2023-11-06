@@ -4,6 +4,8 @@ import s from './page.module.scss'
 
 import { AllPoliticByCategoryDocument, AllPoliticCategoriesDocument } from "@graphql";
 import { apiQuery } from "@lib/client";
+import DraftMode from '@lib/dato-nextjs-utils/components/DraftMode';
+import { draftMode } from 'next/headers';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
@@ -14,7 +16,10 @@ export async function generateStaticParams() {
 
 export default async function Page({ params }: { params: { category: string } }) {
 
-  const { politicCategory } = await apiQuery<AllPoliticByCategoryQuery, AllPoliticByCategoryQueryVariables>(AllPoliticByCategoryDocument, { variables: { slug: params.category } })
+  const { politicCategory, draftUrl } = await apiQuery<AllPoliticByCategoryQuery, AllPoliticByCategoryQueryVariables>(AllPoliticByCategoryDocument, {
+    variables: { slug: params.category },
+    includeDrafts: draftMode().isEnabled
+  })
 
   if (!politicCategory) return notFound()
 
@@ -33,6 +38,7 @@ export default async function Page({ params }: { params: { category: string } })
           Det finnsinga poster i den här kategorin
         </p>
       }
+      <DraftMode draftMode={draftMode().isEnabled} draftUrl={draftUrl} tag={politicCategory.id} />
     </>
   );
 }

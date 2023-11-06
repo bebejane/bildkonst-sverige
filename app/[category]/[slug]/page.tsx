@@ -7,6 +7,8 @@ import StructuredContent from '@components/common/StructuredContent'
 import { notFound } from 'next/navigation';
 import { Image } from 'react-datocms/image';
 import { format } from 'date-fns';
+import DraftMode from '@lib/dato-nextjs-utils/components/DraftMode';
+import { draftMode } from 'next/headers';
 
 export async function generateStaticParams() {
   const { allPolitics } = await apiQuery<AllPoliticQuery, AllPoliticQueryVariables>(AllPoliticDocument, { generateTags: true });
@@ -15,7 +17,10 @@ export async function generateStaticParams() {
 
 
 export default async function Page({ params: { slug } }: { params: { slug: string } }) {
-  const { politic } = await apiQuery<PoliticQuery, PoliticQueryVariables>(PoliticDocument, { variables: { slug } })
+  const { politic, draftUrl } = await apiQuery<PoliticQuery, PoliticQueryVariables>(PoliticDocument, {
+    variables: { slug },
+    includeDrafts: draftMode().isEnabled
+  })
 
   if (!politic) return notFound()
 
@@ -34,6 +39,7 @@ export default async function Page({ params: { slug } }: { params: { slug: strin
       <section className={s.content}>
         <StructuredContent content={content} id={id} />
       </section>
+      <DraftMode draftMode={draftMode().isEnabled} draftUrl={draftUrl} tag={id} />
     </>
   );
 }

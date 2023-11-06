@@ -13,10 +13,12 @@ export default function Error({ error, reset }: {
     <div className={s.error}>
       <h1>Something went wrong!</h1>
       <br />
-      <p>{error.message}</p>
-      <button onClick={() => reset()}>
-        Try again
-      </button>
+      <p className={s.message}>{error.message}</p>
+      <p>
+        <button onClick={() => reset()}>
+          Try again
+        </button>
+      </p>
     </div>
   )
 }

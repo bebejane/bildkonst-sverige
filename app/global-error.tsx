@@ -10,11 +10,15 @@ export default function GlobalError({ error, reset }: {
   return (
     <html>
       <body className={`${s.body} ${s.error}`}>
-        <h1>Something went wrong!</h1>
-        <p className={s.message}>{error.message}</p>
-        <p>
-          <button onClick={() => reset()}>Try again</button>
-        </p>
+        <main>
+          <article>
+            <h1>Something went wrong!</h1>
+            <p className={s.message}>{error.message}</p>
+            <p>
+              <button onClick={() => reset()}>Try again</button>
+            </p>
+          </article>
+        </main>
       </body>
     </html>
   )

@@ -16,7 +16,6 @@ export async function generateStaticParams() {
   return allPolitics.map(({ slug, category }) => ({ slug }))
 }
 
-
 export default async function Page({ params: { slug } }: { params: { slug: string } }) {
   const { politic, draftUrl } = await apiQuery<PoliticQuery, PoliticQueryVariables>(PoliticDocument, {
     variables: { slug },
@@ -29,21 +28,23 @@ export default async function Page({ params: { slug } }: { params: { slug: strin
 
   return (
     <>
-      <h1>{title}</h1>
-      <figure>
-        {image && <Image data={image.responsiveImage} />}
-      </figure>
-      <section className={s.intro}>
-        <span>{format(new Date(_publishedAt), 'd MMMM yyyy')}</span>
-        <StructuredContent content={intro} id={id} />
-      </section>
-      <section className={s.content}>
-        <StructuredContent content={content} id={id} />
-      </section>
-      <Link href={`/${category.slug}`}>
-        <button>Visa alla {category.title}</button>
-      </Link>
-      <DraftMode draftMode={draftMode().isEnabled} draftUrl={draftUrl} tag={id} />
+      <article>
+        <h1>{title}</h1>
+        <figure>
+          {image && <Image data={image.responsiveImage} />}
+        </figure>
+        <section className={s.intro}>
+          <span>{format(new Date(_publishedAt), 'd MMMM yyyy')}</span>
+          <StructuredContent content={intro} id={id} />
+        </section>
+        <section className={s.content}>
+          <StructuredContent content={content} id={id} />
+        </section>
+        <Link href={`/${category.slug}`}>
+          <button>Visa alla {category.title}</button>
+        </Link>
+      </article>
+      <DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={id} />
     </>
   );
 }

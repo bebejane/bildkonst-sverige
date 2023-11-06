@@ -7,8 +7,11 @@
 	--navbar-height: calc(1em + calc(2 * var(--outer-margin)));
 	--background: var(--white);
 	--foreground: var(--black);
-	--z-navbar: 10000;
-	--z-navbar-pane: 10001;
+
+	--z-navbar: 1000;
+	--z-navbar-pane: 900;
+	--z-logo: 1100;
+	--z-hamburger: 1200;
 
 	@include mq($from: tablet) {}
 
@@ -69,9 +72,7 @@ a {
 }
 
 article p a {
-	text-decoration: underline 1px !important;
-	text-underline-offset: 0.15em;
-	text-decoration-thickness: 1px;
+
 
 	&:hover {
 		color: var(--beige-dark);
@@ -118,18 +119,4 @@ select {
 	background-position-x: calc(100% - 1em);
 	background-position-y: center;
 	color: var(--black);
-}
-
-.page-error {
-	position: fixed;
-	top: 0;
-	left: 0;
-	min-width: 100vw;
-	min-height: 100vh;
-	z-index: 100000;
-	background-color: var(--white);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
 }

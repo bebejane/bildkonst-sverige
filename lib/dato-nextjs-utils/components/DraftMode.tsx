@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react'
 import { ImSpinner8 } from 'react-icons/im'
 
 export type DraftModeProps = {
-  draftMode: boolean
+  enabled: boolean
   draftUrl?: string,
   tag: string
 }
@@ -17,7 +17,7 @@ const disabledDraftMode = async () => {
 
 }
 
-export default function DraftMode({ draftMode, draftUrl, tag }: DraftModeProps) {
+export default function DraftMode({ enabled, draftUrl, tag }: DraftModeProps) {
 
   const pathname = usePathname()
   const [loading, setLoading] = useState(false)
@@ -52,11 +52,11 @@ export default function DraftMode({ draftMode, draftUrl, tag }: DraftModeProps) 
 
   }, [draftUrl, tag])
 
-  if (!draftMode) return null
+  if (!enabled) return null
 
   return (
 
-    <button className={s.draftMode} onClick={disable}>
+    <button className={s.enabled} onClick={disable}>
       <label>
         Exit draft
         {loading && <div className={s.loading}><ImSpinner8 /></div>}

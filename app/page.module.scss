@@ -3,4 +3,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
+
+  section {
+    border-bottom: 1px solid var(--black);
+  }
 }

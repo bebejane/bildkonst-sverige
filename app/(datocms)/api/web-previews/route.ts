@@ -1,10 +1,11 @@
 import { NextRequest } from 'next/server';
 import webPreviews from '@lib/dato-nextjs-utils/route-handlers/web-previews'
 import cors from '@lib/dato-nextjs-utils/route-handlers/cors'
-import { apiQuery } from '@lib/client';
+import { buildClient } from '@datocms/cma-client-browser';
 import { PoliticCategoryDocument } from '@graphql';
 
 export const runtime = "edge"
+const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN })
 
 export async function POST(req: NextRequest) {
 
@@ -19,8 +20,8 @@ export async function POST(req: NextRequest) {
         path = `/`
         break;
       case 'politic':
-        const { politicCategory } = await apiQuery<PoliticCategoryQuery, PoliticCategoryQueryVariables>(PoliticCategoryDocument, { variables: { id: item.attributes.politicCategory } })
-        path = `/${politicCategory.slug}/${slug}`
+        const politic_category = await client.items.find(item.attributes.politic_category)
+        path = `/${politic_category.slug}/${slug}`
         break;
       case 'politic_category':
         path = `/${slug}`

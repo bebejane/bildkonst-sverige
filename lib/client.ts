@@ -123,7 +123,7 @@ export const generateIdTags = (data: any, tags: string[] | null, queryId: string
 
   tags?.length && allTags.push.apply(allTags, tags)
   const idTags = allTags.filter((value, index, self) => self.indexOf(value) === index) // dedupe
-  console.log('idTags', queryId, idTags)
+  //console.log('idTags', queryId, idTags)
   return idTags
 
 }

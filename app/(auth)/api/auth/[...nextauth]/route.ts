@@ -38,8 +38,7 @@ export const authOptions: NextAuthOptions = {
           console.log(credentials)
           const { username: email, password } = credentials
 
-          if (password !== process.env.NEXTAUTH_URL_STATIC_PASSWORD)
-            return null
+          //if (password !== process.env.NEXTAUTH_URL_STATIC_PASSWORD) return null
 
           const session = {
             id: email,

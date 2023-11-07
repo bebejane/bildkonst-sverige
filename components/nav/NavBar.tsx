@@ -6,13 +6,19 @@ import s from './NavBar.module.scss'
 import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { useOnClickOutside } from 'usehooks-ts'
+import { getSession } from "next-auth/react";
+
 import Hamburger from 'hamburger-react'
+import { Session } from "next-auth";
+import useNextAuthSession from "@lib/hooks/useNextAuthSession";
 
 export type Props = {
   allPoliticCategories: AllPoliticCategoriesQuery['allPoliticCategories']
 }
 
 export default function NavBar({ allPoliticCategories }: Props) {
+
+  const { session, error, status } = useNextAuthSession()
 
   const ref = useRef(null)
   const [open, setOpen] = useState(false)
@@ -35,7 +41,10 @@ export default function NavBar({ allPoliticCategories }: Props) {
       </nav>
       <nav className={cn(s.navbar, open && s.show)}>
         <ul className={cn(s.menu, pane === 'left' && s.open)}>
-          <li className={cn(pane === 'left' && s.selected)} onClick={(e) => setPane(pane === 'left' ? null : 'left')}>
+          <li
+            className={cn(pane === 'left' && s.selected)}
+            onClick={(e) => setPane(pane === 'left' ? null : 'left')}
+          >
             Kulturpolitik
             <ul>
               {allPoliticCategories?.map(({ id, title, slug }) => (
@@ -55,20 +64,27 @@ export default function NavBar({ allPoliticCategories }: Props) {
         <ul className={cn(s.links, pane === 'right' && s.open)}>
           <li>Instagram</li>
           <li>Facebook</li>
-          <li className={cn(pane === 'right' && s.selected)} onClick={() => setPane(pane === 'right' ? null : 'right')}>
-            Logga in
-            <ul>
-              <li className={cn(pathname === `/medlem/actuellt` && s.selected)}>
-                <Link href={`/medlem/aktuellt`}>Aktuellt</Link>
-              </li>
-              <li className={cn(pathname === `/medlem/verktygslada` && s.selected)}>
-                <Link href={`/medlem/verktygslada`}>Verktygslåda</Link>
-              </li>
-              <li>
-                <Link href={`/medlem/logga-ut`}>Logga ut</Link>
-              </li>
-            </ul>
-          </li>
+          {!session ?
+            <li><Link href={'/logga-in'}>Logga in</Link></li>
+            :
+            <li
+              className={cn(pane === 'right' && s.selected)}
+              onClick={() => setPane(pane === 'right' ? null : 'right')}
+            >
+              Medlemssidor
+              <ul>
+                <li className={cn(pathname === `/medlem/actuellt` && s.selected)}>
+                  <Link href={`/medlem/aktuellt`}>Aktuellt</Link>
+                </li>
+                <li className={cn(pathname === `/medlem/verktygslada` && s.selected)}>
+                  <Link href={`/medlem/verktygslada`}>Verktygslåda</Link>
+                </li>
+                <li>
+                  <Link href={`/medlem/logga-ut`}>Logga ut</Link>
+                </li>
+              </ul>
+            </li>
+          }
         </ul>
       </nav>
 

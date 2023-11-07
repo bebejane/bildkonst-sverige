@@ -4,13 +4,13 @@ import s from './page.module.scss'
 import { AboutDocument } from "@graphql";
 import { apiQuery } from "@lib/client";
 
-export default async function Login() {
+export default async function News() {
 
   //const { about } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument)
 
   return (
     <article className={s.container}>
-      Login page
+      Aktuellt medlemmar
     </article>
   );
 }

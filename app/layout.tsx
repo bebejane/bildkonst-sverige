@@ -6,12 +6,15 @@ import { apiQuery } from '@lib/client';
 import { AllPoliticCategoriesDocument, GlobalDocument } from '@graphql';
 import { Metadata } from 'next';
 import { Icon } from 'next/dist/lib/metadata/types/metadata-types';
+import { SessionProvider } from 'next-auth/react';
 
 export type LayoutProps = {
   children: React.ReactNode
 }
 
-export default async function RootLayout({ children }: LayoutProps) {
+export default async function RootLayout(props: LayoutProps) {
+  console.log(props)
+  const { children } = props
 
   const { allPoliticCategories } = await apiQuery<AllPoliticCategoriesQuery, AllPoliticCategoriesQueryVariables>(AllPoliticCategoriesDocument)
 
@@ -19,13 +22,15 @@ export default async function RootLayout({ children }: LayoutProps) {
     <>
       <html lang="en">
         <body id="root" >
+
           <NavBar allPoliticCategories={allPoliticCategories} />
+
           <main>
             {children}
           </main>
           <Footer />
         </body>
-      </html >
+      </html>
     </>
   );
 }

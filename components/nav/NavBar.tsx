@@ -3,13 +3,9 @@
 import Link from "next/link";
 import cn from 'classnames'
 import s from './NavBar.module.scss'
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { useOnClickOutside } from 'usehooks-ts'
-import { getSession } from "next-auth/react";
-
 import Hamburger from 'hamburger-react'
-import { Session } from "next-auth";
 import useNextAuthSession from "@lib/hooks/useNextAuthSession";
 
 export type Props = {
@@ -19,11 +15,9 @@ export type Props = {
 export default function NavBar({ allPoliticCategories }: Props) {
 
   const { session, error, status } = useNextAuthSession()
-
-  const ref = useRef(null)
+  const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const [pane, setPane] = useState<'left' | 'right' | null>(null)
-  const pathname = usePathname()
 
   const handleClickOutside = (e) => {
     e.stopPropagation()
@@ -67,15 +61,16 @@ export default function NavBar({ allPoliticCategories }: Props) {
           <li>Instagram</li>
           <li>Facebook</li>
           {!session ?
-            <li><Link href={'/logga-in'}>Logga in</Link></li>
+            <li key={'logga-in'}><Link href={'/logga-in'}>Logga in</Link></li>
             :
             <li
+              key={'member-pane'}
               className={cn(pane === 'right' && s.selected)}
               onClick={() => setPane(pane === 'right' ? null : 'right')}
             >
               Medlemssidor
               <ul>
-                <li className={cn(pathname === `/medlem/actuellt` && s.selected)}>
+                <li className={cn(pathname === '/medlem/aktuellt' && s.selected)}>
                   <Link href={`/medlem/aktuellt`}>Aktuellt</Link>
                 </li>
                 <li className={cn(pathname === `/medlem/verktygslada` && s.selected)}>

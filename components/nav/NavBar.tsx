@@ -24,14 +24,16 @@ export default function NavBar({ allPoliticCategories }: Props) {
   const [open, setOpen] = useState(false)
   const [pane, setPane] = useState<'left' | 'right' | null>(null)
   const pathname = usePathname()
-  const handleClickOutside = () => setPane(null)
+
+  const handleClickOutside = (e) => {
+    e.stopPropagation()
+    setPane(null)
+  }
 
   useEffect(() => {
     setPane(null)
     setOpen(false)
   }, [pathname])
-
-  useOnClickOutside(ref, handleClickOutside)
 
   return (
     <>
@@ -88,7 +90,9 @@ export default function NavBar({ allPoliticCategories }: Props) {
         </ul>
       </nav>
 
-      <ul className={cn(s.pane, s.left, pane === 'left' && s.show)} ref={pane === 'left' ? ref : undefined}>
+      {pane && <div className={s.paneBackground} onClick={handleClickOutside} />}
+
+      <ul className={cn(s.pane, s.left, pane === 'left' && s.show)}>
         {allPoliticCategories?.map(({ id, title, slug }) => (
           <li className={cn(pathname === `/${slug}` && s.selected)} key={id}>
             <Link href={`/${slug}`}>{title}</Link>
@@ -96,7 +100,7 @@ export default function NavBar({ allPoliticCategories }: Props) {
         ))}
       </ul>
 
-      <ul className={cn(s.pane, s.right, pane === 'right' && s.show)} ref={pane === 'right' ? ref : undefined}>
+      <ul className={cn(s.pane, s.right, pane === 'right' && s.show)}>
         <li className={cn(pathname === `/medlem/actuellt` && s.selected)}>
           <Link href={`/medlem/aktuellt`}>Aktuellt</Link>
         </li>

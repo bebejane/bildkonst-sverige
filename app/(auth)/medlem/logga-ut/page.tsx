@@ -6,14 +6,14 @@ import { signOut } from 'next-auth/react'
 export default async function Logout() {
 
   useEffect(() => {
-    setTimeout(() => signOut({
-      callbackUrl: '/'
-    }), 1000)
+    signOut({ callbackUrl: '/' })
   }, [])
 
   return (
     <article>
-      Loggar ut...
+      <p>
+        Loggar ut...
+      </p>
     </article>
   )
 }

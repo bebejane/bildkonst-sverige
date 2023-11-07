@@ -44,6 +44,15 @@ declare module '*/ImageThumbnailFragment.gql' {
 }
     
 
+declare module '*/MemberLevelFragment.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const MemberLevelFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/PoliticCategoryFragment.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -111,6 +120,15 @@ declare module '*/global.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const Global: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/member.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const MemberPage: DocumentNode;
 
   export default defaultDocument;
 }

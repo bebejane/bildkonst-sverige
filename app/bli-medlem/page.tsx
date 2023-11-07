@@ -1,21 +1,34 @@
 'use server'
 
+import { StructuredContent } from '@components';
 import s from './page.module.scss'
-import { AboutDocument } from "@graphql";
+import { MemberPageDocument } from "@graphql";
 import { apiQuery } from "@lib/client";
 import DraftMode from '@lib/dato-nextjs-utils/components/DraftMode';
 import { draftMode } from 'next/headers';
+import ApplyForm from '@app/bli-medlem/ApplyForm';
 
 export default async function Membership() {
 
-  //const { about } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument)
+  const { memberIntro, allMemberLevels, draftUrl } = await apiQuery<MemberPageQuery, MemberPageQueryVariables>(MemberPageDocument)
 
   return (
     <>
       <article className={s.container}>
-        Membership page
+        <h1>Bli medlem</h1>
+        <StructuredContent id={memberIntro.id} content={memberIntro.intro} />
+        <StructuredContent id={memberIntro.id} content={memberIntro.introLevels} />
+        <ul className={s.levels}>
+          {allMemberLevels.map(({ id, level, turnoverMax, turnoverMin }) =>
+            <li key={id}>
+              Medlemsnivå: {level}<br />
+              Årsomsättning: {!turnoverMax && turnoverMin ? `< ${turnoverMin}` : turnoverMax && turnoverMin ? `> ${turnoverMin} < ${turnoverMax}` : `> ${turnoverMax}`}
+            </li>
+          )}
+        </ul>
+        <ApplyForm allMemberLevels={allMemberLevels} />
       </article>
-      {/*<DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={id} />*/}
+      {<DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={memberIntro.id} />}
     </>
   );
 }

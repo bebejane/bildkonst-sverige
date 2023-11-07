@@ -1,7 +1,6 @@
 'use server'
 
 import { buildClient } from "@datocms/cma-client-browser"
-import { ca } from "date-fns/locale";
 import { z } from 'zod'
 
 const MemberForm = z.object({
@@ -10,7 +9,7 @@ const MemberForm = z.object({
   contact: z.string().min(2, { message: "Kontakt person är ogiltigt" }),
   email: z.string().email({ message: "Ogiltig e-post adress" }),
   invoice_address: z.string().min(2, { message: "Fakturaadress är ogiltig" }),
-  level: z.string().min(2, { message: "Medlemsnivå ID är ogiltig" }).refine(s => s !== 'false', 'Medlemsnivå är obligatiorsk'),
+  level: z.string().min(2, { message: "Medlemsnivå ID är ogiltig" }).refine(s => s !== 'false', 'Medlemsnivå är obligatorisk'),
 })
 
 type MemberForm = z.infer<typeof MemberForm>;

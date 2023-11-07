@@ -1,8 +1,6 @@
 'use client'
 
-import s from './ApplyForm.module.scss'
-import cn from 'classnames'
-
+import s from './MemberForm.module.scss'
 import { useFormState, useFormStatus } from 'react-dom'
 import { createMember } from './actions';
 
@@ -10,16 +8,11 @@ export type Props = {
   allMemberLevels: MemberPageQuery['allMemberLevels']
 }
 
-function SubmitButton() {
-  const status = useFormStatus();
-  return <button type="submit" disabled={status.pending}>Skicka</button>
-}
-
-export default function ApplyForm({ allMemberLevels }: Props) {
+export default function MemberForm({ allMemberLevels }: Props) {
 
   const [state, formAction] = useFormState(createMember, {})
 
-  const invalid = (id: string) => {
+  const errors = (id: string) => {
     const el = state.invalid?.find(e => e?.path?.includes(id))
     return el ? <div className={s.invalid}>{el.message}</div> : null
   }
@@ -34,23 +27,23 @@ export default function ApplyForm({ allMemberLevels }: Props) {
     <form action={formAction} className={s.form}>
       <label htmlFor='organization'>Organisation *</label>
       <input type='text' id="organization" name="organization" required={false} />
-      {invalid('organization')}
+      {errors('organization')}
 
       <label htmlFor='organization_no'>Organisationsnummer *</label>
       <input type='text' id="organization_no" name="organization_no" required={false} />
-      {invalid('organization_no')}
+      {errors('organization_no')}
 
       <label htmlFor='contact'>Kontaktperson *</label>
       <input type='text' id="contact" name="contact" required={false} />
-      {invalid('contact')}
+      {errors('contact')}
 
       <label htmlFor='email'>E-post *</label>
       <input type='email' autoComplete='on' id="email" name="email" required={false} />
-      {invalid('email')}
+      {errors('email')}
 
       <label htmlFor='invoice_address'>Faktureringsadress *</label>
       <input type='text' id="invoice_address" name="invoice_address" required={false} />
-      {invalid('invoice_address')}
+      {errors('invoice_address')}
 
       <label htmlFor='level'>Medlemsnivå *</label>
       <select id="level" name="level" required={false}>
@@ -59,9 +52,15 @@ export default function ApplyForm({ allMemberLevels }: Props) {
           <option key={id} value={id}>Medlemnivå {level}</option>
         )}
       </select>
-      {invalid('level')}
+      {errors('level')}
+
       <SubmitButton />
     </form >
 
   );
+}
+
+function SubmitButton() {
+  const status = useFormStatus();
+  return <button type="submit" disabled={status.pending}>Skicka</button>
 }

@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import s from './page.module.scss'
 import { signIn } from 'next-auth/react'
 
-export default async function Login() {
+export default function Login() {
 
   const [error, setError] = useState<string | null>(null)
 
@@ -20,12 +20,10 @@ export default async function Login() {
       callbackUrl,
       username: formData.get('email'),
       password: formData.get('password'),
+    }).catch((error) => {
+      setError('Något gick fel, försök igen')
     })
-    if (result.error) {
-      console.log(result.error)
-    } else {
-      console.log(result)
-    }
+
   }
 
   useEffect(() => {

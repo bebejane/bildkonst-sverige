@@ -5,6 +5,7 @@
 	"scripts": {
 		"dev": "npm run dev:watch",
 		"dev:watch": "next dev & npm run barrel:watch & npm run codegen",
+		"dev:email": "email dev",
 		"build": "next build && npm run postbuild",
 		"codegen": "graphql-codegen --watch",
 		"start": "next start",

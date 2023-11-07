@@ -3,10 +3,12 @@
 import { useEffect } from 'react'
 import { signOut } from 'next-auth/react'
 
-export default async function Logout() {
+export default function Logout() {
 
   useEffect(() => {
-    signOut({ callbackUrl: '/' })
+    signOut({ callbackUrl: '/' }).catch((error) => {
+      console.error('Sign out error', error)
+    })
   }, [])
 
   return (

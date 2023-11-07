@@ -6,7 +6,7 @@ import { MemberPageDocument } from "@graphql";
 import { apiQuery } from "@lib/client";
 import DraftMode from '@lib/dato-nextjs-utils/components/DraftMode';
 import { draftMode } from 'next/headers';
-import ApplyForm from '@app/bli-medlem/ApplyForm';
+import MemberForm from './MemberForm';
 
 export default async function Membership() {
 
@@ -26,7 +26,7 @@ export default async function Membership() {
             </li>
           )}
         </ul>
-        <ApplyForm allMemberLevels={allMemberLevels} />
+        <MemberForm allMemberLevels={allMemberLevels} />
       </article>
       {<DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={memberIntro.id} />}
     </>

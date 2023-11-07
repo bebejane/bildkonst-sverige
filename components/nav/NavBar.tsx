@@ -12,12 +12,29 @@ export type Props = {
   allPoliticCategories: AllPoliticCategoriesQuery['allPoliticCategories']
 }
 
+const memberMenu = [
+  {
+    title: 'Aktuellt',
+    href: '/medlem/aktuellt',
+  },
+  {
+    title: 'Verktygslåda',
+    href: '/medlem/verktygslada',
+  },
+  {
+    title: 'Logga ut',
+    href: '/medlem/logga-ut',
+  },
+
+]
+
 export default function NavBar({ allPoliticCategories }: Props) {
 
   const { session, error, status } = useNextAuthSession()
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const [pane, setPane] = useState<'left' | 'right' | null>(null)
+
 
   const handleClickOutside = (e) => {
     e.stopPropagation()
@@ -31,10 +48,14 @@ export default function NavBar({ allPoliticCategories }: Props) {
 
   return (
     <>
-      <h1 className={cn(s.logo, open && s.open)}><Link href={'/'}>Bildkonst<br />sverige</Link></h1>
+      <h1 className={cn(s.logo, open && s.open)}>
+        <Link href={'/'}>Bildkonst<br />sverige</Link>
+      </h1>
+
       <nav className={cn(s.hamburger, open && s.open)}>
         <Hamburger toggled={pane === 'left'} toggle={() => setOpen(!open)} />
       </nav>
+
       <nav className={cn(s.navbar, open && s.show)}>
         <ul className={cn(s.menu, pane === 'left' && s.open)}>
           <li
@@ -61,7 +82,9 @@ export default function NavBar({ allPoliticCategories }: Props) {
           <li>Instagram</li>
           <li>Facebook</li>
           {!session ?
-            <li key={'logga-in'}><Link href={'/logga-in'}>Logga in</Link></li>
+            <li key={'logga-in'}>
+              <Link href={'/logga-in'}>Logga in</Link>
+            </li>
             :
             <li
               key={'member-pane'}
@@ -70,22 +93,20 @@ export default function NavBar({ allPoliticCategories }: Props) {
             >
               Medlemssidor
               <ul>
-                <li className={cn(pathname === '/medlem/aktuellt' && s.selected)}>
-                  <Link href={`/medlem/aktuellt`}>Aktuellt</Link>
-                </li>
-                <li className={cn(pathname === `/medlem/verktygslada` && s.selected)}>
-                  <Link href={`/medlem/verktygslada`}>Verktygslåda</Link>
-                </li>
-                <li>
-                  <Link href={`/medlem/logga-ut`}>Logga ut</Link>
-                </li>
+                {memberMenu.map(({ title, href }, idx) =>
+                  <li key={idx} className={cn(pathname === href && s.selected)}>
+                    <Link href={href}>{title}</Link>
+                  </li>
+                )}
               </ul>
             </li>
           }
         </ul>
       </nav>
 
-      {pane && <div className={s.paneBackground} onClick={handleClickOutside} />}
+      {pane &&
+        <div className={s.paneBackground} onClick={handleClickOutside} />
+      }
 
       <ul className={cn(s.pane, s.left, pane === 'left' && s.show)}>
         {allPoliticCategories?.map(({ id, title, slug }) => (
@@ -96,15 +117,11 @@ export default function NavBar({ allPoliticCategories }: Props) {
       </ul>
 
       <ul className={cn(s.pane, s.right, pane === 'right' && s.show)}>
-        <li className={cn(pathname === `/medlem/actuellt` && s.selected)}>
-          <Link href={`/medlem/aktuellt`}>Aktuellt</Link>
-        </li>
-        <li className={cn(pathname === `/medlem/verktygslada` && s.selected)}>
-          <Link href={`/medlem/verktygslada`}>Verktygslåda</Link>
-        </li>
-        <li>
-          <Link href={`/medlem/logga-ut`}>Logga ut</Link>
-        </li>
+        {memberMenu.map(({ title, href }, idx) =>
+          <li key={idx} className={cn(pathname === href && s.selected)}>
+            <Link href={href}>{title}</Link>
+          </li>
+        )}
       </ul>
     </>
   );

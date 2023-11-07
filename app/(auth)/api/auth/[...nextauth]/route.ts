@@ -35,9 +35,8 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials) {
         try {
-          console.log(credentials)
-          const { username: email, password } = credentials
 
+          const { username: email, password } = credentials
           //if (password !== process.env.NEXTAUTH_URL_STATIC_PASSWORD) return null
 
           const session = {

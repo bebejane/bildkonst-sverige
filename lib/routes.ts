@@ -19,13 +19,13 @@ const routes: Routes = {
   "politic": {
     typeName: "PoliticRecord",
     path: async (item) => {
-      const politic_category = await client.items.find(item.category)
-      return `/${politic_category.slug}/${item.slug}`
+      const politic_category = await client.items.find(item.attributes.category)
+      return `/${politic_category.slug}/${item.attributes.slug}`
     }
   },
   "politic_category": {
     typeName: "PoliticCategoryRecord",
-    path: async (item) => `/${item.slug}`
+    path: async (item) => `/${item.attributes.slug}`
   },
   "about": {
     typeName: "AboutRecord",

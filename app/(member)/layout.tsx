@@ -1,6 +1,7 @@
 'use server'
 
 import '@styles/index.scss'
+import s from './layout.module.scss'
 import { Footer, NavBar, OrangePower } from '@components';
 import { apiQuery } from '@lib/client';
 import { GlobalDocument } from '@graphql';
@@ -19,7 +20,7 @@ export default async function RootLayout({ children }: LayoutProps) {
   return (
     <>
       <html lang="en">
-        <body id="root" style={{ backgroundColor: 'pink' }}>
+        <body id="root" className={s.body}>
           <NavBar menu={menu} />
           <main>
             {children}

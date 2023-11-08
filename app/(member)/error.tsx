@@ -1,4 +1,5 @@
 'use client'
+
 import s from './error.module.scss'
 import { useEffect } from 'react'
 

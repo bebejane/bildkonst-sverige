@@ -19,12 +19,16 @@ export default async function Contact() {
     <>
       <article>
         <h1>Kontakt</h1>
-        <StructuredContent content={contact.intro} id={contact.id} />
-        <ul>
+        <div className="intro">
+          <StructuredContent content={contact.intro} id={contact.id} />
+        </div>
+        <ul className={s.staff}>
           {contact.staff.map((staff) => (
             <li key={staff.id}>
-              <Image data={staff.image.responsiveImage} />
-              <h2>{staff.name}</h2>
+              <figure>
+                <Image data={staff.image.responsiveImage} />
+              </figure>
+              <h3>{staff.name}</h3>
               <p>{staff.description}</p>
             </li>
           ))}

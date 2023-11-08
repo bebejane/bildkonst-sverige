@@ -5,6 +5,7 @@
 	--orange: #ff7a00;
 	--outer-margin: 3rem;
 	--space: 2rem;
+	--gutter: 1.5rem;
 	--navbar-height: 3rem;
 	--background: var(--white);
 	--foreground: var(--black);
@@ -78,10 +79,10 @@ a {
 	}
 }
 
-article p a {
-	&:hover {
-		color: var(--beige-dark);
-	}
+article {
+	margin-left: var(--outer-margin);
+	margin-right: var(--outer-margin);
+	width: calc(100% - (2 * var(--outer-margin)));
 }
 
 .intro {

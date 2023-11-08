@@ -20,10 +20,8 @@
 	--z-logo: 1100;
 	--z-hamburger: 1200;
 
-	@include mq($from: tablet) {
-	}
-
-	@include mq($until: tablet) {
+	@include mq($until: desktop) {
+		--outer-margin: 1rem;
 	}
 }
 
@@ -81,10 +79,20 @@ content {
 	p,
 	blockquote,
 	ul,
-	ol {
+	ol,
+	h3 {
 		display: grid;
-		grid-column-start: 3;
-		grid-column-end: 11;
+		grid-column: span 12 / span 12;
+
+		@include mq($from: desktop) {
+			grid-column-start: 3;
+			grid-column-end: 11;
+		}
+	}
+
+	h3 {
+		margin-top: 1em;
+		margin-bottom: 1em;
 	}
 
 	p {

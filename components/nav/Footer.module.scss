@@ -6,9 +6,15 @@
   padding-left: var(--outer-margin);
   padding-right: var(--outer-margin);
   padding-top: var(--space);
+  justify-content: space-between;
 
   &:last-child {
     justify-content: flex-end;
+  }
+
+  @include mq($until: tablet) {
+    margin-bottom: 1rem;
+    padding-top: var(--space-small);
   }
 
   span {
@@ -22,6 +28,9 @@
   }
 
   h1 {
+    @include mq($until: tablet) {
+      display: none;
+    }
     flex: 1 1 100%;
     text-align: center;
     padding: 0;

@@ -8,5 +8,12 @@
   z-index: var(--z-navbar-pane-background);
   background: var(--orange);
   mix-blend-mode: screen;
-  transition: top linear 500ms;
+  transition: opacity linear 500ms;
+
+  opacity: 0;
+
+  &.active {
+    transition: top linear 100ms;
+    opacity: 1;
+  }
 }

@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 import Hamburger from 'hamburger-react'
 import useNextAuthSession from "@lib/hooks/useNextAuthSession";
 
-export type Props = {
+type Props = {
   allPoliticCategories: AllPoliticCategoriesQuery['allPoliticCategories']
 }
 
@@ -53,7 +53,7 @@ export default function NavBar({ allPoliticCategories }: Props) {
       </h1>
 
       <nav className={cn(s.hamburger, open && s.open)}>
-        <Hamburger toggled={pane === 'left'} toggle={() => setOpen(!open)} />
+        <Hamburger toggled={open} toggle={() => setOpen(!open)} />
       </nav>
 
       <nav className={cn(s.navbar, open && s.show)}>

@@ -6,6 +6,8 @@ export { default as index } from "./blocks/index";
 export * from "./blocks/index";
 export { default as StartPoliticBlock } from "./blocks/start/StartPoliticBlock";
 export * from "./blocks/start/StartPoliticBlock";
+export { default as OrangePower } from "./common/OrangePower";
+export * from "./common/OrangePower";
 export { default as StructuredContent } from "./common/StructuredContent";
 export * from "./common/StructuredContent";
 export { default as Footer } from "./nav/Footer";

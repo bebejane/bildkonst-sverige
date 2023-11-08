@@ -41,6 +41,10 @@ h2 {
 
 .logo {
   letter-spacing: 0.3em;
+  transition: letter-spacing 0.5s;
+  &:hover {
+    letter-spacing: 0.4em;
+  }
 }
 
 h3,
@@ -80,7 +84,8 @@ blockquote {
 nav,
 footer,
 .date,
-.nav {
+.nav,
+label {
   font-family: $nav-font;
   font-size: 0.7rem;
 }

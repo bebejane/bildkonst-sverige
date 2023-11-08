@@ -15,20 +15,30 @@ export default async function Membership() {
   return (
     <>
       <article className={s.container}>
-        <h1>Bli medlem</h1>
-        <StructuredContent id={memberIntro.id} content={memberIntro.intro} />
-        <StructuredContent id={memberIntro.id} content={memberIntro.introLevels} />
-        <ul className={s.levels}>
-          {allMemberLevels.map(({ id, level, turnoverMax, turnoverMin }) =>
-            <li key={id}>
-              Medlemsnivå: {level}<br />
-              Årsomsättning: {!turnoverMax && turnoverMin ? `< ${turnoverMin}` : turnoverMax && turnoverMin ? `> ${turnoverMin} < ${turnoverMax}` : `> ${turnoverMax}`}
-            </li>
-          )}
-        </ul>
-        <MemberForm allMemberLevels={allMemberLevels} />
+        <div className="content">
+          <h1>Bli medlem</h1>
+
+          <div className="intro">
+            <StructuredContent id={memberIntro.id} content={memberIntro.intro} />
+          </div>
+
+          <div className="grid structured">
+            <StructuredContent id={memberIntro.id} content={memberIntro.introLevels} />
+            <ul className={s.levels}>
+              {allMemberLevels.map(({ id, level, turnoverMax, turnoverMin }) =>
+                <li key={id}>
+                  Medlemsnivå: {level}<br />
+                  Årsomsättning: {!turnoverMax && turnoverMin ? `< ${turnoverMin}` : turnoverMax && turnoverMin ? `> ${turnoverMin} < ${turnoverMax}` : `> ${turnoverMax}`}
+                </li>
+              )}
+            </ul>
+            <h3>Ansökningsformulär</h3>
+            <MemberForm allMemberLevels={allMemberLevels} />
+          </div>
+        </div >
+
       </article>
-      {<DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={memberIntro.id} />}
+      {< DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={memberIntro.id} />}
     </>
   );
 }

@@ -1,10 +1,15 @@
 .form {
-
-  max-width: 50vw;
   display: flex;
   flex-direction: column;
   margin-top: 2em;
   margin-bottom: 2em;
+  background-color: var(--black);
+  padding: var(--outer-margin);
+
+  button,
+  label {
+    color: var(--white);
+  }
 
   input,
   select {
@@ -14,6 +19,10 @@
   button[disabled] {
     opacity: 0.5;
     pointer-events: none;
+  }
+
+  button:hover {
+    color: var(--orange) !important;
   }
 
   .invalid {

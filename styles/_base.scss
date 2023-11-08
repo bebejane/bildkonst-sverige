@@ -81,7 +81,8 @@ figure {
 	blockquote,
 	ul,
 	ol,
-	h3 {
+	h3,
+	form {
 		display: grid;
 		grid-column: span 12 / span 12;
 
@@ -187,7 +188,7 @@ input,
 textarea,
 select {
 	width: 100%;
-	border: none;
+	border: 1px solid var(--black);
 	margin-bottom: 1rem;
 	padding: 0.5em;
 	font-family: $nav-font;

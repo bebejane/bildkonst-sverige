@@ -7,8 +7,10 @@ const client = buildClient({
   environment: process.env.DATOCMS_ENVIRONMENT
 })
 
+export const runtime = "edge"
 
 export default function POST(req: Request) {
+  console.log('approve-member')
   return basicAuth(req, async (req) => {
     try {
       const { id } = (await req.formData()).get('entity') as any;

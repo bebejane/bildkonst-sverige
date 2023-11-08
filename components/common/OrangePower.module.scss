@@ -17,3 +17,11 @@
     opacity: 1;
   }
 }
+
+.active {
+  color: var(--orange);
+
+  a {
+    color: var(--orange);
+  }
+}

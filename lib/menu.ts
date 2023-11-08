@@ -35,12 +35,12 @@ export const buildMenu = async (): Promise<Menu> => {
   }, {
     id: 'instagram',
     title: 'Instagram',
-    href: 'https://www.instagram.com',
+    href: 'https://www.instagram.com/bildkonstsverige',
     position: 'right'
   }, {
     id: 'facebook',
     title: 'Facebook',
-    href: 'https://www.facebook.com',
+    href: 'https://www.facebook.com/profile.php?id=100088446490441',
     position: 'right'
   }, {
     id: 'member',

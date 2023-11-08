@@ -156,8 +156,21 @@
 }
 
 .loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
   button {
     color: var(--white);
+
+    &:hover {
+      color: var(--orange);
+    }
+  }
+
+  &.submitting {
+    opacity: 0.5;
+    pointer-events: none;
   }
 }
 

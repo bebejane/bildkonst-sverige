@@ -104,11 +104,13 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
 const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
 
   const [error, setError] = useState<string | null>(null)
+  const [submitting, setSubmitting] = useState(false)
 
   const handleSignin = async (e) => {
     e.preventDefault()
 
     setError(null)
+    setSubmitting(true)
     const url = new URLSearchParams(window.location.search).get('callbackUrl')
     const formData = new FormData(e.target)
     signIn('credentials', {
@@ -120,6 +122,8 @@ const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
       onSuccess()
     }).catch((error) => {
       setError('Något gick fel, försök igen')
+    }).finally(() => {
+      setSubmitting(false)
     })
   }
 
@@ -131,7 +135,7 @@ const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
 
   return (
     <>
-      <form method="POST" onSubmit={handleSignin} className={s.loginForm}>
+      <form method="POST" onSubmit={handleSignin} className={cn(s.loginForm, submitting && s.submitting)}>
         <input id="email" name="email" type="email" placeholder="E-post" />
         <input id="password" name="password" type="password" placeholder="Lösenord" />
         <button>Logga in</button>

@@ -20,11 +20,9 @@
 	--z-logo: 1100;
 	--z-hamburger: 1200;
 
-	@include mq($from: tablet) {
-	}
+	@include mq($from: tablet) {}
 
-	@include mq($until: tablet) {
-	}
+	@include mq($until: tablet) {}
 }
 
 body {
@@ -36,7 +34,6 @@ body {
 	font-family: $body-font;
 	-webkit-font-smoothing: antialiased;
 	font-feature-settings: "liga", "kern";
-	overflow-x: hidden;
 }
 
 html {
@@ -72,12 +69,14 @@ content {
 	figure {
 		margin-bottom: var(--space);
 	}
+
 	.intro {
 		padding-bottom: 1.5rem;
 	}
 }
 
 .structured {
+
 	p,
 	blockquote,
 	ul,
@@ -94,6 +93,7 @@ content {
 	blockquote {
 		margin: 0;
 		margin-bottom: 1em;
+
 		p {
 			display: block;
 			grid-column-start: 1;
@@ -103,6 +103,7 @@ content {
 	ol,
 	ul {
 		margin-top: 0;
+
 		li p {
 			margin-bottom: 1em;
 		}
@@ -135,27 +136,23 @@ a {
 		color: var(--orange);
 	}
 
-	&:visited {
-	}
+	&:visited {}
 }
 
 figcaption {
-	@include mq($until: tablet) {
-	}
+	@include mq($until: tablet) {}
 }
 
 .date {
 	padding-right: 1em;
 }
 
-hr {
-}
+hr {}
 
 input,
 textarea,
 select {
-	&:focus {
-	}
+	&:focus {}
 }
 
 select {

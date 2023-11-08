@@ -7,6 +7,9 @@ export default async function basicAuth(
   if (req.method === 'OPTIONS')
     return await callback(req)
 
+  if (process.env.NODE_ENV === 'development')
+    return await callback(req)
+
   const basicAuth = req.headers.get('authorization')
 
   if (!basicAuth)

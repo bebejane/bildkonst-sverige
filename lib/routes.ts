@@ -19,17 +19,17 @@ const routes: Routes = {
   "politic": {
     typeName: "PoliticRecord",
     path: async (item) => {
-      const politic_category = await client.items.find(item.attributes.category)
-      return `/${politic_category.slug}/${item.attributes.slug}`
+      const politic_category = await client.items.find(item.category)
+      return `/${politic_category.slug}/${item.slug}`
     }
   },
   "politic_category": {
     typeName: "PoliticCategoryRecord",
-    path: async (item) => `/${item.attributes.slug}`
+    path: async (item) => `/${item.slug}`
   },
   "about": {
     typeName: "AboutRecord",
-    path: async (item) => `/om-oss/${item.attributes.slug}`
+    path: async (item) => `/om-oss/${item.slug}`
   },
   "board": {
     typeName: "BoardRecord",
@@ -50,6 +50,22 @@ const routes: Routes = {
   "member": {
     typeName: "MemberRecord",
     path: async (item) => null
+  },
+  "news": {
+    typeName: "NewsRecord",
+    path: async (item) => `/member/aktuellt/${item.slug}`
+  },
+  "tool": {
+    typeName: "ToolRecord",
+    path: async (item) => `/member/verktygslada/${item.slug}`
+  },
+  "statue": {
+    typeName: "StatueRecord",
+    path: async (item) => `/member/${item.slug}`
+  },
+  "staff": {
+    typeName: "StaffRecord",
+    path: async (item) => '/kontakt'
   },
   "site": {
     typeName: "SiteRecord",

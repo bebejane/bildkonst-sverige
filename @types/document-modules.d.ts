@@ -2,16 +2,8 @@
 declare module '*/about.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
-  export const About: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/board.gql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const Board: DocumentNode;
+  export const AllAbouts: DocumentNode;
+export const About: DocumentNode;
 
   export default defaultDocument;
 }
@@ -129,6 +121,15 @@ declare module '*/member.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const MemberPage: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/menu.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const Menu: DocumentNode;
 
   export default defaultDocument;
 }

@@ -23,7 +23,7 @@ export default function OrangePower({ }: {}) {
     onScrollEnd: () => setActive(false)
   });
 
-  const height = Math.floor((speed.y / 10000) * 100)
+  const height = Math.floor((speed.y / 10000) * 50)
   stylesRef.current = direction.y === 'down' ? { top: `${90 - height}vh` } : direction.y === 'up' ? { top: '100vh' } : stylesRef.current
 
   return (

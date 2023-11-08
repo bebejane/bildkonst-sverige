@@ -3,9 +3,10 @@
 import '@styles/index.scss'
 import { Footer, NavBar, OrangePower } from '@components';
 import { apiQuery } from '@lib/client';
-import { AllPoliticCategoriesDocument, GlobalDocument } from '@graphql';
+import { GlobalDocument } from '@graphql';
 import { Metadata } from 'next';
 import { Icon } from 'next/dist/lib/metadata/types/metadata-types';
+import { buildMenu } from '@lib/menu';
 
 export type LayoutProps = {
   children: React.ReactNode
@@ -13,13 +14,13 @@ export type LayoutProps = {
 
 export default async function RootLayout({ children }: LayoutProps) {
 
-  const { allPoliticCategories } = await apiQuery<AllPoliticCategoriesQuery, AllPoliticCategoriesQueryVariables>(AllPoliticCategoriesDocument)
+  const menu = await buildMenu();
 
   return (
     <>
       <html lang="en">
         <body id="root" >
-          <NavBar allPoliticCategories={allPoliticCategories} />
+          <NavBar menu={menu} />
           <main>
             {children}
           </main>

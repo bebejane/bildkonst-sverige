@@ -1,7 +1,16 @@
-query About {
-	about {
+query AllAbouts {
+	allAbouts {
 		id
-		headline
+		slug
+		title
+	}
+}
+
+query About($slug: String!) {
+	about(filter: { slug: { eq: $slug } }) {
+		id
+		slug
+		title
 		content {
 			blocks
 			links

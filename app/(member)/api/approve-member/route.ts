@@ -21,15 +21,19 @@ export function POST(req: Request) {
 
       if (!id)
         throw new Error('No id provided')
+
       const record = await client.items.find(id);
 
       if (!record)
         throw new Error('No record found with id: ' + id)
 
-      if (record.approved)
+      if (record.approved) {
         console.log('send email to: ', record.email)
-
-      return NextResponse.json({ success: true });
+        return NextResponse.json({ success: true });
+      } else {
+        console.log('member not approved: ', record.email)
+        return NextResponse.json({ success: false });
+      }
 
     } catch (e) {
       console.log(e.message)

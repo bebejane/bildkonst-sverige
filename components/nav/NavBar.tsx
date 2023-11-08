@@ -13,22 +13,21 @@ type Props = {
   menu: Menu
 }
 
-
 export default function NavBar({ menu }: Props) {
 
   const { session, error, status } = useNextAuthSession()
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
-  const [pane, setPane] = useState<'left' | 'right' | null>(null)
+
 
   const handleClickOutside = (e) => {
     e.stopPropagation()
-    setPane(null)
+    //setPane(null)
   }
 
 
   useEffect(() => {
-    setPane(null)
+    //setPane(null)
     setOpen(false)
   }, [pathname])
 
@@ -43,44 +42,62 @@ export default function NavBar({ menu }: Props) {
       </nav>
 
       <nav className={cn(s.navbar, open && s.show)}>
-        <MenuPanel pane={pane} position={'left'} menu={menu} setPane={setPane} />
-        <MenuPanel pane={pane} position={'right'} menu={menu} setPane={setPane} />
+        <MenuPanel position={'left'} menu={menu} />
+        <MenuPanel position={'right'} menu={menu} />
       </nav>
-
     </>
   );
 }
 
 
-const MenuPanel = ({ pane, position, menu, setPane }: { pane: 'left' | 'right', position: 'left' | 'right', menu: Menu, setPane: Dispatch<SetStateAction<"left" | "right">> }) => {
+const MenuPanel = ({ position, menu }: { position: 'left' | 'right', menu: Menu }) => {
 
   const pathname = usePathname()
+  const panel = menu.filter((el) => el.position === position)
+  const [subId, setSubId] = useState<string | null>(null)
+
+  useEffect(() => {
+    setSubId(null)
+  }, [pathname])
 
   return (
-    <ul className={cn(s.menu, s[position], pane === position && s.open)}>
-      {menu.filter((el) => el.position === position).map(({ id, title, slug, href, sub, position: pos }, idx) =>
-        <li
-          key={idx}
-          className={cn(pane === pos && s.selected)}
-          onClick={(e) => setPane(pane === pos ? null : pos)}
-        >
-          {!sub ?
-            <Link href={slug ?? href}>{title}</Link>
-            :
-            <>
-              {title}
-              <ul>
-                {sub?.map(({ id, title, slug }) => (
-                  <li className={cn(pathname === `/${slug}` && s.selected)} key={id}>
-                    <Link href={`/${slug}`}>{title}</Link>
-                  </li>
-                ))}
-              </ul>
-            </>
-          }
-        </li>
-      )}
-    </ul>
+    <>
+      <ul className={cn(s.menu, s[position], subId && s.open)}>
+        {panel.map(({ id, title, slug, href, sub, position: pos }, idx) =>
+          <li
+            key={idx}
+            className={cn(pathname === slug || subId === id && s.selected)}
+            onClick={(e) => sub ? setSubId(subId === id ? null : id) : setSubId(null)}
+          >
+            {!sub ?
+              <Link href={slug ?? href}>{title}</Link>
+              :
+              <>
+                {title}
+                <ul>
+                  {sub?.map(({ id, title, slug }) => (
+                    <li className={cn(pathname === `/${slug}` && s.selected)} key={id}>
+                      <Link href={`/${slug}`}>{title}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            }
+          </li>
+        )}
+      </ul>
+      {subId &&
+        <ul className={cn(s.pane, s[position], s.show)}>
+          {panel.find(({ id }) => subId === id).sub?.map(({ title, slug }, idx) =>
+            <li key={idx} className={cn(pathname === slug && s.selected)}>
+              <Link href={slug}>{title}</Link>
+            </li>
+          )}
+        </ul>
+      }
+      {subId &&
+        <div className={s.paneBackground} onClick={() => setSubId(null)} />
+      }
+    </>
   )
-
 }

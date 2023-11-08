@@ -35,7 +35,6 @@ export default async function RootLayout({ children }: LayoutProps) {
 
 export async function generateMetadata() {
   const { site: { globalSeo, favicon }, site } = await apiQuery<GlobalQuery, GlobalQueryVariables>(GlobalDocument, { generateTags: false });
-
   return {
     title: globalSeo?.siteName,
     description: globalSeo?.fallbackSeo?.description,

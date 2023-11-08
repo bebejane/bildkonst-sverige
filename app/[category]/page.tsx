@@ -10,6 +10,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 import { Image } from 'react-datocms/image';
+import cn from 'classnames';
 
 export async function generateStaticParams() {
   const { allPoliticCategories } = await apiQuery<AllPoliticCategoriesQuery, AllPoliticCategoriesQueryVariables>(AllPoliticCategoriesDocument);
@@ -29,16 +30,16 @@ export default async function Page({ params }: { params: { category: string } })
   return (
     <>
       <article>
-        <h1>{politicCategory.title}</h1>
+        <h3>{politicCategory.title}</h3>
         {politicCategory?._allReferencingPolitics.length > 0 ?
           <ul className={s.articles}>
             {politicCategory?._allReferencingPolitics.map(({ id, title, image, intro, slug, category, _publishedAt }) =>
               <li key={id}>
                 <Link href={`/${category.slug}/${slug}`}>
-                  <h3>{title}</h3>
+                  <h2>{title}</h2>
                   <div className={s.wrap}>
-                    <div className={s.content}>
-                      <span className={s.date}>{format(new Date(_publishedAt), 'd MMMM yyyy')}</span>
+                    <div className={cn(s.content, "intro")}>
+                      <span className="date">{format(new Date(_publishedAt), 'd MMMM yyyy')}</span>
                       <StructuredContent content={intro} id={id} />
                     </div>
                     {image &&

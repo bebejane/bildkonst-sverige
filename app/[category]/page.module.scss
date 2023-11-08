@@ -3,7 +3,10 @@
   display: flex;
 
   li {
+    margin-top: var(--space);
+    padding-top: var(--space);
 
+    border-top: 1px solid var(--black);
     a {
       display: flex;
       flex-direction: column;
@@ -13,14 +16,17 @@
         flex-direction: row;
 
         .content {
-          .date {
-            margin-right: 1ch;
-          }
-
-          >p {
+          > p {
             display: inline;
-
           }
+        }
+      }
+
+      figure {
+        aspect-ratio: 4 / 3;
+        display: flex;
+        img {
+          object-fit: cover;
         }
       }
     }

@@ -64,7 +64,7 @@ export default function NavBar({ allPoliticCategories }: Props) {
             Kulturpolitik
             <ul>
               {allPoliticCategories?.map(({ id, title, slug }) => (
-                <li className={cn(pathname === `/${slug}` && s.selected)} key={id}>
+                <li className={cn(pathname === `/${slug}` && s.selected, "nav")} key={id}>
                   <Link href={`/${slug}`}>{title}</Link>
                 </li>
               ))}
@@ -93,7 +93,7 @@ export default function NavBar({ allPoliticCategories }: Props) {
               Medlemssidor
               <ul>
                 {memberMenu.map(({ title, href }, idx) =>
-                  <li key={idx} className={cn(pathname === href && s.selected)}>
+                  <li key={idx} className={cn(pathname === href && s.selected, "nav")}>
                     <Link href={href}>{title}</Link>
                   </li>
                 )}

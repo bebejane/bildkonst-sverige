@@ -22,16 +22,12 @@ h5 {
   }
 }
 
-h1 {
+h1,
+h2 {
   font-size: 1.5rem;
   font-weight: bold;
   padding-bottom: 1em;
   line-height: 1;
-  font-family: $headline-font;
-}
-
-h2 {
-  font-size: 0.75rem;
   font-family: $headline-font;
 }
 
@@ -78,7 +74,12 @@ blockquote {
 
 nav,
 footer,
-.date {
+.date,
+.nav {
   font-family: $nav-font;
   font-size: 0.8rem;
+}
+
+.nav {
+  font-size: 1rem;
 }

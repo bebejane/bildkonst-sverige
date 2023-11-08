@@ -7,7 +7,9 @@
 	--space: 2rem;
 	--space-small: 1rem;
 	--gutter: 1.5rem;
-	--navbar-height: 3rem;
+	--navbar-offset: 0.2rem;
+	--navbar-height: calc(3rem + var(--navbar-offset));
+	--navbar-offset: 0.2rem;
 	--background: var(--white);
 	--foreground: var(--black);
 	--line-height: 1.4em;

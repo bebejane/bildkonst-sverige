@@ -154,6 +154,13 @@ hr {
 input,
 textarea,
 select {
+	width: 100%;
+	border: none;
+	margin-bottom: 1rem;
+	padding: 0.5em;
+	font-family: $nav-font;
+	background-color: var(--white);
+
 	&:focus {
 	}
 }

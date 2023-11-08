@@ -16,7 +16,7 @@ export default function StartPoliticBlock({ data: { record: { id, slug, category
   return (
     <Link href={`/${category.slug}/${slug}`} className={cn(s.container, s[layout])}>
       <div className="grid">
-        {image && layout !== 'headline' &&
+        {image && layout == 'column' &&
           <figure>
             <Image data={image.responsiveImage} />
           </figure>

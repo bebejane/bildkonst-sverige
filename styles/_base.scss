@@ -65,7 +65,7 @@ figure {
 	}
 }
 
-content {
+.content {
 	figure {
 		margin-bottom: var(--space);
 	}
@@ -200,11 +200,11 @@ select {
 }
 
 ::-webkit-scrollbar:vertical {
-	width: 10px;
+	width: 0.6rem;
 }
 
 ::-webkit-scrollbar:horizontal {
-	height: 10px;
+	height: 0.6rem;
 }
 
 ::-webkit-scrollbar-thumb {

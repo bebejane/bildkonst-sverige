@@ -1,4 +1,4 @@
-'use server'
+'use client'
 
 import cn from 'classnames';
 import { StructuredContent } from '@components';

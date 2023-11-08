@@ -135,6 +135,17 @@ declare module '*/menu.gql' {
 }
     
 
+declare module '*/news.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const AllNews: DocumentNode;
+export const News: DocumentNode;
+export const NewsFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/politic.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;

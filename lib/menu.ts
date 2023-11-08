@@ -9,6 +9,7 @@ export type MenuItem = {
   slug?: string,
   href?: string,
   sub?: MenuItem[],
+  auth?: boolean,
   position?: 'left' | 'right'
 }
 
@@ -19,7 +20,7 @@ export const buildMenu = async (): Promise<Menu> => {
   const menu: Menu = [{
     id: 'politic',
     title: 'Kulturpolitik',
-    sub: allPoliticCategories,
+    sub: allPoliticCategories.map(({ id, slug, title }) => ({ id, title, slug: `/${slug}` })),
     position: 'left'
   }, {
     id: 'about',
@@ -44,6 +45,7 @@ export const buildMenu = async (): Promise<Menu> => {
   }, {
     id: 'member',
     title: 'Medlemssidor',
+    auth: true,
     sub: [{
       id: 'news',
       title: 'Aktuellt',

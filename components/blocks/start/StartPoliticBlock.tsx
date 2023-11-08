@@ -11,7 +11,7 @@ type Props = {
   }
 }
 
-export default function StartPoliticBlock({ data: { record: { id, slug, category, intro, image, title }, layout } }: Props) {
+export default function StartPoliticBlock({ data: { record: { id, slug, category, intro, image, title, _publishedAt }, layout } }: Props) {
 
   return (
     <Link href={`/${category.slug}/${slug}`} className={cn(s.container, s[layout])}>
@@ -24,6 +24,7 @@ export default function StartPoliticBlock({ data: { record: { id, slug, category
         <div className={s.text}>
           <h1>{title}</h1>
           <div className="intro">
+            <span className="date">{format(new Date(_publishedAt), 'd MMMM yyyy')}</span>
             <StructuredContent content={intro} id={id} />
           </div>
         </div>

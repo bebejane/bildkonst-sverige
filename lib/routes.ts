@@ -1,6 +1,9 @@
 import { buildClient } from "@datocms/cma-client-browser"
 
-const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, environment: process.env.DATOCMS_ENVIRONMENT })
+const client = buildClient({
+  apiToken: process.env.DATOCMS_API_TOKEN,
+  environment: process.env.DATOCMS_ENVIRONMENT
+})
 
 type Routes = {
   [key: string]: Route
@@ -31,10 +34,6 @@ const routes: Routes = {
     typeName: "AboutRecord",
     path: async (item) => `/om-oss/${item.slug}`
   },
-  "board": {
-    typeName: "BoardRecord",
-    path: async (item) => '/styrelse'
-  },
   "contact": {
     typeName: "ContactRecord",
     path: async (item) => '/kontakt'
@@ -53,15 +52,11 @@ const routes: Routes = {
   },
   "news": {
     typeName: "NewsRecord",
-    path: async (item) => `/member/aktuellt/${item.slug}`
+    path: async (item) => `/medlem/aktuellt/${item.slug}`
   },
   "tool": {
     typeName: "ToolRecord",
-    path: async (item) => `/member/verktygslada/${item.slug}`
-  },
-  "statue": {
-    typeName: "StatueRecord",
-    path: async (item) => `/member/${item.slug}`
+    path: async (item) => `/medlem/verktygslada/${item.slug}`
   },
   "staff": {
     typeName: "StaffRecord",

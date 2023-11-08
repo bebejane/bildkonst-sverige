@@ -1,5 +1,5 @@
 import basicAuth from "@lib/dato-nextjs-utils/route-handlers/basic-auth";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { buildClient } from '@datocms/cma-client-browser';
 
 const client = buildClient({
@@ -9,17 +9,22 @@ const client = buildClient({
 
 export const runtime = "edge"
 
-export default function POST(req: Request) {
-  console.log('approve-member')
+export function POST(req: Request) {
+
   return basicAuth(req, async (req) => {
     try {
-      const { id } = (await req.formData()).get('entity') as any;
-      console.log(id)
-      const record = await client.items.find(id);
-      console.log(record)
-      if (!record)
-        return NextResponse.json({ success: false, message: 'Record not found' });
 
+      console.log('approve-member')
+
+      const item = await req.json()
+      const id = item?.entity?.id
+
+      if (!id)
+        throw new Error('No id provided')
+      const record = await client.items.find(id);
+
+      if (!record)
+        throw new Error('No record found with id: ' + id)
 
       if (record.approved)
         console.log('send email to: ', record.email)

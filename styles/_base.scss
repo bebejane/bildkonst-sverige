@@ -73,7 +73,7 @@ content {
 		margin-bottom: var(--space);
 	}
 	.intro {
-		padding-bottom: 1rem;
+		padding-bottom: 1.5rem;
 	}
 }
 
@@ -86,6 +86,11 @@ content {
 		grid-column-start: 3;
 		grid-column-end: 11;
 	}
+
+	p {
+		display: block;
+	}
+
 	blockquote {
 		margin: 0;
 		margin-bottom: 1em;
@@ -99,8 +104,12 @@ content {
 	ul {
 		margin-top: 0;
 		li p {
-			margin-bottom: 0.5em;
+			margin-bottom: 1em;
 		}
+	}
+
+	ul {
+		padding-left: 1em;
 	}
 }
 

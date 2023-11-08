@@ -4,7 +4,7 @@ body {
   font-weight: normal;
 
   @include mq($from: tablet) {
-    font-size: 22px;
+    font-size: 24px;
   }
 
   @include mq($from: wide) {
@@ -56,7 +56,7 @@ p {
 
   strong {
     font-family: $headline-font;
-    font-weight: 0.95em;
+    font-size: 0.95em;
   }
 }
 
@@ -76,7 +76,7 @@ footer,
 .date,
 .nav {
   font-family: $nav-font;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
 .nav {

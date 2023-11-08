@@ -1,6 +1,6 @@
 'use client'
 
-import s from './_Error.module.scss'
+import s from './Error.module.scss'
 import { useEffect } from 'react'
 
 export default function Error({ error, reset }: { error: Error & { digest?: string }, reset: () => void }) {

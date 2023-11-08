@@ -4,28 +4,28 @@ $nav-font: "Rom", Helvetica, Sans-Serif;
 
 @font-face {
   font-family: "Rom";
-  src: url("../public/fonts/ABCROM-Regular.otf") format("opentype");
+  src: url("/fonts/ABCROM-Regular.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "RomWide";
-  src: url("../public/fonts/ABCROMWide-Heavy.otf") format("opentype");
+  src: url("/fonts/ABCROMWide-Heavy.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Immortel";
-  src: url("../public/fonts/ImmortelColeraTrial-Roman.otf") format("opentype");
+  src: url("/fonts/ImmortelColeraTrial-Roman.otf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Immortel";
-  src: url("../public/fonts/ImmortelColeraTrial-Italic.otf") format("opentype");
+  src: url("/fonts/ImmortelColeraTrial-Italic.otf") format("opentype");
   font-weight: normal;
   font-style: italic;
 }

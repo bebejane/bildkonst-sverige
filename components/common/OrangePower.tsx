@@ -11,17 +11,7 @@ import { useScrollData } from "scroll-data-hook";
 
 
 function isElementInViewport(el: HTMLElement) {
-  var rect = el.getBoundingClientRect();
-
-  const visible = (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /* or $(window).height() */
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
-  );
-
-  console.log(visible)
-  return visible
+  return el.getBoundingClientRect()?.top <= (window.innerHeight || document.documentElement.clientHeight)
 }
 
 export default function OrangePower({ }: {}) {

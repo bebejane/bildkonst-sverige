@@ -41,7 +41,6 @@
 
   @include mq($from: desktop) {
     display: none;
-
   }
 }
 
@@ -54,9 +53,10 @@
   flex-direction: row;
   align-items: center;
   width: 100%;
+  padding-left: var(--outer-margin);
+  padding-right: var(--outer-margin);
 
   @include mq($until: desktop) {
-
     flex-direction: column;
     color: var(--white);
     background-color: var(--black);
@@ -78,7 +78,7 @@
     list-style: none;
   }
 
-  >ul {
+  > ul {
     flex: 0 0 50%;
     list-style: none;
     display: flex;
@@ -106,7 +106,7 @@
         margin-right: 0;
       }
 
-      >ul {
+      > ul {
         display: none;
       }
 
@@ -114,14 +114,13 @@
         flex: 1 1;
         margin-right: 0;
 
-        >ul {
+        > ul {
           display: block;
         }
       }
     }
 
     &.open {
-
       li,
       a {
         color: var(--white);
@@ -134,8 +133,7 @@
   }
 }
 
-
-.selected>a,
+.selected > a,
 .selected {
   color: var(--orange) !important;
 }
@@ -168,7 +166,6 @@
   z-index: var(--z-navbar-pane);
 
   @include mq($until: desktop) {
-
     display: none;
     position: relative;
     height: auto;

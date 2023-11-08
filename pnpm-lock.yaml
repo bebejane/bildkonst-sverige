@@ -18,6 +18,7 @@ specifiers:
   '@types/graphql': ^14.5.0
   '@types/node': ^20.8.10
   '@types/react': ^18.2.34
+  '@types/react-dom': ^18.2.14
   barrelsby: ^2.8.1
   chokidar-cli: ^3.0.0
   classnames: ^2.3.2
@@ -30,147 +31,60 @@ specifiers:
   eslint-config-next: ^12.3.4
   graphql: ^16.8.1
   graphql-config: ^5.0.3
+  hamburger-react: ^2.5.0
   markdown-truncate: ^1.1.0
   next: ^14.0.1
+  next-auth: ^4.24.4
   next-seo: ^5.15.0
   next-sitemap: ^3.1.55
   nextjs-google-analytics: ^2.3.3
   react: ^18.2.0
   react-datocms: ^4.1.3
   react-dom: ^18.2.0
+  react-hook-form: ^7.48.2
   react-icons: ^4.11.0
   react-markdown: ^8.0.7
   remark-breaks: ^3.0.3
   remark-gfm: ^3.0.1
-  rooks: ^7.14.1
   sass: ^1.69.5
   swiper: ^8.4.7
   typescript: 5.2.2
+  usehooks-ts: ^2.9.1
+  zod: ^3.22.4
   zustand: ^4.4.6
 
 dependencies:
-<<<<<<< HEAD
   '@datocms/cma-client-browser': 3.0.1
   '@datocms/cma-client-node': 3.0.2
   '@graphql-typed-document-node/core': 3.2.0_graphql@16.8.1
   '@next/env': 13.5.6
+  '@types/react-dom': 18.2.15
   classnames: 2.3.2
   date-fns: 2.30.0
-  dato-nextjs-utils: github.com/bebejane/dato-nextjs-utils/e8e9f2cac8645e45a95c09f946672de175ec86a8_disxp54yv3jupfdvdplxpya64i
+  dato-nextjs-utils: github.com/bebejane/dato-nextjs-utils/e8e9f2cac8645e45a95c09f946672de175ec86a8_jpd4tct76nt7da7flipbkaimb4
   datocms-structured-text-utils: 2.0.4
   deep-iterator: 1.1.0
   graphql: 16.8.1
+  hamburger-react: 2.5.0_react@18.2.0
   markdown-truncate: 1.1.0
   next: 14.0.1_2sxiyfzeap2fgw7t7svnurc6pi
+  next-auth: 4.24.4_d44gvanaswtczdkus3z7hvpazm
   next-seo: 5.15.0_d44gvanaswtczdkus3z7hvpazm
   next-sitemap: 3.1.55_uxa4u6s34lk467iunufazn622y
   nextjs-google-analytics: 2.3.3_next@14.0.1+react@18.2.0
   react: 18.2.0
   react-datocms: 4.1.3_bfvpv3ajad3vqegote5bklnhgq
   react-dom: 18.2.0_react@18.2.0
+  react-hook-form: 7.48.2_react@18.2.0
   react-icons: 4.11.0_react@18.2.0
   react-markdown: 8.0.7_ahyjqase67bbhtw6poqhaowpdq
   remark-breaks: 3.0.3
   remark-gfm: 3.0.1
-  rooks: 7.14.1_biqbaboplfbrettd7655fr4n2y
   sass: 1.69.5
   swiper: 8.4.7
+  usehooks-ts: 2.9.1_biqbaboplfbrettd7655fr4n2y
+  zod: 3.22.4
   zustand: 4.4.6_ahyjqase67bbhtw6poqhaowpdq
-=======
-  '@datocms/cma-client-browser':
-    specifier: ^3.0.1
-    version: 3.0.1
-  '@datocms/cma-client-node':
-    specifier: ^3.0.2
-    version: 3.0.2
-  '@graphql-typed-document-node/core':
-    specifier: ^3.2.0
-    version: 3.2.0(graphql@16.8.1)
-  '@next/env':
-    specifier: ^13.5.6
-    version: 13.5.6
-  '@types/react-dom':
-    specifier: ^18.2.14
-    version: 18.2.14
-  classnames:
-    specifier: ^2.3.2
-    version: 2.3.2
-  date-fns:
-    specifier: ^2.30.0
-    version: 2.30.0
-  dato-nextjs-utils:
-    specifier: github:bebejane/dato-nextjs-utils
-    version: github.com/bebejane/dato-nextjs-utils/e8e9f2cac8645e45a95c09f946672de175ec86a8(@apollo/client@3.8.7)(@datocms/cma-client-browser@3.0.1)(@datocms/cma-client-node@3.0.2)(@datocms/cma-client@3.0.1)(@types/node@20.8.10)(@types/react-dom@18.2.14)(@types/react@18.2.34)(datocms-listen@0.1.15)(next-seo@5.15.0)(next@14.0.1)(react-datocms@4.1.3)(react-dom@18.2.0)(react@18.2.0)
-  datocms-structured-text-utils:
-    specifier: ^2.0.4
-    version: 2.0.4
-  deep-iterator:
-    specifier: ^1.1.0
-    version: 1.1.0
-  graphql:
-    specifier: ^16.8.1
-    version: 16.8.1
-  hamburger-react:
-    specifier: ^2.5.0
-    version: 2.5.0(react@18.2.0)
-  markdown-truncate:
-    specifier: ^1.1.0
-    version: 1.1.0
-  next:
-    specifier: ^14.0.1
-    version: 14.0.1(@babel/core@7.23.2)(react-dom@18.2.0)(react@18.2.0)(sass@1.69.5)
-  next-auth:
-    specifier: ^4.24.4
-    version: 4.24.4(next@14.0.1)(react-dom@18.2.0)(react@18.2.0)
-  next-seo:
-    specifier: ^5.15.0
-    version: 5.15.0(next@14.0.1)(react-dom@18.2.0)(react@18.2.0)
-  next-sitemap:
-    specifier: ^3.1.55
-    version: 3.1.55(@next/env@13.5.6)(next@14.0.1)
-  nextjs-google-analytics:
-    specifier: ^2.3.3
-    version: 2.3.3(next@14.0.1)(react@18.2.0)
-  react:
-    specifier: ^18.2.0
-    version: 18.2.0
-  react-datocms:
-    specifier: ^4.1.3
-    version: 4.1.3(graphql@16.8.1)(react@18.2.0)
-  react-dom:
-    specifier: ^18.2.0
-    version: 18.2.0(react@18.2.0)
-  react-hook-form:
-    specifier: ^7.48.2
-    version: 7.48.2(react@18.2.0)
-  react-icons:
-    specifier: ^4.11.0
-    version: 4.11.0(react@18.2.0)
-  react-markdown:
-    specifier: ^8.0.7
-    version: 8.0.7(@types/react@18.2.34)(react@18.2.0)
-  remark-breaks:
-    specifier: ^3.0.3
-    version: 3.0.3
-  remark-gfm:
-    specifier: ^3.0.1
-    version: 3.0.1
-  sass:
-    specifier: ^1.69.5
-    version: 1.69.5
-  swiper:
-    specifier: ^8.4.7
-    version: 8.4.7
-  usehooks-ts:
-    specifier: ^2.9.1
-    version: 2.9.1(react-dom@18.2.0)(react@18.2.0)
-  zod:
-    specifier: ^3.22.4
-    version: 3.22.4
-  zustand:
-    specifier: ^4.4.6
-    version: 4.4.6(@types/react@18.2.34)(react@18.2.0)
->>>>>>> d883c1cbb7020954ae8ced6ce6f5dfb5ff940d04
 
 devDependencies:
   '@graphql-codegen/cli': 5.0.0_ycnuq22nohzncletdenaz2vuie
@@ -1810,15 +1724,11 @@ packages:
       fastq: 1.15.0
     dev: true
 
-<<<<<<< HEAD
-  /@parcel/watcher-android-arm64/2.3.0:
-=======
-  /@panva/hkdf@1.1.1:
+  /@panva/hkdf/1.1.1:
     resolution: {integrity: sha512-dhPeilub1NuIG0X5Kvhh9lH4iW3ZsHlnzwgwbOlgwQ2wG1IqFzsgHqmKPk3WzsdWAeaxKJxgM0+W433RmN45GA==}
     dev: false
 
-  /@parcel/watcher-android-arm64@2.3.0:
->>>>>>> d883c1cbb7020954ae8ced6ce6f5dfb5ff940d04
+  /@parcel/watcher-android-arm64/2.3.0:
     resolution: {integrity: sha512-f4o9eA3dgk0XRT3XhB0UWpWpLnKgrh1IwNJKJ7UJek7eTYccQ8LR7XUWFKqw6aEq5KUNlCcGvSzKqSX/vtWVVA==}
     engines: {node: '>= 10.0.0'}
     cpu: [arm64]
@@ -2068,6 +1978,12 @@ packages:
 
   /@types/prop-types/15.7.9:
     resolution: {integrity: sha512-n1yyPsugYNSmHgxDFjicaI2+gCNjsBck8UX9kuofAKlc0h1bL+20oSF72KeNaW2DUlesbEVCFgyV2dPGTiY42g==}
+
+  /@types/react-dom/18.2.15:
+    resolution: {integrity: sha512-HWMdW+7r7MR5+PZqJF6YFNSCtjz1T0dsvo/f1BV6HkV+6erD/nA7wd9NM00KVG83zf2nJ7uATPO9ttdIPvi3gg==}
+    dependencies:
+      '@types/react': 18.2.36
+    dev: false
 
   /@types/react/18.2.36:
     resolution: {integrity: sha512-o9XFsHYLLZ4+sb9CWUYwHqFVoG61SesydF353vFMMsQziiyRu8np4n2OYMUSDZ8XuImxDr9c5tR7gidlH29Vnw==}
@@ -2840,16 +2756,12 @@ packages:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
     dev: true
 
-<<<<<<< HEAD
-  /core-js/2.6.12:
-=======
-  /cookie@0.5.0:
+  /cookie/0.5.0:
     resolution: {integrity: sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==}
     engines: {node: '>= 0.6'}
     dev: false
 
-  /core-js@2.6.12:
->>>>>>> d883c1cbb7020954ae8ced6ce6f5dfb5ff940d04
+  /core-js/2.6.12:
     resolution: {integrity: sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==}
     deprecated: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
     requiresBuild: true
@@ -3880,10 +3792,7 @@ packages:
     resolution: {integrity: sha512-59LZHPdGZVh695Ud9lRzPBVTtlX9ZCV150Er2W43ro37wVof0ctenSaskPPjN7lVTIN8mSZt8PHUNKZuNQUuxw==}
     engines: {node: ^12.22.0 || ^14.16.0 || ^16.0.0 || >=17.0.0}
 
-<<<<<<< HEAD
-  /has-bigints/1.0.2:
-=======
-  /hamburger-react@2.5.0(react@18.2.0):
+  /hamburger-react/2.5.0_react@18.2.0:
     resolution: {integrity: sha512-5GSXe+ucxTPJ0SkhIsPQ/PRDweZPIKya1lfahAuExx31SdheeUA4uOPfQIAirbKona8hvo79VDr5LJQzPXsdpw==}
     peerDependencies:
       react: ^16.8 || ^17 || ^18
@@ -3891,8 +3800,7 @@ packages:
       react: 18.2.0
     dev: false
 
-  /has-bigints@1.0.2:
->>>>>>> d883c1cbb7020954ae8ced6ce6f5dfb5ff940d04
+  /has-bigints/1.0.2:
     resolution: {integrity: sha512-tSvCKtBr9lkF0Ex0aQiP9N+OpV4zi2r/Nee5VkRDbaqv35RLYMzbwQfFSZZH0kR+Rd6302UJZ2p/bJCEoR3VoQ==}
     dev: true
 
@@ -4337,17 +4245,12 @@ packages:
     hasBin: true
     dev: true
 
-<<<<<<< HEAD
-  /jose/5.1.0:
-    resolution: {integrity: sha512-H+RVqxA6apaJ0rcQYupKYhos7uosAiF42gUcWZiwhICWMphDULFj/CRr1R0tV/JCv9DEeJaSyYYpc9luHHNT4g==}
-=======
-  /jose@4.15.4:
+  /jose/4.15.4:
     resolution: {integrity: sha512-W+oqK4H+r5sITxfxpSU+MMdr/YSWGvgZMQDIsNoBDGGy4i7GBPTtvFKibQzW06n3U3TqHjhvBJsirShsEJ6eeQ==}
     dev: false
 
-  /jose@5.0.2:
-    resolution: {integrity: sha512-YfXZO3UOHOGmDGEjYh4e6Pf1H+iiiShTH5y/DUcDquy90S8q8/yI0aBNUXokGczm9k+YuXvSO0k+nAmo77Eb1w==}
->>>>>>> d883c1cbb7020954ae8ced6ce6f5dfb5ff940d04
+  /jose/5.1.0:
+    resolution: {integrity: sha512-H+RVqxA6apaJ0rcQYupKYhos7uosAiF42gUcWZiwhICWMphDULFj/CRr1R0tV/JCv9DEeJaSyYYpc9luHHNT4g==}
     dev: true
 
   /js-tokens/4.0.0:
@@ -5082,10 +4985,7 @@ packages:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
 
-<<<<<<< HEAD
-  /next-seo/5.15.0_d44gvanaswtczdkus3z7hvpazm:
-=======
-  /next-auth@4.24.4(next@14.0.1)(react-dom@18.2.0)(react@18.2.0):
+  /next-auth/4.24.4_d44gvanaswtczdkus3z7hvpazm:
     resolution: {integrity: sha512-5DGffi+OpkbU62vPQIJ1z+hFnmow+ec5Qrn9m6eoglIO51m0DlrmLxBduZEwKAYDEg9k2joi1yelgmq1vqK3aQ==}
     peerDependencies:
       next: ^12.2.5 || ^13 || ^14
@@ -5100,18 +5000,17 @@ packages:
       '@panva/hkdf': 1.1.1
       cookie: 0.5.0
       jose: 4.15.4
-      next: 14.0.1(@babel/core@7.23.2)(react-dom@18.2.0)(react@18.2.0)(sass@1.69.5)
+      next: 14.0.1_2sxiyfzeap2fgw7t7svnurc6pi
       oauth: 0.9.15
       openid-client: 5.6.1
       preact: 10.18.2
-      preact-render-to-string: 5.2.6(preact@10.18.2)
+      preact-render-to-string: 5.2.6_preact@10.18.2
       react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
+      react-dom: 18.2.0_react@18.2.0
       uuid: 8.3.2
     dev: false
 
-  /next-seo@5.15.0(next@14.0.1)(react-dom@18.2.0)(react@18.2.0):
->>>>>>> d883c1cbb7020954ae8ced6ce6f5dfb5ff940d04
+  /next-seo/5.15.0_d44gvanaswtczdkus3z7hvpazm:
     resolution: {integrity: sha512-LGbcY91yDKGMb7YI+28n3g+RuChUkt6pXNpa8FkfKkEmNiJkeRDEXTnnjVtwT9FmMhG6NH8qwHTelGrlYm9rgg==}
     peerDependencies:
       next: ^8.1.1-canary.54 || >=9.0.0
@@ -5240,28 +5139,20 @@ packages:
     resolution: {integrity: sha512-2vPPEi+Z7WqML2jZYddDIfy5Dqb0r2fze2zTxNNknZaFpVHU3mFB3R+DWeJWGVx0ecvttSGlJTI+WG+8Z4cDWw==}
     dev: true
 
-<<<<<<< HEAD
+  /oauth/0.9.15:
+    resolution: {integrity: sha512-a5ERWK1kh38ExDEfoO6qUHJb32rd7aYmPHuyCu3Fta/cnICvYmgd2uhuKXvPD+PXB+gCEYYEaQdIRAjCOwAKNA==}
+    dev: false
+
   /object-assign/4.1.1:
     resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
     engines: {node: '>=0.10.0'}
 
-  /object-inspect/1.13.1:
-=======
-  /oauth@0.9.15:
-    resolution: {integrity: sha512-a5ERWK1kh38ExDEfoO6qUHJb32rd7aYmPHuyCu3Fta/cnICvYmgd2uhuKXvPD+PXB+gCEYYEaQdIRAjCOwAKNA==}
-    dev: false
-
-  /object-assign@4.1.1:
-    resolution: {integrity: sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==}
-    engines: {node: '>=0.10.0'}
-
-  /object-hash@2.2.0:
+  /object-hash/2.2.0:
     resolution: {integrity: sha512-gScRMn0bS5fH+IuwyIFgnh9zBdo4DV+6GhygmWM9HyNJSgS0hScp1f5vjtm7oIIOiT9trXrShAkLFSc2IqKNgw==}
     engines: {node: '>= 6'}
     dev: false
 
-  /object-inspect@1.13.1:
->>>>>>> d883c1cbb7020954ae8ced6ce6f5dfb5ff940d04
+  /object-inspect/1.13.1:
     resolution: {integrity: sha512-5qoj1RUiKOMsCCNLV1CBiPYE10sziTsnmNxkAI/rZhiD63CF7IqdFGC/XzjWjpSgLf0LxXX3bDFIh0E18f6UhQ==}
     dev: true
 
@@ -5323,16 +5214,12 @@ packages:
       es-abstract: 1.22.3
     dev: true
 
-<<<<<<< HEAD
-  /once/1.4.0:
-=======
-  /oidc-token-hash@5.0.3:
+  /oidc-token-hash/5.0.3:
     resolution: {integrity: sha512-IF4PcGgzAr6XXSff26Sk/+P4KZFJVuHAJZj3wgO3vX2bMdNVp/QXTP3P7CEm9V1IdG8lDLY3HhiqpsE/nOwpPw==}
     engines: {node: ^10.13.0 || >=12.0.0}
     dev: false
 
-  /once@1.4.0:
->>>>>>> d883c1cbb7020954ae8ced6ce6f5dfb5ff940d04
+  /once/1.4.0:
     resolution: {integrity: sha512-lNaJgI+2Q5URQBkccEKHTQOPaXdUxnZZElQTZY0MFUAuaEqe1E+Nyvgdz/aIyNi6Z9MzO5dv1H8n58/GELp3+w==}
     dependencies:
       wrappy: 1.0.2
@@ -5344,10 +5231,7 @@ packages:
       mimic-fn: 2.1.0
     dev: true
 
-<<<<<<< HEAD
-  /optionator/0.9.3:
-=======
-  /openid-client@5.6.1:
+  /openid-client/5.6.1:
     resolution: {integrity: sha512-PtrWsY+dXg6y8mtMPyL/namZSYVz8pjXz3yJiBNZsEdCnu9miHLB4ELVC85WvneMKo2Rg62Ay7NkuCpM0bgiLQ==}
     dependencies:
       jose: 4.15.4
@@ -5356,16 +5240,7 @@ packages:
       oidc-token-hash: 5.0.3
     dev: false
 
-  /optimism@0.17.5:
-    resolution: {integrity: sha512-TEcp8ZwK1RczmvMnvktxHSF2tKgMWjJ71xEFGX5ApLh67VsMSTy1ZUlipJw8W+KaqgOmQ+4pqwkeivY89j+4Vw==}
-    dependencies:
-      '@wry/context': 0.7.4
-      '@wry/trie': 0.4.3
-      tslib: 2.6.2
-    dev: false
-
-  /optionator@0.9.3:
->>>>>>> d883c1cbb7020954ae8ced6ce6f5dfb5ff940d04
+  /optionator/0.9.3:
     resolution: {integrity: sha512-JjCoypp+jKn1ttEFExxhetCKeJt9zhAgAve5FXHixTvFDW/5aEktX9bufBKLRRMdU7bNtpLfcGu94B3cdEJgjg==}
     engines: {node: '>= 0.8.0'}
     dependencies:
@@ -5563,15 +5438,7 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-<<<<<<< HEAD
-  /performance-now/2.1.0:
-    resolution: {integrity: sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==}
-    dev: false
-
   /picocolors/1.0.0:
-=======
-  /picocolors@1.0.0:
->>>>>>> d883c1cbb7020954ae8ced6ce6f5dfb5ff940d04
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
 
   /picomatch/2.3.1:
@@ -5600,10 +5467,7 @@ packages:
       source-map-js: 1.0.2
     dev: false
 
-<<<<<<< HEAD
-  /prelude-ls/1.2.1:
-=======
-  /preact-render-to-string@5.2.6(preact@10.18.2):
+  /preact-render-to-string/5.2.6_preact@10.18.2:
     resolution: {integrity: sha512-JyhErpYOvBV1hEPwIxc/fHWXPfnEGdRKxc8gFdAZ7XV4tlzyzG847XAyEZqoDnynP88akM4eaHcSOzNcLWFguw==}
     peerDependencies:
       preact: '>=10'
@@ -5612,25 +5476,20 @@ packages:
       pretty-format: 3.8.0
     dev: false
 
-  /preact@10.18.2:
+  /preact/10.18.2:
     resolution: {integrity: sha512-X/K43vocUHDg0XhWVmTTMbec4LT/iBMh+csCEqJk+pJqegaXsvjdqN80ZZ3L+93azWCnWCZ+WGwYb8SplxeNjA==}
     dev: false
 
-  /prelude-ls@1.2.1:
->>>>>>> d883c1cbb7020954ae8ced6ce6f5dfb5ff940d04
+  /prelude-ls/1.2.1:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
     dev: true
 
-<<<<<<< HEAD
-  /promise/7.3.1:
-=======
-  /pretty-format@3.8.0:
+  /pretty-format/3.8.0:
     resolution: {integrity: sha512-WuxUnVtlWL1OfZFQFuqvnvs6MiAGk9UNsBostyBOB0Is9wb5uRESevA6rnl/rkksXaGX3GzZhPup5d6Vp1nFew==}
     dev: false
 
-  /promise@7.3.1:
->>>>>>> d883c1cbb7020954ae8ced6ce6f5dfb5ff940d04
+  /promise/7.3.1:
     resolution: {integrity: sha512-nolQXZ/4L+bP/UGlkfaIujX9BKxGwmQ9OT4mOt5yvy8iK1h3wqTEJCijzGANTCCl9nWjY41juyAn2K3Q1hLLTg==}
     dependencies:
       asap: 2.0.6
@@ -5683,17 +5542,7 @@ packages:
     engines: {node: '>=10'}
     dev: false
 
-<<<<<<< HEAD
-  /raf/3.4.1:
-    resolution: {integrity: sha512-Sq4CW4QhwOHE8ucn6J34MqtZCeWFP2aQSmrlroYgqAV1PjStIhJXxYuTgUIfkEk7zTLjmIjLmU5q+fbD1NnOJA==}
-    dependencies:
-      performance-now: 2.1.0
-    dev: false
-
   /react-datocms/4.1.3_bfvpv3ajad3vqegote5bklnhgq:
-=======
-  /react-datocms@4.1.3(graphql@16.8.1)(react@18.2.0):
->>>>>>> d883c1cbb7020954ae8ced6ce6f5dfb5ff940d04
     resolution: {integrity: sha512-60LfzlPbud7M9cDXzTaZy6sgCBHGWM/WEN4pZxlvnRRW74tOAAKjSgcGIJ5WIC/I+iiXvHp//75TQg0Y7+ozZQ==}
     engines: {node: '>=8.0.0'}
     peerDependencies:
@@ -5721,10 +5570,7 @@ packages:
       scheduler: 0.23.0
     dev: false
 
-<<<<<<< HEAD
-  /react-icons/4.11.0_react@18.2.0:
-=======
-  /react-hook-form@7.48.2(react@18.2.0):
+  /react-hook-form/7.48.2_react@18.2.0:
     resolution: {integrity: sha512-H0T2InFQb1hX7qKtDIZmvpU1Xfn/bdahWBN1fH19gSe4bBEqTfmlr7H3XWTaVtiK4/tpPaI1F3355GPMZYge+A==}
     engines: {node: '>=12.22.0'}
     peerDependencies:
@@ -5733,8 +5579,7 @@ packages:
       react: 18.2.0
     dev: false
 
-  /react-icons@4.11.0(react@18.2.0):
->>>>>>> d883c1cbb7020954ae8ced6ce6f5dfb5ff940d04
+  /react-icons/4.11.0_react@18.2.0:
     resolution: {integrity: sha512-V+4khzYcE5EBk/BvcuYRq6V/osf11ODUM2J8hg2FDSswRrGvqiYUYPRy4OdrWaQOBj4NcpJfmHZLNaD+VH0TyA==}
     peerDependencies:
       react: '*'
@@ -5969,26 +5814,7 @@ packages:
     dependencies:
       glob: 7.2.3
 
-<<<<<<< HEAD
-  /rooks/7.14.1_biqbaboplfbrettd7655fr4n2y:
-    resolution: {integrity: sha512-oPuLNGm3OaFm3WfZHzmDvJvRit8QrXGm9/Kn49Bz8lJUjkThSBtERWzuQ9wb5DveqrpUZvmNyBXjBE0KWVt13w==}
-    engines: {node: '>=v10.24.1'}
-    peerDependencies:
-      react: ^16.8.0  || ^17.0.0 || ^18.0.0
-      react-dom: ^16.8.0  || ^17.0.0 || ^18.0.0
-    dependencies:
-      fast-deep-equal: 3.1.3
-      lodash.debounce: 4.0.8
-      raf: 3.4.1
-      react: 18.2.0
-      react-dom: 18.2.0_react@18.2.0
-      use-sync-external-store: 1.2.0_react@18.2.0
-    dev: false
-
   /run-async/2.4.1:
-=======
-  /run-async@2.4.1:
->>>>>>> d883c1cbb7020954ae8ced6ce6f5dfb5ff940d04
     resolution: {integrity: sha512-tvVnVv01b8c1RrA6Ep7JkStj85Guv/YrMcwqYQnwjsAS2cTmmPGBBjAjpCW7RrSodNSoE2/qg9O4bceNvUuDgQ==}
     engines: {node: '>=0.12.0'}
     dev: true
@@ -6641,14 +6467,7 @@ packages:
       react: 18.2.0
     dev: false
 
-<<<<<<< HEAD
-  /util-deprecate/1.0.2:
-    resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
-    dev: true
-
-  /uvu/0.5.6:
-=======
-  /usehooks-ts@2.9.1(react-dom@18.2.0)(react@18.2.0):
+  /usehooks-ts/2.9.1_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-2FAuSIGHlY+apM9FVlj8/oNhd+1y+Uwv5QNkMQz1oSfdHk4PXo1qoCw9I5M7j0vpH8CSWFJwXbVPeYDjLCx9PA==}
     engines: {node: '>=16.15.0', npm: '>=8'}
     peerDependencies:
@@ -6656,20 +6475,19 @@ packages:
       react-dom: ^16.8.0  || ^17.0.0 || ^18.0.0
     dependencies:
       react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
+      react-dom: 18.2.0_react@18.2.0
     dev: false
 
-  /util-deprecate@1.0.2:
+  /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
     dev: true
 
-  /uuid@8.3.2:
+  /uuid/8.3.2:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
     dev: false
 
-  /uvu@0.5.6:
->>>>>>> d883c1cbb7020954ae8ced6ce6f5dfb5ff940d04
+  /uvu/0.5.6:
     resolution: {integrity: sha512-+g8ENReyr8YsOc6fv/NVJs2vFdHBnBNdfE49rshrTzDWOlUx4Gq7KOS2GD8eqhy2j+Ejq29+SbKH8yjkAqXqoA==}
     engines: {node: '>=8'}
     hasBin: true
@@ -6939,25 +6757,11 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-<<<<<<< HEAD
-  /zustand/4.4.6_ahyjqase67bbhtw6poqhaowpdq:
-=======
-  /zen-observable-ts@1.2.5:
-    resolution: {integrity: sha512-QZWQekv6iB72Naeake9hS1KxHlotfRpe+WGNbNx5/ta+R3DNjVO2bswf63gXlWDcs+EMd7XY8HfVQyP1X6T4Zg==}
-    dependencies:
-      zen-observable: 0.8.15
-    dev: false
-
-  /zen-observable@0.8.15:
-    resolution: {integrity: sha512-PQ2PC7R9rslx84ndNBZB/Dkv8V8fZEpk83RLgXtYd0fwUgEjseMn1Dgajh2x6S8QbZAFa9p2qVCEuYZNgve0dQ==}
-    dev: false
-
-  /zod@3.22.4:
+  /zod/3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
     dev: false
 
-  /zustand@4.4.6(@types/react@18.2.34)(react@18.2.0):
->>>>>>> d883c1cbb7020954ae8ced6ce6f5dfb5ff940d04
+  /zustand/4.4.6_ahyjqase67bbhtw6poqhaowpdq:
     resolution: {integrity: sha512-Rb16eW55gqL4W2XZpJh0fnrATxYEG3Apl2gfHTyDSE965x/zxslTikpNch0JgNjJA9zK6gEFW8Fl6d1rTZaqgg==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
@@ -6981,7 +6785,7 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: false
 
-  github.com/bebejane/dato-nextjs-utils/e8e9f2cac8645e45a95c09f946672de175ec86a8_disxp54yv3jupfdvdplxpya64i:
+  github.com/bebejane/dato-nextjs-utils/e8e9f2cac8645e45a95c09f946672de175ec86a8_jpd4tct76nt7da7flipbkaimb4:
     resolution: {tarball: https://codeload.github.com/bebejane/dato-nextjs-utils/tar.gz/e8e9f2cac8645e45a95c09f946672de175ec86a8}
     id: github.com/bebejane/dato-nextjs-utils/e8e9f2cac8645e45a95c09f946672de175ec86a8
     name: dato-nextjs-utils
@@ -7006,6 +6810,7 @@ packages:
       '@next/env': 13.5.6
       '@types/node': 20.8.10
       '@types/react': 18.2.36
+      '@types/react-dom': 18.2.15
       datocms-listen: 0.1.15_graphql@16.8.1
       markdown-truncate: 1.1.0
       next: 14.0.1_2sxiyfzeap2fgw7t7svnurc6pi

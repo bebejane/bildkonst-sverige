@@ -22,7 +22,9 @@ export default function StartPoliticBlock({ data: { record: { id, slug, category
       }
       <div>
         <h1>{title}</h1>
-        <StructuredContent content={intro} id={id} />
+        <div className="intro">
+          <StructuredContent content={intro} id={id} />
+        </div>
       </div>
     </Link>
   )

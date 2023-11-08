@@ -1,2 +1,24 @@
-$body-font: Arial, Helvetica, Sans-Serif;
-$headline-font: Arial, Helvetica, Sans-Serif;
+$body-font: "Immortel", Times, Serif;
+$headline-font: "RomWide", Helvetica, Sans-Serif;
+$nav-font: "Rom", Helvetica, Sans-Serif;
+
+@font-face {
+  font-family: "Rom";
+  src: url("../public/fonts/ABCROM-Regular.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "RomWide";
+  src: url("../public/fonts/ABCROMWide-Heavy.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Immortel";
+  src: url("../public/fonts/ImmortelColeraTrial-Roman.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}

@@ -48,7 +48,7 @@ export default function NavBar({ allPoliticCategories }: Props) {
 
   return (
     <>
-      <h1 className={cn(s.logo, open && s.open)}>
+      <h1 className={cn(s.logo, open && s.open, "logo")}>
         <Link href={'/'}>Bildkonst<br />sverige</Link>
       </h1>
 

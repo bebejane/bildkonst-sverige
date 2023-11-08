@@ -2,12 +2,13 @@
 	--black: #161616;
 	--white: #fcfcfc;
 	--red: #bf0000;
-	--orange: #FF7A00;
-	--outer-margin: 1em;
-	--navbar-height: calc(1em + calc(2 * var(--outer-margin)));
+	--orange: #ff7a00;
+	--outer-margin: 3rem;
+	--space: 2rem;
+	--navbar-height: 3rem;
 	--background: var(--white);
 	--foreground: var(--black);
-
+	--line-height: 1.4em;
 
 	--z-navbar-pane-background: 800;
 	--z-navbar-pane: 900;
@@ -15,9 +16,11 @@
 	--z-logo: 1100;
 	--z-hamburger: 1200;
 
-	@include mq($from: tablet) {}
+	@include mq($from: tablet) {
+	}
 
-	@include mq($until: tablet) {}
+	@include mq($until: tablet) {
+	}
 }
 
 body {
@@ -68,14 +71,14 @@ a {
 	text-decoration: none;
 	color: var(--foreground);
 
-	&:hover {}
+	&:hover {
+	}
 
-	&:visited {}
+	&:visited {
+	}
 }
 
 article p a {
-
-
 	&:hover {
 		color: var(--beige-dark);
 	}
@@ -90,27 +93,31 @@ button {
 	color: var(--foreground);
 	border: 0;
 
-	@include mq($from: tablet) {}
-
-	&.back {
-
-		@include mq($from: tablet) {}
+	@include mq($from: tablet) {
 	}
 
-	&:hover {}
+	&.back {
+		@include mq($from: tablet) {
+		}
+	}
+
+	&:hover {
+	}
 }
 
 figcaption {
-	@include mq($until: tablet) {}
+	@include mq($until: tablet) {
+	}
 }
 
-hr {}
+hr {
+}
 
 input,
 textarea,
 select {
-
-	&:focus {}
+	&:focus {
+	}
 }
 
 select {

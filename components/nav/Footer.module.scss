@@ -3,6 +3,8 @@
   flex-direction: row;
   align-items: center;
   width: 100%;
+  padding-left: var(--outer-margin);
+  padding-right: var(--outer-margin);
 
   &:last-child {
     justify-content: flex-end;
@@ -18,7 +20,6 @@
     }
   }
 
-
   h1 {
     flex: 1 1 100%;
     text-align: center;
@@ -26,5 +27,4 @@
     margin: 0;
     text-transform: uppercase;
   }
-
 }

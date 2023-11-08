@@ -1,0 +1,5 @@
+.article {
+  display: flex;
+  justify-content: center;
+  padding-top: calc(50vh - 1em - var(--navbar-height) - 1.5rem);
+}

@@ -20,18 +20,16 @@ export default async function RootLayout({ children }: LayoutProps) {
   const menu = await buildMenu();
 
   return (
-    <>
-      <html lang="en">
-        <body id="root" className={s.body}>
-          <NavBar menu={menu} />
-          <main>
-            {children}
-          </main>
-          <Footer />
-          <OrangePower />
-        </body>
-      </html>
-    </>
+    <html lang="sv">
+      <body id="root" className={s.body}>
+        <NavBar menu={menu} />
+        <main>
+          {children}
+        </main>
+        <Footer />
+        <OrangePower />
+      </body>
+    </html>
   );
 }
 

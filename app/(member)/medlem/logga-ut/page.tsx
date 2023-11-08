@@ -1,5 +1,6 @@
 'use client'
 
+import s from './page.module.scss'
 import { useEffect } from 'react'
 import { signOut } from 'next-auth/react'
 
@@ -14,7 +15,7 @@ export default function Logout() {
   }, [])
 
   return (
-    <article>
+    <article className={s.article}>
       <p>
         Loggar ut...
       </p>

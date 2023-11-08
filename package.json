@@ -61,6 +61,7 @@
 		"dotenv": "^16.3.1",
 		"eslint": "^8.53.0",
 		"eslint-config-next": "^12.3.4",
-		"graphql-config": "^5.0.3"
+		"graphql-config": "^5.0.3",
+		"typescript": "5.2.2"
 	}
 }

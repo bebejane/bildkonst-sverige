@@ -18,10 +18,15 @@
   }
 }
 
-.active {
-  color: var(--orange);
+.paragraph {
+  transition: color ease-out 400ms;
 
-  a {
+  &.active {
+
     color: var(--orange);
+
+    a {
+      color: var(--orange);
+    }
   }
 }

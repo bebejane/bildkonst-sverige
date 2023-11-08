@@ -2,11 +2,27 @@
 
 import s from './OrangePower.module.scss'
 import cn from 'classnames'
+import { is } from 'date-fns/locale';
 import { useScrollInfo } from 'dato-nextjs-utils/hooks'
 import { usePathname } from 'next/navigation';
 import path from 'path';
 import { useEffect, useRef, useState } from 'react';
 import { useScrollData } from "scroll-data-hook";
+
+
+function isElementInViewport(el: HTMLElement) {
+  var rect = el.getBoundingClientRect();
+
+  const visible = (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /* or $(window).height() */
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
+  );
+
+  console.log(visible)
+  return visible
+}
 
 export default function OrangePower({ }: {}) {
 
@@ -14,7 +30,7 @@ export default function OrangePower({ }: {}) {
 
   useEffect(() => {
 
-    const paragraphs = document.querySelectorAll('p')
+    const paragraphs = Array.from(document.querySelectorAll('p')).filter(p => !isElementInViewport(p))
 
     const observePargraphs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -30,7 +46,10 @@ export default function OrangePower({ }: {}) {
 
     })
 
-    paragraphs.forEach(p => observePargraphs.observe(p))
+    paragraphs.forEach(p => {
+      p.classList.add(s.paragraph)
+      observePargraphs.observe(p)
+    })
 
     return () => {
       observePargraphs.disconnect()

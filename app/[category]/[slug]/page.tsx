@@ -30,7 +30,7 @@ export default async function Page({ params: { slug } }: { params: { slug: strin
   return (
     <>
       <article>
-        <content>
+        <div className="content">
           <h1>{title}</h1>
           {image && <>
             <div className="grid">
@@ -50,7 +50,7 @@ export default async function Page({ params: { slug } }: { params: { slug: strin
           <Link href={`/${category.slug}`}>
             <button>Visa alla {category.title}</button>
           </Link>
-        </content>
+        </div>
       </article>
       <DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={id} />
     </>

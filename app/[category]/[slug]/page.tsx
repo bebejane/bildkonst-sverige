@@ -38,7 +38,7 @@ export default async function Page({ params: { slug } }: { params: { slug: strin
             </figure>
           </div>
           <section className="intro">
-            <span>{format(new Date(_publishedAt), 'd MMMM yyyy')}</span>
+            <span className="date">{format(new Date(_publishedAt), 'd MMMM yyyy')}</span>
             <StructuredContent content={intro} id={id} />
           </section>
           <section className={cn(s.content, "grid", "structured")}>

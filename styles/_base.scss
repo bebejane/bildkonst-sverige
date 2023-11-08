@@ -75,10 +75,15 @@ content figure {
 }
 
 .structured {
-	p {
+	p,
+	blockquote {
 		display: grid;
 		grid-column-start: 3;
 		grid-column-end: 11;
+	}
+	blockquote p {
+		display: block;
+		grid-column-start: 1;
 	}
 }
 
@@ -113,6 +118,10 @@ a {
 figcaption {
 	@include mq($until: tablet) {
 	}
+}
+
+.date {
+	padding-right: 1em;
 }
 
 hr {

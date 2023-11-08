@@ -25,11 +25,20 @@
 
     a {
       color: var(--white);
+      &:hover {
+        color: var(--orange) !important;
+      }
     }
   }
 
   ul {
     list-style: none;
+
+    li {
+      &:hover {
+        color: var(--orange) !important;
+      }
+    }
   }
 
   .menu {
@@ -86,11 +95,9 @@
           }
         }
       }
-
     }
 
     &.open {
-
       li,
       a {
         color: var(--white);
@@ -103,7 +110,7 @@
   }
 }
 
-.selected>a,
+.selected > a,
 .selected {
   color: var(--orange) !important;
 }
@@ -129,15 +136,16 @@
   flex-direction: column;
   top: 0;
   padding: var(--outer-margin);
-  padding-top: calc(var(--navbar-height) * 2);
+  padding-top: calc(var(--navbar-height) + 1.4rem);
   width: 30vw;
   height: 100vh;
   background-color: var(--black);
   z-index: var(--z-navbar-pane);
+  font-size: 1rem !important;
+  line-height: 2;
 
   @include mq($until: desktop) {
     display: none !important;
-
   }
 
   &.show {
@@ -146,6 +154,9 @@
 
   a {
     color: var(--white);
+    &:hover {
+      color: var(--orange);
+    }
   }
 
   &.left {
@@ -178,7 +189,7 @@
 
 .logo {
   position: fixed;
-  top: 0;
+  top: var(--navbar-offset);
   left: 0;
   width: 100%;
   text-align: center;

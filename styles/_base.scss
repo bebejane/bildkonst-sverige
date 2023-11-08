@@ -102,6 +102,15 @@ content {
 	blockquote {
 		margin: 0;
 		margin-bottom: 1em;
+		position: relative;
+		&:before {
+			content: "”";
+			position: absolute;
+			font-size: 3rem;
+			top: 1rem;
+			left: -2rem;
+			font-family: $headline-font;
+		}
 
 		p {
 			display: block;

@@ -27,9 +27,9 @@ export default function useNextAuthSession(): NextAuthSession {
       setStatus('authenticated')
       setSession(session)
     }).catch((err) => {
+      setStatus('unauthenticated')
       setSession(null)
       setError(err)
-      setStatus('unauthenticated')
     })
   }
 

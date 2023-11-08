@@ -4,14 +4,14 @@
 	"private": true,
 	"scripts": {
 		"dev": "npm run dev:watch",
-		"dev:watch": "next dev & npm run barrel:watch & npm run codegen",
+		"dev:watch": "next dev & npm run codegen",
 		"dev:email": "email dev",
 		"build": "next build && npm run postbuild",
 		"codegen": "graphql-codegen --watch",
 		"start": "next start",
 		"lint": "next lint",
 		"preview": "npm run build && npm run start",
-		"barrel": "barrelsby -E -D -d ./components",
+		"barrel": "barrelsby -D -d ./components",
 		"barrel:watch": "chokidar './components/**/*.tsx' -c 'npm run --silent barrel'",
 		"postbuild": "next-sitemap"
 	},

@@ -1,7 +1,6 @@
 'use server'
 
-import { Article, StructuredContent } from '@components';
-import s from './page.module.scss'
+import Article from '@components/layout/Article';
 import { ContactDocument } from "@graphql";
 import { apiQuery } from "@lib/client";
 import { draftMode } from 'next/headers';

@@ -5,7 +5,7 @@ import { apiQuery } from '@lib/client';
 import { StartDocument } from '@graphql';
 import { draftMode } from 'next/headers'
 import DraftMode from '@lib/dato-nextjs-utils/components/DraftMode';
-import Block from '@components/blocks';
+import Block from '@components/blocks/Block';
 
 export default async function Home() {
 

@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import s from './page.module.scss'
 import { signIn } from 'next-auth/react'
-import { Article } from '@components'
+import Article from '@components/layout/Article'
 
 export default function Login() {
 
@@ -17,13 +17,19 @@ export default function Login() {
     const url = new URLSearchParams(window.location.search).get('callbackUrl')
     const callbackUrl = url?.endsWith('/medlem/logga-ut') ? undefined : url ?? '/medlem'
     const formData = new FormData(e.target)
-    const result = await signIn('credentials', {
+
+    signIn('credentials', {
       callbackUrl,
       username: formData.get('email'),
       password: formData.get('password'),
-    }).catch((error) => {
-      setError('Något gick fel, försök igen')
+    }).then((response) => {
+      if (response.error) {
+        setError('Felaktigt användarnamn eller lösenord')
+      }
     })
+      .catch((error) => {
+        setError('Något gick fel, försök igen')
+      })
 
   }
 

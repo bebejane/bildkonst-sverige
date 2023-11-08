@@ -1,0 +1,12 @@
+query Menu {
+	allPoliticCategories(first: 100) {
+		id
+		slug
+		title
+	}
+	allAbouts {
+		id
+		slug
+		title
+	}
+}

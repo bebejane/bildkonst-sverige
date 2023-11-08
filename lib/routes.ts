@@ -29,7 +29,7 @@ const routes: Routes = {
   },
   "about": {
     typeName: "AboutRecord",
-    path: async (item) => '/om-oss'
+    path: async (item) => `/om-oss/${item.attributes.slug}`
   },
   "board": {
     typeName: "BoardRecord",

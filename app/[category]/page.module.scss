@@ -1,6 +1,7 @@
 .articles {
   list-style: none;
   display: flex;
+  flex-direction: column;
 
   li {
     margin-top: var(--space);

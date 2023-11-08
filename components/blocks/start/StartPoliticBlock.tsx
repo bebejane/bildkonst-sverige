@@ -15,15 +15,17 @@ export default function StartPoliticBlock({ data: { record: { id, slug, category
 
   return (
     <Link href={`/${category.slug}/${slug}`} className={cn(s.container, s[layout])}>
-      {image && layout !== 'headline' &&
-        <figure>
-          <Image data={image.responsiveImage} />
-        </figure>
-      }
-      <div>
-        <h1>{title}</h1>
-        <div className="intro">
-          <StructuredContent content={intro} id={id} />
+      <div className="grid">
+        {image && layout !== 'headline' &&
+          <figure>
+            <Image data={image.responsiveImage} />
+          </figure>
+        }
+        <div className={s.text}>
+          <h1>{title}</h1>
+          <div className="intro">
+            <StructuredContent content={intro} id={id} />
+          </div>
         </div>
       </div>
     </Link>

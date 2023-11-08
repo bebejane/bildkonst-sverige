@@ -4,7 +4,7 @@ body {
   font-weight: normal;
 
   @include mq($from: tablet) {
-    font-size: 21px;
+    font-size: 22px;
   }
 
   @include mq($from: wide) {
@@ -69,7 +69,6 @@ blockquote {
     font-size: 1.4rem;
     display: inline;
   }
-  padding-bottom: var(--space);
 }
 
 nav,

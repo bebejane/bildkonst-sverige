@@ -44,7 +44,7 @@ html {
 }
 
 main {
-	padding-top: calc(var(--navbar-height) + 1rem);
+	padding-top: calc(var(--navbar-height) + 1.5rem);
 	min-height: calc(100vh - var(--navbar-height));
 }
 
@@ -52,11 +52,6 @@ article {
 	margin-left: var(--outer-margin);
 	margin-right: var(--outer-margin);
 	width: calc(100% - (2 * var(--outer-margin)));
-}
-
-.intro {
-	margin-bottom: var(--small-space);
-	margin-top: -0.2em;
 }
 
 .grid {
@@ -73,8 +68,13 @@ figure {
 	}
 }
 
-content figure {
-	margin-bottom: var(--space);
+content {
+	figure {
+		margin-bottom: var(--space);
+	}
+	.intro {
+		padding-bottom: 1rem;
+	}
 }
 
 .structured {

@@ -1,6 +1,6 @@
 'use server'
 
-import { Article } from '@components';
+import Article from '@components/layout/Article';
 import s from './page.module.scss'
 import { MemberPageDocument } from "@graphql";
 import { apiQuery } from "@lib/client";

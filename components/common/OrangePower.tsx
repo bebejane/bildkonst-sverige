@@ -7,7 +7,6 @@ import { useEffect } from 'react';
 export default function OrangePower({ }: {}) {
 
   const pathname = usePathname()
-
   useEffect(() => {
     const paragraphs = Array.from(document.querySelectorAll('p')).filter(p => !isElementInViewport(p))
     const observePargraphs = new IntersectionObserver((entries) => {

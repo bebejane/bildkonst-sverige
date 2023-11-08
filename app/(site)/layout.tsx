@@ -1,7 +1,9 @@
 'use server'
 
 import '@styles/index.scss'
-import { Footer, NavBar, OrangePower } from '@components';
+import NavBar from '@components/nav/NavBar';
+import Footer from '@components/nav/Footer';
+import OrangePower from '@components/common/OrangePower';
 import { apiQuery } from '@lib/client';
 import { GlobalDocument } from '@graphql';
 import { Metadata } from 'next';

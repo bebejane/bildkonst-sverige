@@ -1,7 +1,7 @@
 'use client'
 
 import cn from 'classnames';
-import { StructuredContent } from '@components';
+import StructuredContent from '@components/common/StructuredContent';
 import { format } from 'date-fns';
 import { Image } from 'react-datocms';
 

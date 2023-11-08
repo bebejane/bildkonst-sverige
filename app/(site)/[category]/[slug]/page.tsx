@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation';
 import DraftMode from '@lib/dato-nextjs-utils/components/DraftMode';
 import { draftMode } from 'next/headers';
 import Link from 'next/link';
-import { Article } from '@components';
+import Article from '@components/layout/Article';
 
 export async function generateStaticParams() {
   const { allPolitics } = await apiQuery<AllPoliticQuery, AllPoliticQueryVariables>(AllPoliticDocument, { generateTags: true });

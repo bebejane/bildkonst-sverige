@@ -4,11 +4,11 @@ body {
   font-weight: normal;
 
   @include mq($from: tablet) {
-    font-size: 20px;
+    font-size: 21px;
   }
 
   @include mq($from: wide) {
-    font-size: 25px;
+    font-size: 26px;
   }
 }
 
@@ -62,4 +62,5 @@ p {
 nav,
 footer {
   font-family: $nav-font;
+  font-size: 0.8rem;
 }

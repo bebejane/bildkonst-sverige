@@ -10,6 +10,7 @@ import { format } from 'date-fns';
 import DraftMode from '@lib/dato-nextjs-utils/components/DraftMode';
 import { draftMode } from 'next/headers';
 import Link from 'next/link';
+import cn from 'classnames';
 
 export async function generateStaticParams() {
   const { allPolitics } = await apiQuery<AllPoliticQuery, AllPoliticQueryVariables>(AllPoliticDocument, { generateTags: true });
@@ -29,20 +30,24 @@ export default async function Page({ params: { slug } }: { params: { slug: strin
   return (
     <>
       <article>
-        <h1>{title}</h1>
-        <figure>
-          {image && <Image data={image.responsiveImage} />}
-        </figure>
-        <section className={s.intro}>
-          <span>{format(new Date(_publishedAt), 'd MMMM yyyy')}</span>
-          <StructuredContent content={intro} id={id} />
-        </section>
-        <section className={s.content}>
-          <StructuredContent content={content} id={id} />
-        </section>
-        <Link href={`/${category.slug}`}>
-          <button>Visa alla {category.title}</button>
-        </Link>
+        <content>
+          <h1>{title}</h1>
+          <div className="grid">
+            <figure className={cn(s.main, "small")}>
+              {image && <Image data={image.responsiveImage} />}
+            </figure>
+          </div>
+          <section className="intro">
+            <span>{format(new Date(_publishedAt), 'd MMMM yyyy')}</span>
+            <StructuredContent content={intro} id={id} />
+          </section>
+          <section className={cn(s.content, "grid", "structured")}>
+            <StructuredContent content={content} id={id} />
+          </section>
+          <Link href={`/${category.slug}`}>
+            <button>Visa alla {category.title}</button>
+          </Link>
+        </content>
       </article>
       <DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={id} />
     </>

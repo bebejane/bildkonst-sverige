@@ -25,7 +25,6 @@ const memberMenu = [
     title: 'Logga ut',
     href: '/medlem/logga-ut',
   },
-
 ]
 
 export default function NavBar({ allPoliticCategories }: Props) {

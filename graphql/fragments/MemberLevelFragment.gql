@@ -1,0 +1,6 @@
+fragment MemberLevelFragment on MemberLevelRecord {
+	id
+	level
+	turnoverMax
+	turnoverMin
+}

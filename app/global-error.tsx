@@ -1,6 +1,6 @@
 'use client'
 
-import s from './global-error.module.scss'
+import s from './error.module.scss'
 
 export default function GlobalError({ error, reset }: {
   error: Error & { digest?: string }
@@ -10,9 +10,15 @@ export default function GlobalError({ error, reset }: {
   return (
     <html>
       <body className={`${s.body} ${s.error}`}>
-        <h2>Something went wrong!</h2>
-        <p>{error.message}</p>
-        <button onClick={() => reset()}>Try again</button>
+        <main>
+          <article>
+            <h1>Something went wrong!</h1>
+            <p className={s.message}>{error.message}</p>
+            <p>
+              <button onClick={() => reset()}>Try again</button>
+            </p>
+          </article>
+        </main>
       </body>
     </html>
   )

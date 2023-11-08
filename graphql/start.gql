@@ -7,9 +7,10 @@ query Start {
 				id
 				record {
 					... on PoliticRecord {
-						...PoliticFragment
+						...PoliticLightFragment
 					}
 				}
+				layout
 			}
 		}
 	}

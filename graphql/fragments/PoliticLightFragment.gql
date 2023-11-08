@@ -1,0 +1,16 @@
+fragment PoliticLightFragment on PoliticRecord {
+	id
+	title
+	category {
+		...PoliticCategoryFragment
+	}
+	intro {
+		blocks
+		value
+		links
+	}
+	image {
+		...ImageFragment
+	}
+	slug
+}

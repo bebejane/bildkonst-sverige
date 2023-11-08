@@ -17,4 +17,6 @@ fragment PoliticFragment on PoliticRecord {
 		...ImageFragment
 	}
 	slug
+	_createdAt
+	_publishedAt
 }

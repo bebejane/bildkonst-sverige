@@ -1,0 +1,18 @@
+query MemberPage {
+	memberIntro {
+		id
+		intro {
+			blocks
+			links
+			value
+		}
+		introLevels {
+			blocks
+			links
+			value
+		}
+	}
+	allMemberLevels(orderBy: level_ASC) {
+		...MemberLevelFragment
+	}
+}

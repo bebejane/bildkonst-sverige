@@ -1,0 +1,24 @@
+.form {
+
+  max-width: 50vw;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+  margin-bottom: 2em;
+
+  input,
+  select {
+    margin-bottom: 1em;
+  }
+
+  button[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  .invalid {
+    color: var(--red);
+    margin-top: -1em;
+    margin-bottom: 1em;
+  }
+}

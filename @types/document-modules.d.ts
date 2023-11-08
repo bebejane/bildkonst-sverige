@@ -1,4 +1,31 @@
 
+declare module '*/about.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const About: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/board.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const Board: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/contact.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const Contact: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/ImageFragment.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -12,6 +39,15 @@ declare module '*/ImageThumbnailFragment.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const ImageThumbnailFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/MemberLevelFragment.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const MemberLevelFragment: DocumentNode;
 
   export default defaultDocument;
 }
@@ -35,6 +71,15 @@ declare module '*/PoliticFragment.gql' {
 }
     
 
+declare module '*/PoliticLightFragment.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const PoliticLightFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/SEOFragment.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -53,6 +98,15 @@ declare module '*/SiteFragment.gql' {
 }
     
 
+declare module '*/StaffFragment.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const StaffFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/VideoFragment.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -66,6 +120,28 @@ declare module '*/global.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const Global: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/member.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const MemberPage: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/politic.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const AllPolitic: DocumentNode;
+export const Politic: DocumentNode;
+export const PoliticCategory: DocumentNode;
+export const AllPoliticByCategory: DocumentNode;
+export const AllPoliticCategories: DocumentNode;
 
   export default defaultDocument;
 }

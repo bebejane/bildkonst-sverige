@@ -1,0 +1,8 @@
+fragment StaffFragment on StaffRecord {
+	id
+	name
+	description
+	image {
+		...ImageFragment
+	}
+}

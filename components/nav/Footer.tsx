@@ -7,7 +7,7 @@ export default async function Footer({ }: {}) {
   return (
     <footer className={s.footer}>
       <span>© 2023 BILDKONST SVERIGE</span>
-      <h1>Bildkonst<br />sverige</h1>
+      <h1><Link href={'/'}>Bildkonst<br />sverige</Link></h1>
       <span>Nyhetsbrev</span>
     </footer>
   );

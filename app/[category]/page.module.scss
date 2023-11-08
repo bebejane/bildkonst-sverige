@@ -1,0 +1,28 @@
+.articles {
+  list-style: none;
+  display: flex;
+
+  li {
+
+    a {
+      display: flex;
+      flex-direction: column;
+
+      .wrap {
+        display: flex;
+        flex-direction: row;
+
+        .content {
+          .date {
+            margin-right: 1ch;
+          }
+
+          >p {
+            display: inline;
+
+          }
+        }
+      }
+    }
+  }
+}

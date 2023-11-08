@@ -1,32 +1,13 @@
 import { NextRequest } from 'next/server';
 import webPreviews from '@lib/dato-nextjs-utils/route-handlers/web-previews'
 import cors from '@lib/dato-nextjs-utils/route-handlers/cors'
+import { buildRoute } from '@lib/routes';
 
 export const runtime = "edge"
 
 export async function POST(req: NextRequest) {
-
-  return await webPreviews(req, async ({ item, itemType, locale }) => {
-
-    let path = null;
-
-    const { slug } = item.attributes
-
-    switch (itemType.attributes.api_key) {
-      case 'start':
-        path = `/`
-        break;
-      case 'post':
-        path = `/posts/${slug}`
-        break;
-      case 'user':
-        path = `/users/${slug}`
-        break;
-      default:
-        break;
-    }
-
-    return path
+  return await webPreviews(req, async ({ item, itemType }) => {
+    return await buildRoute(itemType.attributes.api_key, item)
   })
 }
 

@@ -1,0 +1,41 @@
+query AllPolitic {
+	allPolitics {
+		id
+		title
+		slug
+		category {
+			id
+			title
+			slug
+		}
+	}
+}
+
+query Politic($slug: String!) {
+	politic(filter: { slug: { eq: $slug } }) {
+		...PoliticFragment
+	}
+}
+
+query PoliticCategory($slug: String, $id: ItemId) {
+	politicCategory(filter: { OR: [{ slug: { eq: $slug } }, { id: { eq: $id } }] }) {
+		...PoliticCategoryFragment
+	}
+}
+
+query AllPoliticByCategory($slug: String!) {
+	politicCategory(filter: { slug: { eq: $slug } }) {
+		id
+		title
+		slug
+		_allReferencingPolitics(first: 100) {
+			...PoliticFragment
+		}
+	}
+}
+
+query AllPoliticCategories {
+	allPoliticCategories(first: 100) {
+		...PoliticCategoryFragment
+	}
+}

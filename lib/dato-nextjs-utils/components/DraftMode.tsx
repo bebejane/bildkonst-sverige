@@ -2,18 +2,22 @@
 
 import s from './DraftMode.module.scss'
 import { usePathname } from 'next/navigation'
-import { disableDraftMode } from '@app/api/draft/exit/action'
+import { disableDraftMode } from '@app/(datocms)/api/draft/exit/action'
 import revalidateTag from '../actions/revalidate-tag'
 import { useEffect, useState } from 'react'
 import { ImSpinner8 } from 'react-icons/im'
 
 export type DraftModeProps = {
-  draftMode: boolean
+  enabled: boolean
   draftUrl?: string,
   tag: string
 }
 
-export default function DraftMode({ draftMode, draftUrl, tag }: DraftModeProps) {
+const disabledDraftMode = async () => {
+
+}
+
+export default function DraftMode({ enabled, draftUrl, tag }: DraftModeProps) {
 
   const pathname = usePathname()
   const [loading, setLoading] = useState(false)
@@ -48,7 +52,7 @@ export default function DraftMode({ draftMode, draftUrl, tag }: DraftModeProps) 
 
   }, [draftUrl, tag])
 
-  if (!draftMode) return null
+  if (!enabled) return null
 
   return (
 

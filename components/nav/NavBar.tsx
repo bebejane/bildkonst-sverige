@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 import Hamburger from 'hamburger-react'
 import useNextAuthSession from "@lib/hooks/useNextAuthSession";
 
-export type Props = {
+type Props = {
   allPoliticCategories: AllPoliticCategoriesQuery['allPoliticCategories']
 }
 

@@ -1,7 +1,7 @@
 'use server'
 
 import '@styles/index.scss'
-import { Footer, NavBar } from '@components';
+import { Footer, NavBar, OrangePower } from '@components';
 import { apiQuery } from '@lib/client';
 import { AllPoliticCategoriesDocument, GlobalDocument } from '@graphql';
 import { Metadata } from 'next';
@@ -24,6 +24,7 @@ export default async function RootLayout({ children }: LayoutProps) {
             {children}
           </main>
           <Footer />
+          <OrangePower />
         </body>
       </html>
     </>

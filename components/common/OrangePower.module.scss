@@ -1,0 +1,12 @@
+.orange {
+  display: block;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 30vh;
+  z-index: var(--z-navbar-pane-background);
+  background: var(--orange);
+  mix-blend-mode: screen;
+
+}

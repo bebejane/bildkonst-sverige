@@ -12,6 +12,7 @@ import { useScrollData } from "scroll-data-hook";
 
 function isElementInViewport(el: HTMLElement) {
   return el.getBoundingClientRect()?.top <= (window.innerHeight || document.documentElement.clientHeight)
+
 }
 
 export default function OrangePower({ }: {}) {
@@ -19,6 +20,7 @@ export default function OrangePower({ }: {}) {
   const pathname = usePathname()
 
   useEffect(() => {
+    //return
 
     const paragraphs = Array.from(document.querySelectorAll('p')).filter(p => !isElementInViewport(p))
 

@@ -19,13 +19,14 @@
 }
 
 .paragraph {
-  transition: color ease-out 400ms;
+  transition: color ease-in-out 1000ms;
 
   &.active {
-
+    transition: color ease-in-out 1000ms;
     color: var(--orange);
 
     a {
+      transition: color ease-in-out 1000ms;
       color: var(--orange);
     }
   }

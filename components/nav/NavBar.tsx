@@ -10,6 +10,8 @@ import Hamburger from 'hamburger-react'
 import useNextAuthSession from "@lib/hooks/useNextAuthSession";
 import { Menu } from "@lib/menu";
 import { Session } from "next-auth";
+import { de } from "date-fns/locale";
+import { set, sub } from "date-fns";
 
 type Props = {
   menu: Menu
@@ -46,9 +48,10 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
 
   const { session, error, status, refresh } = useNextAuthSession()
   const pathname = usePathname()
-  const [subId, setSubId] = useState<string | null>(null)
   const panel = menu.filter((el) => el.position === position)
+  const [subId, setSubId] = useState<string | null>(null)
   const subPanel = panel?.find(({ id }) => subId === id)
+  const defaultSubId = panel.find(({ sub }) => sub?.find(({ slug }) => pathname === slug))?.sub.flat().find(({ slug }) => pathname === slug)?.id
 
   useEffect(() => {
     setSubId(null)
@@ -68,10 +71,10 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
               :
               <>
                 {auth && !session ? 'Logga in' : title}
-                <ul>
+                <ul className={cn(s.sub, subId === id && s.open)}>
                   {sub?.map(({ id, title, slug }) => (
-                    <li className={cn(pathname === `/${slug}` && s.selected)} key={id}>
-                      <Link href={`/${slug}`}>{title}</Link>
+                    <li className={cn(pathname === slug && s.selected)} key={id}>
+                      <Link href={slug}>{title}</Link>
                     </li>
                   ))}
                 </ul>

@@ -48,6 +48,10 @@
 
     &.right {
       justify-content: flex-end;
+
+      @include mq($until: desktop) {
+        padding-top: 1em;
+      }
     }
 
     @include mq($until: desktop) {
@@ -67,7 +71,7 @@
         margin-right: 0;
       }
 
-      >ul {
+      .sub {
         display: none;
       }
 
@@ -75,8 +79,11 @@
         flex: 1 1;
         margin-right: 0;
 
-        >ul {
-          display: block;
+        .sub {
+          &.open {
+            display: block;
+            margin-bottom: 1em;
+          }
         }
       }
 
@@ -129,13 +136,8 @@
   z-index: var(--z-navbar-pane);
 
   @include mq($until: desktop) {
-    display: none;
-    position: relative;
-    height: auto;
-    padding: 0;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 2em;
+    display: none !important;
+
   }
 
   &.show {

@@ -10,6 +10,8 @@ export { default as OrangePower } from "./common/OrangePower";
 export * from "./common/OrangePower";
 export { default as StructuredContent } from "./common/StructuredContent";
 export * from "./common/StructuredContent";
+export { default as Article } from "./layout/Article";
+export * from "./layout/Article";
 export { default as Footer } from "./nav/Footer";
 export * from "./nav/Footer";
 export { default as NavBar } from "./nav/NavBar";

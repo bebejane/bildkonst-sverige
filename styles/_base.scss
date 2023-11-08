@@ -5,6 +5,7 @@
 	--orange: #ff7a00;
 	--outer-margin: 2.5rem;
 	--space: 2rem;
+	--space-small: 1rem;
 	--gutter: 1.5rem;
 	--navbar-height: 3rem;
 	--background: var(--white);
@@ -107,7 +108,7 @@ button {
 	border: 0;
 	background-color: transparent;
 	padding-bottom: var(--space);
-	padding-top: var(--space);
+	padding-top: var(--space-small);
 
 	&:hover {
 		color: var(--orange);

@@ -1,6 +1,6 @@
 'use server'
 
-import { StructuredContent } from '@components';
+import { Article, StructuredContent } from '@components';
 import s from './page.module.scss'
 import { ContactDocument } from "@graphql";
 import { apiQuery } from "@lib/client";
@@ -17,12 +17,8 @@ export default async function Contact() {
 
   return (
     <>
-      <article>
-        <h1>Kontakt</h1>
-        <div className="intro">
-          <StructuredContent content={contact.intro} id={contact.id} />
-        </div>
-        <ul className={s.staff}>
+      <Article id="contact" title="Kontakt">
+        <ul>
           {contact.staff.map((staff) => (
             <li key={staff.id}>
               <figure>
@@ -33,7 +29,7 @@ export default async function Contact() {
             </li>
           ))}
         </ul>
-      </article>
+      </Article>
       <DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={contact.id} />
     </>
   );

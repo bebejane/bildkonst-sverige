@@ -8,13 +8,12 @@ import { Image } from 'react-datocms';
 export type ArticleProps = {
   id: string
   title: string;
-  intro: any;
-  image: FileField
-  content: any;
-  publishedAt: string;
+  intro?: any;
+  image?: FileField
+  content?: any;
+  publishedAt?: string;
   className?: string
   children?: React.ReactNode | React.ReactNode[]
-
 }
 
 export default async function Article({
@@ -40,13 +39,18 @@ export default async function Article({
           </div>
         </>
         }
-        <section className="intro">
-          <span className="date">{format(new Date(publishedAt), 'd MMMM yyyy')}</span>
-          <StructuredContent content={intro} id={id} />
-        </section>
-        <section className={cn("grid", "structured")}>
-          <StructuredContent content={content} id={id} />
-        </section>
+        {intro &&
+          <section className="intro">
+            {publishedAt && <span className="date">{format(new Date(publishedAt), 'd MMMM yyyy')}</span>}
+            <StructuredContent content={intro} id={id} />
+          </section>
+        }
+        {content &&
+          <section className={cn("grid", "structured")}>
+            <StructuredContent content={content} id={id} />
+          </section>
+        }
+        {children}
       </div>
     </article>
   );

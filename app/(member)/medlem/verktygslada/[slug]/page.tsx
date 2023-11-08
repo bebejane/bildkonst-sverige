@@ -1,16 +1,24 @@
 'use server'
 
-import s from './page.module.scss'
-import { AboutDocument } from "@graphql";
+import { Article } from '@components';
+import { AllToolsDocument, ToolDocument } from "@graphql";
 import { apiQuery } from "@lib/client";
+import { notFound } from 'next/navigation';
 
-export default async function NewsPage() {
+export async function generateStaticParams() {
+  const { allTools } = await apiQuery<AllToolsQuery, AllToolsQueryVariables>(AllToolsDocument);
+  return allTools.map(({ slug }) => ({ slug }))
+}
 
-  //const { about } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument)
+export default async function ToolPage({ params: { slug } }: { params: { slug: string } }) {
+
+  const { tool } = await apiQuery<ToolQuery, ToolQueryVariables>(ToolDocument, { variables: { slug } })
+
+  if (!tool) return notFound();
+
+  const { id, title, intro, image, content } = tool;
 
   return (
-    <article className={s.container}>
-
-    </article>
+    <Article id={id} title={title} intro={intro} image={image as FileField} content={content} />
   );
 }

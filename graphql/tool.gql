@@ -1,0 +1,44 @@
+query AllTools {
+	allTools {
+		id
+		title
+		slug
+		image {
+			...ImageFragment
+		}
+	}
+}
+
+query Tool($slug: String!) {
+	tool(filter: { slug: { eq: $slug } }) {
+		...ToolFragment
+	}
+}
+
+fragment ToolFragment on ToolRecord {
+	id
+	title
+	slug
+	image {
+		...ImageFragment
+	}
+	intro {
+		blocks
+		value
+		links
+	}
+	content {
+		blocks {
+			... on ImageRecord {
+				__typename
+				id
+				image {
+					...ImageFragment
+				}
+				layout
+			}
+		}
+		value
+		links
+	}
+}

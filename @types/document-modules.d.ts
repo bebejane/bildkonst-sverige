@@ -176,3 +176,14 @@ declare module '*/start.gql' {
   export default defaultDocument;
 }
     
+
+declare module '*/tool.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const AllTools: DocumentNode;
+export const Tool: DocumentNode;
+export const ToolFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    

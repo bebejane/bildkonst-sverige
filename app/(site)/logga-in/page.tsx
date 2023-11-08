@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import s from './page.module.scss'
 import { signIn } from 'next-auth/react'
+import { Article } from '@components'
 
 export default function Login() {
 
@@ -33,14 +34,13 @@ export default function Login() {
   }, [])
 
   return (
-    <article className={s.container}>
-      <h1>Logga in</h1>
+    <Article id={'login'} title="Logga in">
       <form method="POST" onSubmit={handleSignin}>
         <input id="email" name="email" type="email" placeholder="E-post" />
         <input id="password" name="password" type="password" placeholder="Lösenord" />
         <button>Logga in</button>
       </form>
       {error && <p className={s.error}>{error}</p>}
-    </article>
+    </Article>
   );
 }

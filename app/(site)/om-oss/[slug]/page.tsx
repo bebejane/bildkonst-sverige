@@ -1,13 +1,11 @@
 'use server'
 
-import s from './page.module.scss'
 import { AllAboutsDocument, AboutDocument } from "@graphql";
 import { apiQuery } from "@lib/client";
-import StructuredContent from '@components/common/StructuredContent'
 import { notFound } from 'next/navigation';
 import DraftMode from '@lib/dato-nextjs-utils/components/DraftMode';
 import { draftMode } from 'next/headers';
-import cn from 'classnames';
+import { Article } from '@components';
 
 export async function generateStaticParams() {
   const { allAbouts } = await apiQuery<AllAboutsQuery, AllAboutsQueryVariables>(AllAboutsDocument, { generateTags: true });
@@ -27,12 +25,7 @@ export default async function Page({ params: { slug } }: { params: { slug: strin
 
   return (
     <>
-      <article>
-        <h1>{title}</h1>
-        <section className={cn(s.content, "grid", "structured")}>
-          <StructuredContent content={content} id={id} />
-        </section>
-      </article>
+      <Article id={id} title={title} content={content} />
       <DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={id} />
     </>
   );

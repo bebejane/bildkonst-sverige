@@ -3,11 +3,13 @@
 import Link from "next/link";
 import cn from 'classnames'
 import s from './NavBar.module.scss'
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
+import { signIn, getSession } from 'next-auth/react'
 import Hamburger from 'hamburger-react'
 import useNextAuthSession from "@lib/hooks/useNextAuthSession";
 import { Menu } from "@lib/menu";
+import { Session } from "next-auth";
 
 type Props = {
   menu: Menu
@@ -15,21 +17,11 @@ type Props = {
 
 export default function NavBar({ menu }: Props) {
 
-  const { session, error, status } = useNextAuthSession()
+
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
 
-
-  const handleClickOutside = (e) => {
-    e.stopPropagation()
-    //setPane(null)
-  }
-
-
-  useEffect(() => {
-    //setPane(null)
-    setOpen(false)
-  }, [pathname])
+  useEffect(() => { setOpen(false) }, [pathname])
 
   return (
     <>
@@ -50,11 +42,13 @@ export default function NavBar({ menu }: Props) {
 }
 
 
-const MenuPanel = ({ position, menu }: { position: 'left' | 'right', menu: Menu }) => {
+const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu }) => {
 
+  const { session, error, status, refresh } = useNextAuthSession()
   const pathname = usePathname()
-  const panel = menu.filter((el) => el.position === position)
   const [subId, setSubId] = useState<string | null>(null)
+  const panel = menu.filter((el) => el.position === position)
+  const subPanel = panel?.find(({ id }) => subId === id)
 
   useEffect(() => {
     setSubId(null)
@@ -63,7 +57,7 @@ const MenuPanel = ({ position, menu }: { position: 'left' | 'right', menu: Menu 
   return (
     <>
       <ul className={cn(s.menu, s[position], subId && s.open)}>
-        {panel.map(({ id, title, slug, href, sub, position: pos }, idx) =>
+        {panel.map(({ id, title, slug, href, sub, auth }, idx) =>
           <li
             key={idx}
             className={cn(pathname === slug || subId === id && s.selected)}
@@ -73,7 +67,7 @@ const MenuPanel = ({ position, menu }: { position: 'left' | 'right', menu: Menu 
               <Link href={slug ?? href}>{title}</Link>
               :
               <>
-                {title}
+                {auth && !session ? 'Logga in' : title}
                 <ul>
                   {sub?.map(({ id, title, slug }) => (
                     <li className={cn(pathname === `/${slug}` && s.selected)} key={id}>
@@ -86,13 +80,17 @@ const MenuPanel = ({ position, menu }: { position: 'left' | 'right', menu: Menu 
           </li>
         )}
       </ul>
-      {subId &&
+      {subPanel &&
         <ul className={cn(s.pane, s[position], s.show)}>
-          {panel.find(({ id }) => subId === id).sub?.map(({ title, slug }, idx) =>
-            <li key={idx} className={cn(pathname === slug && s.selected)}>
-              <Link href={slug}>{title}</Link>
+          {subPanel.auth && !session ?
+            <li className={s.login}>
+              <LoginForm onSuccess={refresh} />
             </li>
-          )}
+            : subPanel.sub.map(({ title, slug }, idx) =>
+              <li key={idx} className={cn(pathname === slug && s.selected)}>
+                <Link href={slug}>{title}</Link>
+              </li>
+            )}
         </ul>
       }
       {subId &&
@@ -100,4 +98,45 @@ const MenuPanel = ({ position, menu }: { position: 'left' | 'right', menu: Menu 
       }
     </>
   )
+}
+
+
+const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
+
+  const [error, setError] = useState<string | null>(null)
+
+  const handleSignin = async (e) => {
+    e.preventDefault()
+
+    setError(null)
+    const url = new URLSearchParams(window.location.search).get('callbackUrl')
+    const formData = new FormData(e.target)
+    signIn('credentials', {
+      redirect: false,
+      username: formData.get('email'),
+      password: formData.get('password'),
+    }).then((result) => {
+      console.log(result)
+      onSuccess()
+    }).catch((error) => {
+      setError('Något gick fel, försök igen')
+    })
+  }
+
+  useEffect(() => {
+    const error = new URLSearchParams(window.location.search).get('error')
+    if (error === 'CredentialsSignin')
+      setError('Felaktigt användarnamn eller lösenord')
+  }, [])
+
+  return (
+    <>
+      <form method="POST" onSubmit={handleSignin} className={s.loginForm}>
+        <input id="email" name="email" type="email" placeholder="E-post" />
+        <input id="password" name="password" type="password" placeholder="Lösenord" />
+        <button>Logga in</button>
+      </form>
+      {error && <p className={s.error}>{error}</p>}
+    </>
+  );
 }

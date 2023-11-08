@@ -9,7 +9,8 @@ import { Session } from "next-auth";
 export type NextAuthSession = {
   session: Session | null,
   error: Error | null,
-  status: 'authenticated' | 'unauthenticated' | 'loading'
+  status: 'authenticated' | 'unauthenticated' | 'loading',
+  refresh: () => void
 }
 
 export default function useNextAuthSession(): NextAuthSession {
@@ -19,7 +20,7 @@ export default function useNextAuthSession(): NextAuthSession {
   const [error, setError] = useState<Error | null>(null)
   const [status, setStatus] = useState<'authenticated' | 'unauthenticated' | 'loading'>('unauthenticated')
 
-  useEffect(() => {
+  const refresh = () => {
     setStatus('loading')
     setError(null)
     getSession().then((session) => {
@@ -30,7 +31,11 @@ export default function useNextAuthSession(): NextAuthSession {
       setError(err)
       setStatus('unauthenticated')
     })
+  }
+
+  useEffect(() => {
+    refresh()
   }, [pathname])
 
-  return { session, error, status }
+  return { session, error, status, refresh }
 }

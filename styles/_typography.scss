@@ -44,15 +44,24 @@ h2 {
   letter-spacing: 0.3em;
 }
 
-h3 {
+h3,
+button {
   font-size: 0.85rem;
   font-family: $headline-font;
   margin-bottom: 0;
   padding-bottom: 0;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 p {
   line-height: var(--line-height);
+
+  strong {
+    font-family: $headline-font;
+    font-weight: 0.95em;
+  }
 }
 
 .intro {

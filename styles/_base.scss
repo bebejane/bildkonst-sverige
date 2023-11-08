@@ -76,30 +76,42 @@ content figure {
 
 .structured {
 	p,
-	blockquote {
+	blockquote,
+	ul,
+	ol {
 		display: grid;
 		grid-column-start: 3;
 		grid-column-end: 11;
 	}
-	blockquote p {
-		display: block;
-		grid-column-start: 1;
+	blockquote {
+		margin: 0;
+		margin-bottom: 1em;
+		p {
+			display: block;
+			grid-column-start: 1;
+		}
+	}
+
+	ol,
+	ul {
+		margin-top: 0;
+		li p {
+			margin-bottom: 0.5em;
+		}
 	}
 }
 
 button {
+	width: 100%;
 	color: var(--foreground);
 	border: 0;
-
-	@include mq($from: tablet) {
-	}
-
-	&.back {
-		@include mq($from: tablet) {
-		}
-	}
+	background-color: transparent;
+	padding-bottom: var(--space);
+	padding-top: var(--space);
 
 	&:hover {
+		color: var(--orange);
+		cursor: pointer;
 	}
 }
 

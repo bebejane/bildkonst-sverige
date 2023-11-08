@@ -22,3 +22,10 @@ $nav-font: "Rom", Helvetica, Sans-Serif;
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "Immortel";
+  src: url("../public/fonts/ImmortelColeraTrial-Italic.otf") format("opentype");
+  font-weight: normal;
+  font-style: italic;
+}

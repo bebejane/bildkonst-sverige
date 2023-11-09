@@ -64,6 +64,7 @@
       }
     }
 
+
     @include mq($until: desktop) {
       height: auto;
       flex: 0 0 auto;
@@ -79,6 +80,12 @@
 
       &:last-child {
         margin-right: 0;
+      }
+
+      @include mq($from: desktop) {
+        >form {
+          display: none;
+        }
       }
 
       .sub {
@@ -169,6 +176,7 @@
   &.right {
     right: 0;
   }
+
 }
 
 .loginForm {

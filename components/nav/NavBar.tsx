@@ -8,7 +8,8 @@ import { usePathname } from "next/navigation";
 import { signIn } from 'next-auth/react'
 import Hamburger from 'hamburger-react'
 import useNextAuthSession from "@lib/hooks/useNextAuthSession";
-import { Menu } from "@lib/menu";
+import { Menu, MenuItem } from "@lib/menu";
+import { sub } from "date-fns";
 
 type Props = {
   menu: Menu
@@ -41,24 +42,21 @@ export default function NavBar({ menu }: Props) {
 }
 
 
+
 const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu }) => {
 
   const { session, error, status, refresh } = useNextAuthSession()
   const pathname = usePathname()
   const panel = menu.filter((el) => el.position === position)
-  const defaultSubId = panel.find(({ sub }) => sub?.find(({ slug }) => pathname === slug))?.id ?? null
   const [subId, setSubId] = useState<string | null>(null)
-  const [subIdMobile, setSubIdMobile] = useState<string | null>(null)
   const subPanel = panel?.find(({ id }) => subId === id)
 
+  const menuItemIsOpen = (item: MenuItem) => {
+    return item.slug === pathname || item.sub?.find(({ slug }) => pathname === slug) !== undefined
+  }
   useEffect(() => {
     setSubId(null)
   }, [pathname])
-
-  useEffect(() => {
-    const defaultSubId = panel.find(({ sub, slug }) => pathname === slug || sub?.find(({ slug }) => pathname === slug))?.id ?? null
-    setSubIdMobile(defaultSubId)
-  }, [pathname, panel])
 
 
   return (
@@ -67,19 +65,17 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
         {panel.map(({ id, title, slug, href, sub, auth }, idx) =>
           <li
             key={idx}
-            className={cn((pathname === slug || subId === id || subIdMobile === id) && s.selected)}
-            onClick={(e) => sub ? setSubId(subId === id ? null : id) : setSubId(null)}
+            className={cn((menuItemIsOpen(panel[idx]) || subId === id) && s.selected)}
+            onClick={(e) => { sub ? setSubId(subId === id ? null : id) : setSubId(null) }}
           >
             {!sub ?
               <Link href={slug ?? href}>{title}</Link>
               :
               <>
                 {auth && !session ? 'Logga in' : title}
-                {auth && !session ?
-                  (subId === id || subIdMobile === id) &&
-                  <LoginForm onSuccess={refresh} />
+                {auth && !session ? (subId === id) && <LoginForm onSuccess={refresh} />
                   :
-                  <ul className={cn(s.sub, (subId === id || subIdMobile === id) && s.open)}>
+                  <ul className={cn(s.sub, (menuItemIsOpen(panel[idx]) || subId === id) && s.open)}>
                     {sub?.map(({ id, title, slug }) => (
                       <li className={cn(pathname === slug && s.selected)} key={id}>
                         <Link href={slug}>{title}</Link>

@@ -5,13 +5,10 @@ import cn from 'classnames'
 import s from './NavBar.module.scss'
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { signIn, getSession } from 'next-auth/react'
+import { signIn } from 'next-auth/react'
 import Hamburger from 'hamburger-react'
 import useNextAuthSession from "@lib/hooks/useNextAuthSession";
 import { Menu } from "@lib/menu";
-import { Session } from "next-auth";
-import { de } from "date-fns/locale";
-import { set, sub } from "date-fns";
 
 type Props = {
   menu: Menu
@@ -49,13 +46,20 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
   const { session, error, status, refresh } = useNextAuthSession()
   const pathname = usePathname()
   const panel = menu.filter((el) => el.position === position)
+  const defaultSubId = panel.find(({ sub }) => sub?.find(({ slug }) => pathname === slug))?.id ?? null
   const [subId, setSubId] = useState<string | null>(null)
+  const [subIdMobile, setSubIdMobile] = useState<string | null>(null)
   const subPanel = panel?.find(({ id }) => subId === id)
-  const defaultSubId = panel.find(({ sub }) => sub?.find(({ slug }) => pathname === slug))?.sub.flat().find(({ slug }) => pathname === slug)?.id
 
   useEffect(() => {
     setSubId(null)
   }, [pathname])
+
+  useEffect(() => {
+    const defaultSubId = panel.find(({ sub, slug }) => pathname === slug || sub?.find(({ slug }) => pathname === slug))?.id ?? null
+    setSubIdMobile(defaultSubId)
+  }, [pathname, panel])
+
 
   return (
     <>
@@ -63,7 +67,7 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
         {panel.map(({ id, title, slug, href, sub, auth }, idx) =>
           <li
             key={idx}
-            className={cn(pathname === slug || subId === id && s.selected)}
+            className={cn((pathname === slug || subId === id || subIdMobile === id) && s.selected)}
             onClick={(e) => sub ? setSubId(subId === id ? null : id) : setSubId(null)}
           >
             {!sub ?
@@ -71,13 +75,18 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
               :
               <>
                 {auth && !session ? 'Logga in' : title}
-                <ul className={cn(s.sub, subId === id && s.open)}>
-                  {sub?.map(({ id, title, slug }) => (
-                    <li className={cn(pathname === slug && s.selected)} key={id}>
-                      <Link href={slug}>{title}</Link>
-                    </li>
-                  ))}
-                </ul>
+                {auth && !session ?
+                  (subId === id || subIdMobile === id) &&
+                  <LoginForm onSuccess={refresh} />
+                  :
+                  <ul className={cn(s.sub, (subId === id || subIdMobile === id) && s.open)}>
+                    {sub?.map(({ id, title, slug }) => (
+                      <li className={cn(pathname === slug && s.selected)} key={id}>
+                        <Link href={slug}>{title}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                }
               </>
             }
           </li>
@@ -89,7 +98,7 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
             <li className={s.login}>
               <LoginForm onSuccess={refresh} />
             </li>
-            : subPanel.sub.map(({ title, slug }, idx) =>
+            : subPanel.sub?.map(({ title, slug }, idx) =>
               <li key={idx} className={cn(pathname === slug && s.selected)}>
                 <Link href={slug}>{title}</Link>
               </li>
@@ -114,8 +123,10 @@ const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
 
     setError(null)
     setSubmitting(true)
+
     const url = new URLSearchParams(window.location.search).get('callbackUrl')
     const formData = new FormData(e.target)
+
     signIn('credentials', {
       redirect: false,
       username: formData.get('email'),
@@ -141,7 +152,7 @@ const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
       <form method="POST" onSubmit={handleSignin} className={cn(s.loginForm, submitting && s.submitting)}>
         <input id="email" name="email" type="email" placeholder="E-post" />
         <input id="password" name="password" type="password" placeholder="Lösenord" />
-        <button>Logga in</button>
+        <button onClick={(e) => e.stopPropagation()}>Logga in</button>
       </form>
       {error && <p className={s.error}>{error}</p>}
     </>

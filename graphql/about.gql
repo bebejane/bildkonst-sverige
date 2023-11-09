@@ -11,8 +11,21 @@ query About($slug: String!) {
 		id
 		slug
 		title
-		content {
+		intro {
 			blocks
+			links
+			value
+		}
+		content {
+			blocks {
+				... on PeopleCollectionBlockRecord {
+					__typename
+					id
+					people {
+						...StaffFragment
+					}
+				}
+			}
 			links
 			value
 		}

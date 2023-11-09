@@ -25,6 +25,7 @@
 
     a {
       color: var(--white);
+
       &:hover {
         color: var(--orange) !important;
       }
@@ -98,6 +99,7 @@
     }
 
     &.open {
+
       li,
       a {
         color: var(--white);
@@ -110,7 +112,7 @@
   }
 }
 
-.selected > a,
+.selected>a,
 .selected {
   color: var(--orange) !important;
 }
@@ -154,6 +156,7 @@
 
   a {
     color: var(--white);
+
     &:hover {
       color: var(--orange);
     }
@@ -172,6 +175,10 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+
+  @include mq($until: desktop) {
+    margin-top: 1em;
+  }
 
   button {
     color: var(--white);

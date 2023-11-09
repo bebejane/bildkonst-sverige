@@ -17,12 +17,6 @@ export default function MemberForm({ allMemberLevels }: Props) {
     return el ? <div className={s.invalid}>{el.message}</div> : null
   }
 
-  if (state.data)
-    return <div className={s.success}><h1>Tack för din ansökan!</h1></div>
-
-  if (state.error)
-    return <div className={s.error}><h1>Det uppstod ett fel!</h1></div>
-
   return (
     <form action={formAction} className={s.form}>
       <label htmlFor='organization'>Organisation *</label>
@@ -53,8 +47,10 @@ export default function MemberForm({ allMemberLevels }: Props) {
         )}
       </select>
       {errors('level')}
-
       <SubmitButton />
+
+      {state.data && <div className={s.success}><h1>Tack för din ansökan!</h1></div>}
+      {state.error && <div className={s.error}><h1>Det uppstod ett fel!</h1>{state.error}</div>}
     </form >
 
   );

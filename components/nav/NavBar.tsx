@@ -3,7 +3,7 @@
 import Link from "next/link";
 import cn from 'classnames'
 import s from './NavBar.module.scss'
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import { signIn } from 'next-auth/react'
 import Hamburger from 'hamburger-react'
@@ -43,23 +43,38 @@ export default function NavBar({ menu }: Props) {
 
 const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu }) => {
 
+  const ref = useRef<HTMLUListElement>(null)
   const { session, error, status, refresh } = useNextAuthSession()
   const pathname = usePathname()
   const panel = menu.filter((el) => el.position === position)
   const [subId, setSubId] = useState<string | null>(null)
   const subPanel = panel?.find(({ id }) => subId === id)
 
+  const getPanelWidth = () => {
+    const el = ref.current.querySelector('li:first-child')
+    const margin = 40
+    const pad = 0//getComputedStyle(ref-cu).getPropertyValue(`margin-${position}`)
+    if (position === 'right')
+      return el?.getBoundingClientRect().x
+
+    return el?.getBoundingClientRect().width - el?.getBoundingClientRect().x + pad + margin
+  }
   const menuItemIsOpen = (item: MenuItem) => {
     return item.slug === pathname || item.sub?.find(({ slug }) => pathname === slug) !== undefined
   }
+
   useEffect(() => {
     setSubId(null)
   }, [pathname])
 
 
+
+  //console.log(getComputedStyle(ref.current))
+
+
   return (
     <>
-      <ul className={cn(s.menu, s[position], subId && s.open)}>
+      <ul className={cn(s.menu, s[position], subId && s.open)} ref={ref}>
         {panel.map(({ id, title, slug, href, sub, auth }, idx) =>
           <li
             key={idx}
@@ -86,9 +101,13 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
             }
           </li>
         )}
-      </ul>
+      </ul >
       {subPanel &&
-        <ul className={cn(s.pane, s[position], s.show)} onMouseLeave={(e) => { setSubId(null) }}>
+        <ul
+          className={cn(s.pane, s[position], s.show)}
+          onMouseLeave={(e) => { setSubId(null) }}
+        //style={{ width: getPanelWidth() }}
+        >
           {subPanel.auth && !session ?
             <li className={s.login}>
               <LoginForm onSuccess={refresh} />
@@ -100,7 +119,8 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
             )}
         </ul>
       }
-      {subId &&
+      {
+        subId &&
         <div className={s.paneBackground} onClick={() => setSubId(null)} />
       }
     </>

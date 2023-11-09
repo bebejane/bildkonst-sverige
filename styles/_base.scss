@@ -101,7 +101,7 @@ html {
 
 main {
 	padding-top: calc(var(--navbar-height) + 1.5rem);
-	min-height: calc(100vh - var(--navbar-height));
+	min-height: calc(100vh);
 }
 
 article {

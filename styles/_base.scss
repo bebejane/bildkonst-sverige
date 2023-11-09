@@ -41,7 +41,9 @@ body {
 
 
 .body-intro {
-	animation: intro-background calc(var(--body-intro-speed) /2) ease-in 0s 1 forwards;
+	animation: intro-background calc(var(--body-intro-speed) /1) ease-in 0s 1 forwards;
+	background-color: var(--orange);
+
 
 	p,
 	h1,
@@ -52,20 +54,26 @@ body {
 	a,
 	section {
 		animation: intro-foreground calc(var(--body-intro-speed)) ease-in 0s 1 forwards;
+		color: var(--orange);
+		border-color: var(--orange) !important;
 	}
 
 	img {
-		animation: intro-images calc(var(--body-intro-speed) / 2) ease-in 0s 1 forwards;
+		animation: intro-images calc(var(--body-intro-speed)) ease-in 0s 1 forwards;
+		opacity: 0;
 	}
 
 	@keyframes intro-background {
-		from {
+		0% {
 			background-color: var(--orange);
 		}
 
-		to {
+		60% {
+			background-color: var(--orange);
+		}
+
+		100% {
 			background-color: var(--background);
-			animation: none !important;
 		}
 	}
 

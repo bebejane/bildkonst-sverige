@@ -6,7 +6,7 @@ query MemberPage {
 			links
 			value
 		}
-		introLevels {
+		content {
 			blocks
 			links
 			value

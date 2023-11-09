@@ -14,7 +14,7 @@ export default async function Membership() {
 
   return (
     <>
-      <Article id="membership" title="Bli medlem" intro={memberIntro.intro}>
+      <Article id="membership" title="Bli medlem" intro={memberIntro.intro} content={memberIntro.content}>
         <ul className={s.levels}>
           {allMemberLevels.map(({ id, level, turnoverMax, turnoverMin }) =>
             <li key={id}>

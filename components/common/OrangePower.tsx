@@ -7,12 +7,15 @@ import { useEffect } from 'react';
 export default function OrangePower({ }: {}) {
 
   const pathname = usePathname()
+
   useEffect(() => {
     const paragraphs = Array.from(document.querySelectorAll('p')).filter(p => !isElementInViewport(p))
     const observePargraphs = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.remove(s.active)
+          observePargraphs.unobserve(entry.target)
+
         } else {
           entry.target.classList.add(s.active)
         }

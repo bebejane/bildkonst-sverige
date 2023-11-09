@@ -9,8 +9,7 @@ import { signIn } from 'next-auth/react'
 import Hamburger from 'hamburger-react'
 import useNextAuthSession from "@lib/hooks/useNextAuthSession";
 import { Menu, MenuItem } from "@lib/menu";
-import { sub } from "date-fns";
-
+import { useScrollInfo } from 'dato-nextjs-utils/hooks'
 type Props = {
   menu: Menu
 }
@@ -18,6 +17,7 @@ type Props = {
 export default function NavBar({ menu }: Props) {
 
 
+  const { isPageTop, scrolledPosition } = useScrollInfo()
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
 
@@ -25,7 +25,7 @@ export default function NavBar({ menu }: Props) {
 
   return (
     <>
-      <h1 className={cn(s.logo, s.onScroll, open && s.open, "logo")}>
+      <h1 className={cn(s.logo, (scrolledPosition > 0 && !open) && s.onScroll, open && s.open, "logo")}>
         <Link href={'/'}>Bildkonst<br />sverige</Link>
       </h1>
 
@@ -40,8 +40,6 @@ export default function NavBar({ menu }: Props) {
     </>
   );
 }
-
-
 
 const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu }) => {
 
@@ -66,6 +64,7 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
           <li
             key={idx}
             className={cn((menuItemIsOpen(panel[idx]) || subId === id) && s.selected)}
+            onMouseEnter={(e) => { sub ? setSubId(id) : setSubId(null) }}
             onClick={(e) => { sub ? setSubId(subId === id ? null : id) : setSubId(null) }}
           >
             {!sub ?
@@ -89,7 +88,7 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
         )}
       </ul>
       {subPanel &&
-        <ul className={cn(s.pane, s[position], s.show)}>
+        <ul className={cn(s.pane, s[position], s.show)} onMouseLeave={(e) => { setSubId(null) }}>
           {subPanel.auth && !session ?
             <li className={s.login}>
               <LoginForm onSuccess={refresh} />

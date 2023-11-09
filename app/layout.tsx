@@ -19,7 +19,7 @@ export default async function RootLayout({ children }: LayoutProps) {
 
   return (
     <html lang="sv">
-      <body id="root" >
+      <body id="root" className={"body-intro"}>
         <NavBar menu={menu} />
         <main>
           {children}

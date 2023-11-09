@@ -3,6 +3,7 @@
 import s from './template.module.scss'
 import { useEffect } from "react"
 import { usePathname } from "next/navigation"
+import { sleep } from "dato-nextjs-utils/utils"
 
 export type LayoutProps = {
   children: React.ReactNode
@@ -11,6 +12,16 @@ export type LayoutProps = {
 export default function MainTemplate({ children }: LayoutProps) {
   const pathname = usePathname()
 
+  const initOrangeFade = async () => {
+    try {
+      const s = parseInt(getComputedStyle(document.body).getPropertyValue('--body-intro-speed'))
+      await sleep(s)
+
+    } catch (e) {
+
+    }
+    document.body.classList.remove('body-intro')
+  }
   const initOrangeScroll = () => {
     const paragraphs = Array.from(document.querySelectorAll('p')).filter(p => !isElementInViewport(p))
     const observePargraphs = new IntersectionObserver((entries) => {
@@ -38,6 +49,7 @@ export default function MainTemplate({ children }: LayoutProps) {
   useEffect(() => {
     document.body.style.backgroundColor = pathname.startsWith('/medlem') ? 'var(--member-color)' : 'var(--background)'
     initOrangeScroll()
+    initOrangeFade()
   }, [pathname])
 
   return <>{children}</>

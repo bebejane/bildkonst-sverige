@@ -21,6 +21,8 @@
 	--z-logo: 1100;
 	--z-hamburger: 1200;
 
+	--body-intro-speed: 2000ms;
+
 	@include mq($until: desktop) {
 		--outer-margin: 1rem;
 	}
@@ -37,10 +39,9 @@ body {
 	font-feature-settings: "liga", "kern";
 }
 
-/*
+
 .body-intro {
-	--speed: 1s;
-	animation: intro-background var(--speed) ease-in 0s 1 forwards;
+	animation: intro-background calc(var(--body-intro-speed) /2) ease-in 0s 1 forwards;
 
 	p,
 	h1,
@@ -50,11 +51,11 @@ body {
 	li,
 	a,
 	section {
-		animation: intro-foreground var(--speed) ease-in 0s 1 forwards;
+		animation: intro-foreground calc(var(--body-intro-speed)) ease-in 0s 1 forwards;
 	}
 
 	img {
-		animation: intro-images var(--speed) ease-in 0s 1 forwards;
+		animation: intro-images calc(var(--body-intro-speed) / 2) ease-in 0s 1 forwards;
 	}
 
 	@keyframes intro-background {
@@ -92,7 +93,7 @@ body {
 
 	}
 }
-*/
+
 
 html {
 	box-sizing: border-box;

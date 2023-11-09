@@ -7,7 +7,7 @@ import * as postmark from 'postmark';
 const postmarkClient = new postmark.ServerClient(process.env.POSTMARK_API_TOKEN);
 const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, environment: process.env.DATOCMS_ENVIRONMENT })
 
-export const runtime = "edge"
+export const runtime = "nodejs"
 
 export function POST(req: Request) {
 

@@ -2,7 +2,7 @@ import basicAuth from "@lib/dato-nextjs-utils/route-handlers/basic-auth";
 import { NextResponse } from "next/server";
 import { buildClient } from '@datocms/cma-client-browser';
 import cors from "@lib/dato-nextjs-utils/route-handlers/cors";
-import postmark from 'postmark';
+import * as postmark from 'postmark';
 
 const postmarkClient = new postmark.ServerClient(process.env.POSTMARK_API_TOKEN);
 const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, environment: process.env.DATOCMS_ENVIRONMENT })

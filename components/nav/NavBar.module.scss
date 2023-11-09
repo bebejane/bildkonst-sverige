@@ -217,6 +217,12 @@
   }
 }
 
+.onScroll {
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: var(--black);
+  -webkit-text-fill-color: transparent;
+}
+
 .hamburger {
   position: fixed;
   top: 0;

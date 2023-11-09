@@ -133,13 +133,13 @@ figure {
 	ol,
 	ul {
 		margin-top: 0;
-
 		li p {
-			margin-bottom: 1em;
+			margin-bottom: 0.5em;
 			&:after {
 				display: none !important;
 			}
 		}
+		margin-bottom: 0.5em;
 	}
 
 	ul {

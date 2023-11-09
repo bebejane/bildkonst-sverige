@@ -27,7 +27,7 @@ export default function NavBar({ menu }: Props) {
 
   return (
     <>
-      <h1 className={cn(s.logo, open && s.open, "logo")}>
+      <h1 className={cn(s.logo, s.onScroll, open && s.open, "logo")}>
         <Link href={'/'}>Bildkonst<br />sverige</Link>
       </h1>
 

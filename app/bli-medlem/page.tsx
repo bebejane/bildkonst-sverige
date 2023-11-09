@@ -14,17 +14,19 @@ export default async function Membership() {
 
   return (
     <>
-      <Article id="membership" title="Bli medlem" intro={memberIntro.intro} content={memberIntro.content}>
-        <ul className={s.levels}>
-          {allMemberLevels.map(({ id, level, turnoverMax, turnoverMin }) =>
-            <li key={id}>
-              Medlemsnivå: {level}<br />
-              Årsomsättning: {!turnoverMax && turnoverMin ? `< ${turnoverMin}` : turnoverMax && turnoverMin ? `> ${turnoverMin} < ${turnoverMax}` : `> ${turnoverMax}`}
-            </li>
-          )}
-        </ul>
-        <h3>Ansökningsformulär</h3>
-        <MemberForm allMemberLevels={allMemberLevels} />
+      <Article className={s.container} id="membership" title="Bli medlem" intro={memberIntro.intro} content={memberIntro.content}>
+        <div className="structured grid">
+          <ul className={s.levels}>
+            {allMemberLevels.map(({ id, level, turnoverMax, turnoverMin }) =>
+              <li key={id}>
+                Medlemsnivå {level} —
+                Årsomsättning: {!turnoverMax && turnoverMin ? `< ${turnoverMin}` : turnoverMax && turnoverMin ? `> ${turnoverMin} < ${turnoverMax}` : `> ${turnoverMax}`}
+              </li>
+            )}
+          </ul>
+          <h3>Ansökningsformulär</h3>
+          <MemberForm allMemberLevels={allMemberLevels} />
+        </div>
       </Article>
       {< DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={memberIntro.id} />}
     </>

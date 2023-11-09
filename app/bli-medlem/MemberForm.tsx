@@ -18,10 +18,10 @@ export default function MemberForm({ allMemberLevels }: Props) {
   }
 
   if (state.data)
-    return <div className={s.success}>Tack för din ansökan!</div>
+    return <div className={s.success}><h1>Tack för din ansökan!</h1></div>
 
   if (state.error)
-    return <div className={s.error}>Det uppstod ett fel!</div>
+    return <div className={s.error}><h1>Det uppstod ett fel!</h1></div>
 
   return (
     <form action={formAction} className={s.form}>

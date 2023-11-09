@@ -6,9 +6,9 @@ import s from './Footer.module.scss'
 export default async function Footer({ }: {}) {
   return (
     <footer className={s.footer}>
-      <span>© 2023 Bildkonst Sverige</span>
+      <div><span>© 2023 Bildkonst Sverige</span></div>
       <h1 className="logo"><Link href={'/'}>Bildkonst<br />sverige</Link></h1>
-      <span>Nyhetsbrev</span>
+      <div><span>Nyhetsbrev</span><span>Kontakt</span></div>
     </footer>
   );
 }

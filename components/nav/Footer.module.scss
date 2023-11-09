@@ -17,13 +17,17 @@
     padding-top: var(--space-small);
   }
 
-  span {
+  div {
     flex: 0 0 30%;
     white-space: nowrap;
     text-align: left;
 
     &:last-child {
       text-align: right;
+    }
+
+    span {
+      padding-right: 1em;
     }
   }
 

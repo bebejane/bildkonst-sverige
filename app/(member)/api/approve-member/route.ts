@@ -17,7 +17,7 @@ export function POST(req: Request) {
 
       console.log('approve-member')
 
-      const { item, field } = await req.json()
+      const { item, field, value } = await req.json()
       const id = item?.id
 
       if (!id)
@@ -28,14 +28,11 @@ export function POST(req: Request) {
       if (!record)
         throw new Error('No record found with id: ' + id)
 
-      if ((record[field.attributes.api_key] as boolean) === false) {
+      if (value) {
         console.log('send email to: ', record.email)
-        await client.items.update(id, { [field.attributes.api_key]: true })
-        return NextResponse.json({ success: true });
-      } else {
-        console.log('member not approved: ', record.email)
-        return NextResponse.json({ success: false });
       }
+      await client.items.update(id, { [field.attributes.api_key]: value })
+      return NextResponse.json({ success: true });
 
     } catch (e) {
       console.log(e.message)

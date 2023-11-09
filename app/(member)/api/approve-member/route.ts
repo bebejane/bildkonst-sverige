@@ -35,11 +35,11 @@ export function POST(req: Request) {
           To: record.email as string,
           TemplateAlias: 'member-approved',
           TemplateModel: {
-            name: record.name,
-            support_email: 'info@bildkonst-sverige.se',
+            sender_name: 'Bildkonst Sverige',
+            name: record.contact,
+            action_url: `${process.env.NEXT_PUBLIC_SITE_URL}/logga-in`,
             password: process.env.NEXTAUTH_URL_STATIC_PASSWORD,
-            action_url: `${process.env.SITE_URL}/logga-in`,
-            sender_name: 'Bildkonst Sverige'
+            support_email: 'info@bildkonst-sverige.se'
           }
         })
         console.log(res)

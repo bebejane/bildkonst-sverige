@@ -1,5 +1,6 @@
 'use server'
 
+import s from './page.module.scss'
 import Article from '@components/layout/Article';
 import { ContactDocument } from "@graphql";
 import { apiQuery } from "@lib/client";
@@ -17,7 +18,7 @@ export default async function Contact() {
   return (
     <>
       <Article id="contact" title="Kontakt">
-        <ul>
+        <ul className={s.staff}>
           {contact.staff.map((staff) => (
             <li key={staff.id}>
               <figure>

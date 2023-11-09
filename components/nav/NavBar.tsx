@@ -52,17 +52,14 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
   const subPanel = panel?.find(({ id }) => subId === id)
 
   useEffect(() => {
-    //const defaultSubId = panel.find(({ sub, slug }) => pathname === slug || sub?.find(({ slug }) => pathname === slug))?.id ?? null
     setSubId(null)
-    //console.log(defaultSubId)
-    //setSubId(defaultSubId)
   }, [pathname])
 
   useEffect(() => {
     const defaultSubId = panel.find(({ sub, slug }) => pathname === slug || sub?.find(({ slug }) => pathname === slug))?.id ?? null
-    //setSubIdMobile(defaultSubId)
-
+    setSubIdMobile(defaultSubId)
   }, [pathname, panel])
+
 
   return (
     <>
@@ -70,7 +67,7 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
         {panel.map(({ id, title, slug, href, sub, auth }, idx) =>
           <li
             key={idx}
-            className={cn((pathname === slug || subId === id) && s.selected)}
+            className={cn((pathname === slug || subId === id || subIdMobile === id) && s.selected)}
             onClick={(e) => sub ? setSubId(subId === id ? null : id) : setSubId(null)}
           >
             {!sub ?
@@ -78,13 +75,18 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
               :
               <>
                 {auth && !session ? 'Logga in' : title}
-                <ul className={cn(s.sub, subId === id && s.open)}>
-                  {sub?.map(({ id, title, slug }) => (
-                    <li className={cn(pathname === slug && s.selected)} key={id}>
-                      <Link href={slug}>{title}</Link>
-                    </li>
-                  ))}
-                </ul>
+                {auth && !session ?
+                  (subId === id || subIdMobile === id) &&
+                  <LoginForm onSuccess={refresh} />
+                  :
+                  <ul className={cn(s.sub, (subId === id || subIdMobile === id) && s.open)}>
+                    {sub?.map(({ id, title, slug }) => (
+                      <li className={cn(pathname === slug && s.selected)} key={id}>
+                        <Link href={slug}>{title}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                }
               </>
             }
           </li>
@@ -121,8 +123,10 @@ const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
 
     setError(null)
     setSubmitting(true)
+
     const url = new URLSearchParams(window.location.search).get('callbackUrl')
     const formData = new FormData(e.target)
+
     signIn('credentials', {
       redirect: false,
       username: formData.get('email'),
@@ -148,7 +152,7 @@ const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
       <form method="POST" onSubmit={handleSignin} className={cn(s.loginForm, submitting && s.submitting)}>
         <input id="email" name="email" type="email" placeholder="E-post" />
         <input id="password" name="password" type="password" placeholder="Lösenord" />
-        <button>Logga in</button>
+        <button onClick={(e) => e.stopPropagation()}>Logga in</button>
       </form>
       {error && <p className={s.error}>{error}</p>}
     </>

@@ -1,6 +1,7 @@
 import basicAuth from "@lib/dato-nextjs-utils/route-handlers/basic-auth";
 import { NextResponse } from "next/server";
 import { buildClient } from '@datocms/cma-client-browser';
+import cors from "@lib/dato-nextjs-utils/route-handlers/cors";
 
 const client = buildClient({
   apiToken: process.env.DATOCMS_API_TOKEN,
@@ -40,4 +41,14 @@ export function POST(req: Request) {
       return NextResponse.json({ success: false, error: e.message });
     }
   });
+}
+
+export async function OPTIONS(req: Request) {
+
+  return await cors(req, new Response('ok', { status: 200 }), {
+    origin: '*',
+    methods: ['POST', 'GET', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    preflightContinue: false
+  })
 }

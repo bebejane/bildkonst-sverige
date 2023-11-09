@@ -116,6 +116,7 @@ figure {
 		margin-bottom: 1em;
 		position: relative;
 		&:before {
+			content: "”";
 			position: absolute;
 			font-size: 3rem;
 			top: 1rem;

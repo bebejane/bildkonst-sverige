@@ -28,7 +28,7 @@
       color: var(--white);
 
       &:hover {
-        color: var(--orange) !important;
+        color: var(--white) !important;
       }
     }
   }
@@ -123,6 +123,11 @@
 .selected>a,
 .selected {
   color: var(--orange) !important;
+}
+
+.selectedSub>a,
+.selectedSub {
+  font-weight: bold;
 }
 
 .paneBackground {

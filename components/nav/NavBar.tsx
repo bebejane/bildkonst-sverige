@@ -76,7 +76,7 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
                   :
                   <ul className={cn(s.sub, (menuItemIsOpen(panel[idx]) || subId === id) && s.open)}>
                     {sub?.map(({ id, title, slug }) => (
-                      <li className={cn(pathname === slug && s.selected)} key={id}>
+                      <li className={cn(pathname === slug && s.selectedSub)} key={id}>
                         <Link href={slug}>{title}</Link>
                       </li>
                     ))}

@@ -43,7 +43,7 @@ export function POST(req: Request) {
     }
   });
 }
-
+/*
 export async function OPTIONS(req: Request) {
 
   return await cors(req, new Response('ok', { status: 200 }), {
@@ -53,3 +53,4 @@ export async function OPTIONS(req: Request) {
     preflightContinue: false
   })
 }
+*/

@@ -18,7 +18,7 @@ export function POST(req: Request) {
       console.log('approve-member')
 
       const { item, field } = await req.json()
-      const id = item?.attributes?.id
+      const id = item?.id
 
       if (!id)
         throw new Error('No id provided')
@@ -39,7 +39,7 @@ export function POST(req: Request) {
 
     } catch (e) {
       console.log(e.message)
-      return NextResponse.json({ success: false, error: e.message });
+      return NextResponse.json({ success: false, error: e.message }, { status: 500 });
     }
   });
 }

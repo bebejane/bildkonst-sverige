@@ -37,6 +37,7 @@ export function POST(req: Request) {
           TemplateModel: {
             sender_name: 'Bildkonst Sverige',
             name: record.contact,
+            site_url: process.env.NEXT_PUBLIC_SITE_URL,
             action_url: `${process.env.NEXT_PUBLIC_SITE_URL}/logga-in`,
             password: process.env.NEXTAUTH_URL_STATIC_PASSWORD,
             support_email: 'info@bildkonst-sverige.se'

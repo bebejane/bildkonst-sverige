@@ -1,5 +1,6 @@
 'use client'
 
+import s from './template.module.scss'
 import { useEffect } from "react"
 import { usePathname } from "next/navigation"
 
@@ -10,9 +11,38 @@ export type LayoutProps = {
 export default function MainTemplate({ children }: LayoutProps) {
   const pathname = usePathname()
 
+  const initOrangeScroll = () => {
+    const paragraphs = Array.from(document.querySelectorAll('p')).filter(p => !isElementInViewport(p))
+    const observePargraphs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.remove(s.active)
+          observePargraphs.unobserve(entry.target)
+
+        } else {
+          entry.target.classList.add(s.active)
+        }
+      })
+    }, { threshold: 0.2, rootMargin: '0px 0px -20% 0px' })
+
+    paragraphs.forEach(p => {
+      p.classList.add(s.paragraph)
+      observePargraphs.observe(p)
+    })
+
+    return () => {
+      observePargraphs.disconnect()
+    }
+  }
+
   useEffect(() => {
     document.body.style.backgroundColor = pathname.startsWith('/medlem') ? 'var(--member-color)' : 'var(--background)'
+    initOrangeScroll()
   }, [pathname])
 
   return <>{children}</>
+}
+
+function isElementInViewport(el: HTMLElement) {
+  return el.getBoundingClientRect()?.top <= (window.innerHeight || document.documentElement.clientHeight)
 }

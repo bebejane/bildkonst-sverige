@@ -5,7 +5,6 @@
 export * from "./blocks/Block";
 export * from "./blocks/index";
 export * from "./blocks/start/StartPoliticBlock";
-export * from "./common/OrangePower";
 export * from "./common/StructuredContent";
 export * from "./layout/Article";
 export * from "./nav/Footer";

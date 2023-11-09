@@ -21,11 +21,11 @@ export default async function Page({ params: { slug } }: { params: { slug: strin
 
   if (!about) return notFound()
 
-  const { id, title, content } = about
+  const { id, title, intro, content } = about
 
   return (
     <>
-      <Article id={id} title={title} content={content} />
+      <Article id={id} title={title} intro={intro} content={content} />
       <DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={id} />
     </>
   );

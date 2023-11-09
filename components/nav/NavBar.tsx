@@ -5,13 +5,10 @@ import cn from 'classnames'
 import s from './NavBar.module.scss'
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { signIn, getSession } from 'next-auth/react'
+import { signIn } from 'next-auth/react'
 import Hamburger from 'hamburger-react'
 import useNextAuthSession from "@lib/hooks/useNextAuthSession";
 import { Menu } from "@lib/menu";
-import { Session } from "next-auth";
-import { de } from "date-fns/locale";
-import { set, sub } from "date-fns";
 
 type Props = {
   menu: Menu
@@ -49,13 +46,17 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
   const { session, error, status, refresh } = useNextAuthSession()
   const pathname = usePathname()
   const panel = menu.filter((el) => el.position === position)
-  const [subId, setSubId] = useState<string | null>(null)
+  const defaultSubId = panel.find(({ sub }) => sub?.find(({ slug }) => pathname === slug))?.id ?? null
+  const [subId, setSubId] = useState<string | null>(defaultSubId)
   const subPanel = panel?.find(({ id }) => subId === id)
-  const defaultSubId = panel.find(({ sub }) => sub?.find(({ slug }) => pathname === slug))?.sub.flat().find(({ slug }) => pathname === slug)?.id
 
   useEffect(() => {
-    setSubId(null)
-  }, [pathname])
+    const defaultSubId = panel.find(({ sub, slug }) => pathname === slug || sub?.find(({ slug }) => pathname === slug))?.id ?? null
+    //console.log(defaultSubId)
+    //setSubId(defaultSubId)
+  }, [pathname, panel])
+
+  console.log(pathname, subId)
 
   return (
     <>
@@ -89,7 +90,7 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
             <li className={s.login}>
               <LoginForm onSuccess={refresh} />
             </li>
-            : subPanel.sub.map(({ title, slug }, idx) =>
+            : subPanel.sub?.map(({ title, slug }, idx) =>
               <li key={idx} className={cn(pathname === slug && s.selected)}>
                 <Link href={slug}>{title}</Link>
               </li>

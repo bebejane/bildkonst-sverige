@@ -3,7 +3,6 @@
 import '@styles/index.scss'
 import NavBar from '@components/nav/NavBar';
 import Footer from '@components/nav/Footer';
-import OrangePower from '@components/common/OrangePower';
 import { apiQuery } from '@lib/client';
 import { GlobalDocument } from '@graphql';
 import { Metadata } from 'next';
@@ -26,7 +25,6 @@ export default async function RootLayout({ children }: LayoutProps) {
           {children}
         </main>
         <Footer />
-        <OrangePower />
       </body>
     </html>
   );

@@ -47,16 +47,22 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
   const pathname = usePathname()
   const panel = menu.filter((el) => el.position === position)
   const defaultSubId = panel.find(({ sub }) => sub?.find(({ slug }) => pathname === slug))?.id ?? null
-  const [subId, setSubId] = useState<string | null>(defaultSubId)
+  const [subId, setSubId] = useState<string | null>(null)
+  const [subIdMobile, setSubIdMobile] = useState<string | null>(null)
   const subPanel = panel?.find(({ id }) => subId === id)
 
   useEffect(() => {
-    const defaultSubId = panel.find(({ sub, slug }) => pathname === slug || sub?.find(({ slug }) => pathname === slug))?.id ?? null
+    //const defaultSubId = panel.find(({ sub, slug }) => pathname === slug || sub?.find(({ slug }) => pathname === slug))?.id ?? null
+    setSubId(null)
     //console.log(defaultSubId)
     //setSubId(defaultSubId)
-  }, [pathname, panel])
+  }, [pathname])
 
-  console.log(pathname, subId)
+  useEffect(() => {
+    const defaultSubId = panel.find(({ sub, slug }) => pathname === slug || sub?.find(({ slug }) => pathname === slug))?.id ?? null
+    //setSubIdMobile(defaultSubId)
+
+  }, [pathname, panel])
 
   return (
     <>
@@ -64,7 +70,7 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
         {panel.map(({ id, title, slug, href, sub, auth }, idx) =>
           <li
             key={idx}
-            className={cn(pathname === slug || subId === id && s.selected)}
+            className={cn((pathname === slug || subId === id) && s.selected)}
             onClick={(e) => sub ? setSubId(subId === id ? null : id) : setSubId(null)}
           >
             {!sub ?

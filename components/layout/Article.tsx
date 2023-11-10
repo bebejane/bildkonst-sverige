@@ -1,4 +1,4 @@
-'use server'
+'use client'
 
 import cn from 'classnames';
 import StructuredContent from '@components/common/StructuredContent';
@@ -16,7 +16,7 @@ export type ArticleProps = {
   children?: React.ReactNode | React.ReactNode[]
 }
 
-export default async function Article({
+export default function Article({
   title,
   intro,
   image,

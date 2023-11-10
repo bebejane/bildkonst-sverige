@@ -10,7 +10,7 @@ type Props = {
 export default function TextBlock({ data: { id, texts } }: Props) {
   const columns = texts.length === 1 ? s.one : texts.length === 2 ? s.two : s.three
   return (
-    <section className={cn(s.container, columns)}>
+    <div className={cn(s.container, columns)}>
       {texts.map(async ({ headline, text, link }, i) => {
         const slug = link?.__typename === 'InternalLinkRecord' ? await recordToRoute(link.link) : link?.url
         return link ?
@@ -24,6 +24,6 @@ export default function TextBlock({ data: { id, texts } }: Props) {
             {text}
           </div>
       })}
-    </section>
+    </div>
   )
 }

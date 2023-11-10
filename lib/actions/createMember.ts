@@ -14,7 +14,7 @@ const MemberForm = z.object({
 
 type MemberForm = z.infer<typeof MemberForm>;
 
-export async function createMember(prevState: any, formData: FormData): Promise<{ data?: any, error?: string, invalid?: any[] }> {
+export default async function createMember(prevState: any, formData: FormData): Promise<{ data?: any, error?: string, invalid?: any[] }> {
 
   try {
 

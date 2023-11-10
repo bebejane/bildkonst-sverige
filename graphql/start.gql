@@ -12,6 +12,10 @@ query Start {
 				}
 				layout
 			}
+			... on NewsletterBlockRecord {
+				id
+				title
+			}
 			... on TextBlockRecord {
 				id
 				texts {

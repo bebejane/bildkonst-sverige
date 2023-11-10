@@ -7,9 +7,12 @@
     border-bottom: 1px solid var(--black);
     padding-bottom: var(--space);
     padding-top: var(--space);
+    width: 100%;
+
     &:first-child {
       padding-top: 0;
     }
+
     &:last-child {
       padding-bottom: 0;
       border-bottom: 0px solid var(--black);

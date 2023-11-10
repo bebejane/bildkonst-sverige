@@ -35,7 +35,6 @@ export default function NavBar({ menu }: Props) {
 
       <nav className={cn(s.navbar, open && s.show)}>
         <MenuPanel position={'left'} menu={menu} />
-        <div className={s.separator} />
         <MenuPanel position={'right'} menu={menu} />
       </nav>
     </>
@@ -51,6 +50,15 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
   const [subId, setSubId] = useState<string | null>(null)
   const subPanel = panel?.find(({ id }) => subId === id)
 
+  const getPanelWidth = () => {
+    const el = ref.current.querySelector('li:first-child')
+    const margin = 40
+    const pad = 0//getComputedStyle(ref-cu).getPropertyValue(`margin-${position}`)
+    if (position === 'right')
+      return el?.getBoundingClientRect().x
+
+    return el?.getBoundingClientRect().width - el?.getBoundingClientRect().x + pad + margin
+  }
   const menuItemIsOpen = (item: MenuItem) => {
     return item.slug === pathname || item.sub?.find(({ slug }) => pathname === slug) !== undefined
   }
@@ -63,34 +71,49 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
     <>
       <ul className={cn(s.menu, s[position], subId && s.open)} ref={ref}>
         {panel.map(({ id, title, slug, href, sub, auth }, idx) =>
-          <>
-            <li
-              key={idx}
-              className={cn((menuItemIsOpen(panel[idx]) || subId === id) && s.selected)}
-              onMouseEnter={(e) => { sub ? setSubId(id) : setSubId(null) }}
-              onClick={(e) => { sub ? setSubId(subId === id ? null : id) : setSubId(null) }}
-            >
-              {!sub ?
-                <Link href={slug ?? href}>{title}</Link>
-                :
-                <>
-                  {title}
-                </>
-              }
-            </li>
-
-          </>
+          <li
+            key={idx}
+            className={cn((menuItemIsOpen(panel[idx]) || subId === id) && s.selected)}
+            onMouseEnter={(e) => { sub ? setSubId(id) : setSubId(null) }}
+            onClick={(e) => { sub ? setSubId(subId === id ? null : id) : setSubId(null) }}
+          >
+            {!sub ?
+              <Link href={slug ?? href}>{title}</Link>
+              :
+              <>
+                {auth && !session ? 'Logga in' : title}
+                {auth && !session ? (subId === id) && <LoginForm onSuccess={refresh} />
+                  :
+                  <ul className={cn(s.sub, (menuItemIsOpen(panel[idx]) || subId === id) && s.open)}>
+                    {sub?.map(({ id, title, slug }) => (
+                      <li className={cn(pathname === slug && s.selectedSub)} key={id}>
+                        <Link href={slug}>{title}</Link>
+                      </li>
+                    ))}
+                  </ul>
+                }
+              </>
+            }
+          </li>
         )}
-        <ul className={cn(s.sub, subId === subPanel?.id && s.open)}>
-          {subPanel?.sub.map(({ id, title, slug }) => (
-            <li className={cn(pathname === slug && s.selectedSub)} key={id}>
-              <Link href={slug}>{title}</Link>
-            </li>
-          ))}
-        </ul>
       </ul >
-
-
+      {subPanel &&
+        <ul
+          className={cn(s.pane, s[position], s.show)}
+          onMouseLeave={(e) => { setSubId(null) }}
+        //style={{ width: getPanelWidth() }}
+        >
+          {subPanel.auth && !session ?
+            <li className={s.login}>
+              <LoginForm onSuccess={refresh} />
+            </li>
+            : subPanel.sub?.map(({ title, slug }, idx) =>
+              <li key={idx} className={cn(pathname === slug && s.selected)}>
+                <Link href={slug}>{title}</Link>
+              </li>
+            )}
+        </ul>
+      }
       {
         subId &&
         <div className={s.paneBackground} onClick={() => setSubId(null)} />

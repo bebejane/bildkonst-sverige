@@ -7,14 +7,20 @@ type Props = {
   data: TextBlockRecord
 }
 
-export default function TextBlock({ data: { id, texts } }: Props) {
+export default async function TextBlock({ data: { texts } }: Props) {
+
+  const links = await Promise.all(texts.filter(({ link }) => link).map(async ({ link }) => ({
+    id: link.id,
+    slug: link.__typename === 'InternalLinkRecord' ? await recordToRoute(link.link) : link?.url
+  })))
   const columns = texts.length === 1 ? s.one : texts.length === 2 ? s.two : s.three
+
   return (
     <div className={cn(s.container, columns)}>
-      {texts.map(async ({ headline, text, link }, i) => {
-        const slug = link?.__typename === 'InternalLinkRecord' ? await recordToRoute(link.link) : link?.url
-        return link ?
-          <Link key={id} href={slug} className={s.block}>
+      {texts.map(({ headline, text, link }, i) => {
+        const slug = links.find(({ id }) => id === link?.id)?.slug
+        return link && slug ?
+          <Link key={i} href={slug} className={s.block}>
             <h3>{headline}</h3>
             <p>{text}</p>
           </Link>

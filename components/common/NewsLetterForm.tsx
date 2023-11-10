@@ -10,7 +10,7 @@ export default function NewsletterForm({ }) {
 
   return (
     <form action={formAction} className={s.form}>
-      <input id="email" name="email" type="email" placeholder="E-post" required={true} />
+      <input name="email" type="email" placeholder="E-post" required={true} />
       <SubmitButton />
       {state.data && <div className={s.success}><h3>Tack för din ansökan!</h3></div>}
       {state.error && <div className={s.error}><h3>Det uppstod ett fel!</h3>{state.error}</div>}

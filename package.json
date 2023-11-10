@@ -16,6 +16,7 @@
 		"postbuild": "next-sitemap"
 	},
 	"dependencies": {
+		"@apollo/client": "^3.8.7",
 		"@datocms/cma-client-browser": "^3.0.1",
 		"@datocms/cma-client-node": "^3.0.2",
 		"@graphql-typed-document-node/core": "^3.2.0",

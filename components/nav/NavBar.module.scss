@@ -44,6 +44,7 @@
 
   .separator {
     flex: 1 1 100%;
+    pointer-events: none;
   }
 
   .menu {
@@ -72,7 +73,7 @@
       flex-direction: column;
     }
 
-    > li {
+    >li {
       position: relative;
       cursor: pointer;
       white-space: nowrap;
@@ -87,7 +88,7 @@
       }
 
       @include mq($from: desktop) {
-        > form {
+        >form {
           display: none;
         }
       }
@@ -100,6 +101,14 @@
       display: none;
       flex-direction: column;
       padding-top: var(--navbar-height);
+
+      &.left {
+        padding-left: var(--outer-margin);
+      }
+
+      &.right {
+        padding-left: var(--outer-margin);
+      }
 
       &.open {
         display: flex;
@@ -121,12 +130,12 @@
   }
 }
 
-.selected > a,
+.selected>a,
 .selected {
   color: var(--orange) !important;
 }
 
-.selectedSub > a,
+.selectedSub>a,
 .selectedSub {
   font-weight: bold;
 }

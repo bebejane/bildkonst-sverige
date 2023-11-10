@@ -81,7 +81,7 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
 
           </>
         )}
-        <ul className={cn(s.sub, subId === subPanel?.id && s.open)}>
+        <ul className={cn(s.sub, s[position], subId === subPanel?.id && s.open)}>
           {subPanel?.sub.map(({ id, title, slug }) => (
             <li className={cn(pathname === slug && s.selectedSub)} key={id}>
               <Link href={slug}>{title}</Link>
@@ -89,7 +89,6 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
           ))}
         </ul>
       </ul >
-
 
       {
         subId &&

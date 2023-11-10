@@ -12,11 +12,12 @@
   color: var(--white);
   transition: transform 0.3s ease-in-out;
   transform: translateX(100%);
+  font-size: 2rem;
+  line-height: 1.5;
 
   @include mq($from: desktop) {
     display: none;
   }
-
 
   &.show {
     transform: translateX(0%);
@@ -35,8 +36,7 @@
     list-style: none;
   }
 
-  >ul {
-
+  > ul {
     li {
       cursor: pointer;
 
@@ -47,7 +47,8 @@
           display: block;
         }
 
-        li {}
+        li {
+        }
       }
     }
   }
@@ -55,7 +56,6 @@
   .separator {
     height: 1em;
   }
-
 }
 
 .desktop {
@@ -77,11 +77,10 @@
     list-style: none;
   }
 
-  >ul>li:hover,
+  > ul > li:hover,
   a:hover {
     color: var(--orange) !important;
   }
-
 
   .separator {
     flex: 1 1 100%;
@@ -113,7 +112,7 @@
       flex-direction: column;
     }
 
-    >li {
+    > li {
       position: relative;
       cursor: pointer;
       white-space: nowrap;
@@ -128,7 +127,7 @@
       }
 
       @include mq($from: desktop) {
-        >form {
+        > form {
           display: none;
         }
       }
@@ -140,7 +139,9 @@
       left: 0;
       display: none;
       flex-direction: column;
-      padding-top: var(--navbar-height);
+      padding-top: 1.3rem;
+      font-size: 1rem;
+      line-height: 2em;
 
       &.left {
         padding-left: var(--outer-margin);
@@ -171,15 +172,14 @@
   }
 }
 
-
-.selected>a,
+.selected > a,
 .selected {
   color: var(--orange) !important;
 }
 
-.selectedSub>a,
+.selectedSub > a,
 .selectedSub {
-  font-weight: bold;
+  color: var(--orange) !important;
 }
 
 .loginForm {

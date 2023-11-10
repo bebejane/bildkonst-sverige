@@ -2,7 +2,7 @@
 
 import s from './MemberForm.module.scss'
 import { useFormState, useFormStatus } from 'react-dom'
-import { createMember } from './actions';
+import createMember from '@lib/actions/createMember';
 
 export type Props = {
   allMemberLevels: MemberPageQuery['allMemberLevels']

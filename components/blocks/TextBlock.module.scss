@@ -1,18 +1,42 @@
 .container {
   display: flex;
   flex-direction: row;
-  list-style: none;
+  flex-wrap: wrap;
+  align-items: center;
 
-  li {
+  .block {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    text-align: center;
 
-    figure {
-      .image {}
+    @include mq($until: desktop) {
+      &:not(:last-child) {
+        padding-bottom: var(--space);
+      }
 
-      .picture {}
     }
-
-    .desc {}
   }
+
+  &.one>.block {
+    flex: 0 0 100%;
+  }
+
+  &.two>.block {
+    flex: 0 0 50%;
+
+    @include mq($until: desktop) {
+      flex: 0 0 100%;
+    }
+  }
+
+  &.three>.block {
+    flex: 1 1 33.33333%;
+
+    @include mq($until: desktop) {
+      flex: 0 0 100%;
+    }
+  }
+
+
 }

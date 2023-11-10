@@ -42,7 +42,7 @@ const MobileMenu = ({ menu, pathname, open, onToggle }: { menu: Menu, pathname: 
   return (
     <>
       <nav className={cn(s.hamburger, open && s.open)}>
-        <Hamburger toggled={open} toggle={() => onToggle(!open)} />
+        <Hamburger size={30} toggled={open} toggle={() => onToggle(!open)} />
       </nav>
       <nav className={cn(s.mobile, open && s.show)}>
         <ul className={s.menu}>

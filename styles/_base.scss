@@ -22,7 +22,7 @@
 	--z-hamburger: 1200;
 
 	@include mq($until: desktop) {
-		--outer-margin: 1rem;
+		--outer-margin: 0.8rem;
 	}
 }
 
@@ -53,6 +53,8 @@ article {
 }
 
 .grid {
+	display: flex;
+	flex-direction: column;
 	@include mq($from: desktop) {
 		display: grid;
 		column-gap: var(--gutter);

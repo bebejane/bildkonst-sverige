@@ -31,6 +31,10 @@
     }
   }
 
+  .hamburger {
+    background-color: green;
+  }
+
   ul {
     text-align: center;
     list-style: none;
@@ -244,7 +248,7 @@
 .hamburger {
   position: fixed;
   top: 0;
-  right: 0;
+  right: 0.2em;
   z-index: var(--z-hamburger);
   color: var(--black);
 

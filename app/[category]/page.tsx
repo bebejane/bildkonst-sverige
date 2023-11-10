@@ -37,7 +37,7 @@ export default async function Page({ params }: { params: { category: string } })
               <li key={id}>
                 <Link href={`/${category.slug}/${slug}`}>
                   <h2>{title}</h2>
-                  <div className={s.wrap}>
+                  <div className="grid">
                     <div className={cn(s.content, "intro")}>
                       <span className="date">{format(new Date(_publishedAt), 'd MMMM yyyy')}</span>
                       <StructuredContent content={intro} id={id} />

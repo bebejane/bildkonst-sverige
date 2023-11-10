@@ -5,7 +5,11 @@
   margin-top: 1em;
   margin-bottom: 2em;
   background-color: var(--black);
-  padding: var(--outer-margin);
+  padding: var(--space-small);
+
+  @include mq($from: desktop) {
+    padding: var(--outer-margin);
+  }
 
   button,
   label {

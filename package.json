@@ -3,7 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "pnpm i ; npm run dev:watch",
+		"dev": "npm run dev:watch",
 		"dev:watch": "next dev & npm run codegen",
 		"dev:email": "email dev",
 		"build": "next build && npm run postbuild",

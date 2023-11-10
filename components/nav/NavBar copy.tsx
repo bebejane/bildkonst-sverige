@@ -14,7 +14,7 @@ type Props = {
   menu: Menu
 }
 
-export default function NavBar({ menu }: Props) {
+export default function NavBarOld({ menu }: Props) {
 
 
   const { isPageTop, scrolledPosition } = useScrollInfo()

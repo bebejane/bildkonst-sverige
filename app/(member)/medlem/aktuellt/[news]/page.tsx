@@ -5,15 +5,9 @@ import { AllNewsDocument, NewsDocument } from "@graphql";
 import { apiQuery } from "@lib/client";
 import { notFound } from 'next/navigation';
 
-export async function generateStaticParams() {
-  const { allNews } = await apiQuery<AllNewsQuery, AllNewsQueryVariables>(AllNewsDocument);
-  return allNews.map(({ slug }) => ({ slug }))
-}
+export default async function NewsPage({ params }: { params: { news: string } }) {
 
-
-export default async function NewsPage({ params: { slug } }: { params: { slug: string } }) {
-
-  const { news } = await apiQuery<NewsQuery, NewsQueryVariables>(NewsDocument, { variables: { slug } })
+  const { news } = await apiQuery<NewsQuery, NewsQueryVariables>(NewsDocument, { variables: { slug: params.news } })
 
   if (!news) return notFound();
 
@@ -22,4 +16,9 @@ export default async function NewsPage({ params: { slug } }: { params: { slug: s
   return (
     <Article id={id} title={title} intro={intro} image={image as FileField} content={content} />
   );
+}
+
+export async function generateStaticParams() {
+  const { allNews } = await apiQuery<AllNewsQuery, AllNewsQueryVariables>(AllNewsDocument);
+  return allNews.map(({ slug: news }) => ({ NewsPage }))
 }

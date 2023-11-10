@@ -12,15 +12,10 @@ import { format } from 'date-fns';
 import { Image } from 'react-datocms/image';
 import cn from 'classnames';
 
-export async function generateStaticParams() {
-  const { allPoliticCategories } = await apiQuery<AllPoliticCategoriesQuery, AllPoliticCategoriesQueryVariables>(AllPoliticCategoriesDocument);
-  return allPoliticCategories.map(({ slug: category }) => ({ category }))
-}
-
-export default async function Page({ params }: { params: { category: string } }) {
+export default async function Page({ params }: { params: { politicCategory: string } }) {
 
   const { politicCategory, draftUrl } = await apiQuery<AllPoliticByCategoryQuery, AllPoliticByCategoryQueryVariables>(AllPoliticByCategoryDocument, {
-    variables: { slug: params.category },
+    variables: { slug: params.politicCategory },
     includeDrafts: draftMode().isEnabled
   })
 
@@ -61,4 +56,9 @@ export default async function Page({ params }: { params: { category: string } })
       <DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={politicCategory.id} />
     </>
   );
+}
+
+export async function generateStaticParams() {
+  const { allPoliticCategories } = await apiQuery<AllPoliticCategoriesQuery, AllPoliticCategoriesQueryVariables>(AllPoliticCategoriesDocument);
+  return allPoliticCategories.map(({ slug: politicCategory }) => ({ politicCategory }))
 }

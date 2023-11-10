@@ -8,15 +8,10 @@ import { draftMode } from 'next/headers';
 import Article from '@components/Article';
 import { Metadata } from "next";
 
-export async function generateStaticParams() {
-  const { allAbouts } = await apiQuery<AllAboutsQuery, AllAboutsQueryVariables>(AllAboutsDocument, { generateTags: true });
-  return allAbouts.map(({ slug }) => ({ slug }))
-}
-
-export default async function Page({ params: { slug } }: { params: { slug: string } }) {
+export default async function Page({ params }: { params: { about: string } }) {
 
   const { about, draftUrl } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument, {
-    variables: { slug },
+    variables: { slug: params.about },
     includeDrafts: draftMode().isEnabled
   })
 
@@ -32,8 +27,13 @@ export default async function Page({ params: { slug } }: { params: { slug: strin
   );
 }
 
+export async function generateStaticParams() {
+  const { allAbouts } = await apiQuery<AllAboutsQuery, AllAboutsQueryVariables>(AllAboutsDocument, { generateTags: true });
+  return allAbouts.map(({ slug: about }) => ({ about }))
+}
+
 export async function generateMetadata({ params }) {
-  const { about } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument, { variables: { slug: params.slug } })
+  const { about } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument, { variables: { slug: params.about } })
 
   return {
     title: about.title,

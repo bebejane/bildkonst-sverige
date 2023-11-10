@@ -8,14 +8,9 @@ import { draftMode } from 'next/headers';
 import Link from 'next/link';
 import Article from '@components/Article';
 
-export async function generateStaticParams() {
-  const { allPolitics } = await apiQuery<AllPoliticQuery, AllPoliticQueryVariables>(AllPoliticDocument, { generateTags: true });
-  return allPolitics.map(({ slug, category }) => ({ slug }))
-}
-
-export default async function Page({ params: { slug } }: { params: { slug: string } }) {
+export default async function Page({ params }: { params: { politic: string } }) {
   const { politic, draftUrl } = await apiQuery<PoliticQuery, PoliticQueryVariables>(PoliticDocument, {
-    variables: { slug },
+    variables: { slug: params.politic },
     includeDrafts: draftMode().isEnabled
   })
 
@@ -40,4 +35,9 @@ export default async function Page({ params: { slug } }: { params: { slug: strin
       <DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={id} />
     </>
   );
+}
+
+export async function generateStaticParams() {
+  const { allPolitics } = await apiQuery<AllPoliticQuery, AllPoliticQueryVariables>(AllPoliticDocument, { generateTags: true });
+  return allPolitics.map(({ slug: politic }) => ({ politic }))
 }

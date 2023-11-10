@@ -28,6 +28,13 @@
 
     span {
       padding-right: 1em;
+
+      @include mq($from: desktop) {
+        &:hover {
+          cursor: pointer;
+          color: var(--orange);
+        }
+      }
     }
   }
 
@@ -35,10 +42,42 @@
     @include mq($until: tablet) {
       display: none;
     }
+
     flex: 1 1 100%;
     text-align: center;
     padding: 0;
     margin: 0;
     text-transform: uppercase;
+  }
+}
+
+.newsletter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--orange);
+  height: 100vh;
+  width: 100%;
+  z-index: 10000000;
+  transform: translateY(100%);
+  transition: transform 0.3s ease-in-out;
+
+  button {}
+
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: var(--outer-margin) !important;
+    width: auto;
+
+  }
+
+  &.show {
+    transform: translateY(0%);
   }
 }

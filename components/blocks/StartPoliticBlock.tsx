@@ -3,7 +3,7 @@ import cn from 'classnames'
 import Link from "next/link"
 import { Image } from "react-datocms"
 import { format } from "date-fns"
-import StructuredContent from '@components/common/StructuredContent'
+import StructuredContent from '@components/StructuredContent'
 
 type Props = {
   data: StartPoliticBlockRecord & {

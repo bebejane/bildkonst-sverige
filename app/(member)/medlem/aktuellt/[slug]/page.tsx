@@ -1,6 +1,6 @@
 'use server'
 
-import Article from '@components/layout/Article';
+import Article from '@components/Article';
 import { AllNewsDocument, NewsDocument } from "@graphql";
 import { apiQuery } from "@lib/client";
 import { notFound } from 'next/navigation';

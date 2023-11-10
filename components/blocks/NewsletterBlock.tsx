@@ -1,5 +1,5 @@
 import s from './NewsletterBlock.module.scss'
-import NewsletterForm from '@components/common/NewsLetterForm'
+import NewsletterForm from '@components/NewsLetterForm'
 
 type Props = {
   data: NewsletterBlockRecord

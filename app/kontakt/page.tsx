@@ -1,7 +1,7 @@
 'use server'
 
 import s from './page.module.scss'
-import Article from '@components/layout/Article';
+import Article from '@components/Article';
 import { ContactDocument } from "@graphql";
 import { apiQuery } from "@lib/client";
 import { draftMode } from 'next/headers';

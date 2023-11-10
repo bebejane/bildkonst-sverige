@@ -1,8 +1,8 @@
 'use server'
 
 import '@styles/index.scss'
-import NavBar from '@components/nav/NavBar';
-import Footer from '@components/nav/Footer';
+import NavBar from '@components/NavBar';
+import Footer from '@components/Footer';
 import { apiQuery } from '@lib/client';
 import { GlobalDocument } from '@graphql';
 import { Metadata } from 'next';

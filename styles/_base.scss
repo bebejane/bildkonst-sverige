@@ -44,11 +44,6 @@ html {
 main {
 	padding-top: calc(var(--navbar-height) + 1.5rem);
 	min-height: calc(100vh);
-
-	&.slide-up {
-		transform: translateY(-100vh);
-		transition: transform 0.3s ease-in-out;
-	}
 }
 
 article {
@@ -60,6 +55,7 @@ article {
 .grid {
 	display: flex;
 	flex-direction: column;
+
 	@include mq($from: desktop) {
 		display: grid;
 		column-gap: var(--gutter);
@@ -73,6 +69,7 @@ figure {
 			padding-left: var(--space);
 			padding-right: var(--space);
 		}
+
 		@include mq($from: desktop) {
 			display: grid;
 			grid-column-start: 4;
@@ -84,6 +81,7 @@ figure {
 .content {
 	figure {
 		margin-bottom: var(--space-small);
+
 		@include mq($from: desktop) {
 			margin-bottom: var(--space);
 		}
@@ -95,6 +93,7 @@ figure {
 }
 
 .structured {
+
 	p,
 	blockquote,
 	ul,
@@ -191,21 +190,18 @@ a {
 		color: var(--orange);
 	}
 
-	&:visited {
-	}
+	&:visited {}
 }
 
 figcaption {
-	@include mq($until: tablet) {
-	}
+	@include mq($until: tablet) {}
 }
 
 .date {
 	padding-right: 1em;
 }
 
-hr {
-}
+hr {}
 
 input,
 textarea,
@@ -217,8 +213,7 @@ select {
 	font-family: $nav-font;
 	background-color: var(--white);
 
-	&:focus {
-	}
+	&:focus {}
 }
 
 select {

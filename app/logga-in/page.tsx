@@ -1,6 +1,6 @@
 'use server'
 
-import Article from '@components/layout/Article'
+import Article from '@components/Article'
 import LoginForm from './LoginForm'
 
 export default async function Login() {

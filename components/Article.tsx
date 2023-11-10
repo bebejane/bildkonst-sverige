@@ -1,7 +1,7 @@
 'use server'
 
 import cn from 'classnames';
-import StructuredContent from '@components/common/StructuredContent';
+import StructuredContent from '@components/StructuredContent';
 import { format } from 'date-fns';
 import { Image } from 'react-datocms';
 
@@ -31,13 +31,13 @@ export default async function Article({
     <article className={className}>
       <div className="content">
         <h1>{title}</h1>
-        {image && <>
+        {image &&
           <div className="grid">
             <figure className="small">
               <Image data={image.responsiveImage} />
+              <figcaption>{image.title}</figcaption>
             </figure>
           </div>
-        </>
         }
         {intro &&
           <section className="intro">

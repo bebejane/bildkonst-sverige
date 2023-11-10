@@ -12,8 +12,8 @@
   color: var(--white);
   transition: transform 0.3s ease-in-out;
   transform: translateX(100%);
-  font-size: 2rem;
-  line-height: 1.5;
+  font-size: 1.5rem;
+  line-height: 1.8;
 
   @include mq($from: desktop) {
     display: none;

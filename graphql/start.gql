@@ -22,7 +22,7 @@ query Start {
 						... on InternalLinkRecord {
 							__typename
 							id
-							label
+							title
 							link {
 								__typename
 								... on PoliticRecord {
@@ -42,7 +42,7 @@ query Start {
 						... on ExternalLinkRecord {
 							__typename
 							id
-							label
+							title
 							url
 						}
 					}

@@ -32,9 +32,18 @@ query Start {
 									...AboutLightFragment
 								}
 								... on ContactPageRecord {
-									id
+									...ContactPageFragment
+								}
+								... on MemberPageRecord {
+									...MemberPageFragment
 								}
 							}
+						}
+						... on ExternalLinkRecord {
+							__typename
+							id
+							label
+							url
 						}
 					}
 				}

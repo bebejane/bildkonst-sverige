@@ -1,14 +1,18 @@
 query Contact {
 	contactPage {
-		id
-		intro {
-			blocks
-			links
-			value
-		}
-		slug
-		staff {
-			...StaffFragment
-		}
+		...ContactPageFragment
+	}
+}
+
+fragment ContactPageFragment on ContactPageRecord {
+	id
+	intro {
+		blocks
+		links
+		value
+	}
+	slug
+	staff {
+		...StaffFragment
 	}
 }

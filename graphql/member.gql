@@ -1,20 +1,24 @@
 query MemberPage {
 	memberPage {
-		id
-		title
-		intro {
-			blocks
-			links
-			value
-		}
-		content {
-			blocks
-			links
-			value
-		}
-		slug
+		...MemberPageFragment
 	}
 	allMemberLevels(orderBy: level_ASC) {
 		...MemberLevelFragment
 	}
+}
+
+fragment MemberPageFragment on MemberPageRecord {
+	id
+	title
+	intro {
+		blocks
+		links
+		value
+	}
+	content {
+		blocks
+		links
+		value
+	}
+	slug
 }

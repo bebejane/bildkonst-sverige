@@ -110,9 +110,9 @@ const MenuPanel = ({ position, menu, pathname }: { position: 'left' | 'right', m
         {panel.map(({ id, title, slug, href, sub, auth }, idx) =>
           <li
             key={id}
-            className={cn((isMenuItemIsOpen(pathname, panel[idx]) || subId === id) && s.selected)}
+            className={cn((isMenuItemIsOpen(pathname, panel[idx])) && s.selected)}
             onMouseEnter={(e) => { sub ? setSubId(id) : setSubId(null) }}
-            onClick={(e) => { sub ? setSubId(subId === id ? null : id) : setSubId(null) }}
+            onClick={(e) => { sub && setSubId(id) }}
           >
             {!sub ?
               <Link href={slug ?? href}>{title}</Link>

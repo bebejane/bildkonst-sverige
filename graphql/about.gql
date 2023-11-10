@@ -8,26 +8,36 @@ query AllAbouts {
 
 query About($slug: String!) {
 	about(filter: { slug: { eq: $slug } }) {
-		id
-		slug
-		title
-		intro {
-			blocks
-			links
-			value
-		}
-		content {
-			blocks {
-				... on PeopleCollectionBlockRecord {
-					__typename
-					id
-					people {
-						...StaffFragment
-					}
+		...AboutFragment
+	}
+}
+
+fragment AboutLightFragment on AboutRecord {
+	id
+	slug
+	title
+}
+
+fragment AboutFragment on AboutRecord {
+	id
+	slug
+	title
+	intro {
+		blocks
+		links
+		value
+	}
+	content {
+		blocks {
+			... on PeopleCollectionBlockRecord {
+				__typename
+				id
+				people {
+					...StaffFragment
 				}
 			}
-			links
-			value
 		}
+		links
+		value
 	}
 }

@@ -10,11 +10,12 @@ import MemberForm from './MemberForm';
 
 export default async function Membership() {
 
-  const { memberIntro, allMemberLevels, draftUrl } = await apiQuery<MemberPageQuery, MemberPageQueryVariables>(MemberPageDocument)
+  const { memberPage, allMemberLevels, draftUrl } = await apiQuery<MemberPageQuery, MemberPageQueryVariables>(MemberPageDocument)
+  const { id, title, intro, content } = memberPage
 
   return (
     <>
-      <Article className={s.container} id="membership" title="Bli medlem" intro={memberIntro.intro} content={memberIntro.content}>
+      <Article id={id} className={s.container} title={title} intro={intro} content={content}>
         <div className="structured grid">
           <ul className={s.levels}>
             {allMemberLevels.map(({ id, level, turnoverMax, turnoverMin }) =>
@@ -28,7 +29,7 @@ export default async function Membership() {
           <MemberForm allMemberLevels={allMemberLevels} />
         </div>
       </Article>
-      {< DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={memberIntro.id} />}
+      {<DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={memberPage.id} />}
     </>
   );
 }

@@ -12,6 +12,33 @@ query Start {
 				}
 				layout
 			}
+			... on TextBlockRecord {
+				id
+				texts {
+					id
+					headline
+					text
+					link {
+						... on InternalLinkRecord {
+							__typename
+							id
+							label
+							link {
+								__typename
+								... on PoliticRecord {
+									...PoliticLightFragment
+								}
+								... on AboutRecord {
+									...AboutLightFragment
+								}
+								... on ContactPageRecord {
+									id
+								}
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }

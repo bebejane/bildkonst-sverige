@@ -34,13 +34,13 @@ const routes: Routes = {
     typeName: "AboutRecord",
     path: async (item) => `/om-oss/${item.slug}`
   },
-  "contact": {
-    typeName: "ContactRecord",
-    path: async (item) => '/kontakt'
+  "contact_page": {
+    typeName: "ContactPageRecord",
+    path: async (item) => `/kontakt`
   },
-  "member_intro": {
-    typeName: "MemberIntroRecord",
-    path: async (item) => '/bli-medlem'
+  "member_page": {
+    typeName: "MemberPageRecord",
+    path: async (item) => `/bli-medlem`
   },
   "member_level": {
     typeName: "MemberLevelRecord",

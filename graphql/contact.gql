@@ -1,11 +1,12 @@
 query Contact {
-	contact {
+	contactPage {
 		id
 		intro {
 			blocks
 			links
 			value
 		}
+		slug
 		staff {
 			...StaffFragment
 		}

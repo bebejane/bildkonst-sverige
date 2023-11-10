@@ -1,6 +1,7 @@
 query MemberPage {
-	memberIntro {
+	memberPage {
 		id
+		title
 		intro {
 			blocks
 			links
@@ -11,6 +12,7 @@ query MemberPage {
 			links
 			value
 		}
+		slug
 	}
 	allMemberLevels(orderBy: level_ASC) {
 		...MemberLevelFragment

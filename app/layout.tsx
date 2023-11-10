@@ -1,6 +1,7 @@
 'use server'
 
 import '@styles/index.scss'
+import s from './layout.module.scss';
 import NavBar from '@components/nav/NavBar';
 import Footer from '@components/nav/Footer';
 import { apiQuery } from '@lib/client';
@@ -19,7 +20,7 @@ export default async function RootLayout({ children }: LayoutProps) {
 
   return (
     <html lang="sv">
-      <body id="root" className={"body-intro"}>
+      <body id="root" className={s.intro}>
         <NavBar menu={menu} />
         <main>
           {children}

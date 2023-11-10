@@ -21,8 +21,6 @@
 	--z-logo: 1100;
 	--z-hamburger: 1200;
 
-	--body-intro-speed: 2000ms;
-
 	@include mq($until: desktop) {
 		--outer-margin: 1rem;
 	}

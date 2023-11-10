@@ -1,7 +1,6 @@
 'use server'
 
 import '@styles/index.scss'
-import s from './layout.module.scss';
 import NavBar from '@components/nav/NavBar';
 import Footer from '@components/nav/Footer';
 import { apiQuery } from '@lib/client';

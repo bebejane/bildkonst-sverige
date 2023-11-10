@@ -33,7 +33,7 @@ export default function NavBar({ menu }: Props) {
         <Hamburger toggled={open} toggle={() => setOpen(!open)} />
       </nav>
 
-      <nav className={cn(s.navbar, open && s.show)}>
+      <nav className={cn(s.desktop, open && s.show)}>
         <MenuPanel position={'left'} menu={menu} />
         <div className={s.separator} />
         <MenuPanel position={'right'} menu={menu} />
@@ -73,27 +73,24 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
               {!sub ?
                 <Link href={slug ?? href}>{title}</Link>
                 :
-                <>
-                  {title}
-                </>
+                auth && !session ? <>Logga in</> : <>{title}</>
               }
             </li>
-
           </>
         )}
         <ul className={cn(s.sub, s[position], subId === subPanel?.id && s.open)}>
-          {subPanel?.sub.map(({ id, title, slug }) => (
-            <li className={cn(pathname === slug && s.selectedSub)} key={id}>
-              <Link href={slug}>{title}</Link>
+          {subPanel?.auth && !session ?
+            <li className={s.login}>
+              <LoginForm onSuccess={() => refresh()} />
             </li>
-          ))}
+            :
+            subPanel?.sub.map(({ id, title, slug }) => (
+              <li className={cn(pathname === slug && s.selectedSub)} key={id}>
+                <Link href={slug}>{title}</Link>
+              </li>
+            ))}
         </ul>
-      </ul >
-
-      {
-        subId &&
-        <div className={s.paneBackground} onClick={() => setSubId(null)} />
-      }
+      </ul>
     </>
   )
 }

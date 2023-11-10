@@ -5,7 +5,7 @@ import Article from '@components/Article';
 import { ContactDocument } from "@graphql";
 import { apiQuery } from "@lib/client";
 import { draftMode } from 'next/headers';
-import { Image } from 'react-datocms';
+import { Image, Metadata } from 'react-datocms';
 import DraftMode from '@lib/dato-nextjs-utils/components/DraftMode';
 import { notFound } from 'next/navigation';
 
@@ -37,3 +37,11 @@ export default async function Contact() {
     </>
   );
 }
+
+export async function generateMetadata({ params }) {
+
+  return {
+    title: 'Kontakt',
+  } as Metadata
+}
+

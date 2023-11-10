@@ -3,6 +3,7 @@
 import Article from '@components/Article';
 import { AllToolsDocument, ToolDocument } from "@graphql";
 import { apiQuery } from "@lib/client";
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
 export default async function ToolPage({ params }: { params: { tool: string } }) {
@@ -21,4 +22,12 @@ export default async function ToolPage({ params }: { params: { tool: string } })
 export async function generateStaticParams() {
   const { allTools } = await apiQuery<AllToolsQuery, AllToolsQueryVariables>(AllToolsDocument);
   return allTools.map(({ slug: tool }) => ({ tool }))
+}
+
+export async function generateMetadata({ params }) {
+  const { tool } = await apiQuery<ToolQuery, ToolQueryVariables>(ToolDocument, { variables: { slug: params.tool } })
+
+  return {
+    title: tool.title,
+  } as Metadata
 }

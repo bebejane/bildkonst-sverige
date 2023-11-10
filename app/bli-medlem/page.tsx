@@ -7,6 +7,7 @@ import { apiQuery } from "@lib/client";
 import DraftMode from '@lib/dato-nextjs-utils/components/DraftMode';
 import { draftMode } from 'next/headers';
 import MemberForm from './MemberForm';
+import { Metadata } from 'next';
 
 export default async function Membership() {
 
@@ -33,3 +34,11 @@ export default async function Membership() {
     </>
   );
 }
+
+export async function generateMetadata({ params }) {
+
+  return {
+    title: 'Bli medlem',
+  } as Metadata
+}
+

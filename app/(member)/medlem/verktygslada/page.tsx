@@ -3,6 +3,7 @@
 import s from './page.module.scss'
 import { AllToolsDocument } from "@graphql";
 import { apiQuery } from "@lib/client";
+import { Metadata } from 'next';
 import Link from 'next/link';
 
 export default async function Tools() {
@@ -21,3 +22,11 @@ export default async function Tools() {
     </article>
   );
 }
+
+export async function generateMetadata({ params }) {
+
+  return {
+    title: 'Verktygslåda',
+  } as Metadata
+}
+

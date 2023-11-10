@@ -3,6 +3,7 @@
 import s from './page.module.scss'
 import { AllNewsDocument } from "@graphql";
 import { apiQuery } from "@lib/client";
+import { Metadata } from 'next';
 import Link from 'next/link';
 
 export default async function News() {
@@ -20,4 +21,11 @@ export default async function News() {
       </ul>
     </article>
   );
+}
+
+export async function generateMetadata({ params }) {
+
+  return {
+    title: 'Aktuellt',
+  } as Metadata
 }

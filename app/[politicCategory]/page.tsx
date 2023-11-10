@@ -11,6 +11,7 @@ import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
 import { Image } from 'react-datocms/image';
 import cn from 'classnames';
+import { Metadata } from 'next';
 
 export default async function Page({ params }: { params: { politicCategory: string } }) {
 
@@ -61,4 +62,14 @@ export default async function Page({ params }: { params: { politicCategory: stri
 export async function generateStaticParams() {
   const { allPoliticCategories } = await apiQuery<AllPoliticCategoriesQuery, AllPoliticCategoriesQueryVariables>(AllPoliticCategoriesDocument);
   return allPoliticCategories.map(({ slug: politicCategory }) => ({ politicCategory }))
+}
+
+export async function generateMetadata({ params }) {
+  const { politicCategory } = await apiQuery<AllPoliticByCategoryQuery, AllPoliticByCategoryQueryVariables>(AllPoliticByCategoryDocument, {
+    variables: { slug: params.politicCategory }
+  })
+
+  return {
+    title: politicCategory.title,
+  } as Metadata
 }

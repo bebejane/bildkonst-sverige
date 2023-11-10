@@ -2,6 +2,7 @@
 
 import Article from '@components/Article'
 import LoginForm from './LoginForm'
+import { Metadata } from 'next';
 
 export default async function Login() {
 
@@ -11,3 +12,11 @@ export default async function Login() {
     </Article>
   );
 }
+
+export async function generateMetadata({ params }) {
+
+  return {
+    title: 'Logga in',
+  } as Metadata
+}
+

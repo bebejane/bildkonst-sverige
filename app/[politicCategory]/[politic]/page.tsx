@@ -7,8 +7,10 @@ import DraftMode from '@lib/dato-nextjs-utils/components/DraftMode';
 import { draftMode } from 'next/headers';
 import Link from 'next/link';
 import Article from '@components/Article';
+import { Metadata } from "next";
 
 export default async function Page({ params }: { params: { politic: string } }) {
+
   const { politic, draftUrl } = await apiQuery<PoliticQuery, PoliticQueryVariables>(PoliticDocument, {
     variables: { slug: params.politic },
     includeDrafts: draftMode().isEnabled
@@ -40,4 +42,14 @@ export default async function Page({ params }: { params: { politic: string } }) 
 export async function generateStaticParams() {
   const { allPolitics } = await apiQuery<AllPoliticQuery, AllPoliticQueryVariables>(AllPoliticDocument, { generateTags: true });
   return allPolitics.map(({ slug: politic }) => ({ politic }))
+}
+
+export async function generateMetadata({ params }) {
+  const { politic } = await apiQuery<PoliticQuery, PoliticQueryVariables>(PoliticDocument, {
+    variables: { slug: params.politic }
+  })
+
+  return {
+    title: politic.title,
+  } as Metadata
 }

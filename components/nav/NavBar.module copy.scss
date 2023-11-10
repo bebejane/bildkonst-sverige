@@ -7,6 +7,8 @@
   flex-direction: row;
   align-items: center;
   width: 100%;
+  padding-left: var(--outer-margin);
+  padding-right: var(--outer-margin);
 
   @include mq($until: desktop) {
     flex-direction: column;
@@ -41,29 +43,26 @@
     }
   }
 
-  .separator {
-    flex: 1 1 100%;
-  }
-
   .menu {
-    position: relative;
-    flex: 1 1 auto;
+    flex: 0 0 50%;
     list-style: none;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
-    height: 100vh;
+    align-items: center;
+    width: 100%;
+    height: var(--navbar-height);
     z-index: var(--z-navbar);
-    padding-left: var(--outer-margin);
-    padding-right: var(--outer-margin);
 
     &.left {
       justify-content: flex-start;
-
     }
 
     &.right {
       justify-content: flex-end;
+
+      @include mq($until: desktop) {
+        padding-top: 1em;
+      }
     }
 
 
@@ -73,15 +72,12 @@
       flex-direction: column;
     }
 
-    >li {
+    li {
       position: relative;
       cursor: pointer;
       white-space: nowrap;
       margin-right: 1ch;
       text-align: center;
-      height: var(--navbar-height);
-      display: flex;
-      align-items: center;
 
       &:last-child {
         margin-right: 0;
@@ -93,26 +89,24 @@
         }
       }
 
-
-
-    }
-
-    .sub {
-      position: absolute;
-      top: var(--navbar-height);
-      left: 0;
-      display: none;
-      flex-direction: column;
-      padding-top: var(--navbar-height);
-
-      &.open {
-        display: flex;
+      .sub {
+        display: none;
       }
 
+      @include mq($until: desktop) {
+        flex: 1 1;
+        margin-right: 0;
+
+        .sub {
+          &.open {
+            display: block;
+            margin-bottom: 1em;
+          }
+        }
+      }
     }
 
     &.open {
-      background-color: var(--black);
 
       li,
       a {

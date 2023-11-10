@@ -1,5 +1,11 @@
+query Site {
+	site: _site {
+		...SiteFragment
+	}
+}
+
 fragment SiteFragment on Site {
-	favicon: faviconMetaTags {
+	faviconMetaTags {
 		attributes
 		content
 		tag
@@ -8,6 +14,8 @@ fragment SiteFragment on Site {
 		facebookPageUrl
 		siteName
 		titleSuffix
+		twitterAccount
+		facebookPageUrl
 		twitterAccount
 		fallbackSeo {
 			description

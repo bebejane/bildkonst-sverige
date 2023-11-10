@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import DraftMode from '@lib/dato-nextjs-utils/components/DraftMode';
 import { draftMode } from 'next/headers';
 import Article from '@components/Article';
+import { Metadata } from "next";
 
 export async function generateStaticParams() {
   const { allAbouts } = await apiQuery<AllAboutsQuery, AllAboutsQueryVariables>(AllAboutsDocument, { generateTags: true });
@@ -29,4 +30,12 @@ export default async function Page({ params: { slug } }: { params: { slug: strin
       <DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={id} />
     </>
   );
+}
+
+export async function generateMetadata({ params }) {
+  const { about } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument, { variables: { slug: params.slug } })
+
+  return {
+    title: about.title,
+  } as Metadata
 }

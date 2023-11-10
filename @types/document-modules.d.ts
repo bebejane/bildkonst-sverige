@@ -84,15 +84,6 @@ declare module '*/SEOFragment.gql' {
 }
     
 
-declare module '*/SiteFragment.gql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const SiteFragment: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
 declare module '*/StaffFragment.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -163,10 +154,11 @@ export const AllPoliticCategories: DocumentNode;
 }
     
 
-declare module '*/seo.gql' {
+declare module '*/site.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const Site: DocumentNode;
+export const SiteFragment: DocumentNode;
 
   export default defaultDocument;
 }

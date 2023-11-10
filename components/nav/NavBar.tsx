@@ -10,15 +10,15 @@ import Hamburger from 'hamburger-react'
 import useNextAuthSession from "@lib/hooks/useNextAuthSession";
 import { Menu, MenuItem } from "@lib/menu";
 import { useScrollInfo } from 'dato-nextjs-utils/hooks'
+import React from "react";
 type Props = {
   menu: Menu
 }
 
 export default function NavBar({ menu }: Props) {
 
-
-  const { isPageTop, scrolledPosition } = useScrollInfo()
   const pathname = usePathname()
+  const { isPageTop, scrolledPosition } = useScrollInfo()
   const [open, setOpen] = useState(false)
 
   useEffect(() => { setOpen(false) }, [pathname])
@@ -28,32 +28,77 @@ export default function NavBar({ menu }: Props) {
       <h1 className={cn(s.logo, (scrolledPosition > 0 && !open) && s.onScroll, open && s.open, "logo")}>
         <Link href={'/'}>Bildkonst<br />sverige</Link>
       </h1>
-
-      <nav className={cn(s.hamburger, open && s.open)}>
-        <Hamburger toggled={open} toggle={() => setOpen(!open)} />
-      </nav>
-
-      <nav className={cn(s.desktop, open && s.show)}>
-        <MenuPanel position={'left'} menu={menu} />
-        <div className={s.separator} />
-        <MenuPanel position={'right'} menu={menu} />
-      </nav>
+      <DesktopMenu menu={menu} pathname={pathname} />
+      <MobileMenu menu={menu} pathname={pathname} open={open} onToggle={(val) => setOpen(val)} />
     </>
   );
 }
 
-const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu }) => {
+const MobileMenu = ({ menu, pathname, open, onToggle }: { menu: Menu, pathname: string, open: boolean, onToggle: (o: boolean) => void }) => {
 
-  const ref = useRef<HTMLUListElement>(null)
   const { session, error, status, refresh } = useNextAuthSession()
-  const pathname = usePathname()
+  const [subId, setSubId] = useState<string | null>(null)
+
+  return (
+    <>
+      <nav className={cn(s.hamburger, open && s.open)}>
+        <Hamburger toggled={open} toggle={() => onToggle(!open)} />
+      </nav>
+      <nav className={cn(s.mobile, open && s.show)}>
+        <ul className={s.menu}>
+          {menu.map(({ id, title, slug, href, sub, auth }, idx) =>
+            <React.Fragment key={idx}>
+              {menu[idx].position !== menu[idx - 1]?.position &&
+                <div className={s.separator} />
+              }
+              <li
+                className={cn((isMenuItemIsOpen(pathname, menu[idx]) || subId === id) && s.selected)}
+                onClick={(e) => { sub ? setSubId(subId === id ? null : id) : setSubId(null) }}
+              >
+                {!sub ?
+                  <Link href={slug ?? href}>{title}</Link>
+                  :
+                  auth && !session ? <>Logga in</> : <>{title}</>
+                }
+                <ul className={cn(s.sub, (subId === id || isMenuItemIsOpen(pathname, menu[idx])) && s.open)}>
+                  {auth && !session ?
+                    <li className={s.login}>
+                      <LoginForm onSuccess={() => refresh()} />
+                    </li>
+                    :
+                    sub?.map(({ id, title, slug }) => (
+                      <li className={cn(pathname === slug && s.selectedSub)} key={id}>
+                        <Link href={slug}>{title}</Link>
+                      </li>
+                    ))}
+                </ul>
+              </li>
+            </React.Fragment>
+          )}
+        </ul>
+      </nav>
+    </>
+  )
+
+}
+
+const DesktopMenu = ({ menu, pathname }: { menu: Menu, pathname: string }) => {
+
+  return (
+    <nav className={s.desktop}>
+      <MenuPanel position={'left'} menu={menu} pathname={pathname} />
+      <div className={s.separator} />
+      <MenuPanel position={'right'} menu={menu} pathname={pathname} />
+    </nav>
+  )
+}
+
+const MenuPanel = ({ position, menu, pathname }: { position: 'left' | 'right', menu: Menu, pathname: string }) => {
+
+  const { session, error, status, refresh } = useNextAuthSession()
   const panel = menu.filter((el) => el.position === position)
   const [subId, setSubId] = useState<string | null>(null)
   const subPanel = panel?.find(({ id }) => subId === id)
-
-  const menuItemIsOpen = (item: MenuItem) => {
-    return item.slug === pathname || item.sub?.find(({ slug }) => pathname === slug) !== undefined
-  }
 
   useEffect(() => {
     setSubId(null)
@@ -61,22 +106,20 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
 
   return (
     <>
-      <ul className={cn(s.menu, s[position], subId && s.open)} ref={ref}>
+      <ul className={cn(s.menu, s[position], subId && s.open)} onMouseLeave={(e) => { setSubId(null) }}>
         {panel.map(({ id, title, slug, href, sub, auth }, idx) =>
-          <>
-            <li
-              key={idx}
-              className={cn((menuItemIsOpen(panel[idx]) || subId === id) && s.selected)}
-              onMouseEnter={(e) => { sub ? setSubId(id) : setSubId(null) }}
-              onClick={(e) => { sub ? setSubId(subId === id ? null : id) : setSubId(null) }}
-            >
-              {!sub ?
-                <Link href={slug ?? href}>{title}</Link>
-                :
-                auth && !session ? <>Logga in</> : <>{title}</>
-              }
-            </li>
-          </>
+          <li
+            key={id}
+            className={cn((isMenuItemIsOpen(pathname, panel[idx]) || subId === id) && s.selected)}
+            onMouseEnter={(e) => { sub ? setSubId(id) : setSubId(null) }}
+            onClick={(e) => { sub ? setSubId(subId === id ? null : id) : setSubId(null) }}
+          >
+            {!sub ?
+              <Link href={slug ?? href}>{title}</Link>
+              :
+              auth && !session ? <>Logga in</> : <>{title}</>
+            }
+          </li>
         )}
         <ul className={cn(s.sub, s[position], subId === subPanel?.id && s.open)}>
           {subPanel?.auth && !session ?
@@ -95,6 +138,10 @@ const MenuPanel = ({ position, menu, }: { position: 'left' | 'right', menu: Menu
   )
 }
 
+
+const isMenuItemIsOpen = (pathname, item: MenuItem) => {
+  return item.slug === pathname || item.sub?.find(({ slug }) => pathname === slug) !== undefined
+}
 
 const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
 

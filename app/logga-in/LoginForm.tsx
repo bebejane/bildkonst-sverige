@@ -14,7 +14,7 @@ export default function LoginForm() {
     setError(null)
 
     const url = new URLSearchParams(window.location.search).get('callbackUrl')
-    const callbackUrl = url?.endsWith('/medlem/logga-ut') ? undefined : url ?? '/medlem'
+    const callbackUrl = url?.endsWith('/medlem/logga-ut') ? undefined : url ?? '/medlem/aktuellt'
     const formData = new FormData(e.target)
 
     signIn('credentials', {
@@ -22,13 +22,12 @@ export default function LoginForm() {
       username: formData.get('email'),
       password: formData.get('password'),
     }).then((response) => {
-      if (response.error) {
+      if (response.error)
         setError('Felaktigt användarnamn eller lösenord')
-      }
+
+    }).catch((error) => {
+      setError(`Något gick fel, försök igen. ${error}`)
     })
-      .catch((error) => {
-        setError('Något gick fel, försök igen')
-      })
 
   }
 

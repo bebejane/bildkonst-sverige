@@ -4,7 +4,7 @@ import s from './NewsLetterForm.module.scss'
 import { useFormState, useFormStatus } from 'react-dom'
 import newsletterSignup from '@lib/actions/newsletterSignup';
 
-export default async function NewsletterForm({ }) {
+export default function NewsletterForm({ }) {
 
   const [state, formAction] = useFormState(newsletterSignup, {})
 

@@ -20,12 +20,14 @@ export default function NavBar({ menu }: Props) {
   const pathname = usePathname()
   const { isPageTop, scrolledPosition } = useScrollInfo()
   const [open, setOpen] = useState(false)
+  const [isScrolledDown, setIsScrolledDown] = useState(false)
 
   useEffect(() => { setOpen(false) }, [pathname])
+  useEffect(() => { setIsScrolledDown(scrolledPosition > 0) }, [scrolledPosition])
 
   return (
     <>
-      <h1 className={cn(s.logo, (scrolledPosition > 0 && !open) && s.onScroll, open && s.open, "logo")}>
+      <h1 className={cn(s.logo, (isScrolledDown && !open) && s.onScroll, open && s.open, "logo")}>
         <Link href={'/'}>Bildkonst<br />sverige</Link>
       </h1>
       <DesktopMenu menu={menu} pathname={pathname} />
@@ -181,7 +183,7 @@ const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
     <>
       <form method="POST" onSubmit={handleSignin} className={cn(s.loginForm, submitting && s.submitting)}>
         <input id="email" name="email" type="email" placeholder="E-post" />
-        <input id="password" name="password" type="password" placeholder="Lösenord" />
+        <input id="password" name="password" type="password" placeholder="Lösenord" autoComplete="current-password" />
         <button onClick={(e) => e.stopPropagation()}>Logga in</button>
       </form>
       {error && <p className={s.error}>{error}</p>}

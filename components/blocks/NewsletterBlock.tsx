@@ -7,7 +7,6 @@ type Props = {
 
 export default function NewsletterBlock({ data: { id, title } }: Props) {
 
-  return null
   return (
     <div className={s.container}>
       <h3>{title}</h3>

@@ -41,8 +41,8 @@ export default function LoginForm() {
   return (
     <div className="structured grid">
       <form method="POST" onSubmit={handleSignin}>
-        <input id="email" name="email" type="email" placeholder="E-post" />
-        <input id="password" name="password" type="password" placeholder="Lösenord" />
+        <input id="email" name="email" type="email" placeholder="E-post" autoComplete="username" />
+        <input name="password" type="password" placeholder="Lösenord" autoComplete="current-password" />
         <button type="submit">Login</button>
       </form>
       {error && <p className={s.error}>{error}</p>}

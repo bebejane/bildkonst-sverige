@@ -19,6 +19,7 @@
     padding-top: calc(2 * var(--navbar-height));
     transform: translateX(100%);
     transition: transform 0.3s ease-in-out;
+    font-size: 3rem I !important;
 
     &.show {
       transform: translateX(0%);
@@ -65,7 +66,6 @@
       }
     }
 
-
     @include mq($until: desktop) {
       height: auto;
       flex: 0 0 auto;
@@ -84,7 +84,7 @@
       }
 
       @include mq($from: desktop) {
-        >form {
+        > form {
           display: none;
         }
       }
@@ -107,7 +107,6 @@
     }
 
     &.open {
-
       li,
       a {
         color: var(--white);
@@ -120,12 +119,12 @@
   }
 }
 
-.selected>a,
+.selected > a,
 .selected {
   color: var(--orange) !important;
 }
 
-.selectedSub>a,
+.selectedSub > a,
 .selectedSub {
   font-weight: bold;
 }
@@ -182,7 +181,6 @@
   &.right {
     right: 0;
   }
-
 }
 
 .loginForm {

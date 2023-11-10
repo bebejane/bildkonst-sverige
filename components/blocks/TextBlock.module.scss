@@ -8,21 +8,33 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+
+    h3 {
+      padding-bottom: 1em;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    p:last-of-type {
+      margin-bottom: 0;
+    }
 
     @include mq($until: desktop) {
       &:not(:last-child) {
         padding-bottom: var(--space);
       }
-
     }
   }
 
-  &.one>.block {
+  &.one > .block {
     flex: 0 0 100%;
   }
 
-  &.two>.block {
+  &.two > .block {
     flex: 0 0 50%;
 
     @include mq($until: desktop) {
@@ -30,13 +42,11 @@
     }
   }
 
-  &.three>.block {
+  &.three > .block {
     flex: 1 1 33.33333%;
 
     @include mq($until: desktop) {
       flex: 0 0 100%;
     }
   }
-
-
 }

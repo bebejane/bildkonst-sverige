@@ -16,7 +16,7 @@ export default function TextBlock({ data: { id, texts } }: Props) {
         return link ?
           <Link key={id} href={slug} className={s.block}>
             <h3>{headline}</h3>
-            {text}
+            <p>{text}</p>
           </Link>
           :
           <div key={i} className={s.block}>

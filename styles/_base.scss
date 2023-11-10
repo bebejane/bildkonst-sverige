@@ -62,9 +62,15 @@ article {
 
 figure {
 	&.small {
-		display: grid;
-		grid-column-start: 4;
-		grid-column-end: 10;
+		@include mq($until: desktop) {
+			padding-left: var(--space);
+			padding-right: var(--space);
+		}
+		@include mq($from: desktop) {
+			display: grid;
+			grid-column-start: 4;
+			grid-column-end: 10;
+		}
 	}
 }
 

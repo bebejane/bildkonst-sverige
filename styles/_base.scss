@@ -35,8 +35,6 @@ body {
 	font-family: $body-font;
 	-webkit-font-smoothing: antialiased;
 	font-feature-settings: "liga", "kern";
-
-
 }
 
 html {
@@ -85,7 +83,10 @@ figure {
 
 .content {
 	figure {
-		margin-bottom: var(--space);
+		margin-bottom: var(--space-small);
+		@include mq($from: desktop) {
+			margin-bottom: var(--space);
+		}
 	}
 
 	.intro {
@@ -94,7 +95,6 @@ figure {
 }
 
 .structured {
-
 	p,
 	blockquote,
 	ul,
@@ -191,18 +191,21 @@ a {
 		color: var(--orange);
 	}
 
-	&:visited {}
+	&:visited {
+	}
 }
 
 figcaption {
-	@include mq($until: tablet) {}
+	@include mq($until: tablet) {
+	}
 }
 
 .date {
 	padding-right: 1em;
 }
 
-hr {}
+hr {
+}
 
 input,
 textarea,
@@ -214,7 +217,8 @@ select {
 	font-family: $nav-font;
 	background-color: var(--white);
 
-	&:focus {}
+	&:focus {
+	}
 }
 
 select {

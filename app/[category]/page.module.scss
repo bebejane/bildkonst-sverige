@@ -23,8 +23,8 @@
       figure {
         @include mq($until: desktop) {
           order: -1;
-          margin-left: var(--space);
-          margin-right: var(--space);
+          margin-left: 20%;
+          margin-right: 20%;
           margin-bottom: var(--space-small);
         }
         grid-column-start: 10;

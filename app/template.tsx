@@ -3,7 +3,6 @@
 import s from './template.module.scss'
 import { useEffect } from "react"
 import { usePathname } from "next/navigation"
-import { sleep } from "dato-nextjs-utils/utils"
 
 export type LayoutProps = {
   children: React.ReactNode
@@ -16,23 +15,14 @@ export default function MainTemplate({ children }: LayoutProps) {
   useEffect(() => {
     memberArea(pathname)
     orangeScroll()
-    orangeFadeIntro()
   }, [pathname])
 
   return (
     <>
       {children}
-      {!isMemberArea && <div className={s.transition} />}
+      {!isMemberArea && <div className={s.transition} key={pathname} />}
     </>
   )
-}
-
-const orangeFadeIntro = async () => {
-  try {
-    const s = parseInt(getComputedStyle(document.body).getPropertyValue('--body-intro-speed'))
-    await sleep(s + 50)
-  } catch (e) { }
-  document.body.classList.remove(document.body.classList.values().next().value)
 }
 
 const orangeScroll = () => {

@@ -11,6 +11,7 @@ export type LayoutProps = {
 
 export default function MainTemplate({ children }: LayoutProps) {
   const pathname = usePathname()
+  const isMemberArea = pathname.startsWith('/medlem')
 
   useEffect(() => {
     memberArea(pathname)
@@ -21,7 +22,7 @@ export default function MainTemplate({ children }: LayoutProps) {
   return (
     <>
       {children}
-      <div className={s.transition} />
+      {!isMemberArea && <div className={s.transition} />}
     </>
   )
 }

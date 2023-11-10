@@ -18,7 +18,12 @@ export default function MainTemplate({ children }: LayoutProps) {
     orangeFadeIntro()
   }, [pathname])
 
-  return <>{children}</>
+  return (
+    <>
+      {children}
+      <div className={s.transition} />
+    </>
+  )
 }
 
 const orangeFadeIntro = async () => {

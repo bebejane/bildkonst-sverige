@@ -49,3 +49,26 @@
     }
   }
 }
+
+.transition {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--orange);
+  mix-blend-mode: screen;
+  z-index: var(--z-transition-background);
+  animation: fade-out 700ms linear 0.2s 1 forwards;
+  pointer-events: none;
+
+  @keyframes fade-out {
+
+    to {
+      opacity: 0;
+    }
+  }
+
+
+}

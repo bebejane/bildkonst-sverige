@@ -22,7 +22,7 @@ export default function LoginForm() {
       username: formData.get('email'),
       password: formData.get('password'),
     }).then((response) => {
-      if (response.error)
+      if (response?.error)
         setError('Felaktigt användarnamn eller lösenord')
 
     }).catch((error) => {
@@ -42,7 +42,7 @@ export default function LoginForm() {
       <form method="POST" onSubmit={handleSignin}>
         <input id="email" name="email" type="email" placeholder="E-post" autoComplete="username" />
         <input name="password" type="password" placeholder="Lösenord" autoComplete="current-password" />
-        <button type="submit">Login</button>
+        <button type="submit">OK</button>
       </form>
       {error && <p className={s.error}>{error}</p>}
     </div>

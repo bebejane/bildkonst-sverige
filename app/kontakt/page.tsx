@@ -11,15 +11,18 @@ import { notFound } from 'next/navigation';
 
 export default async function Contact() {
 
-  const { contact, draftUrl } = await apiQuery<ContactQuery, ContactQueryVariables>(ContactDocument, { includeDrafts: draftMode().isEnabled })
+  const { contactPage, draftUrl } = await apiQuery<ContactQuery, ContactQueryVariables>(ContactDocument, { includeDrafts: draftMode().isEnabled })
 
-  if (!contact) return notFound()
+  if (!contactPage)
+    return notFound()
+
+  const { id, title, staff, intro } = contactPage
 
   return (
     <>
-      <Article id="contact" title="Kontakt">
+      <Article id={id} title={title} intro={intro}>
         <ul className={s.staff}>
-          {contact.staff.map((staff) => (
+          {staff.map((staff) => (
             <li key={staff.id}>
               <figure>
                 <Image data={staff.image.responsiveImage} />
@@ -30,7 +33,7 @@ export default async function Contact() {
           ))}
         </ul>
       </Article>
-      <DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={contact.id} />
+      <DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={id} />
     </>
   );
 }

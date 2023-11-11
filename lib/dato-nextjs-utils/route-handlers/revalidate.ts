@@ -34,11 +34,11 @@ export default async function revalidate(req: Request, callback: (record: any, r
       console.log('revalidate', paths, tags)
       console.log(`revalidate${delay && !['unpublish', 'delete'].includes(event_type) ? ` (${delay}ms)` : ''} ${event_type}`, paths)
 
-      return new Response(JSON.stringify({ revalidated: true, paths, now, delay, event_type }), { status: 200, headers: { 'content-type': 'application/json' } })
+      return new Response(JSON.stringify({ revalidated: true, paths, tags, now, delay, event_type }), { status: 200, headers: { 'content-type': 'application/json' } })
     } catch (err) {
       console.log('Error revalidating', paths)
       console.error(err)
-      return new Response(JSON.stringify({ revalidated: false, paths, err, now, delay, event_type }), { status: 200, headers: { 'content-type': 'application/json' } })
+      return new Response(JSON.stringify({ revalidated: false, paths, tags, err, now, delay, event_type }), { status: 200, headers: { 'content-type': 'application/json' } })
     }
   })
 

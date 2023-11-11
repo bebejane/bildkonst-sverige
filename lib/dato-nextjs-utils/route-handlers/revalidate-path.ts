@@ -1,6 +1,6 @@
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 
-export default async function revalidate(req: Request, callback: (record: any, revalidate: (paths?: string[], tags?: string[]) => Promise<Response>) => Promise<Response>) {
+export default async function revalidatePathHandler(req: Request, callback: (record: any, revalidate: (paths: string[]) => Promise<Response>) => Promise<Response>) {
 
   if (!basicAuth(req))
     return new Response('unauthorized', { status: 401 })
@@ -16,22 +16,20 @@ export default async function revalidate(req: Request, callback: (record: any, r
   if (!model)
     return new Response('Model not found in payload', { status: 400 })
 
-  const record = { ...entity.attributes, model: model.attributes, event_type }
+  const record = { ...entity.attributes, model: model.attributes }
   const delay = Date.now() - Math.max(new Date(entity.meta.updated_at).getTime(), new Date(entity.meta.published_at).getTime(), new Date(entity.meta.created_at).getTime())
   const now = Date.now()
 
-  return await callback(record, async (paths, tags) => {
+  return await callback(record, async (paths) => {
     try {
-      if (!paths && !tags)
-        return new Response('Nothing to revalidate. Paths/tags empty', { status: 400 })
+      if (!paths)
+        return new Response('Nothing to revalidate. Paths empty', { status: 400 })
 
-      if (paths.length === 0 && tags.length === 0)
-        return new Response(JSON.stringify({ revalidated: false, paths, tags, delay, now, event_type }), { status: 200, headers: { 'content-type': 'application/json' } })
+      if (paths.length === 0)
+        return new Response(JSON.stringify({ revalidated: false, paths, delay, now, event_type }), { status: 200, headers: { 'content-type': 'application/json' } })
 
-      paths?.forEach(p => revalidatePath(p))
-      tags?.forEach(t => revalidateTag(t))
+      paths.forEach(p => revalidatePath(p))
 
-      console.log('revalidate', paths, tags)
       console.log(`revalidate${delay && !['unpublish', 'delete'].includes(event_type) ? ` (${delay}ms)` : ''} ${event_type}`, paths)
 
       return new Response(JSON.stringify({ revalidated: true, paths, now, delay, event_type }), { status: 200, headers: { 'content-type': 'application/json' } })

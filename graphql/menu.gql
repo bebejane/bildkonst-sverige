@@ -4,7 +4,7 @@ query Menu {
 		slug
 		title
 	}
-	allAbouts {
+	allAbouts(first: 100) {
 		id
 		slug
 		title

@@ -1,4 +1,5 @@
 fragment ImageFragment on FileField {
+	__typename
 	alt
 	basename
 	format

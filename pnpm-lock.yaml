@@ -23,6 +23,9 @@ dependencies:
   '@types/react-dom':
     specifier: ^18.2.14
     version: 18.2.14
+  change-case:
+    specifier: ^5.1.2
+    version: 5.1.2
   classnames:
     specifier: ^2.3.2
     version: 2.3.2
@@ -2696,6 +2699,10 @@ packages:
       snake-case: 3.0.4
       tslib: 2.6.2
     dev: true
+
+  /change-case@5.1.2:
+    resolution: {integrity: sha512-CAtbGEDulyjzs05RXy3uKcwqeztz/dMEuAc1Xu9NQBsbrhuGMneL0u9Dj5SoutLKBFYun8txxYIwhjtLNfUmCA==}
+    dev: false
 
   /character-entities@2.0.2:
     resolution: {integrity: sha512-shx7oQ0Awen/BRIdkjkvz54PnEEI/EjwXDSIZp86/KKdbafHh1Df/RYGBhn4hbe2+uKC9FnT5UCEdyPz3ai9hQ==}

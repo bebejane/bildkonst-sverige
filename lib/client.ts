@@ -4,6 +4,7 @@ import type { DocumentNode } from 'graphql';
 import { print } from 'graphql';
 import { cache } from 'react';
 import deepIterator from 'deep-iterator';
+import * as changeCase from "change-case";
 
 export type ApiQueryOptions<V> = {
   variables?: V;
@@ -118,12 +119,14 @@ export const generateIdTags = (data: any, tags: string[] | null, queryId: string
 
   const allTags: string[] = []
 
-  for (let { key, value } of deepIterator(data))
-    key === 'id' && allTags.push(value)
+  for (let d of deepIterator(data)) {
+    d.key === 'id' && d.parent?.__typename !== 'FileField' && allTags.push(d.value)
+    //d.key === '__typename' && allTags.push(changeCase.snakeCase(d.value.replace('Record', '')))
+  }
 
   tags?.length && allTags.push.apply(allTags, tags)
   const idTags = allTags.filter((value, index, self) => self.indexOf(value) === index) // dedupe
-  //console.log('idTags', queryId, idTags)
+  console.log('idTags', queryId, idTags)
   return idTags
 
 }

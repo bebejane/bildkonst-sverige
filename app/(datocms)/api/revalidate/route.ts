@@ -7,8 +7,8 @@ export const dynamic = "force-dynamic"
 
 export async function POST(req: Request) {
   return await revalidate(req, async (record, revalidate) => {
+    const { event_type } = record;
     const { api_key } = record.model;
-    const paths = [await buildRoute(api_key, record)]
-    return revalidate(paths)
+    return revalidate([await buildRoute(api_key, record)], [record.id])
   })
 }

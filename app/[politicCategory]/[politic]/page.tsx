@@ -40,7 +40,7 @@ export default async function Page({ params }: { params: { politic: string } }) 
 }
 
 export async function generateStaticParams() {
-  const { allPolitics } = await apiQuery<AllPoliticQuery, AllPoliticQueryVariables>(AllPoliticDocument, { generateTags: true });
+  const { allPolitics } = await apiQuery<AllPoliticQuery, AllPoliticQueryVariables>(AllPoliticDocument, { tags: ['politic'] });
   return allPolitics.map(({ slug: politic }) => ({ politic }))
 }
 

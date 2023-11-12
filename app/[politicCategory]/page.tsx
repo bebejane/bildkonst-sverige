@@ -17,7 +17,8 @@ export default async function Page({ params }: { params: { politicCategory: stri
 
   const { politicCategory, draftUrl } = await apiQuery<AllPoliticByCategoryQuery, AllPoliticByCategoryQueryVariables>(AllPoliticByCategoryDocument, {
     variables: { slug: params.politicCategory },
-    includeDrafts: draftMode().isEnabled
+    includeDrafts: draftMode().isEnabled,
+    tags: ['politic_category']
   })
 
   if (!politicCategory)
@@ -60,7 +61,7 @@ export default async function Page({ params }: { params: { politicCategory: stri
 }
 
 export async function generateStaticParams() {
-  const { allPoliticCategories } = await apiQuery<AllPoliticCategoriesQuery, AllPoliticCategoriesQueryVariables>(AllPoliticCategoriesDocument);
+  const { allPoliticCategories } = await apiQuery<AllPoliticCategoriesQuery, AllPoliticCategoriesQueryVariables>(AllPoliticCategoriesDocument, { tags: ['politic_category'] });
   return allPoliticCategories.map(({ slug: politicCategory }) => ({ politicCategory }))
 }
 

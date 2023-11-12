@@ -16,7 +16,10 @@ export type MenuItem = {
 export type Menu = MenuItem[]
 
 export const buildMenu = async (): Promise<Menu> => {
-  const { allPoliticCategories, allAbouts } = await apiQuery<MenuQuery, MenuQueryVariables>(MenuDocument, { revalidate: 30 })
+  const { allPoliticCategories, allAbouts } = await apiQuery<MenuQuery, MenuQueryVariables>(MenuDocument, {
+    tags: ['politic_category', 'about']
+  })
+
   const menu: Menu = [{
     id: 'politic',
     title: 'Kulturpolitik',

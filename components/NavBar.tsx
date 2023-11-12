@@ -11,7 +11,8 @@ import useNextAuthSession from "@lib/hooks/useNextAuthSession";
 import { Menu, MenuItem } from "@lib/menu";
 import { useScrollInfo } from 'next-dato-utils'
 import React from "react";
-type Props = {
+
+export type Props = {
   menu: Menu
 }
 

@@ -8,15 +8,24 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-weight: bold !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
   background-color: rgb(240, 240, 240);
   border: 1px solid rgb(240, 240, 240);
   cursor: pointer;
 
-  .label {
+  .label,
+  .button {
     display: flex;
     flex-direction: row;
     align-items: center;
-    flex: 1 1 100%;
+    flex: 0 0 50%;
+  }
+
+  .button {
+    justify-content: flex-end;
   }
 
   button {

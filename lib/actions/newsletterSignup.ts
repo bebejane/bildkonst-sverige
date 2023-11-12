@@ -2,7 +2,7 @@
 
 import { buildClient } from "@datocms/cma-client-browser"
 import { z } from 'zod'
-import { sleep } from 'dato-nextjs-utils/utils'
+import { sleep } from 'next-dato-utils'
 
 const NewsletterForm = z.object({
   email: z.string().email({ message: "Ogiltig e-post adress" }),

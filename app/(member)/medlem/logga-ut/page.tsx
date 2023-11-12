@@ -3,7 +3,7 @@
 import s from './page.module.scss'
 import { useEffect } from 'react'
 import { signOut } from 'next-auth/react'
-import { sleep } from 'dato-nextjs-utils/utils'
+import { sleep } from 'next-dato-utils'
 
 export default function Logout() {
 

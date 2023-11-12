@@ -2,7 +2,7 @@
 
 import s from './page.module.scss'
 import { AllNewsDocument } from "@graphql";
-import { apiQuery } from "@lib/client";
+import { apiQuery } from "next-dato-utils";
 import { Metadata } from 'next';
 import Link from 'next/link';
 

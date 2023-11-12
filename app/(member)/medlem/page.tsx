@@ -2,7 +2,7 @@
 
 import s from './page.module.scss'
 import { AboutDocument } from "@graphql";
-import { apiQuery } from "@lib/client";
+import { apiQuery } from "next-dato-utils";
 
 export default async function Member() {
 

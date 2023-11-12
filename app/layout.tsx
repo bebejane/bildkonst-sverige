@@ -3,7 +3,7 @@
 import '@styles/index.scss'
 import NavBar from '@components/NavBar';
 import Footer from '@components/Footer';
-import { apiQuery } from '@lib/client';
+import { apiQuery } from 'next-dato-utils';
 import { GlobalDocument } from '@graphql';
 import { Metadata } from 'next';
 import { Icon } from 'next/dist/lib/metadata/types/metadata-types';

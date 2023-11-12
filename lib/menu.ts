@@ -1,6 +1,6 @@
 'use server'
 
-import { apiQuery } from '@lib/client';
+import { apiQuery } from 'next-dato-utils';
 import { MenuDocument } from '@graphql';
 
 export type MenuItem = {

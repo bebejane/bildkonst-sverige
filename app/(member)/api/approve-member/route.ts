@@ -1,7 +1,6 @@
-import basicAuth from "@lib/dato-nextjs-utils/route-handlers/basic-auth";
+import { basicAuth, cors } from 'next-dato-utils';
 import { NextResponse } from "next/server";
 import { buildClient } from '@datocms/cma-client-browser';
-import cors from "@lib/dato-nextjs-utils/route-handlers/cors";
 import * as postmark from 'postmark';
 
 const postmarkClient = new postmark.ServerClient(process.env.POSTMARK_API_TOKEN);

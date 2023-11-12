@@ -1,10 +1,10 @@
 'use server'
 
 import s from './page.module.scss'
-import { apiQuery } from '@lib/client';
+import { apiQuery } from 'next-dato-utils';
 import { StartDocument } from '@graphql';
 import { draftMode } from 'next/headers'
-import DraftMode from '@lib/dato-nextjs-utils/components/DraftMode';
+import { DraftMode } from 'next-dato-utils';
 import Block from '@components/blocks/Block';
 
 export default async function Home() {

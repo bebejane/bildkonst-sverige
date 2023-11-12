@@ -1,9 +1,9 @@
 'use server'
 
 import { AllPoliticDocument, PoliticDocument } from "@graphql";
-import { apiQuery } from "@lib/client";
+import { apiQuery } from "next-dato-utils";
 import { notFound } from 'next/navigation';
-import DraftMode from '@lib/dato-nextjs-utils/components/DraftMode';
+import { DraftMode } from 'next-dato-utils';
 import { draftMode } from 'next/headers';
 import Link from 'next/link';
 import Article from '@components/Article';

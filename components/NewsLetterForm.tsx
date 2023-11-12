@@ -20,6 +20,5 @@ export default function NewsletterForm({ }) {
 
 function SubmitButton() {
   const status = useFormStatus();
-  console.log(status)
   return <button type="submit" disabled={status.pending}>Skicka</button>
 }

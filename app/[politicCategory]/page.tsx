@@ -4,7 +4,7 @@ import s from './page.module.scss'
 import { AllPoliticByCategoryDocument, AllPoliticCategoriesDocument } from "@graphql";
 import { apiQuery } from "next-dato-utils";
 import StructuredContent from '@components/StructuredContent';
-import { DraftMode } from 'next-dato-utils';
+import DraftMode from '@lib/draft/DraftMode';
 import { draftMode } from 'next/headers';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';

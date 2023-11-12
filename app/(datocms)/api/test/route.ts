@@ -1,4 +1,4 @@
-export { default as GET } from 'next-dato-utils'
+export { test as GET } from 'next-dato-utils'
 import { cors } from 'next-dato-utils'
 
 export const runtime = "edge"

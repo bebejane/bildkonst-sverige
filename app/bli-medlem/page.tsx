@@ -4,7 +4,7 @@ import Article from '@components/Article';
 import s from './page.module.scss'
 import { MemberPageDocument } from "@graphql";
 import { apiQuery } from "next-dato-utils";
-import { DraftMode } from 'next-dato-utils';
+import DraftMode from '@lib/draft/DraftMode';
 import { draftMode } from 'next/headers';
 import MemberForm from './MemberForm';
 import { Metadata } from 'next';

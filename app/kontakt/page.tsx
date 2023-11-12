@@ -6,7 +6,7 @@ import { ContactDocument } from "@graphql";
 import { apiQuery } from "next-dato-utils";
 import { draftMode } from 'next/headers';
 import { Image, Metadata } from 'react-datocms';
-import { DraftMode } from 'next-dato-utils';
+import DraftMode from '@lib/draft/DraftMode';
 import { notFound } from 'next/navigation';
 
 export default async function Contact() {

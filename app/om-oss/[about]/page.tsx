@@ -3,7 +3,7 @@
 import { AllAboutsDocument, AboutDocument } from "@graphql";
 import { apiQuery } from "next-dato-utils";
 import { notFound } from 'next/navigation';
-import { DraftMode } from 'next-dato-utils';
+import DraftMode from '@lib/draft/DraftMode';
 import { draftMode } from 'next/headers';
 import Article from '@components/Article';
 import { Metadata } from "next";

@@ -165,7 +165,6 @@ const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
       username: formData.get('email'),
       password: formData.get('password'),
     }).then((result) => {
-      console.log(result)
       onSuccess()
     }).catch((error) => {
       setError('Något gick fel, försök igen')

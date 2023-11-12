@@ -9,7 +9,7 @@ import { signIn } from 'next-auth/react'
 import Hamburger from 'hamburger-react'
 import useNextAuthSession from "@lib/hooks/useNextAuthSession";
 import { Menu, MenuItem } from "@lib/menu";
-import { useScrollInfo } from 'dato-nextjs-utils/hooks'
+import { useScrollInfo } from 'next-dato-utils'
 import React from "react";
 type Props = {
   menu: Menu

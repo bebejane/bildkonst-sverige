@@ -3,9 +3,7 @@
 import Article from '@components/Article';
 import s from './page.module.scss'
 import { MemberPageDocument } from "@graphql";
-import { apiQuery } from "next-dato-utils";
-import DraftMode from '@lib/draft/DraftMode';
-import { draftMode } from 'next/headers';
+import { apiQuery, DraftMode } from "next-dato-utils";
 import MemberForm from './MemberForm';
 import { Metadata } from 'next';
 
@@ -30,7 +28,7 @@ export default async function Membership() {
           <MemberForm allMemberLevels={allMemberLevels} />
         </div>
       </Article>
-      {<DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={memberPage.id} />}
+      {<DraftMode url={draftUrl} tag={memberPage.id} />}
     </>
   );
 }

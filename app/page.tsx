@@ -1,10 +1,9 @@
 'use server'
 
 import s from './page.module.scss'
-import { apiQuery } from 'next-dato-utils';
+import { apiQuery, DraftMode } from 'next-dato-utils';
 import { StartDocument } from '@graphql';
 import { draftMode } from 'next/headers'
-import DraftMode from '@lib/draft/DraftMode';
 import Block from '@components/blocks/Block';
 
 export default async function Home() {
@@ -20,7 +19,7 @@ export default async function Home() {
           </section>
         )}
       </article>
-      <DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={start?.id} />
+      <DraftMode url={draftUrl} tag={start?.id} />
     </>
   )
 }

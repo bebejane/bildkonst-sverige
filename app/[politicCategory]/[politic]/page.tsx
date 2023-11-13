@@ -1,9 +1,8 @@
 'use server'
 
 import { AllPoliticDocument, PoliticDocument } from "@graphql";
-import { apiQuery } from "next-dato-utils";
+import { apiQuery, DraftMode } from "next-dato-utils";
 import { notFound } from 'next/navigation';
-import DraftMode from '@lib/draft/DraftMode';
 import { draftMode } from 'next/headers';
 import Link from 'next/link';
 import Article from '@components/Article';
@@ -34,7 +33,7 @@ export default async function Page({ params }: { params: { politic: string } }) 
           <button>Visa alla {category.title}</button>
         </Link>
       </Article>
-      <DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={id} />
+      <DraftMode url={draftUrl} tag={id} />
     </>
   );
 }

@@ -1,9 +1,8 @@
 'use server'
 
 import { AllAboutsDocument, AboutDocument } from "@graphql";
-import { apiQuery } from "next-dato-utils";
+import { apiQuery, DraftMode } from "next-dato-utils";
 import { notFound } from 'next/navigation';
-import DraftMode from '@lib/draft/DraftMode';
 import { draftMode } from 'next/headers';
 import Article from '@components/Article';
 import { Metadata } from "next";
@@ -22,7 +21,7 @@ export default async function Page({ params }: { params: { about: string } }) {
   return (
     <>
       <Article id={id} title={title} intro={intro} content={content} />
-      <DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={id} />
+      <DraftMode url={draftUrl} tag={id} />
     </>
   );
 }

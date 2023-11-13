@@ -2,9 +2,8 @@
 
 import s from './page.module.scss'
 import { AllPoliticByCategoryDocument, AllPoliticCategoriesDocument } from "@graphql";
-import { apiQuery } from "next-dato-utils";
+import { apiQuery, DraftMode } from "next-dato-utils";
 import StructuredContent from '@components/StructuredContent';
-import DraftMode from '@lib/draft/DraftMode';
 import { draftMode } from 'next/headers';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -55,7 +54,7 @@ export default async function Page({ params }: { params: { politicCategory: stri
           </p>
         }
       </article>
-      <DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={politicCategory.id} />
+      <DraftMode url={draftUrl} tag={politicCategory.id} />
     </>
   );
 }

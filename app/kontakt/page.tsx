@@ -3,10 +3,9 @@
 import s from './page.module.scss'
 import Article from '@components/Article';
 import { ContactDocument } from "@graphql";
-import { apiQuery } from "next-dato-utils";
+import { apiQuery, DraftMode } from "next-dato-utils";
 import { draftMode } from 'next/headers';
 import { Image, Metadata } from 'react-datocms';
-import DraftMode from '@lib/draft/DraftMode';
 import { notFound } from 'next/navigation';
 
 export default async function Contact() {
@@ -33,7 +32,7 @@ export default async function Contact() {
           ))}
         </ul>
       </Article>
-      <DraftMode enabled={draftMode().isEnabled} draftUrl={draftUrl} tag={id} />
+      <DraftMode url={draftUrl} tag={id} />
     </>
   );
 }

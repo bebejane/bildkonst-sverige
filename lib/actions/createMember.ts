@@ -1,6 +1,7 @@
 'use server'
 
 import { buildClient } from "@datocms/cma-client-browser"
+import { sendMail } from "@lib/postmark"
 import { z } from 'zod'
 
 const MemberForm = z.object({
@@ -19,7 +20,8 @@ export default async function createMember(prevState: any, formData: FormData): 
   try {
 
     const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN })
-    const itemType = (await client.itemTypes.list()).find((itemType: any) => itemType.api_key === 'member')
+    const itemTypes = await client.itemTypes.list()
+    const memberItemTypeId = itemTypes.find((itemType: any) => itemType.api_key === 'member')?.id
     const data = {}
 
     Object.keys(MemberForm.strict().shape).forEach((key) => data[key] = formData.get(key))
@@ -31,13 +33,24 @@ export default async function createMember(prevState: any, formData: FormData): 
       return { invalid }
     }
 
+    const mail = (await client.items.list({ filter: { type: 'mail' } }))?.[0]
+
+    if (!mail)
+      throw new Error('No mail template texts found')
+
     const record = await client.items.create({
       item_type: {
         type: 'item_type',
-        id: itemType.id
+        id: memberItemTypeId
       },
       ...data
     })
+
+    await sendMail(record.email as string, 'member-confirmation', {
+      name: record.contact,
+      confirmation: mail.confirmation
+    })
+
     return { data: record }
 
   } catch (e) {

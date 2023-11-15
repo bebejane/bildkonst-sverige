@@ -41,4 +41,5 @@ fragment NewsFragment on NewsRecord {
 		value
 		links
 	}
+	_publishedAt
 }

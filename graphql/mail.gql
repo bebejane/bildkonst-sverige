@@ -1,0 +1,7 @@
+query Mail {
+	mail {
+		id
+		welcome
+		confirmation
+	}
+}

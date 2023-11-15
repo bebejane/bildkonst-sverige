@@ -22,3 +22,22 @@ fragment MemberPageFragment on MemberPageRecord {
 	}
 	slug
 }
+
+query AllApprovedMembers {
+	allMembers(orderBy: organization_ASC, filter: { approved: { eq: true } }) {
+		...MemberFragment
+	}
+}
+
+fragment MemberFragment on MemberRecord {
+	id
+	organization
+	organizationNo
+	contact
+	email
+	invoiceAddress
+	level {
+		...MemberLevelFragment
+	}
+	approved
+}

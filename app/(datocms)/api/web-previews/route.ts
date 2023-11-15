@@ -6,7 +6,9 @@ export const runtime = "edge"
 
 export async function POST(req: NextRequest) {
   return await webPreviews(req, async ({ item, itemType }) => {
-    return `${await buildRoute(itemType.attributes.api_key, item.attributes)}`
+    const path = await buildRoute(itemType.attributes.api_key, item.attributes)
+    if (!path) return null
+    return `${path}?secret=${process.env.DATOCMS_PREVIEW_SECRET}`
   })
 }
 

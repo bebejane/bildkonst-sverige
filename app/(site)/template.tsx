@@ -10,17 +10,15 @@ export type LayoutProps = {
 
 export default function MainTemplate({ children }: LayoutProps) {
   const pathname = usePathname()
-  const isMemberArea = pathname.startsWith('/medlem')
 
   useEffect(() => {
-    memberArea(pathname)
     orangeScroll()
   }, [pathname])
 
   return (
     <>
       {children}
-      {!isMemberArea && <div className={s.transition} key={pathname} />}
+      <div className={s.transition} key={pathname} />
     </>
   )
 }
@@ -49,9 +47,6 @@ const orangeScroll = () => {
   }
 }
 
-const memberArea = (pathname: string) => {
-  document.body.style.backgroundColor = pathname.startsWith('/medlem') ? 'var(--member-color)' : 'var(--background)'
-}
 function isElementInViewport(el: HTMLElement) {
   return el.getBoundingClientRect()?.top <= (window.innerHeight || document.documentElement.clientHeight)
 }

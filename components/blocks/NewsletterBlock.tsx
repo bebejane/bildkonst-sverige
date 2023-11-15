@@ -9,7 +9,7 @@ export default function NewsletterBlock({ data: { id, title } }: Props) {
 
   return (
     <div className={s.container}>
-      <h3>{title}</h3>
+      <h2>{title}</h2>
       <NewsletterForm />
     </div>
   )

@@ -34,7 +34,7 @@ export default async function Page({ params }: { params: { politicCategory: stri
                 <Link href={`/${category.slug}/${slug}`}>
                   <h2>{title}</h2>
                   <div className="grid">
-                    <div className={cn(s.content, "intro")}>
+                    <div className={cn(s.content, "intro", image && s.image)}>
                       <span className="date">{format(new Date(_publishedAt), 'd MMMM yyyy')}</span>
                       <StructuredContent content={intro} id={id} />
                     </div>

@@ -18,9 +18,10 @@ export default function PeopleCollectionBlock({ data: { people } }: Props) {
               className={s.image}
               pictureClassName={s.picture}
             />
-            <figcaption>{person.name}</figcaption>
           </figure>
-          <div className={s.desc}>{person.description}</div>
+          <h3>{person.name}</h3>
+
+          <div className={s.desc}><p>{person.description}</p></div>
         </li>
       ))}
     </ul>

@@ -25,8 +25,8 @@ h5 {
 h1,
 h2 {
   font-weight: bold;
-  padding-bottom: 1em;
-  line-height: 1;
+  padding-bottom: 0.7em;
+  line-height: 1.3em;
   font-family: $headline-font;
   font-size: 1.2rem;
   @include mq($from: desktop) {
@@ -89,7 +89,8 @@ nav,
 footer,
 .date,
 .nav,
-label {
+label,
+figcaption {
   font-family: $nav-font;
   font-size: 0.7rem;
 }

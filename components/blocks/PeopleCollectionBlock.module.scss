@@ -1,18 +1,31 @@
 .container {
-  display: flex;
+  display: flex !important;
   flex-direction: row;
   list-style: none;
+  grid-column-start: 1 !important;
+  grid-column-end: 13 !important;
 
   li {
     display: flex;
     flex-direction: column;
+    width: 33%;
 
     figure {
-      .image {}
+      aspect-ratio: 4 / 3;
+      display: flex;
+      margin-bottom: 0.8rem;
+      padding-left: var(--outer-margin);
+      padding-right: var(--outer-margin);
+      img {
+        object-fit: cover;
+      }
 
-      .picture {}
+      .picture {
+      }
     }
 
-    .desc {}
+    .desc {
+      text-align: center;
+    }
   }
 }

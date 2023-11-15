@@ -1,7 +1,6 @@
 'use server'
 
-import { default as RootLayout, LayoutProps } from '@components/RootLayout';
-import { generateMetadata as gMetaData } from '@components/RootLayout';
+import { default as RootLayout, LayoutProps, generateMetadata as gMetaData } from '../root-layout';
 
 export default async function Layout({ children }: LayoutProps) {
   return <RootLayout>{children}</RootLayout>

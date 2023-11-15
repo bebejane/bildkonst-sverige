@@ -28,6 +28,9 @@ export default async function Contact() {
               </figure>
               <h3>{staff.name}</h3>
               <p>{staff.description}</p>
+              <p>
+                <a href={`mailto:${staff.email}`}>{staff.email}</a>
+              </p>
             </li>
           ))}
         </ul>

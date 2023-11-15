@@ -3,13 +3,16 @@
   display: flex;
   justify-content: center;
   list-style: none;
+
   li {
     width: 33%;
+
     figure {
       padding-left: var(--outer-margin);
       padding-right: var(--outer-margin);
       margin-bottom: var(--space-small);
     }
+
     p {
       text-align: center;
     }

@@ -30,7 +30,7 @@ export default function Footer() {
       <div className={cn(s.newsletter, showNewsletter && s.show)}>
         <h2>Prenumerera på vårt nyhetsbrev</h2>
         <NewsletterForm />
-        <button className={s.close} onClick={() => setShowNewsletter(false)}>Close</button>
+        <button className={s.close} onClick={() => setShowNewsletter(false)}>Stäng</button>
       </div>
     </>
   );

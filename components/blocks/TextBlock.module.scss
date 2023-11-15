@@ -11,6 +11,10 @@
     padding-left: var(--gutter);
     padding-right: var(--gutter);
 
+    &:not(:last-child) {
+      border-right: 1px solid;
+    }
+
     h2 {
       padding-bottom: 0.8em;
     }

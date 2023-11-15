@@ -15,11 +15,19 @@
     figure {
       padding-left: var(--outer-margin);
       padding-right: var(--outer-margin);
-      margin-bottom: var(--space-small);
+      margin-bottom: 0;
+    }
+
+    h3 {
+      padding-top: 1.5em;
+      padding-bottom: 1em;
     }
 
     p {
       text-align: center;
+      &:first-of-type {
+        margin-bottom: 0;
+      }
     }
   }
 }

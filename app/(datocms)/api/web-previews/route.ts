@@ -3,6 +3,7 @@ import { buildRoute } from '@lib/routes';
 import { NextRequest } from 'next/server';
 
 export const runtime = "edge"
+export const dynamic = 'force-dynamic'
 
 export async function POST(req: NextRequest) {
   return await webPreviews(req, async ({ item, itemType }) => {

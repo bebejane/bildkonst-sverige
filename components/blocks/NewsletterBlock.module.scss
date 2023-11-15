@@ -2,18 +2,22 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-top: var(--space);
+  padding-bottom: var(--space);
   width: 100%;
   flex: 1 1 100%;
   align-items: center;
   text-align: center;
-  background-image: radial-gradient(var(--orange), 20%, transparent 20%),
-    radial-gradient(var(--orange), 20%, transparent 20%);
+  --dot-size: 15%;
+  --square-size: 8px;
+  background-image: radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size)),
+    radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size));
   background-color: var(--white);
   background-position:
     0 0,
-    50px 50px;
-  background-size: 100px 100px;
-  height: 200px;
+    calc(var(--square-size) / 2) calc(var(--square-size) / 2);
+  background-size: var(--square-size) var(--square-size);
+  //height: 200px;
   width: 100%;
 
   > h3 {

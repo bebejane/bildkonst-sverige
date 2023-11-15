@@ -9,7 +9,7 @@ export const sendMail = async (to: string, template: string, templateModel: any)
     To: to,
     TemplateAlias: template,
     TemplateModel: {
-      sender_name: 'Bildkonst Sverige',
+      sender_name: process.env.POSTMARK_FROM_NAME,
       site_url: process.env.NEXT_PUBLIC_SITE_URL,
       support_email: 'info@bildkonst-sverige.se',
       ...templateModel

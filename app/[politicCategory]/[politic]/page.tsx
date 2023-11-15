@@ -3,7 +3,6 @@
 import { AllPoliticDocument, PoliticDocument } from "@graphql";
 import { apiQuery, DraftMode } from "next-dato-utils";
 import { notFound } from 'next/navigation';
-import { draftMode } from 'next/headers';
 import Link from 'next/link';
 import Article from '@components/Article';
 import { Metadata } from "next";
@@ -11,8 +10,7 @@ import { Metadata } from "next";
 export default async function Page({ params }: { params: { politic: string } }) {
 
   const { politic, draftUrl } = await apiQuery<PoliticQuery, PoliticQueryVariables>(PoliticDocument, {
-    variables: { slug: params.politic },
-    includeDrafts: draftMode().isEnabled
+    variables: { slug: params.politic }
   })
 
   if (!politic) return notFound()

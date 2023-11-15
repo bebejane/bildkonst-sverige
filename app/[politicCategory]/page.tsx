@@ -4,7 +4,6 @@ import s from './page.module.scss'
 import { AllPoliticByCategoryDocument, AllPoliticCategoriesDocument } from "@graphql";
 import { apiQuery, DraftMode } from "next-dato-utils";
 import StructuredContent from '@components/StructuredContent';
-import { draftMode } from 'next/headers';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
@@ -16,7 +15,6 @@ export default async function Page({ params }: { params: { politicCategory: stri
 
   const { politicCategory, draftUrl } = await apiQuery<AllPoliticByCategoryQuery, AllPoliticByCategoryQueryVariables>(AllPoliticByCategoryDocument, {
     variables: { slug: params.politicCategory },
-    includeDrafts: draftMode().isEnabled,
     tags: ['politic_category']
   })
 

@@ -10,7 +10,7 @@ import { notFound } from 'next/navigation';
 
 export default async function Contact() {
 
-  const { contactPage, draftUrl } = await apiQuery<ContactQuery, ContactQueryVariables>(ContactDocument, { includeDrafts: draftMode().isEnabled })
+  const { contactPage, draftUrl } = await apiQuery<ContactQuery, ContactQueryVariables>(ContactDocument)
 
   if (!contactPage)
     return notFound()

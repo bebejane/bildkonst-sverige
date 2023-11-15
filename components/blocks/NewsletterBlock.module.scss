@@ -6,9 +6,17 @@
   flex: 1 1 100%;
   align-items: center;
   text-align: center;
+  background-image: radial-gradient(var(--orange), 20%, transparent 20%),
+    radial-gradient(var(--orange), 20%, transparent 20%);
+  background-color: var(--white);
+  background-position:
+    0 0,
+    50px 50px;
+  background-size: 100px 100px;
+  height: 200px;
+  width: 100%;
 
-  >h3 {
+  > h3 {
     margin-bottom: 1em;
   }
-
 }

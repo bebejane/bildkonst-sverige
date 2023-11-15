@@ -1,11 +1,16 @@
 .staff {
   margin-top: var(--space);
   display: flex;
+  width: 100%;
   justify-content: center;
   list-style: none;
 
   li {
     width: 33%;
+
+    @include mq($until: desktop) {
+      width: 50%;
+    }
 
     figure {
       padding-left: var(--outer-margin);

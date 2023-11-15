@@ -60,7 +60,7 @@
   align-items: center;
   justify-content: center;
   background-color: var(--orange);
-  height: 100vh;
+  height: 100%;
   width: 100%;
   z-index: 10000000;
   transform: translateY(100%);
@@ -68,6 +68,7 @@
 
   button {
     padding-top: 0;
+
     &:hover {
       color: var(--white);
     }

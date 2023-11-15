@@ -2,8 +2,8 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-top: var(--space);
-  padding-bottom: var(--space);
+  padding: var(--space);
+  //padding-bottom: var(--space);
   width: 100%;
   flex: 1 1 100%;
   align-items: center;
@@ -13,14 +13,12 @@
   background-image: radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size)),
     radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size));
   background-color: var(--white);
-  background-position:
-    0 0,
-    calc(var(--square-size) / 2) calc(var(--square-size) / 2);
+  background-position: 0 0, calc(var(--square-size) / 2) calc(var(--square-size) / 2);
   background-size: var(--square-size) var(--square-size);
-  //height: 200px;
+
   width: 100%;
 
-  > h3 {
+  >h3 {
     margin-bottom: 1em;
   }
 }

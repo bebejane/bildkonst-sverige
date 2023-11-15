@@ -40,7 +40,7 @@
     list-style: none;
   }
 
-  > ul {
+  >ul {
     li {
       cursor: pointer;
 
@@ -51,8 +51,7 @@
           display: block;
         }
 
-        li {
-        }
+        li {}
       }
     }
   }
@@ -81,7 +80,7 @@
     list-style: none;
   }
 
-  > ul > li:hover,
+  >ul>li:hover,
   a:hover {
     color: var(--orange) !important;
   }
@@ -101,6 +100,24 @@
     z-index: var(--z-navbar);
     padding-left: var(--outer-margin);
     padding-right: var(--outer-margin);
+    height: var(--navbar-height);
+    transition: height 0.3s ease-out;
+
+    &.open {
+      background-color: var(--black);
+      height: 100vh;
+
+      @keyframes to-black {
+        to {
+          background-color: var(--black);
+        }
+      }
+
+      li,
+      a {
+        color: var(--white);
+      }
+    }
 
     &.left {
       justify-content: flex-start;
@@ -116,7 +133,7 @@
       flex-direction: column;
     }
 
-    > li {
+    >li {
       position: relative;
       cursor: pointer;
       white-space: nowrap;
@@ -131,7 +148,7 @@
       }
 
       @include mq($from: desktop) {
-        > form {
+        >form {
           display: none;
         }
       }
@@ -159,16 +176,6 @@
         display: flex;
       }
     }
-
-    &.open {
-      background-color: var(--black);
-      height: 100vh;
-
-      li,
-      a {
-        color: var(--white);
-      }
-    }
   }
 
   ul.links {
@@ -176,12 +183,12 @@
   }
 }
 
-.selected > a,
+.selected>a,
 .selected {
   color: var(--orange) !important;
 }
 
-.selectedSub > a,
+.selectedSub>a,
 .selectedSub {
   color: var(--orange) !important;
 }

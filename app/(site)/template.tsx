@@ -24,7 +24,7 @@ export default function MainTemplate({ children }: LayoutProps) {
 }
 
 const orangeScroll = () => {
-  const paragraphs = Array.from(document.querySelectorAll('p')).filter(p => !isElementInViewport(p))
+  const paragraphs = Array.from(document.querySelectorAll('main p,main li')).filter(p => !isElementInViewport(p))
   const observePargraphs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -47,6 +47,6 @@ const orangeScroll = () => {
   }
 }
 
-function isElementInViewport(el: HTMLElement) {
+function isElementInViewport(el: Element) {
   return el.getBoundingClientRect()?.top <= (window.innerHeight || document.documentElement.clientHeight)
 }

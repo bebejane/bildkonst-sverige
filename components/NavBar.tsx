@@ -3,7 +3,7 @@
 import Link from "next/link";
 import cn from 'classnames'
 import s from './NavBar.module.scss'
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { signIn } from 'next-auth/react'
 import Hamburger from 'hamburger-react'
@@ -19,7 +19,7 @@ export type Props = {
 export default function NavBar({ menu }: Props) {
 
   const pathname = usePathname()
-  const { isPageTop, scrolledPosition } = useScrollInfo()
+  const { scrolledPosition } = useScrollInfo()
   const [open, setOpen] = useState(false)
   const [isScrolledDown, setIsScrolledDown] = useState(false)
 

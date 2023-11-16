@@ -6,7 +6,10 @@ import s from './page.module.scss'
 
 export default async function Member() {
 
-  const { allMembers } = await apiQuery<AllApprovedMembersQuery, AllApprovedMembersQueryVariables>(AllApprovedMembersDocument, { tags: ['member'] })
+  const { allMembers } = await apiQuery<AllApprovedMembersQuery, AllApprovedMembersQueryVariables>(AllApprovedMembersDocument, {
+    all: true,
+    tags: ['member']
+  })
 
   return (
     <article>

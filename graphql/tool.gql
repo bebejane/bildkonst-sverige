@@ -1,11 +1,14 @@
-query AllTools {
-	allTools {
+query AllTools($first: IntType = 100, $skip: IntType = 0) {
+	allTools(first: $first, skip: $skip) {
 		id
 		title
 		slug
 		image {
 			...ImageFragment
 		}
+	}
+	_allToolsMeta {
+		count
 	}
 }
 

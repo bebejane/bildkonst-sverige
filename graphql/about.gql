@@ -1,8 +1,11 @@
-query AllAbouts {
-	allAbouts {
+query AllAbouts($first: IntType = 100, $skip: IntType = 0) {
+	allAbouts(first: $first, skip: $skip) {
 		id
 		slug
 		title
+	}
+	_allAboutsMeta {
+		count
 	}
 }
 

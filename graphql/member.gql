@@ -23,9 +23,17 @@ fragment MemberPageFragment on MemberPageRecord {
 	slug
 }
 
-query AllApprovedMembers {
-	allMembers(orderBy: organization_ASC, filter: { approved: { eq: true } }) {
+query AllApprovedMembers($first: IntType = 100, $skip: IntType = 0) {
+	allMembers(
+		first: $first
+		skip: $skip
+		orderBy: organization_ASC
+		filter: { approved: { eq: true } }
+	) {
 		...MemberFragment
+	}
+	_allMembersMeta(filter: { approved: { eq: true } }) {
+		count
 	}
 }
 

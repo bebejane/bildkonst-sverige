@@ -1,11 +1,14 @@
-query AllNews {
-	allNews {
+query AllNews($first: IntType = 100, $skip: IntType = 0) {
+	allNews(first: $first, skip: $skip) {
 		id
 		title
 		slug
 		image {
 			...ImageFragment
 		}
+	}
+	_allNewsMeta {
+		count
 	}
 }
 

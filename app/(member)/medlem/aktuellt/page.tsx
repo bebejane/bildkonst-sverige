@@ -8,7 +8,10 @@ import Link from 'next/link';
 
 export default async function News() {
 
-  const { allNews } = await apiQuery<AllNewsQuery, AllNewsQueryVariables>(AllNewsDocument, { tags: ['news'] })
+  const { allNews } = await apiQuery<AllNewsQuery, AllNewsQueryVariables>(AllNewsDocument, {
+    all: true,
+    tags: ['news']
+  })
 
   return (
     <article className={s.container}>

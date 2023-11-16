@@ -30,6 +30,7 @@ export default async function NewsPage({ params }: { params: { news: string } })
 export async function generateStaticParams() {
   const { allNews } = await apiQuery<AllNewsQuery, AllNewsQueryVariables>(AllNewsDocument, {
     tags: ["news"],
+    all: true,
   });
   return allNews.map(({ slug: news }) => ({ NewsPage }));
 }

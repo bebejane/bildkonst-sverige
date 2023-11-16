@@ -8,7 +8,10 @@ import Link from 'next/link';
 
 export default async function Tools() {
 
-  const { allTools } = await apiQuery<AllToolsQuery, AllToolsQueryVariables>(AllToolsDocument, { tags: ['tool'] })
+  const { allTools } = await apiQuery<AllToolsQuery, AllToolsQueryVariables>(AllToolsDocument, {
+    all: true,
+    tags: ['tool']
+  })
 
   return (
     <article className={s.container}>

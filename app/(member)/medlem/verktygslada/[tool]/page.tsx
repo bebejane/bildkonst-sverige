@@ -20,7 +20,10 @@ export default async function ToolPage({ params }: { params: { tool: string } })
 }
 
 export async function generateStaticParams() {
-  const { allTools } = await apiQuery<AllToolsQuery, AllToolsQueryVariables>(AllToolsDocument, { tags: ['tool'] });
+  const { allTools } = await apiQuery<AllToolsQuery, AllToolsQueryVariables>(AllToolsDocument, {
+    all: true,
+    tags: ['tool']
+  });
   return allTools.map(({ slug: tool }) => ({ tool }))
 }
 

@@ -8,7 +8,9 @@ import { Metadata } from "next";
 
 export default async function Page({ params }: { params: { about: string } }) {
 
-  const { about, draftUrl } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument, { variables: { slug: params.about } })
+  const { about, draftUrl } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument, {
+    variables: { slug: params.about }
+  })
 
   if (!about) return notFound()
 
@@ -23,12 +25,17 @@ export default async function Page({ params }: { params: { about: string } }) {
 }
 
 export async function generateStaticParams() {
-  const { allAbouts } = await apiQuery<AllAboutsQuery, AllAboutsQueryVariables>(AllAboutsDocument, { tags: ['about'] });
+  const { allAbouts } = await apiQuery<AllAboutsQuery, AllAboutsQueryVariables>(AllAboutsDocument, {
+    all: true,
+    tags: ['about']
+  });
   return allAbouts.map(({ slug: about }) => ({ about }))
 }
 
 export async function generateMetadata({ params }) {
-  const { about } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument, { variables: { slug: params.about } })
+  const { about } = await apiQuery<AboutQuery, AboutQueryVariables>(AboutDocument, {
+    variables: { slug: params.about }
+  })
 
   return {
     title: about.title,

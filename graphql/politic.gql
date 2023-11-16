@@ -1,5 +1,5 @@
-query AllPolitic {
-	allPolitics {
+query AllPolitic($first: IntType = 100, $skip: IntType = 0) {
+	allPolitics(first: $first, skip: $skip) {
 		id
 		title
 		slug
@@ -8,6 +8,9 @@ query AllPolitic {
 			title
 			slug
 		}
+	}
+	_allPoliticsMeta {
+		count
 	}
 }
 
@@ -23,19 +26,20 @@ query PoliticCategory($slug: String, $id: ItemId) {
 	}
 }
 
-query AllPoliticByCategory($slug: String!) {
-	politicCategory(filter: { slug: { eq: $slug } }) {
-		id
-		title
-		slug
-		_allReferencingPolitics(first: 100) {
-			...PoliticFragment
-		}
+query AllPoliticByCategory($id: ItemId, $first: IntType = 1, $skip: IntType = 0) {
+	allPolitics(first: $first, skip: $skip, filter: { category: { eq: $id } }) {
+		...PoliticFragment
+	}
+	_allPoliticsMeta(filter: { category: { eq: $id } }) {
+		count
 	}
 }
 
-query AllPoliticCategories {
-	allPoliticCategories(first: 100) {
+query AllPoliticCategories($first: IntType = 100, $skip: IntType = 0) {
+	allPoliticCategories(first: $first, skip: $skip) {
 		...PoliticCategoryFragment
+	}
+	_allPoliticCategoriesMeta {
+		count
 	}
 }

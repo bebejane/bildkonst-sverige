@@ -55,11 +55,17 @@ query SiteMap($first: IntType = 100, $skip: IntType = 0) {
 		slug
 		_updatedAt
 	}
+	_allAboutsMeta {
+		count
+	}
 	allPolitics(first: $first, skip: $skip) {
 		slug
 		_updatedAt
 		category {
 			slug
 		}
+	}
+	_allPoliticsMeta {
+		count
 	}
 }

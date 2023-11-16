@@ -31,7 +31,13 @@ const staticRoutes: MetadataRoute.Sitemap = [
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
-  const { allAbouts, allPolitics } = await apiQuery<SiteMapQuery, SiteMapQueryVariables>(SiteMapDocument)
+  const { allAbouts, allPolitics } = await apiQuery<SiteMapQuery, SiteMapQueryVariables>(SiteMapDocument, {
+    all: true,
+    variables: {
+      first: 100,
+      skip: 0
+    }
+  })
 
   return [
     ...staticRoutes,

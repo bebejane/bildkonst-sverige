@@ -21,11 +21,6 @@
     margin-bottom: 1em;
   }
 
-  button[disabled] {
-    opacity: 0.5;
-    pointer-events: none;
-  }
-
   button:hover {
     color: var(--orange) !important;
   }

@@ -93,6 +93,7 @@ figure {
 }
 
 .structured {
+
 	p,
 	blockquote,
 	ul,
@@ -181,6 +182,12 @@ button {
 		cursor: pointer;
 		letter-spacing: 0.4em;
 	}
+
+	&[disabled] {
+		opacity: 0.5;
+		pointer-events: none;
+	}
+
 }
 
 a {
@@ -191,13 +198,12 @@ a {
 		color: var(--orange);
 	}
 
-	&:visited {
-	}
+	&:visited {}
 }
 
 figcaption {
-	@include mq($until: tablet) {
-	}
+	@include mq($until: tablet) {}
+
 	padding-top: 1.5em;
 }
 
@@ -205,8 +211,7 @@ figcaption {
 	padding-right: 1em;
 }
 
-hr {
-}
+hr {}
 
 input,
 textarea,
@@ -218,8 +223,7 @@ select {
 	font-family: $nav-font;
 	background-color: var(--white);
 
-	&:focus {
-	}
+	&:focus {}
 }
 
 select {

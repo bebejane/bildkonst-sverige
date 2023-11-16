@@ -170,6 +170,7 @@ declare module '*/site.gql' {
   const defaultDocument: DocumentNode;
   export const Site: DocumentNode;
 export const SiteFragment: DocumentNode;
+export const SiteMap: DocumentNode;
 
   export default defaultDocument;
 }

@@ -1,8 +1,7 @@
-.container {
+.form {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  height: calc(100vh - var(--main-offset));
-  width: 100%;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - var(--main-offset));
 }

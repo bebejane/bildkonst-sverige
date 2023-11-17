@@ -1,5 +1,6 @@
 'use server'
 
+import s from './page.module.scss'
 import Article from '@components/Article'
 import LoginForm from './LoginForm'
 import { Metadata } from 'next';
@@ -7,8 +8,10 @@ import { Metadata } from 'next';
 export default async function Login() {
 
   return (
-    <Article id={'login'} title="Logga in">
-      <LoginForm />
+    <Article id={'login'}>
+      <div className={s.form}>
+        <LoginForm />
+      </div>
     </Article>
   );
 }

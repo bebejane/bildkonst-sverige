@@ -20,13 +20,13 @@ query Politic($slug: String!) {
 	}
 }
 
-query PoliticCategory($slug: String, $id: ItemId) {
+query PoliticCategory($slug: String!, $id: ItemId!) {
 	politicCategory(filter: { OR: [{ slug: { eq: $slug } }, { id: { eq: $id } }] }) {
 		...PoliticCategoryFragment
 	}
 }
 
-query AllPoliticByCategory($id: ItemId, $first: IntType = 1, $skip: IntType = 0) {
+query AllPoliticByCategory($id: ItemId!, $first: IntType = 1, $skip: IntType = 0) {
 	allPolitics(first: $first, skip: $skip, filter: { category: { eq: $id } }) {
 		...PoliticFragment
 	}

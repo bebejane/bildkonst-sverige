@@ -14,9 +14,9 @@ import { Metadata } from 'next';
 export default async function Page({ params }: { params: { politicCategory: string } }) {
 
   const { politicCategory } = await apiQuery<PoliticCategoryQuery, PoliticCategoryQueryVariables>(PoliticCategoryDocument, {
-    variables: { slug: params.politicCategory },
+    variables: { slug: params.politicCategory, id: null },
   })
-
+  console.log(politicCategory)
   if (!politicCategory)
     return notFound()
 
@@ -73,9 +73,10 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }) {
   const { politicCategory } = await apiQuery<PoliticCategoryQuery, PoliticCategoryQueryVariables>(PoliticCategoryDocument, {
-    variables: { slug: params.politicCategory }
+    variables: { slug: params.politicCategory, id: null }
   })
-
+  if (!politicCategory)
+    return notFound()
   return {
     title: politicCategory.title,
   } as Metadata

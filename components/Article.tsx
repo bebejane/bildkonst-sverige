@@ -7,7 +7,7 @@ import { Image } from 'react-datocms';
 
 export type ArticleProps = {
   id: string
-  title: string;
+  title?: string;
   intro?: any;
   image?: FileField
   content?: any;
@@ -30,7 +30,7 @@ export default async function Article({
   return (
     <article className={className}>
       <div className="content">
-        <h1>{title}</h1>
+        {title && <h1>{title}</h1>}
         {image &&
           <div className="grid">
             <figure className="small">

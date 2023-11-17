@@ -42,7 +42,7 @@ export default function LoginForm() {
       <form method="POST" onSubmit={handleSignin}>
         <input id="email" name="email" type="email" placeholder="E-post" autoComplete="username" />
         <input name="password" type="password" placeholder="Lösenord" autoComplete="current-password" />
-        <button type="submit">OK</button>
+        <button type="submit">Logga in</button>
       </form>
       {error && <p className={s.error}>{error}</p>}
     </div>

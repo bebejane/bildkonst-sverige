@@ -49,6 +49,8 @@ export async function generateMetadata({ params }) {
     variables: { slug: params.politic }
   })
 
+  if (!politic) return notFound()
+
   return {
     title: politic.title,
   } as Metadata

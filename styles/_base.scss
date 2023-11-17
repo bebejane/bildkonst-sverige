@@ -11,6 +11,7 @@
 	--navbar-offset: 0.2rem;
 	--navbar-height: calc(3rem + var(--navbar-offset));
 	--navbar-offset: 0.2rem;
+	--main-offset: calc(var(--navbar-height) + 1.5rem);
 	--background: var(--white);
 	--foreground: var(--black);
 	--line-height: 1.4em;
@@ -42,7 +43,7 @@ html {
 }
 
 main {
-	padding-top: calc(var(--navbar-height) + 1.5rem);
+	padding-top: var(--main-offset);
 	min-height: calc(100vh);
 }
 

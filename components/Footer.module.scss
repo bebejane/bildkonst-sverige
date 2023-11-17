@@ -63,8 +63,12 @@
   height: 100%;
   width: 100%;
   z-index: 10000000;
-  transform: translateY(100%);
+  transform: translateY(100vh);
   transition: transform 0.3s ease-in-out;
+
+  &.show {
+    transform: translateY(0vh);
+  }
 
   button {
     padding-top: 0;
@@ -86,7 +90,5 @@
     width: auto;
   }
 
-  &.show {
-    transform: translateY(0%);
-  }
+
 }

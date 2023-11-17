@@ -7,6 +7,10 @@ import { apiQuery, DraftMode } from "next-dato-utils";
 import MemberForm from '@components/MemberForm';
 import { Metadata } from 'next';
 
+const formatter = new Intl.NumberFormat('se-Sv', {
+  maximumFractionDigits: 0
+});
+
 export default async function Membership() {
 
   const { memberPage, allMemberLevels, draftUrl } = await apiQuery<MemberPageQuery, MemberPageQueryVariables>(MemberPageDocument)
@@ -16,11 +20,12 @@ export default async function Membership() {
     <>
       <Article id={id} className={s.container} title={title} intro={intro} content={content}>
         <div className="structured grid">
+          <h3>Årsomsättning</h3>
           <ul className={s.levels}>
             {allMemberLevels.map(({ id, level, turnoverMax, turnoverMin }) =>
               <li key={id}>
-                Medlemsnivå {level} —
-                Årsomsättning: {!turnoverMax && turnoverMin ? `< ${turnoverMin}` : turnoverMax && turnoverMin ? `> ${turnoverMin} < ${turnoverMax}` : `> ${turnoverMax}`}
+                Medlemsnivå {level}:&nbsp;&nbsp;
+                {!turnoverMax && turnoverMin ? `<${formatter.format(turnoverMin)}` : turnoverMax && turnoverMin ? `>${formatter.format(turnoverMin)} <${formatter.format(turnoverMax)}` : `>${formatter.format(turnoverMax)}`}
               </li>
             )}
           </ul>

@@ -21,6 +21,7 @@
 	--z-navbar: 1000;
 	--z-logo: 1100;
 	--z-hamburger: 1200;
+	--z-newsletter-popup: 2000;
 
 	@include mq($until: desktop) {
 		--outer-margin: 0.8rem;

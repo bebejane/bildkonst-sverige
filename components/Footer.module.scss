@@ -59,16 +59,26 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: var(--orange);
   height: 100%;
   width: 100%;
-  z-index: 10000000;
+  padding: var(--outer-margin);
+  z-index: var(--z-newsletter-popup);
   transform: translateY(100vh);
   transition: transform 0.3s ease-in-out;
 
   &.show {
     transform: translateY(0vh);
   }
+
+  --dot-size: 15%;
+  --square-size: 8px;
+  background-image: radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size)),
+  radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size));
+  background-color: var(--white);
+  background-position: 0 0,
+  calc(var(--square-size) / 2) calc(var(--square-size) / 2);
+  background-size: var(--square-size) var(--square-size);
+
 
   button {
     padding-top: 0;

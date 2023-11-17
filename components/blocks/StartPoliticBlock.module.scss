@@ -12,13 +12,16 @@
       grid-column-end: 7;
       aspect-ratio: 5/4;
       display: flex;
+
       img {
         object-fit: cover;
       }
+
       @include mq($until: tablet) {
         margin-left: 20%;
         margin-right: 20%;
         margin-bottom: var(--space);
+        aspect-ratio: unset;
       }
     }
   }

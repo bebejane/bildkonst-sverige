@@ -1,8 +1,6 @@
 'use server'
 
-import { buildClient } from "@datocms/cma-client-browser"
 import { z } from 'zod'
-import { sleep } from 'next-dato-utils'
 
 export default async function newsletterSignup(prevState: any, formData: FormData): Promise<{ data?: string, error?: string, invalid?: any[] }> {
 
@@ -13,14 +11,33 @@ export default async function newsletterSignup(prevState: any, formData: FormDat
     try {
       z.string().email({ message: "Ogiltig e-post adress" }).parse(email as string)
     } catch (e) {
-      console.log(e)
-      return { error: e.message }
+      throw new Error(e.message)
     }
 
-    await sleep(2000)
+    return { data: 'ok' }
 
-    const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN })
-    const itemType = (await client.itemTypes.list()).find((itemType: any) => itemType.api_key === 'member')
+    const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID;
+    const API_KEY = process.env.MAILCHIMP_API_KEY;
+    const DATACENTER = process.env.MAILCHIMP_API_SERVER;
+
+    const data = { email_address: email, status: 'subscribed' };
+
+    const response = await fetch(`https://${DATACENTER}.api.mailchimp.com/3.0/lists/${AUDIENCE_ID}/members`, {
+      body: JSON.stringify(data),
+      method: 'POST',
+      cache: 'no-store',
+      headers: {
+        'Authorization': `apikey ${API_KEY}`,
+        'Content-Type': 'application/json',
+      }
+    });
+
+    const { title, status, detail } = await response.json()
+
+    if (status >= 400) {
+      const exists = title?.toLowerCase().includes('exists') ?? false
+      throw new Error(exists ? 'Du är redan anmäld till nyhetsbrevet' : `Det uppstod ett fel: ${detail}`)
+    }
 
     return { data: 'ok' }
 
@@ -28,4 +45,5 @@ export default async function newsletterSignup(prevState: any, formData: FormDat
     console.log(e)
     return { error: e.message }
   }
-} 
+}
+

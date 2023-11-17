@@ -177,10 +177,12 @@ button {
 	padding-top: var(--space-small);
 	transition: letter-spacing 0.3s;
 
-	&:hover {
-		color: var(--orange);
-		cursor: pointer;
-		letter-spacing: 0.4em;
+	@include mq($from: desktop) {
+		&:hover {
+			color: var(--orange);
+			cursor: pointer;
+			letter-spacing: 0.4em;
+		}
 	}
 
 	&[disabled] {
@@ -194,11 +196,16 @@ a {
 	text-decoration: none;
 	color: var(--foreground);
 
-	&:hover {
-		color: var(--orange);
+	@include mq($from: desktop) {
+		&:hover {
+			color: var(--orange);
+		}
 	}
 
-	&:visited {}
+
+	&:active {
+		color: var(--orange);
+	}
 }
 
 figcaption {

@@ -181,9 +181,20 @@ const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
 
   return (
     <>
-      <form method="POST" onSubmit={handleSignin} className={cn(s.loginForm, submitting && s.submitting)}>
+      <form
+        method="POST"
+        onSubmit={handleSignin}
+        className={cn(s.loginForm, submitting && s.submitting)}
+        onClick={(e) => e.stopPropagation()}
+      >
         <input id="email" name="email" type="email" placeholder="E-post" />
-        <input id="password" name="password" type="password" placeholder="Lösenord" autoComplete="current-password" />
+        <input
+          id="password"
+          name="password"
+          type="password"
+          placeholder="Lösenord"
+          autoComplete="current-password"
+        />
         <button onClick={(e) => e.stopPropagation()}>Logga in</button>
       </form>
       {error && <p className={s.error}>{error}</p>}

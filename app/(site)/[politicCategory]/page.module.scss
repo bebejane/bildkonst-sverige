@@ -8,6 +8,7 @@
     padding-top: var(--space);
 
     border-top: 1px solid var(--black);
+
     a {
       display: flex;
       flex-direction: column;
@@ -21,7 +22,7 @@
           grid-column-end: 10;
         }
 
-        > p {
+        >p {
           display: inline;
         }
       }
@@ -32,11 +33,14 @@
           margin-left: 20%;
           margin-right: 20%;
           margin-bottom: var(--space-small);
+          aspect-ratio: unset;
         }
+
         grid-column-start: 10;
         grid-column-end: 13;
         aspect-ratio: 4 / 3;
         display: flex;
+
         img {
           object-fit: cover;
         }

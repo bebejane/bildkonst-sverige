@@ -29,10 +29,12 @@
     span {
       padding-right: 1em;
 
-      @include mq($from: desktop) {
-        &:hover {
-          cursor: pointer;
-          color: var(--orange);
+      &.popup {
+        @include mq($from: desktop) {
+          &:hover {
+            cursor: pointer;
+            color: var(--orange);
+          }
         }
       }
     }
@@ -98,6 +100,14 @@
     right: 0;
     margin: var(--outer-margin) !important;
     width: auto;
+
+    @include mq($from: desktop) {
+      &:hover {
+        cursor: pointer;
+        color: var(--orange);
+      }
+    }
+
   }
 
 

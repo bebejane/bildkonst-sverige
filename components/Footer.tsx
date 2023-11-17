@@ -21,7 +21,7 @@ export default function Footer() {
           <Link href={'/'}>Bildkonst<br />sverige</Link>
         </h1>
         <div>
-          <span onClick={() => setShowNewsletter(!showNewsletter)}>
+          <span className={s.popup} onClick={() => setShowNewsletter(!showNewsletter)}>
             Nyhetsbrev
           </span>
           <span><Link href="/kontakt">Kontakt</Link></span>

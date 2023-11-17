@@ -32,7 +32,7 @@ export default function NavBar({ menu }: Props) {
         <Link href={'/'}>Bildkonst<br />sverige</Link>
       </h1>
       <DesktopMenu menu={menu} pathname={pathname} />
-      <MobileMenu menu={menu} pathname={pathname} open={open} onToggle={(val) => setOpen(val)} />
+      <MobileMenu menu={menu} pathname={pathname} open={open} onToggle={(val) => setOpen(val)} key={pathname} />
     </>
   );
 }
@@ -40,8 +40,9 @@ export default function NavBar({ menu }: Props) {
 const MobileMenu = ({ menu, pathname, open, onToggle }: { menu: Menu, pathname: string, open: boolean, onToggle: (o: boolean) => void }) => {
 
   const { session, error, status, refresh } = useNextAuthSession()
-  const [subId, setSubId] = useState<string | null>(null)
-
+  const initialSubId = menu.find(({ sub }) => sub?.find(({ slug }) => slug === pathname))?.id
+  const [subId, setSubId] = useState<string | null>(initialSubId ?? null)
+  console.log(initialSubId, subId)
   return (
     <>
       <nav className={cn(s.hamburger, open && s.open)}>
@@ -63,14 +64,20 @@ const MobileMenu = ({ menu, pathname, open, onToggle }: { menu: Menu, pathname: 
                   :
                   auth && !session ? <>Logga in</> : <>{title}</>
                 }
-                <ul className={cn(s.sub, (subId === id || isMenuItemIsOpen(pathname, menu[idx])) && s.open)}>
+                <ul className={cn(s.sub, subId === id && s.open)} onClick={e => e.stopPropagation()}>
                   {auth && !session ?
+                    subId === id &&
                     <li className={s.login}>
                       <LoginForm onSuccess={() => refresh()} />
                     </li>
+
                     :
-                    sub?.map(({ id, title, slug }) => (
-                      <li className={cn(pathname === slug && s.selectedSub)} key={id}>
+                    sub?.map(({ id, title, slug }, i) => (
+                      <li
+                        key={id}
+                        className={cn(pathname === slug && s.selectedSub)}
+                        style={{ animationDelay: `${(i + 1) * 70}ms` }}
+                      >
                         <Link href={slug}>{title}</Link>
                       </li>
                     ))}

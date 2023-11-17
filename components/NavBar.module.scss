@@ -3,6 +3,7 @@
   top: 0;
   left: 0;
   height: 100vh;
+  overflow-y: scroll;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -45,14 +46,52 @@
       cursor: pointer;
 
       ul {
-        display: none;
-        margin-bottom: 1em;
 
-        &.open {
-          display: block;
+
+        li {
+
+          animation-name: hide;
+          animation-timing-function: linear;
+          animation-fill-mode: both;
+          max-height: 0;
+          overflow: hidden;
+
+          &.login {
+            animation-name: none;
+            max-height: unset;
+            overflow: visible;
+          }
+
+          @keyframes hide {
+            0% {
+              max-height: 2em;
+            }
+
+            100% {
+              max-height: 0;
+            }
+          }
+
+          @keyframes show {
+            0% {
+              max-height: 0;
+            }
+
+            100% {
+              max-height: 2em;
+            }
+          }
         }
 
-        li {}
+        &.open {
+
+          margin-bottom: 1em;
+
+          li {
+            animation-name: show;
+
+          }
+        }
       }
     }
   }

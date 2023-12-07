@@ -66,6 +66,10 @@ const routes: Routes = {
     typeName: "SiteRecord",
     path: async (item) => '/'
   },
+  "resource": {
+    typeName: "ResourceRecord",
+    path: async (item) => '/medlem/resurser'
+  },
 }
 
 export const buildRoute = async (model: string, item?: any): Promise<string> => {

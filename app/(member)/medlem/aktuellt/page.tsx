@@ -31,8 +31,8 @@ export default async function News() {
             <Link href={`/medlem/aktuellt/${slug}`}>
               <figure>
                 <Image data={image.responsiveImage} />
-                <figcaption>{title}</figcaption>
               </figure>
+              <h3>{title}</h3>
               <p className={s.details}>
                 {format(new Date(_publishedAt), 'yyyy-MM-dd hh:mm')}<br />
                 {category?.title}
@@ -47,8 +47,8 @@ export default async function News() {
           <li key={slug}>
             <figure>
               <Image data={image.responsiveImage} />
-              <figcaption>{title}</figcaption>
             </figure>
+            <h3>{title}</h3>
             <p className={s.details}>
               {format(new Date(_publishedAt), 'yyyy-MM-dd hh:mm')}<br />
               {category?.title}

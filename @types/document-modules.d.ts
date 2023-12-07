@@ -165,6 +165,15 @@ export const AllPoliticCategories: DocumentNode;
 }
     
 
+declare module '*/resources.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const AllResources: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/site.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;

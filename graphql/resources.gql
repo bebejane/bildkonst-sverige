@@ -1,0 +1,31 @@
+query AllResources($first: IntType = 100, $skip: IntType = 0) {
+	allResources(first: $first, skip: $skip) {
+		id
+		title
+		category {
+			id
+			title
+		}
+		tema {
+			id
+			title
+		}
+		slug
+		summary {
+			blocks
+			links
+			value
+		}
+		link {
+			... on ExternalLinkRecord {
+				id
+				title
+				url
+			}
+		}
+		_publishedAt
+	}
+	_allResourcesMeta {
+		count
+	}
+}

@@ -2,10 +2,21 @@ query AllNews($first: IntType = 100, $skip: IntType = 0) {
 	allNews(first: $first, skip: $skip) {
 		id
 		title
-		slug
+		category {
+			id
+			title
+		}
 		image {
 			...ImageFragment
 		}
+		extended
+		intro {
+			blocks
+			value
+			links
+		}
+		slug
+		_publishedAt
 	}
 	_allNewsMeta {
 		count
@@ -30,6 +41,7 @@ fragment NewsFragment on NewsRecord {
 		value
 		links
 	}
+	extended
 	content {
 		blocks {
 			... on ImageRecord {

@@ -3,7 +3,7 @@
 	--white: #fcfcfc;
 	--red: #bf0000;
 	--orange: #ff7a00;
-	--member-color: #ff7a007a;
+	--member-color: #ff7a0045;
 	--outer-margin: 2.5rem;
 	--space: 2rem;
 	--space-small: 1rem;
@@ -15,7 +15,7 @@
 	--background: var(--white);
 	--foreground: var(--black);
 	--line-height: 1.4em;
-
+	--apsect-ratio: 6/4;
 	--z-transition-background: 800;
 	--z-navbar-pane: 900;
 	--z-navbar: 1000;
@@ -95,7 +95,6 @@ figure {
 }
 
 .structured {
-
 	p,
 	blockquote,
 	ul,
@@ -191,7 +190,6 @@ button {
 		opacity: 0.5;
 		pointer-events: none;
 	}
-
 }
 
 a {
@@ -204,14 +202,14 @@ a {
 		}
 	}
 
-
 	&:active {
 		color: var(--orange);
 	}
 }
 
 figcaption {
-	@include mq($until: tablet) {}
+	@include mq($until: tablet) {
+	}
 
 	padding-top: 1.5em;
 }
@@ -220,7 +218,8 @@ figcaption {
 	padding-right: 1em;
 }
 
-hr {}
+hr {
+}
 
 input,
 textarea,
@@ -232,7 +231,8 @@ select {
 	font-family: $nav-font;
 	background-color: var(--white);
 
-	&:focus {}
+	&:focus {
+	}
 }
 
 select {

@@ -8,6 +8,7 @@ import { Image } from 'react-datocms';
 import Link from 'next/link';
 import { StructuredContent } from 'next-dato-utils';
 import { format } from 'date-fns';
+import cn from 'classnames';
 
 export default async function News() {
 
@@ -25,39 +26,40 @@ export default async function News() {
 
   return (
     <article className={s.container}>
-      <ul>
-        {extendedNews.map(({ image, slug, title, intro, _publishedAt, category }) => (
-          <li key={slug}>
-            <Link href={`/medlem/aktuellt/${slug}`}>
+      <h3>Aktuellt för medlemmar</h3>
+      <div class="grid">
+
+        <ul className={s.main}>
+          {extendedNews.map(({ image, slug, title, intro, _publishedAt, category }) => (
+            <li key={slug}>
+              <Link href={`/medlem/aktuellt/${slug}`}>
+                <figure>
+                  <Image data={image.responsiveImage} />
+                </figure>
+                <h2>{title}</h2>
+                <span className="date">{category?.title} • {format(new Date(_publishedAt), 'yyyy-MM-dd')}</span>
+
+                <StructuredContent className="intro" content={intro} />
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <ul className={s.left}>
+          {shortNews.map(({ image, slug, title, intro, _publishedAt, category }) => (
+            <li key={slug}>
               <figure>
                 <Image data={image.responsiveImage} />
               </figure>
-              <h3>{title}</h3>
-              <p className={s.details}>
-                {format(new Date(_publishedAt), 'yyyy-MM-dd hh:mm')}<br />
-                {category?.title}
-              </p>
-              <StructuredContent content={intro} />
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <ul>
-        {shortNews.map(({ image, slug, title, intro, _publishedAt, category }) => (
-          <li key={slug}>
-            <figure>
-              <Image data={image.responsiveImage} />
-            </figure>
-            <h3>{title}</h3>
-            <p className={s.details}>
-              {format(new Date(_publishedAt), 'yyyy-MM-dd hh:mm')}<br />
-              {category?.title}
-            </p>
-            <StructuredContent content={intro} />
-          </li>
-        ))}
-      </ul>
-    </article>
+              <span className="date">{category?.title} • {format(new Date(_publishedAt), 'yyyy-MM-dd')}<br />
+              </span>
+              <h4>{title}</h4>
+
+              <StructuredContent className="small" content={intro} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </article >
   );
 }
 

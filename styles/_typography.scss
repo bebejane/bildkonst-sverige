@@ -63,6 +63,13 @@ button {
   text-align: center;
 }
 
+h4 {
+  font-size: 0.85rem;
+  font-family: $headline-font;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+}
+
 p {
   line-height: var(--line-height);
 
@@ -72,17 +79,21 @@ p {
   }
 }
 
+.small p,
+p.small {
+  font-size: 0.8rem;
+}
+
 blockquote {
   font-size: 1.2rem;
 }
 
+.intro p,
 .intro {
-  p {
-    font-size: 1.2rem;
-    display: inline;
-    @include mq($from: desktop) {
-      font-size: 1.4rem;
-    }
+  font-size: 1.2rem;
+  display: inline;
+  @include mq($from: desktop) {
+    font-size: 1.35rem;
   }
 }
 

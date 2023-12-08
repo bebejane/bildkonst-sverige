@@ -1,12 +1,45 @@
 .container {
-  display: flex;
-  flex-direction: row;
+  h3 {
+    padding-bottom: var(--space);
+  }
 
   ul {
     list-style: none;
     display: flex;
     flex-direction: column;
-    flex: 0 0 50%;
 
+    figure {
+      margin-bottom: 1rem;
+      aspect-ratio: var(--apsect-ratio);
+      display: flex;
+
+      img {
+        object-fit: cover;
+      }
+    }
+  }
+
+  .main {
+    grid-column: span 8;
+  }
+
+  .left {
+    grid-column: span 4;
+    border-left: 1px solid var(--black);
+    padding-left: var(--gutter);
+
+    figure {
+      margin-bottom: 0.5rem;
+    }
+
+    li {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--black);
+
+      p {
+        margin-bottom: 0;
+      }
+    }
   }
 }

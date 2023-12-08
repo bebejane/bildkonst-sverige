@@ -1,7 +1,8 @@
 import s from './TextBlock.module.scss'
 import cn from 'classnames'
-import { recordToRoute } from '@lib/routes'
 import Link from 'next/link'
+import { Image } from 'react-datocms'
+import { recordToRoute } from '@lib/routes'
 
 type Props = {
   data: TextBlockRecord
@@ -21,7 +22,7 @@ export default async function TextBlock({ data: { texts } }: Props) {
 
   return (
     <div className={cn(s.container, columnsClass)}>
-      {texts.map(({ headline, text, link }, i) => {
+      {texts.map(({ headline, text, link, image }, i) => {
         const l = links.find(({ id }) => id === link?.id)
         return l?.slug ?
           <Link
@@ -29,11 +30,17 @@ export default async function TextBlock({ data: { texts } }: Props) {
             className={s.block}
             target={l.__typename === 'ExternalLinkRecord' ? "_blank" : undefined}
           >
+            {image &&
+              <Image data={image.responsiveImage} className={s.image} />
+            }
             <Header>{headline}</Header>
             <p>{text}</p>
           </Link>
           :
           <div key={i} className={s.block}>
+            {image &&
+              <Image data={image.responsiveImage} className={s.image} />
+            }
             <Header>{headline}</Header>
             <p>{text}</p>
           </div>

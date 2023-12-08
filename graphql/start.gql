@@ -18,10 +18,14 @@ query Start {
 			}
 			... on TextBlockRecord {
 				id
+
 				texts {
 					id
 					headline
 					text
+					image {
+						...ImageFragment
+					}
 					link {
 						... on InternalLinkRecord {
 							__typename

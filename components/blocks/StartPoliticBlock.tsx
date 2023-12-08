@@ -24,7 +24,7 @@ export default function StartPoliticBlock({ data: { record: { id, slug, category
         <div className={s.text}>
           <h1>{title}</h1>
           <div className="intro">
-            <span className="date">{format(new Date(_publishedAt), 'd MMMM yyyy')}</span>
+            <span className="date">Rapport • {format(new Date(_publishedAt), 'yyyy-MM-dd')}</span>
             <StructuredContent content={intro} id={id} />
           </div>
         </div>

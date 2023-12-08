@@ -190,7 +190,6 @@
     padding-left: var(--outer-margin);
     padding-right: var(--outer-margin);
     height: var(--navbar-height);
-    transition: height 0.3s ease-in-out;
 
     &.open {
       background-color: var(--black);
@@ -264,6 +263,38 @@
       &.open {
         display: flex;
       }
+
+      li {
+        opacity: 0;
+
+        animation-name: hide;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+
+        @keyframes hide {
+          0% {
+            opacity: 1;
+          }
+
+          100% {
+            opacity: 0;
+          }
+        }
+
+        @keyframes show {
+          0% {
+            opacity: 0;
+          }
+
+          100% {
+            opacity: 1;
+          }
+        }
+
+        &.show {
+          animation-name: show;
+        }
+      }
     }
   }
 
@@ -302,5 +333,62 @@
   &.submitting {
     opacity: 0.5;
     pointer-events: none;
+  }
+}
+
+.newsletter {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: var(--outer-margin);
+  z-index: var(--z-newsletter-popup);
+  transform: translateY(100vh);
+  transition: transform 0.3s ease-in-out;
+
+  &.show {
+    transform: translateY(0vh);
+  }
+
+  --dot-size: 15%;
+  --square-size: 8px;
+  background-image: radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size)),
+    radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size));
+  background-color: var(--white);
+  background-position:
+    0 0,
+    calc(var(--square-size) / 2) calc(var(--square-size) / 2);
+  background-size: var(--square-size) var(--square-size);
+
+  button {
+    padding-top: 0;
+
+    &:hover {
+      color: var(--white);
+    }
+  }
+
+  input {
+    border: 0px;
+  }
+
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: var(--outer-margin) !important;
+    width: auto;
+
+    @include mq($from: desktop) {
+      &:hover {
+        cursor: pointer;
+        color: var(--orange);
+      }
+    }
   }
 }

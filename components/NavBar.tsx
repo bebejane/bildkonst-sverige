@@ -11,6 +11,7 @@ import useNextAuthSession from "@lib/hooks/useNextAuthSession";
 import { Menu, MenuItem } from "@lib/menu";
 import { useScrollInfo } from 'next-dato-utils'
 import React from "react";
+import NewsletterForm from "./NewsLetterForm";
 
 export type Props = {
   menu: Menu
@@ -22,22 +23,45 @@ export default function NavBar({ menu }: Props) {
   const { scrolledPosition } = useScrollInfo()
   const [open, setOpen] = useState(false)
   const [isScrolledDown, setIsScrolledDown] = useState(false)
+  const [showNewsletter, setShowNewsletter] = useState(false)
 
   useEffect(() => { setOpen(false) }, [pathname])
   useEffect(() => { setIsScrolledDown(scrolledPosition > 0) }, [scrolledPosition])
+
+  useEffect(() => {
+    document.body.classList.toggle('slide-up', showNewsletter)
+  }, [showNewsletter])
+
 
   return (
     <>
       <h1 className={cn(s.logo, (isScrolledDown && !open) && s.onScroll, open && s.open, "logo")}>
         <Link href={'/'}>Bildkonst<br />sverige</Link>
       </h1>
-      <DesktopMenu menu={menu} pathname={pathname} />
-      <MobileMenu menu={menu} pathname={pathname} open={open} onToggle={(val) => setOpen(val)} key={pathname} />
+      <DesktopMenu menu={menu} pathname={pathname} setShowNewsletter={setShowNewsletter} />
+      <MobileMenu menu={menu} pathname={pathname} open={open} onToggle={(val) => setOpen(val)} key={pathname} setShowNewsletter={setShowNewsletter} />
+      <div className={cn(s.newsletter, showNewsletter && s.show)}>
+        <h2>Följ vad vi gör. Prenumerera på vårt nyhetsbrev.</h2>
+        <NewsletterForm />
+        <button className={s.close} onClick={() => setShowNewsletter(false)}>Stäng</button>
+      </div>
     </>
   );
 }
 
-const MobileMenu = ({ menu, pathname, open, onToggle }: { menu: Menu, pathname: string, open: boolean, onToggle: (o: boolean) => void }) => {
+const MobileMenu = ({
+  menu,
+  pathname,
+  open,
+  onToggle,
+  setShowNewsletter
+}: {
+  menu: Menu,
+  pathname: string,
+  open: boolean,
+  onToggle: (o: boolean) => void,
+  setShowNewsletter: (o: boolean) => void
+}) => {
 
   const { session, error, status, refresh } = useNextAuthSession()
   const initialSubId = menu.find(({ sub }) => sub?.find(({ slug }) => slug === pathname))?.id
@@ -59,10 +83,15 @@ const MobileMenu = ({ menu, pathname, open, onToggle }: { menu: Menu, pathname: 
                 className={cn((isMenuItemIsOpen(pathname, menu[idx]) || subId === id) && s.selected)}
                 onClick={(e) => { sub ? setSubId(subId === id ? null : id) : setSubId(null) }}
               >
-                {!sub ?
-                  <Link href={slug ?? href}>{title}</Link>
+                {id === 'newsletter' ?
+                  <span onClick={() => setShowNewsletter(true)}>
+                    {title}
+                  </span>
                   :
-                  auth && !session ? <>Logga in</> : <>{title}</>
+                  !sub ?
+                    <Link href={slug ?? href}>{title}</Link>
+                    :
+                    auth && !session ? <>Logga in</> : <>{title}</>
                 }
                 <ul className={cn(s.sub, subId === id && s.open)} onClick={e => e.stopPropagation()}>
                   {auth && !session ?
@@ -92,18 +121,18 @@ const MobileMenu = ({ menu, pathname, open, onToggle }: { menu: Menu, pathname: 
 
 }
 
-const DesktopMenu = ({ menu, pathname }: { menu: Menu, pathname: string }) => {
+const DesktopMenu = ({ menu, pathname, setShowNewsletter }: { menu: Menu, pathname: string, setShowNewsletter: (o: boolean) => void }) => {
 
   return (
     <nav className={s.desktop}>
-      <MenuPanel position={'left'} menu={menu} pathname={pathname} />
+      <DesktopMenuPanel position={'left'} menu={menu} pathname={pathname} setShowNewsletter={setShowNewsletter} />
       <div className={s.separator} />
-      <MenuPanel position={'right'} menu={menu} pathname={pathname} />
+      <DesktopMenuPanel position={'right'} menu={menu} pathname={pathname} setShowNewsletter={setShowNewsletter} />
     </nav>
   )
 }
 
-const MenuPanel = ({ position, menu, pathname }: { position: 'left' | 'right', menu: Menu, pathname: string }) => {
+const DesktopMenuPanel = ({ position, menu, pathname, setShowNewsletter }: { position: 'left' | 'right', menu: Menu, pathname: string, setShowNewsletter: (o: boolean) => void }) => {
 
   const { session, error, status, refresh } = useNextAuthSession()
   const panel = menu.filter((el) => el.position === position)
@@ -124,10 +153,15 @@ const MenuPanel = ({ position, menu, pathname }: { position: 'left' | 'right', m
             onMouseEnter={(e) => { sub ? setSubId(id) : setSubId(null) }}
             onClick={(e) => { sub && setSubId(id) }}
           >
-            {!sub ?
-              <Link href={slug ?? href}>{title}</Link>
+            {id === 'newsletter' ?
+              <span onClick={() => setShowNewsletter(true)}>
+                {title}
+              </span>
               :
-              auth && !session ? <>Logga in</> : <>{title}</>
+              !sub ?
+                <Link href={slug ?? href}>{title}</Link>
+                :
+                auth && !session ? <>Logga in</> : <>{title}</>
             }
           </li>
         )}
@@ -137,8 +171,12 @@ const MenuPanel = ({ position, menu, pathname }: { position: 'left' | 'right', m
               <LoginForm onSuccess={() => refresh()} />
             </li>
             :
-            subPanel?.sub.map(({ id, title, slug }) => (
-              <li className={cn(pathname === slug && s.selectedSub)} key={id}>
+            subPanel?.sub.map(({ id, title, slug }, i) => (
+              <li
+                key={id}
+                className={cn(pathname === slug && s.selectedSub, s.show)}
+                style={{ animationDelay: `${(i + 2) * 70}ms` }}
+              >
                 <Link href={slug}>{title}</Link>
               </li>
             ))}

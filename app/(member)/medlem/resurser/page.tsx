@@ -39,7 +39,7 @@ export default async function Resources({ searchParams }) {
             const isSelected = themes.includes(theme)
 
             return (
-              <li key={idx} className={cn(isSelected && s.selected)}>
+              <li key={idx} className={cn(isSelected && s.selected, "date")}>
                 <Link href={qs.length ? `?filter=1&tema=${qs.join(',')}` : '?filter=1'}>
                   {theme}
                 </Link>
@@ -51,11 +51,10 @@ export default async function Resources({ searchParams }) {
       <ul className={cn("grid", s.resources)}>
         {filterResources.map(({ id, link, title, summary, _publishedAt, category, theme }) => (
           <li key={id}>
-            <Link href={link.url} className={s.wrapper}>
+            <Link href={link.url} target="new" className={s.wrapper}>
               <div>
                 <header>
-                  <span className="date">{theme.map(({ title }) => title).join(', ')}</span>
-                  <span className="date">{category?.title}</span>
+                  <span className="date">{theme.map(({ title }) => title).join(', ')}&nbsp;•&nbsp;</span>                   <span className="date">{category?.title}</span>
                 </header>
                 <h2>{title}</h2>
                 <StructuredContent className="small" content={summary} />

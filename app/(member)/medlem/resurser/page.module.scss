@@ -40,8 +40,12 @@
         padding-right: 0.5em;
         margin-right: 0.8em;
 
-        &.selected {
-          filter: invert(1);
+        &.selected,
+        &:hover {
+          background-color: var(--orange);
+          a {
+            color: var(--black);
+          }
         }
       }
     }
@@ -49,6 +53,7 @@
 
   ul.resources {
     list-style: none;
+    grid-row-gap: 2rem;
 
     li {
       grid-column: span 4;
@@ -70,6 +75,9 @@
       &:hover {
         background-image: none;
         color: var(--orange);
+        button {
+          color: var(--orange);
+        }
       }
 
       h2 {
@@ -86,7 +94,7 @@
 
       header {
         display: flex;
-        justify-content: space-between;
+        //justify-content: space-between;
 
         span {
           padding-right: 0;

@@ -83,9 +83,19 @@ figure {
 .content {
 	figure {
 		margin-bottom: var(--space-small);
+		padding-top: 1rem;
 
 		@include mq($from: desktop) {
 			margin-bottom: var(--space);
+		}
+		& > div {
+			aspect-ratio: var(--apsect-ratio);
+			display: flex;
+			flex-direction: column;
+
+			img {
+				object-fit: cover;
+			}
 		}
 	}
 

@@ -3,6 +3,13 @@
   flex-direction: row;
   flex-wrap: wrap;
 
+  h3 {
+    width: 100%;
+    text-align: center;
+    //border-bottom: 1px solid var(--black);
+    //padding-bottom: var(--space);
+  }
+
   section {
     border-bottom: 1px solid var(--black);
     padding-bottom: var(--space);

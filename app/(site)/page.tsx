@@ -12,6 +12,7 @@ export default async function Home() {
   return (
     <>
       <article className={s.container}>
+        <h3>Aktuellt</h3>
         {start?.content?.map((block, idx) =>
           <section key={idx}>
             <Block key={idx} data={block} />

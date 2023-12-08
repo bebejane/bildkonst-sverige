@@ -27,7 +27,7 @@ export default async function News() {
   return (
     <article className={s.container}>
       <h3>Aktuellt för medlemmar</h3>
-      <div class="grid">
+      <div className="grid">
 
         <ul className={s.main}>
           {extendedNews.map(({ image, slug, title, intro, _publishedAt, category }) => (

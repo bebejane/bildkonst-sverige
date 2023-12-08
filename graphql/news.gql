@@ -15,6 +15,7 @@ query AllNews($first: IntType = 100, $skip: IntType = 0) {
 			value
 			links
 		}
+		externalUrl
 		slug
 		_publishedAt
 	}

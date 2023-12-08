@@ -6,7 +6,7 @@ import { Metadata } from 'next';
 import { StructuredContent } from 'next-dato-utils';
 import Link from 'next/link';
 
-export const dynamic = 'force-dynamic'
+export const dynamic = 'auto'
 export const runtime = 'edge'
 
 export default async function Resources({ searchParams }) {

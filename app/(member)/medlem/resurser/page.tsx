@@ -6,6 +6,8 @@ import { Metadata } from 'next';
 import { StructuredContent } from 'next-dato-utils';
 import Link from 'next/link';
 
+export const runtime = 'edge'
+
 export default async function Resources({ searchParams }) {
 
   const { allResources } = await apiQuery<AllResourcesQuery, AllResourcesQueryVariables>(AllResourcesDocument, {

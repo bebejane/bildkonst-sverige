@@ -93,7 +93,7 @@
     list-style: none;
   }
 
-  > ul {
+  >ul {
     padding-bottom: 120px;
 
     li {
@@ -108,9 +108,11 @@
           overflow: hidden;
 
           &.login {
+
             animation-name: none;
             max-height: unset;
             overflow: visible;
+
           }
 
           @keyframes hide {
@@ -169,7 +171,7 @@
     list-style: none;
   }
 
-  > ul > li:hover,
+  >ul>li:hover,
   a:hover {
     color: var(--orange) !important;
   }
@@ -221,7 +223,7 @@
       flex-direction: column;
     }
 
-    > li {
+    >li {
       position: relative;
       cursor: pointer;
       white-space: nowrap;
@@ -236,7 +238,7 @@
       }
 
       @include mq($from: desktop) {
-        > form {
+        >form {
           display: none;
         }
       }
@@ -264,35 +266,40 @@
         display: flex;
       }
 
-      li {
-        opacity: 0;
+      @include mq($from: desktop) {
 
-        animation-name: hide;
-        animation-timing-function: linear;
-        animation-fill-mode: both;
+        li {
+          opacity: 0;
 
-        @keyframes hide {
-          0% {
-            opacity: 1;
+          animation-name: hide;
+          animation-timing-function: linear;
+          animation-fill-mode: both;
+
+          @keyframes hide {
+            0% {
+              opacity: 1;
+            }
+
+            100% {
+              opacity: 0;
+            }
           }
 
-          100% {
-            opacity: 0;
-          }
-        }
+          @keyframes show {
+            0% {
+              opacity: 0;
+            }
 
-        @keyframes show {
-          0% {
-            opacity: 0;
+            100% {
+              opacity: 1;
+            }
           }
 
-          100% {
-            opacity: 1;
+          &.show,
+          &.login {
+            animation-name: show;
           }
-        }
 
-        &.show {
-          animation-name: show;
         }
       }
     }
@@ -303,12 +310,12 @@
   }
 }
 
-.selected > a,
+.selected>a,
 .selected {
   color: var(--orange) !important;
 }
 
-.selectedSub > a,
+.selectedSub>a,
 .selectedSub {
   color: var(--orange) !important;
 }
@@ -358,11 +365,10 @@
   --dot-size: 15%;
   --square-size: 8px;
   background-image: radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size)),
-    radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size));
+  radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size));
   background-color: var(--white);
-  background-position:
-    0 0,
-    calc(var(--square-size) / 2) calc(var(--square-size) / 2);
+  background-position: 0 0,
+  calc(var(--square-size) / 2) calc(var(--square-size) / 2);
   background-size: var(--square-size) var(--square-size);
 
   button {

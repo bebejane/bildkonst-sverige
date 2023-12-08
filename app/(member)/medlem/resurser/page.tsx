@@ -24,7 +24,7 @@ export default async function Resources({ searchParams }) {
   const filter = searchParams.filter ? true : false
   const themes: string[] = searchParams.tema?.split(',') ?? []
   const filterResources = themes.length === 0 ? allResources : allResources.filter(({ theme }) => theme.some(({ title }) => themes.includes(title)))
-
+  console.log(searchParams)
   return (
     <article className={s.container}>
       <h3>

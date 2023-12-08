@@ -19,8 +19,6 @@
 
   .filter {
 
-    //border-top: 1px solid var(--black);
-    //border-bottom: 1px solid var(--black);
     margin-bottom: var(--space);
     max-height: 0;
     overflow: hidden;
@@ -28,16 +26,15 @@
 
     &.show {
       max-height: 100px;
-      padding-top: 0.5rem;
-      padding-bottom: 0.5rem;
-
-
-
     }
 
     ul {
       display: flex;
       list-style-type: none;
+      border-top: 1px solid var(--black);
+      border-bottom: 1px solid var(--black);
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
 
       li {
         background-color: var(--member-color);
@@ -49,6 +46,7 @@
         &.selected,
         &:hover {
           background-color: var(--orange);
+
           a {
             color: var(--black);
           }
@@ -81,6 +79,7 @@
       &:hover {
         background-image: none;
         color: var(--orange);
+
         button {
           color: var(--orange);
         }

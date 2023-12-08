@@ -6,11 +6,10 @@ query AllResources($first: IntType = 100, $skip: IntType = 0) {
 			id
 			title
 		}
-		tema {
+		theme {
 			id
 			title
 		}
-		slug
 		summary {
 			blocks
 			links
@@ -26,6 +25,13 @@ query AllResources($first: IntType = 100, $skip: IntType = 0) {
 		_publishedAt
 	}
 	_allResourcesMeta {
+		count
+	}
+	allResourceCategories {
+		id
+		title
+	}
+	_allResourceCategoriesMeta {
 		count
 	}
 }

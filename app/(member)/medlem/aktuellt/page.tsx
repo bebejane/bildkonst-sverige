@@ -39,7 +39,7 @@ export default async function News() {
                 }
                 <h2>{title}</h2>
                 <span className="date">{category?.title} • {format(new Date(_publishedAt), 'yyyy-MM-dd')}</span>
-                <StructuredContent className="intro" content={intro} />
+                <StructuredContent className="intro" content={intro} /> &nbsp;<span className="date">Läs mer »</span>
                 {externalUrl &&
                   <a href={externalUrl} target="_blank" rel="noreferrer">Läs mer</a>
                 }
@@ -60,7 +60,7 @@ export default async function News() {
               <h4>{title}</h4>
               <StructuredContent className="small" content={intro} />
               {externalUrl &&
-                <a href={externalUrl} target="_blank" rel="noreferrer">Läs mer</a>
+                <a href={externalUrl} className="date" target="_blank" rel="noreferrer">Läs mer »</a>
               }
             </li>
           ))}

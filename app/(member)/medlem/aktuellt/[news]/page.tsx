@@ -16,14 +16,17 @@ export default async function NewsPage({ params }: { params: { news: string } })
   const { id, title, intro, image, content, _publishedAt } = news;
 
   return (
-    <Article
-      id={id}
-      title={title}
-      intro={intro}
-      image={image as FileField}
-      content={content}
-      publishedAt={_publishedAt}
-    />
+    <>
+      <Article
+        id={id}
+        title={title}
+        intro={intro}
+        image={image as FileField}
+        content={content}
+        publishedAt={_publishedAt}
+      />
+      <button>Tillbaka till Aktuellt</button>
+    </>
   );
 }
 

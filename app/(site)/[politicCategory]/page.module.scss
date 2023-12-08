@@ -22,7 +22,7 @@
           grid-column-end: 10;
         }
 
-        >p {
+        > p {
           display: inline;
         }
       }
@@ -34,6 +34,10 @@
           margin-right: 20%;
           margin-bottom: var(--space-small);
           aspect-ratio: unset;
+        }
+
+        @include mq($from: desktop) {
+          margin-top: 0.5rem;
         }
 
         grid-column-start: 10;

@@ -3,7 +3,7 @@
 	--white: #fcfcfc;
 	--red: #bf0000;
 	--orange: #ff7a00;
-	--member-color: #ff7a0045;
+	--member-color: #ff7a0033;
 	--outer-margin: 2.5rem;
 	--space: 2rem;
 	--space-small: 1rem;
@@ -89,8 +89,8 @@ figure {
 		}
 	}
 
-	.intro {
-		padding-bottom: 1.5rem;
+	.structured {
+		padding-top: 1.5rem;
 	}
 }
 
@@ -251,7 +251,7 @@ select {
 }
 
 ::-webkit-scrollbar:vertical {
-	width: 0.6rem;
+	width: 0.4rem;
 }
 
 ::-webkit-scrollbar:horizontal {

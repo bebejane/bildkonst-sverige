@@ -1,4 +1,7 @@
 .container {
+  padding-bottom: var(--space);
+  border-bottom: 1px solid var(--black);
+
   h3 {
     padding-bottom: var(--space);
   }
@@ -7,9 +10,12 @@
     list-style: none;
     display: flex;
     flex-direction: column;
+    position: sticky;
+    top: 0;
+    //align-self: flex-start;
 
     figure {
-      margin-bottom: 1rem;
+      margin-bottom: 1.8rem;
       aspect-ratio: var(--apsect-ratio);
       display: flex;
 
@@ -21,6 +27,18 @@
 
   .main {
     grid-column: span 8;
+    align-self: flex-start;
+
+    li {
+      border-bottom: 1px solid var(--black);
+      padding-bottom: 2rem;
+      margin-bottom: 2rem;
+
+      &:last-child {
+        margin-bottom: 0;
+        border-bottom: 0;
+      }
+    }
   }
 
   .left {
@@ -36,6 +54,11 @@
       margin-bottom: 1.5rem;
       padding-bottom: 1rem;
       border-bottom: 1px solid var(--black);
+
+      &:last-child {
+        margin-bottom: 0;
+        border-bottom: 0;
+      }
 
       p {
         margin-bottom: 0;

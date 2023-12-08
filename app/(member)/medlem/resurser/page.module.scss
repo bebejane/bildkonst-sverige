@@ -1,15 +1,90 @@
 .container {
-  display: flex;
-  flex-direction: row;
-
-  ul {
-    list-style: none;
+  h3 {
+    padding-bottom: var(--space);
+    position: relative;
     display: flex;
-    flex-direction: row;
+    align-items: baseline;
+    justify-content: center;
+
+    span {
+      position: absolute;
+      right: 0;
+      padding-right: 0;
+      letter-spacing: 0;
+      text-transform: none;
+      font-weight: normal;
+    }
+  }
+
+  .filter {
+    border-top: 1px solid var(--black);
+    border-bottom: 1px solid var(--black);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    margin-bottom: var(--space);
+
+    ul {
+      display: flex;
+      list-style-type: none;
+
+      li {
+        background-color: var(--member-color);
+        padding: 0.2em;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        margin-right: 1em;
+      }
+    }
+  }
+
+  ul.resources {
+    list-style: none;
 
     li {
-      flex: 0 0 33.333%;
-    }
+      grid-column: span 4;
+      padding: var(--gutter);
+      grid-column: span 4;
+      border-top: 1px solid var(--black);
+      border-bottom: 1px solid var(--black);
+      padding: var(--gutter);
+      --dot-size: 7%;
+      --square-size: 16px;
+      background-image: radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size)),
+        radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size));
+      background-color: transparent;
+      background-position:
+        0 0,
+        calc(var(--square-size) / 2) calc(var(--square-size) / 2);
+      background-size: var(--square-size) var(--square-size);
 
+      &:hover {
+        background-image: none;
+        color: var(--orange);
+      }
+
+      h2 {
+        padding-top: 1rem;
+      }
+
+      .wrapper {
+        display: flex;
+        height: 100%;
+        justify-content: space-between;
+        flex-direction: column;
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        span {
+          padding-right: 0;
+        }
+      }
+
+      button {
+        padding: 0;
+        padding-top: 0.5rem;
+      }
+    }
   }
 }

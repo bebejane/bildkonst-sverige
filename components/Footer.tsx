@@ -7,11 +7,6 @@ import NewsletterForm from "@components/NewsLetterForm";
 import { useEffect, useState } from "react";
 
 export default function Footer() {
-  const [showNewsletter, setShowNewsletter] = useState(false)
-
-  useEffect(() => {
-    document.body.classList.toggle('slide-up', showNewsletter)
-  }, [showNewsletter])
 
   return (
     <>
@@ -21,17 +16,9 @@ export default function Footer() {
           <Link href={'/'}>Bildkonst<br />sverige</Link>
         </h1>
         <div>
-          <span className={s.popup} onClick={() => setShowNewsletter(!showNewsletter)}>
-            Nyhetsbrev
-          </span>
           <span><Link href="/kontakt">Kontakt</Link></span>
         </div>
       </footer>
-      <div className={cn(s.newsletter, showNewsletter && s.show)}>
-        <h2>Följ vad vi gör. Prenumerera på vårt nyhetsbrev.</h2>
-        <NewsletterForm />
-        <button className={s.close} onClick={() => setShowNewsletter(false)}>Stäng</button>
-      </div>
     </>
   );
 }

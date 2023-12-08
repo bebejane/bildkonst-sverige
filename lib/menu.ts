@@ -45,9 +45,9 @@ export const buildMenu = async (): Promise<Menu> => {
     href: 'https://www.instagram.com/bildkonstsverige',
     position: 'right'
   }, {
-    id: 'facebook',
-    title: 'Facebook',
-    href: 'https://www.facebook.com/profile.php?id=100088446490441',
+    id: 'newsletter',
+    title: 'Nyhetsbrev',
+    slug: "#",
     position: 'right'
   }, {
     id: 'member',

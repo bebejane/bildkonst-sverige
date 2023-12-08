@@ -8,7 +8,7 @@ import Link from 'next/link';
 
 export default async function Resources({ searchParams }) {
 
-  const { allResources, allResourceCategories } = await apiQuery<AllResourcesQuery, AllResourcesQueryVariables>(AllResourcesDocument, {
+  const { allResources } = await apiQuery<AllResourcesQuery, AllResourcesQueryVariables>(AllResourcesDocument, {
     all: true,
     variables: {
       first: 100,
@@ -17,9 +17,10 @@ export default async function Resources({ searchParams }) {
     tags: ['resources']
   })
 
+  const allThemes = allResources.map(({ theme }) => theme.map(({ title }) => title)).flat()
   const filter = searchParams.filter ? true : false
-  const categories: string[] = searchParams.kategori?.split(',') ?? []
-  const filterResources = categories.length === 0 ? allResources : allResources.filter(({ category }) => categories.includes(category?.title))
+  const themes: string[] = searchParams.tema?.split(',') ?? []
+  const filterResources = themes.length === 0 ? allResources : allResources.filter(({ theme }) => theme.some(({ title }) => themes.includes(title)))
 
   return (
     <article className={s.container}>
@@ -33,14 +34,14 @@ export default async function Resources({ searchParams }) {
       </h3>
       <section className={cn(s.filter, filter && s.show)}>
         <ul>
-          {allResourceCategories.map(({ id, title }) => {
-            const qs = (categories.includes(title) ? categories.filter(c => c !== title) : [...categories, title]).filter(c => c)
-            const isSelected = categories.includes(title)
+          {allThemes.map((theme, idx) => {
+            const qs = (themes.includes(theme) ? themes.filter(c => c !== theme) : [...themes, theme]).filter(c => c)
+            const isSelected = themes.includes(theme)
 
             return (
-              <li key={id} className={cn(isSelected && s.selected)}>
-                <Link href={qs.length ? `?filter=1&kategori=${qs.join(',')}` : '?'} >
-                  {title}
+              <li key={idx} className={cn(isSelected && s.selected)}>
+                <Link href={qs.length ? `?filter=1&tema=${qs.join(',')}` : '?filter=1'}>
+                  {theme}
                 </Link>
               </li>
             )

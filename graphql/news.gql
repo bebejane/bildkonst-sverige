@@ -1,5 +1,5 @@
 query AllNews($first: IntType = 100, $skip: IntType = 0) {
-	allNews(first: $first, skip: $skip) {
+	allNews(first: $first, skip: $skip, orderBy: _createdAt_DESC) {
 		id
 		title
 		category {
@@ -18,6 +18,7 @@ query AllNews($first: IntType = 100, $skip: IntType = 0) {
 		externalUrl
 		slug
 		_publishedAt
+		_createdAt
 	}
 	_allNewsMeta {
 		count

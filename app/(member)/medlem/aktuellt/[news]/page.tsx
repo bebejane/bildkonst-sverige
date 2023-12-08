@@ -5,6 +5,7 @@ import { AllNewsDocument, NewsDocument } from "@graphql";
 import { apiQuery } from "next-dato-utils";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 
 export default async function NewsPage({ params }: { params: { news: string } }) {
   const { news } = await apiQuery<NewsQuery, NewsQueryVariables>(NewsDocument, {
@@ -25,7 +26,9 @@ export default async function NewsPage({ params }: { params: { news: string } })
         content={content}
         publishedAt={_publishedAt}
       />
-      <button>Tillbaka till Aktuellt</button>
+      <Link href={'/medlem/aktuellt'}>
+        <button>Tillbaka till Aktuellt</button>
+      </Link>
     </>
   );
 }

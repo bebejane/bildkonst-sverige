@@ -23,8 +23,8 @@ export default async function Resources({ searchParams }) {
   const allThemes = allResources.map(({ theme }) => theme.map(({ title }) => title)).flat()
   const filter = searchParams.filter ? true : false
   const themes: string[] = searchParams.tema?.split(',') ?? []
-  const filterResources = themes.length === 0 ? allResources : allResources.filter(({ theme }) => theme.some(({ title }) => themes.includes(title)))
-  console.log(searchParams)
+  const filterResources = allResources.filter(({ theme }) => themes.length === 0 || theme.some(({ title }) => themes.includes(title)))
+
   return (
     <article className={s.container}>
       <h3>

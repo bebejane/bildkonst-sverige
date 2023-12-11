@@ -19,7 +19,6 @@
 
   .filter {
 
-    margin-bottom: var(--space);
     max-height: 0;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
@@ -35,6 +34,7 @@
       border-bottom: 1px solid var(--black);
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
+      margin-bottom: var(--space);
 
       li {
         background-color: var(--member-color);

@@ -31,7 +31,9 @@ export default async function TextBlock({ data: { texts } }: Props) {
             target={l.__typename === 'ExternalLinkRecord' ? "_blank" : undefined}
           >
             {image &&
-              <Image data={image.responsiveImage} className={s.image} />
+              <figure>
+                <Image data={image.responsiveImage} className={s.image} />
+              </figure>
             }
             <Header>{headline}</Header>
             <p>{text}</p>
@@ -39,7 +41,9 @@ export default async function TextBlock({ data: { texts } }: Props) {
           :
           <div key={i} className={s.block}>
             {image &&
-              <Image data={image.responsiveImage} className={s.image} />
+              <figure>
+                <Image data={image.responsiveImage} className={s.image} />
+              </figure>
             }
             <Header>{headline}</Header>
             <p>{text}</p>

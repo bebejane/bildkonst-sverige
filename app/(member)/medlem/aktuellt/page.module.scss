@@ -55,6 +55,11 @@
       margin-bottom: 1rem;
       padding-bottom: 1rem;
       border-bottom: 1px solid var(--black);
+      &:first-child {
+        figure {
+          margin-top: 0 !important;
+        }
+      }
 
       &:last-child {
         margin-bottom: 0;

@@ -11,6 +11,22 @@
     padding-left: var(--gutter);
     padding-right: var(--gutter);
 
+    figure {
+      margin-left: var(--outer-margin);
+      margin-right: var(--outer-margin);
+      margin-bottom: 1rem;
+
+      & > div {
+        aspect-ratio: var(--apsect-ratio);
+        display: flex;
+        max-width: none !important;
+      }
+
+      img {
+        object-fit: cover;
+      }
+    }
+
     &:not(:last-child) {
       border-right: 1px solid;
     }

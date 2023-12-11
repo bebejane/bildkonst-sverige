@@ -209,6 +209,7 @@ a {
 	@include mq($from: desktop) {
 		&:hover {
 			color: var(--orange);
+			border-color: var(--black) !important;
 		}
 	}
 

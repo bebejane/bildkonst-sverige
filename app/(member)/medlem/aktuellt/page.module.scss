@@ -10,8 +10,10 @@
     list-style: none;
     display: flex;
     flex-direction: column;
-    position: sticky;
-    top: 0;
+    @include mq($from: desktop) {
+      position: sticky;
+      top: 0;
+    }
     //align-self: flex-start;
 
     figure {
@@ -43,8 +45,10 @@
 
   .left {
     grid-column: span 4;
-    border-left: 1px solid var(--black);
-    padding-left: var(--gutter);
+    @include mq($from: desktop) {
+      border-left: 1px solid var(--black);
+      padding-left: var(--gutter);
+    }
 
     figure {
       margin-top: 0.5rem;

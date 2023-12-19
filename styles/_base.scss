@@ -148,7 +148,7 @@ figure {
 			content: "”";
 			position: absolute;
 			font-size: 3rem;
-			top: 1rem;
+			top: 1.08rem;
 			left: -2rem;
 			font-family: $headline-font;
 		}
@@ -156,6 +156,14 @@ figure {
 		p {
 			display: block;
 			grid-column-start: 1;
+
+			&::after {
+				display: none !important;
+			}
+		}
+
+		footer {
+			grid-column: span 8;
 		}
 	}
 

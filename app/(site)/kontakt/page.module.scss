@@ -4,15 +4,18 @@
   width: 100%;
   justify-content: center;
   list-style: none;
+  flex-wrap: wrap;
 
   li {
     width: 33%;
 
     @include mq($until: desktop) {
-      width: 50%;
+      width: 100%;
+      padding-bottom: var(--space-small);
     }
 
     figure {
+      padding-top: 0;
       padding-left: var(--outer-margin);
       padding-right: var(--outer-margin);
       margin-bottom: 0;

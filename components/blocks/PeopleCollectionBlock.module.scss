@@ -2,13 +2,21 @@
   display: flex !important;
   flex-direction: row;
   list-style: none;
-  grid-column-start: 1 !important;
-  grid-column-end: 13 !important;
+  flex-wrap: wrap;
+  padding-left: 0 !important;
+  @include mq($from: desktop) {
+    grid-column-start: 1 !important;
+    grid-column-end: 13 !important;
+  }
 
   li {
     display: flex;
     flex-direction: column;
-    width: 33%;
+    //width: 50%;
+
+    @include mq($from: desktop) {
+      width: 33%;
+    }
 
     figure {
       aspect-ratio: 4 / 3;

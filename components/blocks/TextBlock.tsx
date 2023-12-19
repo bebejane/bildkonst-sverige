@@ -46,7 +46,9 @@ export default async function TextBlock({ data: { texts } }: Props) {
               </figure>
             }
             <Header>{headline}</Header>
-            <p>{text}</p>
+            {text &&
+              <p>{text}</p>
+            }
           </div>
       })}
     </div>

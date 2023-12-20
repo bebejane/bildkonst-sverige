@@ -40,16 +40,6 @@ export const buildMenu = async (): Promise<Menu> => {
     slug: '/bli-medlem',
     position: 'left'
   }, {
-    id: 'instagram',
-    title: 'Instagram',
-    href: 'https://www.instagram.com/bildkonstsverige',
-    position: 'right'
-  }, {
-    id: 'newsletter',
-    title: 'Nyhetsbrev',
-    slug: "#",
-    position: 'right'
-  }, {
     id: 'member',
     title: 'Medlemssidor',
     auth: true,
@@ -71,6 +61,16 @@ export const buildMenu = async (): Promise<Menu> => {
       title: 'Logga ut',
       slug: '/medlem/logga-ut'
     }],
+    position: 'right'
+  }, {
+    id: 'newsletter',
+    title: 'Nyhetsbrev',
+    slug: "#",
+    position: 'right'
+  }, {
+    id: 'instagram',
+    title: 'Instagram',
+    href: 'https://www.instagram.com/bildkonstsverige',
     position: 'right'
   }]
   return menu

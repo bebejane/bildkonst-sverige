@@ -66,7 +66,6 @@ const MobileMenu = ({
   const { session, error, status, refresh } = useNextAuthSession()
   const initialSubId = menu.find(({ sub }) => sub?.find(({ slug }) => slug === pathname))?.id
   const [subId, setSubId] = useState<string | null>(initialSubId ?? null)
-
   return (
     <>
       <nav className={cn(s.hamburger, open && s.open)}>

@@ -41,21 +41,19 @@ body {
 	font-feature-settings: "liga", "kern";
 }
 
-.body-color-fade {
-	color: var(--orange) !important;
-	border-color: var(--orange) !important;
-	transition: color ease-in-out 0.7s;
+.bodyfade {
 
-	* {
+	main * {
 		color: var(--orange) !important;
-		transition: color ease-in-out 0.7s;
+		transition: none;
 		border-color: var(--orange) !important;
 	}
 
-	&.faded {
-		color: var(--foreground) !important;
+	&.fadeout {
 
-		* {
+		main * {
+			transition: color ease-in-out 700ms;
+			transition-delay: 50ms;
 			color: var(--foreground) !important;
 			border-color: var(--foreground) !important;
 		}
@@ -112,7 +110,7 @@ figure {
 			margin-bottom: var(--space);
 		}
 
-		& > div {
+		&>div {
 			aspect-ratio: var(--apsect-ratio);
 			display: flex;
 			flex-direction: column;
@@ -129,6 +127,7 @@ figure {
 }
 
 .structured {
+
 	p,
 	blockquote,
 	ul,
@@ -251,8 +250,7 @@ a {
 }
 
 figcaption {
-	@include mq($until: tablet) {
-	}
+	@include mq($until: tablet) {}
 
 	padding-top: 1.5em;
 }
@@ -261,8 +259,7 @@ figcaption {
 	padding-right: 1em;
 }
 
-hr {
-}
+hr {}
 
 input,
 textarea,
@@ -274,8 +271,7 @@ select {
 	font-family: $nav-font;
 	background-color: var(--background);
 
-	&:focus {
-	}
+	&:focus {}
 }
 
 select {

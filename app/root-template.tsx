@@ -3,6 +3,7 @@
 import s from './root-template.module.scss'
 import { useEffect } from "react"
 import { usePathname } from "next/navigation"
+import React from 'react'
 
 export type LayoutProps = {
   children: React.ReactNode
@@ -14,6 +15,7 @@ export default function MainTemplate({ children }: LayoutProps) {
   useEffect(() => {
     orangeScroll()
     orangeFade()
+    console.log(pathname)
   }, [pathname])
 
   return (
@@ -48,8 +50,12 @@ const orangeScroll = () => {
 }
 
 function orangeFade() {
-  document.body.classList.add('faded')
-  setTimeout(() => document.body.classList.remove('body-color-fade'), 700)
+  document.body.classList.add('bodyfade')
+  setTimeout(() => document.body.classList.add('fadeout'), 20)
+  setTimeout(() => {
+    document.body.classList.remove('bodyfade')
+    document.body.classList.remove('fadeout')
+  }, 700)
 }
 
 function isElementInViewport(el: Element) {

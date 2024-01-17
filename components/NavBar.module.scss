@@ -93,7 +93,7 @@
     list-style: none;
   }
 
-  > ul {
+  >ul {
     padding-bottom: 120px;
 
     li {
@@ -169,7 +169,7 @@
     list-style: none;
   }
 
-  > ul > li:hover,
+  >ul>li:hover,
   a:hover {
     color: var(--orange) !important;
   }
@@ -194,7 +194,7 @@
     &.open {
       background-color: var(--white);
       height: 100vh;
-      border-right: 1px solid var(--black);
+      border-color: var(--black) !important;
 
       @keyframes to-black {
         to {
@@ -210,10 +210,12 @@
 
     &.left {
       justify-content: flex-start;
+      border-right: 1px solid transparent;
     }
 
     &.right {
       justify-content: flex-end;
+      border-left: 1px solid transparent;
     }
 
     @include mq($until: desktop) {
@@ -222,7 +224,7 @@
       flex-direction: column;
     }
 
-    > li {
+    >li {
       position: relative;
       cursor: pointer;
       white-space: nowrap;
@@ -237,7 +239,7 @@
       }
 
       @include mq($from: desktop) {
-        > form {
+        >form {
           display: none;
         }
       }
@@ -307,12 +309,12 @@
   }
 }
 
-.selected > a,
+.selected>a,
 .selected {
   color: var(--orange) !important;
 }
 
-.selectedSub > a,
+.selectedSub>a,
 .selectedSub {
   color: var(--orange) !important;
 }
@@ -362,11 +364,10 @@
   --dot-size: 15%;
   --square-size: 8px;
   background-image: radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size)),
-    radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size));
+  radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size));
   background-color: var(--white);
-  background-position:
-    0 0,
-    calc(var(--square-size) / 2) calc(var(--square-size) / 2);
+  background-position: 0 0,
+  calc(var(--square-size) / 2) calc(var(--square-size) / 2);
   background-size: var(--square-size) var(--square-size);
 
   button {

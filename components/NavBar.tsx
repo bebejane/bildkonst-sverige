@@ -15,9 +15,10 @@ import NewsletterForm from "./NewsLetterForm";
 
 export type Props = {
   menu: Menu
+  backgroundColor?: string
 }
 
-export default function NavBar({ menu }: Props) {
+export default function NavBar({ menu, backgroundColor }: Props) {
 
   const pathname = usePathname()
   const { scrolledPosition } = useScrollInfo()
@@ -38,7 +39,7 @@ export default function NavBar({ menu }: Props) {
       <h1 className={cn(s.logo, (isScrolledDown && !open) && s.onScroll, open && s.open, "logo")}>
         <Link href={'/'}>Bildkonst<br />sverige</Link>
       </h1>
-      <DesktopMenu menu={menu} pathname={pathname} setShowNewsletter={setShowNewsletter} />
+      <DesktopMenu menu={menu} pathname={pathname} setShowNewsletter={setShowNewsletter} backgroundColor={backgroundColor} />
       <MobileMenu menu={menu} pathname={pathname} open={open} onToggle={(val) => setOpen(val)} key={pathname} setShowNewsletter={setShowNewsletter} />
       <div className={cn(s.newsletter, showNewsletter && s.show)}>
         <h2>Följ vad vi gör. Prenumerera på vårt nyhetsbrev.</h2>
@@ -120,18 +121,30 @@ const MobileMenu = ({
 
 }
 
-const DesktopMenu = ({ menu, pathname, setShowNewsletter }: { menu: Menu, pathname: string, setShowNewsletter: (o: boolean) => void }) => {
+const DesktopMenu = ({ menu, pathname, backgroundColor, setShowNewsletter }: { menu: Menu, pathname: string, backgroundColor: string, setShowNewsletter: (o: boolean) => void }) => {
 
   return (
     <nav className={s.desktop}>
-      <DesktopMenuPanel position={'left'} menu={menu} pathname={pathname} setShowNewsletter={setShowNewsletter} />
+      <DesktopMenuPanel
+        position={'left'}
+        menu={menu}
+        pathname={pathname}
+        setShowNewsletter={setShowNewsletter}
+        backgroundColor={backgroundColor}
+      />
       <div className={s.separator} />
-      <DesktopMenuPanel position={'right'} menu={menu} pathname={pathname} setShowNewsletter={setShowNewsletter} />
+      <DesktopMenuPanel
+        position={'right'}
+        menu={menu}
+        pathname={pathname}
+        backgroundColor={backgroundColor}
+        setShowNewsletter={setShowNewsletter}
+      />
     </nav>
   )
 }
 
-const DesktopMenuPanel = ({ position, menu, pathname, setShowNewsletter }: { position: 'left' | 'right', menu: Menu, pathname: string, setShowNewsletter: (o: boolean) => void }) => {
+const DesktopMenuPanel = ({ position, menu, pathname, backgroundColor, setShowNewsletter }: { position: 'left' | 'right', menu: Menu, pathname: string, backgroundColor: string, setShowNewsletter: (o: boolean) => void }) => {
 
   const { session, error, status, refresh } = useNextAuthSession()
   const panel = menu.filter((el) => el.position === position)
@@ -144,7 +157,11 @@ const DesktopMenuPanel = ({ position, menu, pathname, setShowNewsletter }: { pos
 
   return (
     <>
-      <ul className={cn(s.menu, s[position], subId && s.open)} onMouseLeave={(e) => { setSubId(null) }}>
+      <ul
+        className={cn(s.menu, s[position], subId && s.open)}
+        style={{ backgroundColor: subId ? backgroundColor : undefined }}
+        onMouseLeave={(e) => { setSubId(null) }}
+      >
         {panel.map(({ id, title, slug, href, sub, auth }, idx) =>
           <li
             key={id}
@@ -164,7 +181,7 @@ const DesktopMenuPanel = ({ position, menu, pathname, setShowNewsletter }: { pos
             }
           </li>
         )}
-        <ul className={cn(s.sub, s[position], subId === subPanel?.id && s.open)}>
+        <ul className={cn(s.sub, s[position], subId === subPanel?.id && s.open)} >
           {subPanel?.auth && !session ?
             <li className={s.login}>
               <LoginForm onSuccess={() => refresh()} />

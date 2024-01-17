@@ -20,8 +20,11 @@ export default async function Resources({ searchParams }) {
     tags: ['resources']
   })
 
-  const allThemes = allResources.map(({ theme }) => theme.map(({ title }) => title)).flat()
-  const filter = searchParams.filter ? true : false
+
+  const allThemes = []
+  allResources.map(({ theme }) => theme.map(({ title }) => title)).flat().forEach(theme => !allThemes.includes(theme) && allThemes.push(theme))
+
+  const filter = !searchParams.filter ? true : searchParams.filter === '0' ? false : true
   const themes: string[] = searchParams.tema?.split(',') ?? []
   const filterResources = allResources.filter(({ theme }) => themes.length === 0 || theme.some(({ title }) => themes.includes(title)))
 
@@ -30,7 +33,7 @@ export default async function Resources({ searchParams }) {
       <h3>
         Resurser
         <button>
-          <Link href={!filter ? `?filter=1` : '?'}>
+          <Link href={filter ? `?filter=0` : '?'}>
             Filtrera {!filter ? '+' : '-'}
           </Link>
         </button>
@@ -52,7 +55,7 @@ export default async function Resources({ searchParams }) {
         </ul>
       </section>
       <ul className={cn("grid", s.resources)}>
-        {filterResources.map(({ id, link, title, summary, _publishedAt, category, theme }) => (
+        {filterResources.map(({ id, link, title, summary, subtitle, author, publisher, category, theme }) => (
           <li key={id}>
             <Link href={link.url} target="new" className={s.wrapper}>
               <div>
@@ -60,7 +63,10 @@ export default async function Resources({ searchParams }) {
                   <span className="date">{category?.title}&nbsp;•&nbsp;</span><span className="date">{theme.map(({ title }) => title).join(', ')}</span>
                 </header>
                 <h5>{title}</h5>
+                {subtitle && <h6>{subtitle}</h6>}
                 <StructuredContent className="small" content={summary} />
+                {author && <span>{author}</span>}
+                {publisher && <span>{publisher}</span>}
               </div>
               <button>ÖPPNA</button>
             </Link>

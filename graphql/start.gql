@@ -61,6 +61,8 @@ query Start {
 			__typename
 			... on NoticeBlockRecord {
 				id
+				category
+				date
 				headline
 				image {
 					...ImageFragment

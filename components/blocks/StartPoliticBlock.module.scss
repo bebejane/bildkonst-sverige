@@ -2,6 +2,12 @@
   display: flex;
   flex-direction: row;
 
+  .text {
+    div p {
+      display: inline;
+    }
+  }
+
   &.column {
     flex: 0 0 50%;
     display: flex;
@@ -38,8 +44,15 @@
     }
   }
 
-  &.big .text {
-    grid-column: span 12 / span 12;
+  &.big {
+    .text,
+    figure {
+      grid-column: span 12 / span 12;
+    }
+
+    figure {
+      padding-bottom: 1.8rem;
+    }
   }
 
   &.headline {

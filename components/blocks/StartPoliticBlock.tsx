@@ -16,14 +16,14 @@ export default function StartPoliticBlock({ data: { record: { id, slug, category
   return (
     <Link href={`/${category.slug}/${slug}`} className={cn(s.container, s[layout])}>
       <div className="grid">
-        {image && layout == 'column' &&
+        {image &&
           <figure>
             <Image data={image.responsiveImage} />
           </figure>
         }
         <div className={s.text}>
           <h1>{title}</h1>
-          <div className="intro">
+          <div className={cn(layout === 'big' && 'intro')}>
             <span className="date">{category?.title} • {format(new Date(_publishedAt), 'yyyy-MM-dd')}</span>
             <StructuredContent content={intro} id={id} />
           </div>

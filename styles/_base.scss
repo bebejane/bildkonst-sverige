@@ -287,3 +287,7 @@ select {
 *:after {
 	box-sizing: inherit;
 }
+
+figure div {
+	max-width: none !important;
+}

@@ -5,6 +5,7 @@ h3.headline {
 }
 
 .container {
+  position: relative;
   > div {
     grid-column: span 8;
 
@@ -24,5 +25,9 @@ h3.headline {
     border-left: 1px solid var(--black);
     grid-column: span 4;
     padding-left: var(--gutter);
+    position: sticky;
+    top: var(--space);
+    align-self: flex-start;
+    min-height: 100vh;
   }
 }

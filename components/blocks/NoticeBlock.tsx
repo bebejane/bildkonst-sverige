@@ -25,12 +25,12 @@ export default async function NoticeBlock({ data: { id, headline, image, link, t
             <Image data={image.responsiveImage} className={s.image} />
           </figure>
         }
+        {category && date &&
+          <span className="date">{category} • {format(new Date(date), 'yyyy-MM-dd')}</span>
+        }
         <h4>{headline}</h4>
 
         <p className="small">
-          {category && date &&
-            <span className="date">{category} • {format(new Date(date), 'yyyy-MM-dd')}</span>
-          }
           {text}
         </p>
       </Link>

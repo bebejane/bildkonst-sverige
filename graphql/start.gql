@@ -18,41 +18,37 @@ query Start {
 			}
 			... on TextBlockRecord {
 				id
-
-				texts {
-					id
-					headline
-					text
-					image {
-						...ImageFragment
-					}
-					link {
-						... on InternalLinkRecord {
+				headline
+				text
+				image {
+					...ImageFragment
+				}
+				link {
+					... on InternalLinkRecord {
+						__typename
+						id
+						title
+						link {
 							__typename
-							id
-							title
-							link {
-								__typename
-								... on PoliticRecord {
-									...PoliticLightFragment
-								}
-								... on AboutRecord {
-									...AboutLightFragment
-								}
-								... on ContactPageRecord {
-									...ContactPageFragment
-								}
-								... on MemberPageRecord {
-									...MemberPageFragment
-								}
+							... on PoliticRecord {
+								...PoliticLightFragment
+							}
+							... on AboutRecord {
+								...AboutLightFragment
+							}
+							... on ContactPageRecord {
+								...ContactPageFragment
+							}
+							... on MemberPageRecord {
+								...MemberPageFragment
 							}
 						}
-						... on ExternalLinkRecord {
-							__typename
-							id
-							title
-							url
-						}
+					}
+					... on ExternalLinkRecord {
+						__typename
+						id
+						title
+						url
 					}
 				}
 			}

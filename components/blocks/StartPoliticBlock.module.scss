@@ -6,6 +6,9 @@
     div p {
       display: inline;
     }
+    span:last-of-type {
+      padding-left: 1em;
+    }
   }
 
   &.column {

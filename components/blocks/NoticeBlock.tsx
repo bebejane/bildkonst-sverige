@@ -32,7 +32,11 @@ export default async function NoticeBlock({ data: { id, headline, image, link, t
 
         <p className="small">
           {text}
+          <span className="date" target="_blank" rel="noreferrer"> Läs mer »</span>
+
         </p>
+
+
       </Link>
 
     </div>

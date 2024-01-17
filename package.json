@@ -29,6 +29,7 @@
 		"next": "14.0.5-canary.60",
 		"next-auth": "^4.24.5",
 		"next-dato-utils": "github:bebejane/next-dato-utils",
+		"next-impl-getters": "^0.2.0",
 		"next-seo": "^5.15.0",
 		"next-sitemap": "^3.1.55",
 		"nextjs-google-analytics": "^2.3.3",

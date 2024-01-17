@@ -2,6 +2,9 @@ query AllResources($first: IntType = 100, $skip: IntType = 0) {
 	allResources(first: $first, skip: $skip) {
 		id
 		title
+		author
+		publisher
+		subtitle
 		category {
 			id
 			title

@@ -11,7 +11,7 @@ export const runtime = 'edge'
 
 export default async function Resources({ searchParams }) {
 
-  const { allResources, allResourceCategories } = await apiQuery<AllResourcesQuery, AllResourcesQueryVariables>(AllResourcesDocument, {
+  const { allResources } = await apiQuery<AllResourcesQuery, AllResourcesQueryVariables>(AllResourcesDocument, {
     all: true,
     variables: {
       first: 100,
@@ -55,7 +55,7 @@ export default async function Resources({ searchParams }) {
         </ul>
       </section>
       <ul className={cn("grid", s.resources)}>
-        {filterResources.map(({ id, link, title, summary, _publishedAt, category, theme }) => (
+        {filterResources.map(({ id, link, title, summary, subtitle, author, publisher, category, theme }) => (
           <li key={id}>
             <Link href={link.url} target="new" className={s.wrapper}>
               <div>
@@ -63,7 +63,10 @@ export default async function Resources({ searchParams }) {
                   <span className="date">{category?.title}&nbsp;•&nbsp;</span><span className="date">{theme.map(({ title }) => title).join(', ')}</span>
                 </header>
                 <h5>{title}</h5>
+                {subtitle && <h6>{subtitle}</h6>}
                 <StructuredContent className="small" content={summary} />
+                {author && <span>{author}</span>}
+                {publisher && <span>{publisher}</span>}
               </div>
               <button>Visa</button>
             </Link>

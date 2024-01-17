@@ -9,24 +9,33 @@ export default function NewsletterForm({ }) {
 
   const [state, formAction] = useFormState(newsletterSignup, {})
   const [error, setError] = useState(null)
+  const [success, setSuccess] = useState(null)
+
+  const handleClose = (e) => {
+    console.log('close')
+    e.stopPropagation()
+    setError(null)
+    setSuccess(null)
+  }
 
   useEffect(() => {
     setError(state?.error ? state.error : null)
+    setSuccess(state?.data ? state.data : null)
   }, [state])
 
   return (
     <form action={formAction} className={s.form}>
       <input name="email" type="email" placeholder="Din e-post adress..." required={true} />
       <SubmitButton />
-      {state.data && <div className={s.success}>
-        <h3>Tack för din ansökan!</h3>
-        <button className={s.close} onClick={() => setError(null)}>×</button>
-      </div>
+      {success &&
+        <div className={s.success}>
+          <h3>Tack för din ansökan!</h3>
+        </div>
       }
       {error &&
         <div className={s.error}>
           {error}
-          <button className={s.close} onClick={() => setError(null)}>×</button>
+          <button type="button" className={s.close} onClick={handleClose}>×</button>
         </div>
       }
     </form>

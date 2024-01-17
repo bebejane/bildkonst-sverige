@@ -14,8 +14,6 @@ export default async function newsletterSignup(prevState: any, formData: FormDat
       throw new Error("Ogiltig e-post adress")
     }
 
-    //return { data: 'ok' }
-
     const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID;
     const API_KEY = process.env.MAILCHIMP_API_KEY;
     const DATACENTER = process.env.MAILCHIMP_API_SERVER;
@@ -36,7 +34,6 @@ export default async function newsletterSignup(prevState: any, formData: FormDat
 
     if (status >= 400) {
       const exists = title?.toLowerCase().includes('exists') ?? false
-      console.log(detail)
       throw new Error(exists ? 'Du är redan anmäld till nyhetsbrevet' : 'Det uppstod ett fel, försök igen senare.')
     }
 

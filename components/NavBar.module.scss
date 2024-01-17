@@ -373,8 +373,10 @@
   button {
     padding-top: 0;
 
-    &:hover {
-      color: var(--white);
+    @include mq($from: desktop) {
+      &:hover {
+        color: var(--orange);
+      }
     }
   }
 

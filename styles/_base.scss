@@ -43,7 +43,7 @@ body {
 
 .body-background {
 	animation: fade-in 0.5s ease-in-out forwards;
-	animation-delay: var(--z-transition-background);
+	//animation-delay: var(--z-transition-background);
 	background-color: #ffffff;
 
 	@keyframes fade-in {
@@ -107,7 +107,7 @@ figure {
 			margin-bottom: var(--space);
 		}
 
-		& > div {
+		&>div {
 			aspect-ratio: var(--apsect-ratio);
 			display: flex;
 			flex-direction: column;
@@ -124,6 +124,7 @@ figure {
 }
 
 .structured {
+
 	p,
 	blockquote,
 	ul,
@@ -246,8 +247,7 @@ a {
 }
 
 figcaption {
-	@include mq($until: tablet) {
-	}
+	@include mq($until: tablet) {}
 
 	padding-top: 1.5em;
 }
@@ -256,8 +256,7 @@ figcaption {
 	padding-right: 1em;
 }
 
-hr {
-}
+hr {}
 
 input,
 textarea,
@@ -269,8 +268,7 @@ select {
 	font-family: $nav-font;
 	background-color: var(--background);
 
-	&:focus {
-	}
+	&:focus {}
 }
 
 select {

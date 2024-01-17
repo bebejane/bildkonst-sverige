@@ -13,12 +13,13 @@ export default function MainTemplate({ children }: LayoutProps) {
 
   useEffect(() => {
     orangeScroll()
+    orangeFade()
   }, [pathname])
 
   return (
     <>
       {children}
-      <div className={s.transition} key={pathname} />
+      {/*<div className={s.transition} key={pathname} />*/}
     </>
   )
 }
@@ -33,7 +34,6 @@ const orangeScroll = () => {
         entry.target.classList.remove(s.paragraph)
       } else
         entry.target.classList.add(s.active)
-
     })
   }, { threshold: 0.2, rootMargin: '0px 0px -20% 0px' })
 
@@ -45,6 +45,10 @@ const orangeScroll = () => {
   return () => {
     observePargraphs.disconnect()
   }
+}
+
+function orangeFade() {
+  document.body.classList.remove('body-color-fade')
 }
 
 function isElementInViewport(el: Element) {

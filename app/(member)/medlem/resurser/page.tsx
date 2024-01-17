@@ -24,7 +24,7 @@ export default async function Resources({ searchParams }) {
   const allThemes = []
   allResources.map(({ theme }) => theme.map(({ title }) => title)).flat().forEach(theme => !allThemes.includes(theme) && allThemes.push(theme))
 
-  const filter = searchParams.filter ? true : false
+  const filter = !searchParams.filter ? true : searchParams.filter === '0' ? false : true
   const themes: string[] = searchParams.tema?.split(',') ?? []
   const filterResources = allResources.filter(({ theme }) => themes.length === 0 || theme.some(({ title }) => themes.includes(title)))
 
@@ -33,7 +33,7 @@ export default async function Resources({ searchParams }) {
       <h3>
         Resurser
         <button>
-          <Link href={!filter ? `?filter=1` : '?'}>
+          <Link href={filter ? `?filter=0` : '?'}>
             Filtrera {!filter ? '+' : '-'}
           </Link>
         </button>

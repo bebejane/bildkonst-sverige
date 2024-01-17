@@ -167,7 +167,7 @@ const DesktopMenuPanel = ({ position, menu, pathname, backgroundColor, setShowNe
     <>
       <ul
         className={cn(s.menu, s[position], subId && s.open)}
-        style={{ backgroundColor: subId ? background : undefined }}
+        style={{ backgroundColor: subId ? backgroundColor : undefined }}
         onMouseLeave={(e) => { setSubId(null) }}
       >
         {panel.map(({ id, title, slug, href, sub, auth }, idx) =>

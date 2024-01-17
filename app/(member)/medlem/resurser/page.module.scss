@@ -110,6 +110,14 @@
 
       p {
         //display: none;
+        &:first-of-type {
+          //padding-top: 1em;
+        }
+      }
+
+      .meta {
+        padding-left: 1em;
+        //text-align: center;
       }
 
       .wrapper {

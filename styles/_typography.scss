@@ -109,11 +109,16 @@ blockquote {
 nav,
 footer,
 .date,
+.meta,
 .nav,
 label,
 figcaption {
   font-family: $nav-font;
   font-size: 0.7rem;
+}
+
+.meta {
+  line-height: 1;
 }
 
 .date {

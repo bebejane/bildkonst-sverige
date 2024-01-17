@@ -62,18 +62,20 @@ export default async function Resources({ searchParams }) {
                 <header>
                   <span className="date">{category?.title}&nbsp;•&nbsp;</span><span className="date">{theme.map(({ title }) => title).join(', ')}</span>
                 </header>
-                <h5>{title}</h5>
-                {subtitle && <h6>{subtitle}</h6>}
+                <h5>{title} {subtitle && <><br />—<br />{subtitle}</>}</h5>
+
                 <StructuredContent className="small" content={summary} />
-                {author && <span>{author}</span>}
-                {publisher && <span>{publisher}</span>}
+                <div className={s.meta}>
+                  {author && <span className="meta">{author}</span>}
+                  {publisher && <span className="meta">, {publisher}</span>}
+                </div>
               </div>
               <button>ÖPPNA</button>
             </Link>
           </li>
         ))}
       </ul>
-    </article>
+    </article >
   );
 }
 

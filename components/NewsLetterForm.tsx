@@ -11,9 +11,7 @@ export default function NewsletterForm({ }) {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    if (state.error) {
-      setError(state.error)
-    }
+    setError(state?.error ? state.error : null)
   }, [state])
 
   return (

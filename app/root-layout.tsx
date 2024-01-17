@@ -20,7 +20,11 @@ export default async function RootLayout({ children, backgroundColor }: LayoutPr
 
   return (
     <html lang="sv">
-      <body id="root" style={{ backgroundColor }}>
+      <body
+        id="root"
+        //@ts-ignore
+        style={{ '--background': backgroundColor }}
+      >
         <NavBar menu={menu} backgroundColor={backgroundColor} />
         <main>
           {children}

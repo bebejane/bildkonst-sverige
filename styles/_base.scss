@@ -18,7 +18,7 @@
 	--foreground: var(--black);
 	--line-height: 1.4em;
 	--apsect-ratio: 6/4;
-	--z-transition-background: 800;
+	--z-transition-background: 800ms;
 	--z-navbar-pane: 900;
 	--z-navbar: 1000;
 	--z-logo: 1100;
@@ -39,6 +39,17 @@ body {
 	font-family: $body-font;
 	-webkit-font-smoothing: antialiased;
 	font-feature-settings: "liga", "kern";
+
+}
+
+.body-background {
+	animation: fade-in 0.5s var(--z-transition-background) ease-in-out forwards;
+
+	@keyframes fade-in {
+		to {
+			background-color: var(--background);
+		}
+	}
 }
 
 html {
@@ -90,7 +101,8 @@ figure {
 		@include mq($from: desktop) {
 			margin-bottom: var(--space);
 		}
-		& > div {
+
+		&>div {
 			aspect-ratio: var(--apsect-ratio);
 			display: flex;
 			flex-direction: column;
@@ -107,6 +119,7 @@ figure {
 }
 
 .structured {
+
 	p,
 	blockquote,
 	ul,
@@ -229,8 +242,7 @@ a {
 }
 
 figcaption {
-	@include mq($until: tablet) {
-	}
+	@include mq($until: tablet) {}
 
 	padding-top: 1.5em;
 }
@@ -239,8 +251,7 @@ figcaption {
 	padding-right: 1em;
 }
 
-hr {
-}
+hr {}
 
 input,
 textarea,
@@ -252,8 +263,7 @@ select {
 	font-family: $nav-font;
 	background-color: var(--white);
 
-	&:focus {
-	}
+	&:focus {}
 }
 
 select {

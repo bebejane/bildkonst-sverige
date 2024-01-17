@@ -62,6 +62,9 @@ query Start {
 			... on NoticeBlockRecord {
 				id
 				headline
+				image {
+					...ImageFragment
+				}
 				text
 				link {
 					... on InternalLinkRecord {

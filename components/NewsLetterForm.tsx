@@ -23,8 +23,6 @@ export default function NewsletterForm({ }) {
     setSuccess(state?.data ? state.data : null)
   }, [state])
 
-  console.log(error, state)
-
   return (
     <form action={formAction} className={s.form}>
       <input name="email" type="email" placeholder="Din e-post adress..." required={true} />

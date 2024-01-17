@@ -1,9 +1,9 @@
 :root {
 	--black: #161616;
-	--white: #ffefdf;
+	--white: #ffffff;
 	--red: #bf0000;
 	--orange: #ff7a00;
-	--member-color: #ff7b004c;
+	--member-color: #ffe5cc;
 	--start-color: #ffe5cc;
 	//--start-color: #ff7b0085;
 	--outer-margin: 2.5rem;
@@ -39,7 +39,6 @@ body {
 	font-family: $body-font;
 	-webkit-font-smoothing: antialiased;
 	font-feature-settings: "liga", "kern";
-
 }
 
 .body-background {
@@ -102,7 +101,7 @@ figure {
 			margin-bottom: var(--space);
 		}
 
-		&>div {
+		& > div {
 			aspect-ratio: var(--apsect-ratio);
 			display: flex;
 			flex-direction: column;
@@ -119,7 +118,6 @@ figure {
 }
 
 .structured {
-
 	p,
 	blockquote,
 	ul,
@@ -242,7 +240,8 @@ a {
 }
 
 figcaption {
-	@include mq($until: tablet) {}
+	@include mq($until: tablet) {
+	}
 
 	padding-top: 1.5em;
 }
@@ -251,7 +250,8 @@ figcaption {
 	padding-right: 1em;
 }
 
-hr {}
+hr {
+}
 
 input,
 textarea,
@@ -263,7 +263,8 @@ select {
 	font-family: $nav-font;
 	background-color: var(--white);
 
-	&:focus {}
+	&:focus {
+	}
 }
 
 select {

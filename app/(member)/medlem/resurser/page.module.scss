@@ -18,7 +18,6 @@
   }
 
   .filter {
-
     max-height: 0;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
@@ -34,7 +33,7 @@
       border-bottom: 1px solid var(--black);
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
-      margin-bottom: var(--space);
+      //margin-bottom: var(--space);
 
       li {
         background-color: var(--member-color);
@@ -56,7 +55,6 @@
         }
 
         @include mq($from: desktop) {
-
           &:hover {
             background-color: var(--orange);
 
@@ -71,7 +69,18 @@
 
   ul.resources {
     list-style: none;
-    grid-row-gap: 2rem;
+    padding-top: var(--gutter);
+    padding-bottom: var(--gutter);
+    grid-row-gap: var(--gutter);
+    --dot-size: 7%;
+    --square-size: 16px;
+    background-image: radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size)),
+      radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size));
+    background-color: transparent;
+    background-position:
+      0 0,
+      calc(var(--square-size) / 2) calc(var(--square-size) / 2);
+    background-size: var(--square-size) var(--square-size);
 
     li {
       grid-column: span 4;
@@ -80,15 +89,7 @@
       border-top: 1px solid var(--black);
       border-bottom: 1px solid var(--black);
       padding: var(--gutter);
-      --dot-size: 7%;
-      --square-size: 16px;
-      background-image: radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size)),
-        radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size));
-      background-color: transparent;
-      background-position:
-        0 0,
-        calc(var(--square-size) / 2) calc(var(--square-size) / 2);
-      background-size: var(--square-size) var(--square-size);
+      background-color: var(--member-color);
 
       &:hover {
         background-image: none;
@@ -113,7 +114,7 @@
 
       header {
         display: flex;
-        //justify-content: space-between;
+        justify-content: center;
 
         span {
           padding-right: 0;

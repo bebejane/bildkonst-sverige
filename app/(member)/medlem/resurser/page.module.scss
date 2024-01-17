@@ -93,10 +93,11 @@
       background-color: var(--member-color);
 
       &:hover {
-        background-image: none;
-        color: var(--orange);
-
+        a {
+          color: var(--orange) !important;
+        }
         button {
+          visibility: visible;
           color: var(--orange);
         }
       }
@@ -129,6 +130,7 @@
 
       button {
         padding: 0;
+        visibility: hidden;
         padding-top: 0.5rem;
       }
     }

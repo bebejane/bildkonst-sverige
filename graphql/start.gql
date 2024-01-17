@@ -57,5 +57,41 @@ query Start {
 				}
 			}
 		}
+		smallColumn {
+			__typename
+			... on NoticeBlockRecord {
+				id
+				headline
+				text
+				link {
+					... on InternalLinkRecord {
+						__typename
+						id
+						title
+						link {
+							__typename
+							... on PoliticRecord {
+								...PoliticLightFragment
+							}
+							... on AboutRecord {
+								...AboutLightFragment
+							}
+							... on ContactPageRecord {
+								...ContactPageFragment
+							}
+							... on MemberPageRecord {
+								...MemberPageFragment
+							}
+						}
+					}
+					... on ExternalLinkRecord {
+						__typename
+						id
+						title
+						url
+					}
+				}
+			}
+		}
 	}
 }

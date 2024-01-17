@@ -9,12 +9,10 @@ type Props = {
   data: NoticeBlockRecord
 }
 
-export default async function NoticeBlock({ data: { id, headline, image, link, text } }: Props) {
+export default async function NoticeBlock({ data: { id, headline, image, link, text, category, date } }: Props) {
 
   const href = link.__typename === 'InternalLinkRecord' ? await recordToRoute(link.link) : link?.url
   const target = link.__typename === 'ExternalLinkRecord' ? "_blank" : undefined
-  const category = link.__typename === 'InternalLinkRecord' && link.link.__typename === 'PoliticRecord' ? link.link.category.title : undefined
-  const publishedAt = link.__typename === 'InternalLinkRecord' && link.link.__typename === 'PoliticRecord' ? link.link.category._publishedAt : undefined
 
   return (
     <div className={s.container}>
@@ -30,8 +28,8 @@ export default async function NoticeBlock({ data: { id, headline, image, link, t
         <h4>{headline}</h4>
 
         <p className="small">
-          {category &&
-            <span className="date">{category} • {format(new Date(publishedAt), 'yyyy-MM-dd')}</span>
+          {category && date &&
+            <span className="date">{category} • {format(new Date(date), 'yyyy-MM-dd')}</span>
           }
           {text}
         </p>

@@ -1,4 +1,4 @@
-import s from './TextBlock.module.scss'
+import s from './NoticeBlock.module.scss'
 import cn from 'classnames'
 import Link from 'next/link'
 import { Image } from 'react-datocms'

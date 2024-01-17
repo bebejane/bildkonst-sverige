@@ -8,6 +8,7 @@ import { GlobalDocument } from '@graphql';
 import { Metadata } from 'next';
 import { Icon } from 'next/dist/lib/metadata/types/metadata-types';
 import { buildMenu } from '@lib/menu';
+import { getPathname } from 'next-impl-getters/get-pathname'
 
 export type LayoutProps = {
   children: React.ReactNode,
@@ -17,6 +18,8 @@ export type LayoutProps = {
 export default async function RootLayout({ children, backgroundColor }: LayoutProps) {
 
   const menu = await buildMenu();
+  const pathname = getPathname();
+  console.log(pathname)
 
   return (
     <html lang="sv">

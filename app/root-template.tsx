@@ -1,6 +1,6 @@
 'use client'
 
-import s from './template.module.scss'
+import s from './root-template.module.scss'
 import { useEffect } from "react"
 import { usePathname } from "next/navigation"
 

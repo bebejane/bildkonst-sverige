@@ -69,8 +69,8 @@
 
   ul.resources {
     list-style: none;
-    padding-top: var(--gutter);
-    padding-bottom: var(--gutter);
+    padding: var(--gutter);
+    //padding-bottom: var(--gutter);
     grid-row-gap: var(--gutter);
     --dot-size: 7%;
     --square-size: 16px;

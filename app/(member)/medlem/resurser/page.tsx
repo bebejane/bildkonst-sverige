@@ -62,7 +62,7 @@ export default async function Resources({ searchParams }) {
                 <h5>{title}</h5>
                 <StructuredContent className="small" content={summary} />
               </div>
-              <button>Visa</button>
+              <button>ÖPPNA</button>
             </Link>
           </li>
         ))}

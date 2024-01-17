@@ -23,8 +23,8 @@ export default async function NoticeBlock({ data: { id, headline, image, link, t
             <Image data={image.responsiveImage} className={s.image} />
           </figure>
         }
-        <h3>{headline}</h3>
-        <p>{text}</p>
+        <h4>{headline}</h4>
+        <p className="small">{text}</p>
       </Link>
 
     </div>

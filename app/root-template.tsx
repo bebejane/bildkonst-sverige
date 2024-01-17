@@ -48,7 +48,8 @@ const orangeScroll = () => {
 }
 
 function orangeFade() {
-  document.body.classList.remove('body-color-fade')
+  document.body.classList.add('faded')
+  setTimeout(() => document.body.classList.remove('body-color-fade'), 700)
 }
 
 function isElementInViewport(el: Element) {

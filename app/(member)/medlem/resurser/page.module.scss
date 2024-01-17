@@ -84,11 +84,12 @@
 
     li {
       grid-column: span 4;
-      padding: var(--gutter);
       grid-column: span 4;
       border-top: 1px solid var(--black);
       border-bottom: 1px solid var(--black);
       padding: var(--gutter);
+      padding-left: calc(0.75 * var(--gutter));
+      padding-right: calc(0.75 * var(--gutter));
       background-color: var(--member-color);
 
       &:hover {
@@ -103,6 +104,11 @@
       h2 {
         padding-top: 1rem;
         line-height: 1.15;
+        hyphens: manual;
+      }
+
+      p {
+        //display: none;
       }
 
       .wrapper {

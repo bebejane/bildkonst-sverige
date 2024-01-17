@@ -16,7 +16,7 @@
 	--main-offset: calc(var(--navbar-height) + 1.5rem);
 	--background: var(--white);
 	--foreground: var(--black);
-	--line-height: 1.4em;
+	--line-height: 1.3em;
 	--apsect-ratio: 6/4;
 	--z-transition-background: 800ms;
 	--z-navbar-pane: 900;
@@ -261,7 +261,7 @@ select {
 	margin-bottom: 1rem;
 	padding: 0.5em;
 	font-family: $nav-font;
-	background-color: var(--white);
+	background-color: var(--background);
 
 	&:focus {
 	}

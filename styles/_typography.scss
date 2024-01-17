@@ -17,6 +17,8 @@ h2,
 h3,
 h4,
 h5 {
+  font-family: $headline-font;
+
   strong {
     //font-weight: normal;
   }
@@ -25,8 +27,7 @@ h5 {
 h1,
 h2 {
   font-weight: bold;
-  padding-bottom: 0.7em;
-  line-height: 1.3em;
+  line-height: 1.25em;
   font-family: $headline-font;
   font-size: 1.2rem;
   @include mq($from: desktop) {
@@ -36,6 +37,7 @@ h2 {
 
 h1,
 h2 {
+  padding-bottom: 0.7em;
   text-align: center;
 }
 
@@ -68,6 +70,13 @@ h4 {
   font-family: $headline-font;
   padding-top: 0.3rem;
   padding-bottom: 0.3rem;
+}
+
+h5 {
+  font-size: 1rem;
+  padding-bottom: 1rem;
+  padding-top: 1rem;
+  text-align: center;
 }
 
 p {

@@ -57,9 +57,9 @@ export default async function Resources({ searchParams }) {
             <Link href={link.url} target="new" className={s.wrapper}>
               <div>
                 <header>
-                  <span className="date">{theme.map(({ title }) => title).join(', ')}&nbsp;•&nbsp;</span>                   <span className="date">{category?.title}</span>
+                  <span className="date">{category?.title}&nbsp;•&nbsp;</span><span className="date">{theme.map(({ title }) => title).join(', ')}</span>
                 </header>
-                <h2>{title}</h2>
+                <h5>{title}</h5>
                 <StructuredContent className="small" content={summary} />
               </div>
               <button>Visa</button>

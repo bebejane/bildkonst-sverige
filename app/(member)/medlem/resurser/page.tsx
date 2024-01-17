@@ -11,7 +11,7 @@ export const runtime = 'edge'
 
 export default async function Resources({ searchParams }) {
 
-  const { allResources } = await apiQuery<AllResourcesQuery, AllResourcesQueryVariables>(AllResourcesDocument, {
+  const { allResources, allResourceCategories } = await apiQuery<AllResourcesQuery, AllResourcesQueryVariables>(AllResourcesDocument, {
     all: true,
     variables: {
       first: 100,
@@ -20,7 +20,10 @@ export default async function Resources({ searchParams }) {
     tags: ['resources']
   })
 
-  const allThemes = allResources.map(({ theme }) => theme.map(({ title }) => title)).flat()
+
+  const allThemes = []
+  allResources.map(({ theme }) => theme.map(({ title }) => title)).flat().forEach(theme => !allThemes.includes(theme) && allThemes.push(theme))
+
   const filter = searchParams.filter ? true : false
   const themes: string[] = searchParams.tema?.split(',') ?? []
   const filterResources = allResources.filter(({ theme }) => themes.length === 0 || theme.some(({ title }) => themes.includes(title)))

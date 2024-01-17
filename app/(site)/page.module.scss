@@ -1,16 +1,12 @@
+h3.headline {
+  width: 100%;
+  text-align: center;
+  padding-bottom: var(--space);
+}
+
 .container {
-  //display: flex;
-  //flex-direction: row;
-  //flex-wrap: wrap;
-
-
-  >div {
+  > div {
     grid-column: span 8;
-
-    h3 {
-      width: 100%;
-      text-align: center;
-    }
 
     section {
       border-bottom: 1px solid var(--black);
@@ -25,8 +21,8 @@
   }
 
   aside {
+    border-left: 1px solid var(--black);
     grid-column: span 4;
-
+    padding-left: var(--gutter);
   }
-
 }

@@ -2,21 +2,20 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--black);
 
   a {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding-left: var(--gutter);
-    padding-right: var(--gutter);
 
     figure {
       margin-left: var(--outer-margin);
       margin-right: var(--outer-margin);
       margin-bottom: 1rem;
 
-      &>div {
+      & > div {
         aspect-ratio: var(--apsect-ratio);
         display: flex;
         max-width: none !important;
@@ -41,17 +40,13 @@
     h2 {
       padding-bottom: 0;
 
-      &+p {
+      & + p {
         padding-top: 0.5em;
       }
     }
 
     h3 {
       //padding-bottom: 1em;
-    }
-
-    p {
-      text-align: center;
     }
 
     p:last-of-type {
@@ -64,5 +59,4 @@
       }
     }
   }
-
 }

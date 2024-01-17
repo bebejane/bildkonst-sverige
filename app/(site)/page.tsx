@@ -12,9 +12,10 @@ export default async function Home() {
 
   return (
     <>
+      <h3 className={s.headline}>Aktuellt</h3>
+
       <article className={cn(s.container, 'grid')}>
         <div>
-          <h3>Aktuellt</h3>
           {start?.content?.map((block, idx) =>
             <section key={idx}>
               <Block key={idx} data={block} />

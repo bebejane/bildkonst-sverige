@@ -22,6 +22,7 @@ export default async function RootLayout({ children, backgroundColor }: LayoutPr
     <html lang="sv">
       <body
         id="root"
+        className="body-background"
         //@ts-ignore
         style={{ '--background': backgroundColor }}
       >

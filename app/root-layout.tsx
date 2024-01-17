@@ -17,15 +17,11 @@ export type LayoutProps = {
 export default async function RootLayout({ children, backgroundColor }: LayoutProps) {
 
   const menu = await buildMenu();
+  const style = { '--background': backgroundColor } as React.CSSProperties;
 
   return (
     <html lang="sv">
-      <body
-        id="root"
-        className="body-background"
-        //@ts-ignore
-        style={{ '--background': backgroundColor }}
-      >
+      <body id="root" style={style}>
         <NavBar menu={menu} backgroundColor={backgroundColor} />
         <main>
           {children}

@@ -41,21 +41,6 @@ body {
 	font-feature-settings: "liga", "kern";
 }
 
-.body-background {
-	animation: fade-in 0.5s ease-in-out forwards;
-	//animation-delay: var(--z-transition-background);
-	background-color: #ffffff;
-
-	@keyframes fade-in {
-		from {
-			background-color: #ffffff;
-		}
-
-		to {
-			background-color: var(--background);
-		}
-	}
-}
 
 html {
 	box-sizing: border-box;

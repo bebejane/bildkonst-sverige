@@ -1,28 +1,32 @@
 .container {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  //display: flex;
+  //flex-direction: row;
+  //flex-wrap: wrap;
 
-  h3 {
-    width: 100%;
-    text-align: center;
-    //border-bottom: 1px solid var(--black);
-    //padding-bottom: var(--space);
-  }
 
-  section {
-    border-bottom: 1px solid var(--black);
-    padding-bottom: var(--space);
-    padding-top: var(--space);
-    width: 100%;
+  >div {
+    grid-column: span 8;
 
-    &:first-child {
-      padding-top: 0;
+    h3 {
+      width: 100%;
+      text-align: center;
     }
 
-    &:last-child {
-      //padding-bottom: 0;
-      //border-bottom: 0px solid var(--black);
+    section {
+      border-bottom: 1px solid var(--black);
+      padding-bottom: var(--space);
+      padding-top: var(--space);
+      width: 100%;
+
+      &:first-child {
+        padding-top: 0;
+      }
     }
   }
+
+  aside {
+    grid-column: span 4;
+
+  }
+
 }

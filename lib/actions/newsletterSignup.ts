@@ -11,10 +11,10 @@ export default async function newsletterSignup(prevState: any, formData: FormDat
     try {
       z.string().email({ message: "Ogiltig e-post adress" }).parse(email as string)
     } catch (e) {
-      throw new Error(e.message)
+      throw new Error("Ogiltig e-post adress")
     }
 
-    return { data: 'ok' }
+    //return { data: 'ok' }
 
     const AUDIENCE_ID = process.env.MAILCHIMP_AUDIENCE_ID;
     const API_KEY = process.env.MAILCHIMP_API_KEY;
@@ -29,14 +29,15 @@ export default async function newsletterSignup(prevState: any, formData: FormDat
       headers: {
         'Authorization': `apikey ${API_KEY}`,
         'Content-Type': 'application/json',
-      }
+      },
     });
 
     const { title, status, detail } = await response.json()
 
     if (status >= 400) {
       const exists = title?.toLowerCase().includes('exists') ?? false
-      throw new Error(exists ? 'Du är redan anmäld till nyhetsbrevet' : `Det uppstod ett fel: ${detail}`)
+      console.log(detail)
+      throw new Error(exists ? 'Du är redan anmäld till nyhetsbrevet' : 'Det uppstod ett fel, försök igen senare.')
     }
 
     return { data: 'ok' }

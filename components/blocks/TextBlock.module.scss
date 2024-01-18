@@ -39,6 +39,15 @@
       //padding-bottom: 1em;
     }
 
+    div {
+      p {
+        display: inline;
+      }
+      span {
+        padding-left: 1em;
+      }
+    }
+
     p:last-of-type {
       margin-bottom: 0;
     }

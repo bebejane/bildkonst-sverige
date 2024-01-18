@@ -27,7 +27,11 @@ export default async function TextBlock({ data: { id, headline, image, link, tex
           </figure>
         }
         <h2>{headline}</h2>
-        <p>{text}</p>
+        <div>
+          <p>{text}</p>
+          <span className="date" target="_blank" rel="noreferrer">Läs mer »</span>
+        </div>
+
       </Link>
 
     </div>

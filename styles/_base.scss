@@ -1,6 +1,6 @@
 :root {
 	--black: #161616;
-	--white: #fff7f0;
+	--white: #fdf3e9;
 	--red: #bf0000;
 	--orange: #ff7a00;
 	--member-color: #ffe5cc;
@@ -265,8 +265,13 @@ select {
 	border: 1px solid var(--black);
 	margin-bottom: 1rem;
 	padding: 0.5em;
+	padding-left: 0.75em;
 	font-family: $nav-font;
 	background-color: var(--background);
+
+	&::placeholder {
+		color: #00000055;
+	}
 
 	&:focus {
 	}

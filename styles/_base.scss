@@ -41,18 +41,20 @@ body {
 	font-feature-settings: "liga", "kern";
 }
 
-body,
-a {
-	transition: color ease-in-out 0.3s;
-}
-
-.body-color-fade {
-	color: var(--orange) !important;
-	transition: color ease-in-out 0.3s;
-
-	a {
+.bodyfade {
+	main * {
 		color: var(--orange) !important;
-		transition: color ease-in-out 0.3s;
+		transition: none;
+		border-color: var(--orange) !important;
+	}
+
+	&.fadeout {
+		main * {
+			transition: color ease-in-out 700ms;
+			transition-delay: 50ms;
+			color: var(--foreground) !important;
+			border-color: var(--foreground) !important;
+		}
 	}
 }
 
@@ -268,10 +270,6 @@ select {
 	padding-left: 0.75em;
 	font-family: $nav-font;
 	background-color: var(--background);
-
-	&::placeholder {
-		color: #00000055;
-	}
 
 	&:focus {
 	}

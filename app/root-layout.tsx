@@ -21,7 +21,7 @@ export default async function RootLayout({ children, backgroundColor }: LayoutPr
 
   return (
     <html lang="sv">
-      <body id="root" className={"body-color-fade"} style={style}>
+      <body id="root" className={'bodyfade'} style={style}>
         <NavBar menu={menu} backgroundColor={backgroundColor} />
         <main>
           {children}

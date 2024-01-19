@@ -7,7 +7,7 @@ import StructuredContent from '@components/StructuredContent';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
-import { Image } from 'react-datocms/image';
+import Image from '@components/Image';
 import cn from 'classnames';
 import { Metadata } from 'next';
 

@@ -21,12 +21,16 @@ export default function MainTemplate({ children }: LayoutProps) {
   return (
     <>
       {children}
-      {/*<div className={s.transition} key={pathname} />*/}
     </>
   )
 }
 
 const orangeScroll = () => {
+
+  function isElementInViewport(el: Element) {
+    return el.getBoundingClientRect()?.top <= (window.innerHeight || document.documentElement.clientHeight)
+  }
+
   const paragraphs = Array.from(document.querySelectorAll('main p,main li')).filter(p => !isElementInViewport(p))
   const observePargraphs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -50,14 +54,12 @@ const orangeScroll = () => {
 }
 
 function orangeFade() {
+  const imageOverlays = Array.from(document.querySelectorAll("div[data-image-overlay]"))
   document.body.classList.add('bodyfade')
   setTimeout(() => document.body.classList.add('fadeout'), 20)
   setTimeout(() => {
     document.body.classList.remove('bodyfade')
     document.body.classList.remove('fadeout')
+    imageOverlays.forEach(img => img.remove())
   }, 700)
-}
-
-function isElementInViewport(el: Element) {
-  return el.getBoundingClientRect()?.top <= (window.innerHeight || document.documentElement.clientHeight)
 }

@@ -4,7 +4,7 @@ import s from './page.module.scss'
 import { AllNewsDocument } from "@graphql";
 import { apiQuery } from "next-dato-utils";
 import { Metadata } from 'next';
-import { Image } from 'react-datocms';
+import Image from '@components/Image';
 import Link from 'next/link';
 import { StructuredContent } from 'next-dato-utils';
 import { format } from 'date-fns';

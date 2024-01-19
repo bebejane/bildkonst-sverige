@@ -48,12 +48,28 @@ body {
 		border-color: var(--orange) !important;
 	}
 
+
+
 	&.fadeout {
 		main * {
 			transition: color ease-in-out 700ms;
 			transition-delay: 50ms;
 			color: var(--foreground) !important;
 			border-color: var(--foreground) !important;
+		}
+
+		div[data-image-overlay="true"] {
+			animation: fade-out 700ms ease-in-out 50ms forwards;
+
+			@keyframes fade-out {
+				0% {
+					opacity: 1;
+				}
+
+				100% {
+					opacity: 0;
+				}
+			}
 		}
 	}
 }

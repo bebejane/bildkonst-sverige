@@ -1,7 +1,7 @@
 import s from './NoticeBlock.module.scss'
 import cn from 'classnames'
 import Link from 'next/link'
-import { Image } from 'react-datocms'
+import Image from '@components/Image';
 import { recordToRoute } from '@lib/routes'
 import { format } from 'date-fns'
 
@@ -32,13 +32,9 @@ export default async function NoticeBlock({ data: { id, headline, image, link, t
 
         <p className="small">
           {text}
-          <span className="date" target="_blank" rel="noreferrer"> Läs mer »</span>
-
+          <span className="date"> Läs mer »</span>
         </p>
-
-
       </Link>
-
     </div>
   )
 }

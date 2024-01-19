@@ -3,7 +3,7 @@
 import cn from 'classnames';
 import StructuredContent from '@components/StructuredContent';
 import { format } from 'date-fns';
-import { Image } from 'react-datocms';
+import Image from '@components/Image';
 
 export type ArticleProps = {
   id: string

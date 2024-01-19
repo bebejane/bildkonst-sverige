@@ -4,8 +4,8 @@ import s from './page.module.scss'
 import Article from '@components/Article';
 import { ContactDocument } from "@graphql";
 import { apiQuery, DraftMode } from "next-dato-utils";
-import { draftMode } from 'next/headers';
-import { Image, Metadata } from 'react-datocms';
+import { Metadata } from 'react-datocms';
+import Image from '@components/Image';
 import { notFound } from 'next/navigation';
 
 export default async function Contact() {

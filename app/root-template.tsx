@@ -41,7 +41,7 @@ const orangeScroll = () => {
       } else
         entry.target.classList.add(s.active)
     })
-  }, { threshold: 0.2, rootMargin: '0px 0px -20% 0px' })
+  }, { threshold: 0.2, rootMargin: '0px 0px -100px 0px' })
 
   paragraphs.forEach(p => {
     p.classList.add(s.paragraph)

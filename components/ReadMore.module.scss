@@ -1,0 +1,12 @@
+.read {
+  display: inline;
+
+  span {
+    padding: 0 !important;
+  }
+
+  .external {
+    display: inline-block;
+    transform: rotate(-45deg);
+  }
+}

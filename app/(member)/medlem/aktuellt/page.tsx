@@ -8,7 +8,7 @@ import Image from '@components/Image';
 import Link from 'next/link';
 import { StructuredContent } from 'next-dato-utils';
 import { format } from 'date-fns';
-import cn from 'classnames';
+import ReadMore from '@components/ReadMore';
 
 export default async function News() {
 
@@ -41,7 +41,7 @@ export default async function News() {
                 <span className="date">{category?.title} • {format(new Date(_createdAt), 'yyyy-MM-dd')}</span>
                 <StructuredContent className="intro" content={intro} /> &nbsp;<span className="date">Läs mer »</span>
                 {externalUrl &&
-                  <a href={externalUrl} target="_blank" rel="noreferrer">Läs mer</a>
+                  <ReadMore url={externalUrl} />
                 }
               </Link>
             </li>
@@ -59,9 +59,7 @@ export default async function News() {
               </span>
               <h4>{title}</h4>
               <StructuredContent className="small" content={intro} />
-              {externalUrl &&
-                <a href={externalUrl} className="date" target="_blank" rel="noreferrer">Läs mer »</a>
-              }
+              {externalUrl && <ReadMore url={externalUrl} />}
             </li>
           ))}
         </ul>

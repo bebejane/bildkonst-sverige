@@ -1,7 +1,7 @@
 import s from './StartPoliticBlock.module.scss'
 import cn from 'classnames'
 import Link from "next/link"
-import { Image } from "react-datocms"
+import Image from '@components/Image';
 import { format } from "date-fns"
 import StructuredContent from '@components/StructuredContent'
 
@@ -26,7 +26,7 @@ export default function StartPoliticBlock({ data: { record: { id, slug, category
           <div className={cn(layout === 'big' && 'intro')}>
             <span className="date">{category?.title} • {format(new Date(_publishedAt), 'yyyy-MM-dd')}</span>
             <StructuredContent content={intro} id={id} />
-            <span className="date" target="_blank" rel="noreferrer">Läs mer »</span>
+            <span className="date">Läs mer »</span>
           </div>
         </div>
       </div>

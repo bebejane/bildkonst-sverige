@@ -1,6 +1,6 @@
 import s from './PeopleCollectionBlock.module.scss'
 import cn from 'classnames'
-import { Image } from "react-datocms"
+import Image from '@components/Image';
 
 type Props = {
   data: PeopleCollectionBlockRecord

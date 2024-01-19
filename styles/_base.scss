@@ -233,6 +233,7 @@ button {
 a {
 	text-decoration: none;
 	color: var(--foreground);
+	transition: color 0.3s ease-in-out;
 
 	@include mq($from: desktop) {
 		&:hover {

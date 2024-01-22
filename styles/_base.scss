@@ -27,6 +27,7 @@
 
 	@include mq($until: desktop) {
 		--outer-margin: 0.8rem;
+		--navbar-offset: 0.4rem;
 	}
 	@include mq($from: very-wide) {
 		--outer-margin: 10vw;
@@ -172,7 +173,8 @@ figure {
 			background: var(--black);
 			font-family: $headline-font;
 			display: inline-block;
-			margin-left: 0.2em;
+			margin-left: 0.3em;
+			margin-bottom: -0.02em;
 		}
 	}
 
@@ -224,6 +226,12 @@ figure {
 	}
 }
 
+p a {
+	text-decoration: underline !important;
+	text-decoration-thickness: 1px !important;
+	text-underline-offset: 0.2em;
+}
+
 button {
 	width: 100%;
 	color: var(--foreground);
@@ -268,7 +276,7 @@ figcaption {
 	@include mq($until: tablet) {
 	}
 
-	padding-top: 1.5em;
+	padding-top: 1em;
 }
 
 .date {
@@ -290,6 +298,9 @@ select {
 	background-color: var(--background);
 
 	&:focus {
+	}
+	&::placeholder {
+		color: rgb(230, 149, 112);
 	}
 }
 

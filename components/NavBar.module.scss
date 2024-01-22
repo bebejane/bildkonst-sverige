@@ -29,7 +29,10 @@
 }
 
 .onScroll {
-  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-width: 0.04em;
+  @include mq($from: desktop) {
+    -webkit-text-stroke-width: 1px;
+  }
   -webkit-text-stroke-color: var(--black);
   -webkit-text-fill-color: transparent;
 }
@@ -65,7 +68,7 @@
   color: var(--white);
   transition: transform 0.3s ease-in-out;
   transform: translateX(100%);
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   line-height: 1.8;
 
   @include mq($from: desktop) {
@@ -205,13 +208,13 @@
       &.left {
         justify-content: flex-start;
         border-color: transparent;
-        border-right-width: 1px
+        border-right-width: 1px;
       }
 
       &.right {
         justify-content: flex-end;
         border-color: transparent;
-        border-left-width: 1px
+        border-left-width: 1px;
       }
 
       @keyframes to-black {
@@ -225,8 +228,6 @@
         color: var(--black);
       }
     }
-
-
 
     @include mq($until: desktop) {
       height: auto;
@@ -375,7 +376,7 @@
   --square-size: 8px;
   background-image: radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size)),
     radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size));
-  background-color: var(--white);
+  background-color: var(--member-color);
   background-position:
     0 0,
     calc(var(--square-size) / 2) calc(var(--square-size) / 2);
@@ -394,6 +395,7 @@
 
   input {
     border: 0px;
+    background-color: var(--member-color);
   }
 
   .close {

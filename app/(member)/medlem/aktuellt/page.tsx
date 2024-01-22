@@ -28,6 +28,22 @@ export default async function News() {
     <article className={s.container}>
       <h3>Aktuellt för medlemmar</h3>
       <div className="grid">
+        <ul className={s.right}>
+          {shortNews.map(({ image, slug, title, intro, _createdAt, category, externalUrl }) => (
+            <li key={slug}>
+              {image &&
+                <figure>
+                  <Image data={image.responsiveImage} />
+                </figure>
+              }
+              <span className="date">{category?.title} • {format(new Date(_createdAt), 'yyyy-MM-dd')}<br />
+              </span>
+              <h4>{title}</h4>
+              <StructuredContent className="small" content={intro} />
+              {externalUrl && <ReadMore url={externalUrl} />}
+            </li>
+          ))}
+        </ul>
         <ul className={s.main}>
           {extendedNews.map(({ image, slug, title, intro, _createdAt, category, externalUrl }) => (
             <li key={slug}>
@@ -44,22 +60,6 @@ export default async function News() {
                   <ReadMore url={externalUrl} />
                 }
               </Link>
-            </li>
-          ))}
-        </ul>
-        <ul className={s.left}>
-          {shortNews.map(({ image, slug, title, intro, _createdAt, category, externalUrl }) => (
-            <li key={slug}>
-              {image &&
-                <figure>
-                  <Image data={image.responsiveImage} />
-                </figure>
-              }
-              <span className="date">{category?.title} • {format(new Date(_createdAt), 'yyyy-MM-dd')}<br />
-              </span>
-              <h4>{title}</h4>
-              <StructuredContent className="small" content={intro} />
-              {externalUrl && <ReadMore url={externalUrl} />}
             </li>
           ))}
         </ul>

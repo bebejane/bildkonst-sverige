@@ -15,11 +15,11 @@ export default function ReadMore({ url, path, className, external = false }: Rea
       {url ?
         <a
           href={url}
-          className={cn(s.read, className)}
+          className={cn(s.read, className, "date")}
           target="_blank"
           rel="noreferrer"
         >
-          Läs mer <span className={s.external}>»</span>
+          Öppna <span className={s.external}>»</span>
         </a>
         : path ?
           <Link href={path} className={cn(s.read, className)}>Läs mer »</Link>

@@ -81,10 +81,10 @@ export default async function Resources({ searchParams }) {
           <tbody>
             {filterResources.sort((a, b) => !a.author ? 1 : a.author > b.author ? 1 : -1).map(({ id, link, title, subtitle, author, publisher, category, theme }) => (
               <tr key={id}>
-                <td><Link href={link.url} target="new">{[author, publisher].filter(s => s).join(', ')}</Link></td>
-                <td><Link href={link.url} target="new">{title}{subtitle && <> {subtitle}</>}</Link></td>
-                <td><Link href={link.url} target="new">{category?.title}</Link></td>
-                <td><Link href={link.url} target="new">{theme.map(({ title }) => title).join(', ')}</Link></td>
+                <td><h5><Link href={link.url} target="new">{[author].filter(s => s).join(', ')}</Link></h5></td>
+                <td><h5><Link href={link.url} target="new">{title}{subtitle && <> {subtitle}</>}</Link></h5></td>
+                <td className="date"><Link href={link.url} target="new">{category?.title}</Link></td>
+                <td className="date"><Link href={link.url} target="new">{theme.map(({ title }) => title).join(', ')}</Link></td>
               </tr>
             ))}
           </tbody>

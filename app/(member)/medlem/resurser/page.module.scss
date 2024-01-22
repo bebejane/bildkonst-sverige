@@ -19,10 +19,11 @@
   }
 
   .filter {
-
     max-height: 0;
     overflow: hidden;
-    transition: all 0.3s ease-in-out, border-color 0.3s ease-in-out;
+    transition:
+      all 0.3s ease-in-out,
+      border-color 0.3s ease-in-out;
 
     @include mq($until: desktop) {
       overflow-x: scroll;
@@ -121,7 +122,6 @@
       }
 
       p {
-
         //display: none;
         &:first-of-type {
           //padding-top: 1em;
@@ -160,13 +160,23 @@
   table.list {
     width: 100%;
 
-    tr:hover {
+    h5 {
+      text-align: left;
+      padding: 0;
+    }
 
+    td {
+      padding-bottom: var(--space-small);
+      padding-right: 1em;
+      border-bottom: 1px solid var(--black);
+      padding-top: var(--space-small);
+    }
+
+    tr:hover {
       td,
       a {
         color: var(--orange) !important;
       }
-
     }
   }
 }

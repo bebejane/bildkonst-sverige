@@ -30,7 +30,7 @@ export default async function ReadMore({ url, path, className, link, external = 
           Öppna <span className={s.external}>»</span>
         </a>
         : path ?
-          <Link href={path} className={cn(s.read, className)}>Läs mer »</Link>
+          <Link href={path} className={cn(s.read, className, "date")}>Läs mer »</Link>
           :
           <span className={cn(s.read, className, "date")}>
             Läs mer <span className={external ? s.external : undefined}>»</span>

@@ -49,7 +49,9 @@
 
   .right {
     grid-column: span 4;
-    order: -1;
+    @include mq($from: desktop) {
+      order: -1;
+    }
 
     @include mq($from: desktop) {
       border-right: 1px solid var(--black);

@@ -19,7 +19,9 @@ h3.headline {
       width: 100%;
 
       &:last-child {
-        border-bottom: 0;
+        @include mq($from: desktop) {
+          border-bottom: 0;
+        }
       }
 
       &:first-child {
@@ -35,9 +37,17 @@ h3.headline {
       grid-column: span 4;
     }
 
+    section:first-of-type {
+      @include mq($until: desktop) {
+        padding-top: var(--space-small);
+      }
+    }
+
     section:last-child div {
-      border-bottom: 0 !important;
-      padding-bottom: 0;
+      @include mq($from: desktop) {
+        border-bottom: 0 !important;
+        padding-bottom: 0;
+      }
     }
   }
 

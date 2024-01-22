@@ -3,6 +3,7 @@ import cn from 'classnames'
 import Link from 'next/link'
 import Image from '@components/Image';
 import { recordToRoute } from '@lib/routes'
+import ReadMore from '../ReadMore';
 
 type Props = {
   data: TextBlockRecord
@@ -29,9 +30,8 @@ export default async function TextBlock({ data: { id, headline, image, link, tex
         <h2>{headline}</h2>
         <div>
           <p>{text}</p>
-          <span className="date" target="_blank" rel="noreferrer">Läs mer »</span>
+          <ReadMore className="date" />
         </div>
-
       </Link>
 
     </div>

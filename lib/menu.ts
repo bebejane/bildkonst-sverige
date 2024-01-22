@@ -47,11 +47,11 @@ export const buildMenu = async (): Promise<Menu> => {
       id: 'news',
       title: 'Aktuellt',
       slug: '/medlem/aktuellt'
-    }, {
+    }, /*{
       id: 'tools',
       title: 'Verktygslåda',
       slug: '/medlem/verktygslada'
-    }, {
+    }, */{
       id: 'resources',
       title: 'Resurser',
       slug: '/medlem/resurser'

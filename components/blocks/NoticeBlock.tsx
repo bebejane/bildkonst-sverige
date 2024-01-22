@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Image from '@components/Image';
 import { recordToRoute } from '@lib/routes'
 import { format } from 'date-fns'
+import ReadMore from '../ReadMore';
 
 type Props = {
   data: NoticeBlockRecord
@@ -16,10 +17,7 @@ export default async function NoticeBlock({ data: { id, headline, image, link, t
 
   return (
     <div className={s.container}>
-      <Link
-        href={href}
-        target={target}
-      >
+      <Link href={href} target={target}>
         {image &&
           <figure>
             <Image data={image.responsiveImage} className={s.image} />
@@ -31,8 +29,7 @@ export default async function NoticeBlock({ data: { id, headline, image, link, t
         <h4>{headline}</h4>
 
         <p className="small">
-          {text}
-          <span className="date"> Läs mer »</span>
+          {text} <ReadMore className="date" external={link.__typename === 'ExternalLinkRecord'} />
         </p>
       </Link>
     </div>

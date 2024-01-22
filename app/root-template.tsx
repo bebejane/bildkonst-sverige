@@ -13,8 +13,8 @@ export default function MainTemplate({ children }: LayoutProps) {
   const pathname = usePathname()
 
   useEffect(() => {
-    orangeScroll()
     orangeFade()
+    //orangeScroll()
   }, [pathname])
 
   return (

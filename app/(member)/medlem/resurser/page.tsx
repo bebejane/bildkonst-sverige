@@ -17,7 +17,7 @@ export default async function Resources({ searchParams }) {
       first: 100,
       skip: 0
     },
-    tags: ['resources']
+    tags: ['resource']
   })
 
 

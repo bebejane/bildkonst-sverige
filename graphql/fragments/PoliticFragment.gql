@@ -14,6 +14,7 @@ fragment PoliticFragment on PoliticRecord {
 		links
 		blocks {
 			... on ButtonBlockRecord {
+				__typename
 				id
 				text
 				url

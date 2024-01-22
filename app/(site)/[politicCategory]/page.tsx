@@ -40,7 +40,7 @@ export default async function Page({ params }: { params: { politicCategory: stri
                   <h2>{title}</h2>
                   <div className="grid">
                     <div className={cn(s.content, "intro", image && s.image)}>
-                      <span className="date">{format(new Date(_publishedAt), 'd MMMM yyyy')}</span>
+                      <span className="date">{format(new Date(_publishedAt), 'yyyy-MM-dd')}</span>
                       <p>{structuredToText(intro as unknown as StructuredText)}</p>
                     </div>
                     {image &&

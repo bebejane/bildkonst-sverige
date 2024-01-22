@@ -38,7 +38,7 @@ export default async function Resources({ searchParams }) {
           </Link>
         </button>
       </h3>
-      <section className={cn(s.filter, filter && s.show)}>
+      <nav className={cn(s.filter, filter && s.show)}>
         <ul>
           {allThemes.map((theme, idx) => {
             const qs = (themes.includes(theme) ? themes.filter(c => c !== theme) : [...themes, theme]).filter(c => c)
@@ -53,7 +53,7 @@ export default async function Resources({ searchParams }) {
             )
           })}
         </ul>
-      </section>
+      </nav>
       <ul className={cn("grid", s.resources)}>
         {filterResources.map(({ id, link, title, summary, subtitle, author, publisher, category, theme }) => (
           <li key={id}>

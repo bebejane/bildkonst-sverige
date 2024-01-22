@@ -38,9 +38,9 @@ export default async function NoticeBlock({ data: { id, headline, image, link, t
           {content}
         </Link>
         :
-        <>
+        <div>
           {content}
-        </>
+        </div>
       }
     </div>
   )

@@ -1,5 +1,5 @@
 query AllNews($first: IntType = 100, $skip: IntType = 0) {
-	allNews(first: $first, skip: $skip, orderBy: _createdAt_DESC) {
+	allNews(first: $first, skip: $skip, orderBy: _publishedAt_DESC) {
 		id
 		title
 		category {
@@ -10,12 +10,40 @@ query AllNews($first: IntType = 100, $skip: IntType = 0) {
 			...ImageFragment
 		}
 		extended
+		twoColumns
 		intro {
 			blocks
 			value
 			links
 		}
 		externalUrl
+		link {
+			... on InternalLinkRecord {
+				__typename
+				id
+				title
+				link {
+					__typename
+					... on PoliticRecord {
+						...PoliticLightFragment
+					}
+					... on AboutRecord {
+						...AboutLightFragment
+					}
+					... on ContactPageRecord {
+						...ContactPageFragment
+					}
+					... on MemberPageRecord {
+						...MemberPageFragment
+					}
+				}
+			}
+			... on ExternalLinkRecord {
+				id
+				title
+				url
+			}
+		}
 		slug
 		_publishedAt
 		_createdAt

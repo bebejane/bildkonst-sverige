@@ -35,7 +35,7 @@ export default async function Resources({ searchParams }) {
         Resurser
         <button>
           <Link href={list ? `?list=0` : '?list=1'}>
-            Lista {!list ? '+' : '-'}
+            {!list ? 'Visa som lista' : 'Visa som kolumn'}
           </Link>
         </button>
       </h3>
@@ -82,7 +82,7 @@ export default async function Resources({ searchParams }) {
             {filterResources.sort((a, b) => !a.author ? 1 : a.author > b.author ? 1 : -1).map(({ id, link, title, subtitle, author, publisher, category, theme }) => (
               <tr key={id}>
                 <td><h5><Link href={link.url} target="new">{[author].filter(s => s).join(', ')}</Link></h5></td>
-                <td><h5><Link href={link.url} target="new">{title}{subtitle && <> {subtitle}</>}</Link></h5></td>
+                <td><h5><Link href={link.url} target="new">{title}{subtitle && <> — {subtitle}</>}</Link></h5></td>
                 <td className="date"><Link href={link.url} target="new">{category?.title}</Link></td>
                 <td className="date"><Link href={link.url} target="new">{theme.map(({ title }) => title).join(', ')}</Link></td>
               </tr>

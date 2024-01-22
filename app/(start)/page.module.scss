@@ -31,9 +31,9 @@ h3.headline {
     grid-column: span 4;
     padding-left: var(--gutter);
     position: sticky;
-    top: var(--navbar-height);
-    align-self: flex-start;
-    min-height: 100vh;
+    bottom: var(--navbar-height);
+    //align-self: flex-start;
+    //min-height: 100vh;
 
     section:last-child div {
       border-bottom: 0 !important;

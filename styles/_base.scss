@@ -28,6 +28,9 @@
 	@include mq($until: desktop) {
 		--outer-margin: 0.8rem;
 	}
+	@include mq($from: very-wide) {
+		--outer-margin: 10vw;
+	}
 }
 
 body {
@@ -47,8 +50,6 @@ body {
 		transition: none;
 		border-color: var(--orange) !important;
 	}
-
-
 
 	&.fadeout {
 		main * {

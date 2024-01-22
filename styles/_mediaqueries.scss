@@ -37,7 +37,8 @@ $mq-breakpoints: (
   tablet: 740px,
   desktop: 980px,
   wide: 1600px,
-  nav-break: 1100px,
+  very-wide: 1700px,
+  nav-break: 1100px
 ) !default;
 
 /// Static breakpoint (for fixed-width layouts)
@@ -242,7 +243,7 @@ $mq-media-type: all !default;
 ///  @include mq(tvscreen) {}
 @mixin mq-add-breakpoint($name, $width) {
   $new-breakpoint: (
-    $name: $width,
+    $name: $width
   );
   $mq-breakpoints: map-merge($mq-breakpoints, $new-breakpoint) !global;
 }

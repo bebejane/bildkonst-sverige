@@ -9,6 +9,7 @@ import Link from 'next/link';
 import { StructuredContent } from 'next-dato-utils';
 import { format } from 'date-fns';
 import ReadMore from '@components/ReadMore';
+import { recordToRoute } from '../../../../lib/routes';
 
 export default async function News() {
 
@@ -45,7 +46,7 @@ export default async function News() {
           ))}
         </ul>
         <ul className={s.main}>
-          {extendedNews.map(({ image, slug, title, intro, _createdAt, category, externalUrl }) => (
+          {extendedNews.map(({ image, slug, title, intro, _publishedAt, category, link }) => (
             <li key={slug}>
               <Link href={`/medlem/aktuellt/${slug}`}>
                 {image &&
@@ -54,12 +55,30 @@ export default async function News() {
                   </figure>
                 }
                 <h2>{title}</h2>
-                <span className="date">{category?.title} • {format(new Date(_createdAt), 'yyyy-MM-dd')}</span>
+                <span className="date">{category?.title} • {format(new Date(_publishedAt), 'yyyy-MM-dd')}</span>
                 <StructuredContent className="intro" content={intro} /> &nbsp;<span className="date">Läs mer »</span>
-                {externalUrl &&
-                  <ReadMore url={externalUrl} />
+                {link &&
+                  <ReadMore link={link as InternalLinkRecord} />
                 }
               </Link>
+            </li>
+          ))}
+        </ul>
+        <ul className={s.left}>
+          {shortNews.map(({ image, slug, title, intro, _publishedAt, category, link }) => (
+            <li key={slug}>
+              {image &&
+                <figure>
+                  <Image data={image.responsiveImage} />
+                </figure>
+              }
+              <span className="date">{category?.title} • {format(new Date(_publishedAt), 'yyyy-MM-dd')}<br />
+              </span>
+              <h4>{title}</h4>
+              <StructuredContent className="small" content={intro} />
+              {link &&
+                <ReadMore link={link as InternalLinkRecord} />
+              }
             </li>
           ))}
         </ul>

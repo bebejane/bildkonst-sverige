@@ -1,6 +1,7 @@
 'use server'
 
 import s from './page.module.scss'
+import cn from 'classnames'
 import { AllNewsDocument } from "@graphql";
 import { apiQuery } from "next-dato-utils";
 import { Metadata } from 'next';
@@ -9,7 +10,6 @@ import Link from 'next/link';
 import { StructuredContent } from 'next-dato-utils';
 import { format } from 'date-fns';
 import ReadMore from '@components/ReadMore';
-import { recordToRoute } from '../../../../lib/routes';
 
 export default async function News() {
 
@@ -31,8 +31,8 @@ export default async function News() {
       <div className="grid">
 
         <ul className={s.main}>
-          {extendedNews.map(({ image, slug, title, intro, _publishedAt, category, link }) => (
-            <li key={slug}>
+          {extendedNews.map(({ image, slug, title, intro, _publishedAt, category, link, twoColumns }) => (
+            <li key={slug} className={cn(twoColumns && s.two)}>
               <Link href={`/medlem/aktuellt/${slug}`}>
                 {image &&
                   <figure>

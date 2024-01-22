@@ -3,6 +3,7 @@
 import s from './page.module.scss'
 import { AllPoliticByCategoryDocument, AllPoliticCategoriesDocument, PoliticCategoryDocument } from "@graphql";
 import { apiQuery, DraftMode } from "next-dato-utils";
+import { render as structuredToText } from 'datocms-structured-text-to-plain-text';
 import StructuredContent from '@components/StructuredContent';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -10,6 +11,7 @@ import { format } from 'date-fns';
 import Image from '@components/Image';
 import cn from 'classnames';
 import { Metadata } from 'next';
+import { StructuredText } from 'datocms-structured-text-utils';
 
 export default async function Page({ params }: { params: { politicCategory: string } }) {
 
@@ -26,7 +28,6 @@ export default async function Page({ params }: { params: { politicCategory: stri
     tags: ['politic']
   })
 
-
   return (
     <>
       <article>
@@ -39,8 +40,8 @@ export default async function Page({ params }: { params: { politicCategory: stri
                   <h2>{title}</h2>
                   <div className="grid">
                     <div className={cn(s.content, "intro", image && s.image)}>
-                      <span className="date">{format(new Date(_publishedAt), 'd MMMM yyyy')}</span>
-                      <StructuredContent content={intro} id={id} />
+                      <span className="date">{format(new Date(_publishedAt), 'yyyy-MM-dd')}</span>
+                      <p>{structuredToText(intro as unknown as StructuredText)}</p>
                     </div>
                     {image &&
                       <figure>

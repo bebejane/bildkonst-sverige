@@ -6,14 +6,15 @@
   padding-bottom: 1rem;
   border-bottom: 1px solid var(--black);
 
-  a {
+  a,
+  >div {
     display: flex;
     flex-direction: column;
 
     figure {
       margin-bottom: 1rem;
 
-      & > div {
+      &>div {
         aspect-ratio: var(--apsect-ratio);
         display: flex;
         max-width: none !important;
@@ -38,7 +39,7 @@
     h2 {
       padding-bottom: 0;
 
-      & + p {
+      &+p {
         padding-top: 0.5em;
       }
     }

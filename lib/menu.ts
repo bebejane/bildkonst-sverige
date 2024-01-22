@@ -8,6 +8,7 @@ export type MenuItem = {
   title: string,
   slug?: string,
   href?: string,
+  parentSlug?: string,
   sub?: MenuItem[],
   auth?: boolean,
   position?: 'left' | 'right'

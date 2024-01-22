@@ -46,13 +46,18 @@ fragment NewsFragment on NewsRecord {
 	extended
 	content {
 		blocks {
+			__typename
 			... on ImageRecord {
-				__typename
 				id
 				image {
 					...ImageFragment
 				}
 				layout
+			}
+			... on ButtonBlockRecord {
+				id
+				text
+				url
 			}
 		}
 		value

@@ -41,7 +41,7 @@ export default async function Article({
         }
         {intro &&
           <section className="intro">
-            {publishedAt && <span className="date">{format(new Date(publishedAt), 'd MMMM yyyy')}</span>}
+            {publishedAt && <span className="date">{format(new Date(publishedAt), 'yyyy-MM-dd')}</span>}
             <StructuredContent content={intro} id={id} />
           </section>
         }

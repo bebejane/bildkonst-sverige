@@ -15,7 +15,6 @@ export default function MainTemplate({ children }: LayoutProps) {
   useEffect(() => {
     orangeScroll()
     orangeFade()
-    console.log(pathname)
   }, [pathname])
 
   return (

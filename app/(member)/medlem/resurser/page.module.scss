@@ -19,11 +19,22 @@
   }
 
   .filter {
+
     max-height: 0;
     overflow: hidden;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out, border-color 0.3s ease-in-out;
+
+    @include mq($until: desktop) {
+      overflow-x: scroll;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+    }
 
     &.show {
+      border-top: 1px solid;
+      border-bottom: 1px solid;
       max-height: 90px;
     }
 
@@ -31,8 +42,6 @@
       display: flex;
       justify-content: center;
       list-style-type: none;
-      border-top: 1px solid var(--black);
-      border-bottom: 1px solid var(--black);
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
       //margin-bottom: var(--space);
@@ -98,6 +107,7 @@
         a {
           color: var(--orange) !important;
         }
+
         button {
           visibility: visible;
           color: var(--orange);
@@ -111,6 +121,7 @@
       }
 
       p {
+
         //display: none;
         &:first-of-type {
           //padding-top: 1em;

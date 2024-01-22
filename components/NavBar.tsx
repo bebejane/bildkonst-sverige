@@ -147,7 +147,6 @@ const DesktopMenu = ({ menu, pathname, backgroundColor, setShowNewsletter }: { m
 const DesktopMenuPanel = ({ position, menu, pathname, backgroundColor, setShowNewsletter }: { position: 'left' | 'right', menu: Menu, pathname: string, backgroundColor: string, setShowNewsletter: (o: boolean) => void }) => {
 
   const { session, error, status, refresh } = useNextAuthSession()
-  const [background, setBackground] = useState<string | undefined>()
   const panel = menu.filter((el) => el.position === position)
   const [subId, setSubId] = useState<string | null>(null)
   const subPanel = panel?.find(({ id }) => subId === id)
@@ -155,13 +154,6 @@ const DesktopMenuPanel = ({ position, menu, pathname, backgroundColor, setShowNe
   useEffect(() => {
     setSubId(null)
   }, [pathname])
-
-  useEffect(() => {
-    const color = getComputedStyle(document.documentElement).getPropertyValue('--start-color');
-    const bgColor = hexToRGBA(color)
-    console.log(color, bgColor, backgroundColor)
-    //setBackground(bgColor)
-  }, [backgroundColor])
 
   return (
     <>
@@ -173,7 +165,7 @@ const DesktopMenuPanel = ({ position, menu, pathname, backgroundColor, setShowNe
         {panel.map(({ id, title, slug, href, sub, auth }, idx) =>
           <li
             key={id}
-            className={cn((isMenuItemIsOpen(pathname, panel[idx])) && s.selected)}
+            className={cn((isMenuItemIsOpen(pathname, panel[idx]) || isParentMenuActive(pathname, sub)) && s.selected)}
             onMouseEnter={(e) => { sub ? setSubId(id) : setSubId(null) }}
             onClick={(e) => { sub && setSubId(id) }}
           >
@@ -208,31 +200,6 @@ const DesktopMenuPanel = ({ position, menu, pathname, backgroundColor, setShowNe
       </ul>
     </>
   )
-}
-
-
-const isMenuItemIsOpen = (pathname, item: MenuItem) => {
-  return item.slug === pathname || item.sub?.find(({ slug }) => pathname === slug) !== undefined
-}
-
-const RGBAtoRGB = (r, g, b, a, r2, g2, b2) => {
-  var r3 = Math.round(((1 - a) * r2) + (a * r))
-  var g3 = Math.round(((1 - a) * g2) + (a * g))
-  var b3 = Math.round(((1 - a) * b2) + (a * b))
-  return "rgb(" + r3 + "," + g3 + "," + b3 + ")";
-}
-
-const hexToRGBA = (hex: string) => {
-  var r = parseInt(hex.slice(1, 3), 16),
-    g = parseInt(hex.slice(3, 5), 16),
-    b = parseInt(hex.slice(5, 7), 16),
-    a = parseInt(hex.slice(7, 9), 16);
-
-  if (a) {
-    return "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
-  } else {
-    return "rgb(" + r + ", " + g + ", " + b + ")";
-  }
 }
 
 const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
@@ -289,4 +256,12 @@ const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
       {error && <p className={s.error}>{error}</p>}
     </>
   );
+}
+
+const isMenuItemIsOpen = (pathname: string, item: MenuItem) => {
+  return item.slug === pathname || item.sub?.find(({ slug }) => pathname === slug) !== undefined
+}
+
+const isParentMenuActive = (pathname: string, sub?: MenuItem[]) => {
+  return sub?.find(({ slug }) => pathname.split('/')[1] === slug.split('/')[1]) !== undefined
 }

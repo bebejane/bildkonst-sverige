@@ -32,12 +32,17 @@ fragment AboutFragment on AboutRecord {
 	}
 	content {
 		blocks {
+			__typename
 			... on PeopleCollectionBlockRecord {
-				__typename
 				id
 				people {
 					...StaffFragment
 				}
+			}
+			... on ButtonBlockRecord {
+				id
+				text
+				url
 			}
 		}
 		links

@@ -1,6 +1,10 @@
 .form {
   position: relative;
 
+  input {
+    border: 1px solid var(--black);
+  }
+
   .success,
   .error {
     position: absolute;
@@ -29,10 +33,7 @@
       line-height: 1;
       cursor: pointer;
     }
-
   }
-
-
 
   button {
     padding-bottom: 0;

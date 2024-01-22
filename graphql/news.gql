@@ -39,6 +39,7 @@ query AllNews($first: IntType = 100, $skip: IntType = 0) {
 				}
 			}
 			... on ExternalLinkRecord {
+				__typename
 				id
 				title
 				url
@@ -74,8 +75,8 @@ fragment NewsFragment on NewsRecord {
 	extended
 	content {
 		blocks {
-			__typename
 			... on ImageRecord {
+				__typename
 				id
 				image {
 					...ImageFragment
@@ -83,6 +84,7 @@ fragment NewsFragment on NewsRecord {
 				layout
 			}
 			... on ButtonBlockRecord {
+				__typename
 				id
 				text
 				url

@@ -29,15 +29,14 @@ const orangeScroll = () => {
   function isElementInViewport(el: Element) {
     return el.getBoundingClientRect()?.top <= (window.innerHeight || document.documentElement.clientHeight)
   }
+  const documentHeight = document.documentElement.scrollHeight
 
   const paragraphs = Array.from(document.querySelectorAll('main p,main li')).filter(p => !isElementInViewport(p))
   const observePargraphs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        observePargraphs.unobserve(entry.target)
+      if (entry.isIntersecting)
         entry.target.classList.remove(s.active)
-        entry.target.classList.remove(s.paragraph)
-      } else
+      else if (entry.boundingClientRect.top > 100)
         entry.target.classList.add(s.active)
     })
   }, { threshold: 0.2, rootMargin: '0px 0px -100px 0px' })

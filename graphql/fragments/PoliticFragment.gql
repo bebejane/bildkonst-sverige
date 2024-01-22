@@ -12,6 +12,13 @@ fragment PoliticFragment on PoliticRecord {
 	content {
 		value
 		links
+		blocks {
+			... on ButtonBlockRecord {
+				id
+				text
+				url
+			}
+		}
 	}
 	image {
 		...ImageFragment

@@ -166,7 +166,7 @@ figure {
 	p {
 		display: block;
 
-		&:last-of-type::after {
+		/*		&:last-of-type::after {
 			content: "";
 			width: 0.7em;
 			height: 0.7em;
@@ -176,6 +176,7 @@ figure {
 			margin-left: 0.3em;
 			margin-bottom: -0.02em;
 		}
+		*/
 	}
 
 	blockquote {
@@ -223,6 +224,12 @@ figure {
 
 	ul {
 		padding-left: 1em;
+	}
+
+	button {
+		margin-top: var(--space-small);
+		border: 1px solid var(--black);
+		padding-bottom: calc(0.9 * var(--space-small));
 	}
 }
 

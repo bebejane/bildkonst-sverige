@@ -8,7 +8,9 @@ h3.headline {
 .container {
   position: relative;
   > div {
-    grid-column: span 8;
+    @include mq($from: desktop) {
+      grid-column: span 8;
+    }
 
     section {
       border-bottom: 1px solid var(--black);
@@ -27,9 +29,11 @@ h3.headline {
   }
 
   aside {
-    border-left: 1px solid var(--black);
-    grid-column: span 4;
-    padding-left: var(--gutter);
+    @include mq($from: desktop) {
+      border-left: 1px solid var(--black);
+      padding-left: var(--gutter);
+      grid-column: span 4;
+    }
 
     section:last-child div {
       border-bottom: 0 !important;
@@ -39,8 +43,10 @@ h3.headline {
 
   aside,
   > div {
-    position: sticky;
-    bottom: 0;
-    align-self: flex-end;
+    @include mq($from: desktop) {
+      position: sticky;
+      bottom: 0;
+      align-self: flex-end;
+    }
   }
 }

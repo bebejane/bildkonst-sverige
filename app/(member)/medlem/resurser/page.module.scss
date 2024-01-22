@@ -7,7 +7,7 @@
     justify-content: center;
 
     button {
-      display: none !important;
+      //display: none !important;
       all: unset;
       position: absolute;
       right: 0;
@@ -154,6 +154,19 @@
         visibility: hidden;
         padding-top: 0.8rem;
       }
+    }
+  }
+
+  table.list {
+    width: 100%;
+
+    tr:hover {
+
+      td,
+      a {
+        color: var(--orange) !important;
+      }
+
     }
   }
 }

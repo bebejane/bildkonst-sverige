@@ -29,9 +29,9 @@ const orangeScroll = () => {
   function isElementInViewport(el: Element) {
     return el.getBoundingClientRect()?.top <= (window.innerHeight || document.documentElement.clientHeight)
   }
-  const documentHeight = document.documentElement.scrollHeight
 
-  const paragraphs = Array.from(document.querySelectorAll('main p,main li')).filter(p => !isElementInViewport(p))
+  const main = document.querySelector('main')
+  const paragraphs = Array.from(main.querySelectorAll('p,li,span,h1,h2,h3,h4,h5,h6')).filter(p => !isElementInViewport(p))
   const observePargraphs = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting)

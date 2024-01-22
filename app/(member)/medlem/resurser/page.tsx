@@ -26,7 +26,7 @@ export default async function Resources({ searchParams }) {
 
   const filter = !searchParams.filter ? true : searchParams.filter === '0' ? false : true
   const list = searchParams.list === '1' ? true : false
-  const themes: string[] = searchParams.tema?.split(',') ?? []
+  const themes: string[] = searchParams.tema ? searchParams.tema.split(',') : []
   const filterResources = allResources.filter(({ theme }) => themes.length === 0 || theme.some(({ title }) => themes.includes(title)))
 
   return (
@@ -34,8 +34,8 @@ export default async function Resources({ searchParams }) {
       <h3>
         Resurser
         <button>
-          <Link href={list ? `?list=0` : '?list=1'}>
-            {!list ? 'Visa som lista' : 'Visa som kolumn'}
+          <Link href={`?list=${list ? '0' : '1'}&tema=${themes.join(',')}`}>
+            {!list ? 'Visa som lista' : 'Visa som kolumner'}
           </Link>
         </button>
       </h3>
@@ -47,7 +47,7 @@ export default async function Resources({ searchParams }) {
 
             return (
               <li key={idx} className={cn(isSelected && s.selected, "date")}>
-                <Link href={qs.length ? `?filter=1&tema=${qs.join(',')}` : '?filter=1'}>
+                <Link href={qs.length ? `?list=${list ? '1' : '0'}&tema=${qs.join(',')}` : `?list=${list ? '1' : '0'}`}>
                   {theme}
                 </Link>
               </li>
@@ -55,40 +55,41 @@ export default async function Resources({ searchParams }) {
           })}
         </ul>
       </nav>
-      {!list ?
-        <ul className={cn("grid", s.resources)}>
-          {filterResources.map(({ id, link, title, summary, subtitle, author, publisher, category, theme }) => (
-            <li key={id}>
-              <Link href={link.url} target="new" className={s.wrapper}>
-                <div>
-                  <header>
-                    <span className="date">{category?.title}&nbsp;•&nbsp;</span><span className="date">{theme.map(({ title }) => title).join(', ')}</span>
-                  </header>
-                  <h5>{title} {subtitle && <><br />—<br />{subtitle}</>}</h5>
+      {
+        !list ?
+          <ul className={cn("grid", s.resources)}>
+            {filterResources.map(({ id, link, title, summary, subtitle, author, publisher, category, theme }) => (
+              <li key={id}>
+                <Link href={link.url} target="new" className={s.wrapper}>
+                  <div>
+                    <header>
+                      <span className="date">{category?.title}&nbsp;•&nbsp;</span><span className="date">{theme.map(({ title }) => title).join(', ')}</span>
+                    </header>
+                    <h5>{title} {subtitle && <><br />—<br />{subtitle}</>}</h5>
 
-                  <StructuredContent className="small" content={summary} />
-                  <div className={s.meta}>
-                    <span className="meta">{[author, publisher].filter(s => s).join(', ')}</span>
+                    <StructuredContent className="small" content={summary} />
+                    <div className={s.meta}>
+                      <span className="meta">{[author, publisher].filter(s => s).join(', ')}</span>
+                    </div>
                   </div>
-                </div>
-                <button>ÖPPNA</button>
-              </Link>
-            </li>
-          ))}
-        </ul>
-        :
-        <table className={cn(s.list)}>
-          <tbody>
-            {filterResources.sort((a, b) => !a.author ? 1 : a.author > b.author ? 1 : -1).map(({ id, link, title, subtitle, author, publisher, category, theme }) => (
-              <tr key={id}>
-                <td><h5><Link href={link.url} target="new">{[author].filter(s => s).join(', ')}</Link></h5></td>
-                <td><h5><Link href={link.url} target="new">{title}{subtitle && <> — {subtitle}</>}</Link></h5></td>
-                <td className="date"><Link href={link.url} target="new">{category?.title}</Link></td>
-                <td className="date"><Link href={link.url} target="new">{theme.map(({ title }) => title).join(', ')}</Link></td>
-              </tr>
+                  <button>ÖPPNA</button>
+                </Link>
+              </li>
             ))}
-          </tbody>
-        </table>
+          </ul>
+          :
+          <table className={cn(s.list)}>
+            <tbody>
+              {filterResources.sort((a, b) => !a.author ? 1 : a.author > b.author ? 1 : -1).map(({ id, link, title, subtitle, author, publisher, category, theme }) => (
+                <tr key={id}>
+                  <td><Link href={link.url} target="new">{[author, publisher].filter(s => s).join(', ')}</Link></td>
+                  <td><Link href={link.url} target="new">{title}{subtitle && <> {subtitle}</>}</Link></td>
+                  <td><Link href={link.url} target="new">{category?.title}</Link></td>
+                  <td><Link href={link.url} target="new">{theme.map(({ title }) => title).join(', ')}</Link></td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
       }
     </article >
   );

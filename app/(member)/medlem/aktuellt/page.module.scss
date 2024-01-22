@@ -36,7 +36,8 @@
       padding-bottom: 2rem;
       margin-bottom: 2rem;
 
-      &.two {}
+      &.two {
+      }
 
       &:last-child {
         margin-bottom: 0;
@@ -47,6 +48,7 @@
 
   .right {
     grid-column: span 4;
+    order: -1;
 
     @include mq($from: desktop) {
       border-right: 1px solid var(--black);

@@ -30,9 +30,11 @@
 
 .onScroll {
   -webkit-text-stroke-width: 0.04em;
+
   @include mq($from: desktop) {
     -webkit-text-stroke-width: 1px;
   }
+
   -webkit-text-stroke-color: var(--black);
   -webkit-text-fill-color: transparent;
 }
@@ -96,7 +98,7 @@
     list-style: none;
   }
 
-  > ul {
+  >ul {
     padding-bottom: 120px;
 
     li {
@@ -111,9 +113,14 @@
           overflow: hidden;
 
           &.login {
-            animation-name: none;
+            animation-name: none !important;
             max-height: unset;
             overflow: visible;
+
+            button {
+              color: var(--white);
+            }
+
           }
 
           @keyframes hide {
@@ -176,7 +183,7 @@
     transition: color ease-in-out 0.3s;
   }
 
-  > ul > li:hover,
+  >ul>li:hover,
   a:hover {
     color: var(--orange) !important;
   }
@@ -235,7 +242,7 @@
       flex-direction: column;
     }
 
-    > li {
+    >li {
       position: relative;
       cursor: pointer;
       white-space: nowrap;
@@ -250,7 +257,7 @@
       }
 
       @include mq($from: desktop) {
-        > form {
+        >form {
           display: none;
         }
       }
@@ -320,12 +327,12 @@
   }
 }
 
-.selected > a,
+.selected>a,
 .selected {
   color: var(--orange) !important;
 }
 
-.selectedSub > a,
+.selectedSub>a,
 .selectedSub {
   color: var(--orange) !important;
 }
@@ -375,11 +382,10 @@
   --dot-size: 15%;
   --square-size: 8px;
   background-image: radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size)),
-    radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size));
+  radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size));
   background-color: var(--member-color);
-  background-position:
-    0 0,
-    calc(var(--square-size) / 2) calc(var(--square-size) / 2);
+  background-position: 0 0,
+  calc(var(--square-size) / 2) calc(var(--square-size) / 2);
   background-size: var(--square-size) var(--square-size);
 
   button {

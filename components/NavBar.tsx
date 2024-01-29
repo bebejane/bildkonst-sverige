@@ -99,7 +99,6 @@ const MobileMenu = ({
                     <li className={s.login}>
                       <LoginForm onSuccess={() => refresh()} />
                     </li>
-
                     :
                     sub?.map(({ id, title, slug }, i) => (
                       <li

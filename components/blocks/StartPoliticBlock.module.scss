@@ -11,6 +11,13 @@
     }
   }
 
+  figure div {
+    aspect-ratio: 5/4;
+    img {
+      object-fit: cover;
+    }
+  }
+
   &.column {
     flex: 0 0 50%;
     display: flex;
@@ -21,6 +28,10 @@
       grid-column-end: 7;
       aspect-ratio: 5/4;
       display: flex;
+
+      div {
+        aspect-ratio: 5/4;
+      }
 
       img {
         object-fit: cover;

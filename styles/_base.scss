@@ -227,9 +227,16 @@ figure {
 	}
 
 	button {
-		margin-top: var(--space-small);
+		margin-top: 0.5rem;
 		border: 1px solid var(--black);
+		width: auto;
+		padding-left: 1.5rem;
+		padding-right: 1.4rem;
 		padding-bottom: calc(0.9 * var(--space-small));
+		font-size: 0.75rem;
+		&:hover {
+			border-color: var(--orange);
+		}
 	}
 }
 

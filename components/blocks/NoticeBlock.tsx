@@ -27,7 +27,7 @@ export default async function NoticeBlock({ data: { id, headline, image, link, t
     <h4>{headline}</h4>
 
     <p className="small">
-      {text} {link && <ReadMore className="date" external={link?.__typename === 'ExternalLinkRecord'} />}
+      {text && text} {text && " "}{link && <ReadMore className="date" external={link?.__typename === 'ExternalLinkRecord'} />}
     </p>
   </>
 

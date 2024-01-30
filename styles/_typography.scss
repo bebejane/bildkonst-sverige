@@ -90,7 +90,10 @@ p {
 
 .small p,
 p.small {
-  font-size: 0.75rem;
+  @include mq($from: desktop) {
+    font-size: 0.75rem;
+    @i;
+  }
 }
 
 blockquote {

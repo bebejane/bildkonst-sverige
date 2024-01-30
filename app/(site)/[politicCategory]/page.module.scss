@@ -33,7 +33,9 @@
           margin-left: 20%;
           margin-right: 20%;
           margin-bottom: var(--space-small);
-          aspect-ratio: unset;
+          div {
+            aspect-ratio: 4 / 3;
+          }
         }
 
         @include mq($from: desktop) {

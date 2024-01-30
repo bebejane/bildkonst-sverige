@@ -220,9 +220,14 @@ const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
       username: formData.get('email'),
       password: formData.get('password'),
     }).then((result) => {
-      onSuccess()
+      if (result.status === 401)
+        setError('Felaktigt användarnamn eller lösenord')
+      else if (result.status !== 200)
+        setError(`Något gick fel, försök igen. ${result.error}`)
+      else
+        onSuccess()
     }).catch((error) => {
-      setError('Något gick fel, försök igen')
+      setError(`Något gick fel, försök igen. ${error.message ?? error}`)
     }).finally(() => {
       setSubmitting(false)
     })
@@ -250,9 +255,10 @@ const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
           placeholder="Lösenord"
           autoComplete="current-password"
         />
+
         <button onClick={(e) => e.stopPropagation()}>Logga in</button>
       </form>
-      {error && <p className={s.error}>{error}</p>}
+      {error && <p className={s.loginError}>{error}</p>}
     </>
   );
 }

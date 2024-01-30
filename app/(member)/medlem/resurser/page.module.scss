@@ -1,4 +1,14 @@
 .container {
+  position: relative;
+
+  .toggle {
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 1rem;
+    background-color: var(--member-color);
+  }
+
   h3 {
     padding-bottom: var(--space);
     position: relative;
@@ -170,6 +180,14 @@
       padding-right: 1em;
       border-bottom: 1px solid var(--black);
       padding-top: var(--space-small);
+
+      @include mq($until: desktop) {
+        &:first-child,
+        &:last-child,
+        &:nth-last-child(2) {
+          display: none;
+        }
+      }
     }
 
     tr:hover {

@@ -39,11 +39,6 @@ export default async function Resources({ searchParams }) {
     <article className={s.container}>
       <h3>
         Resurser
-        <button>
-          <Link href={`?list=${list ? '0' : '1'}&tema=${themes.join(',')}`}>
-            {!list ? 'Visa som lista' : 'Visa som kolumner'}
-          </Link>
-        </button>
       </h3>
       <nav className={cn(s.filter, filter && s.show)}>
         <ul>
@@ -97,6 +92,11 @@ export default async function Resources({ searchParams }) {
             </tbody>
           </table>
       }
+      <button className={s.toggle}>
+        <Link href={`?list=${list ? '0' : '1'}&tema=${themes.join(',')}`}>
+          {!list ? 'Visa som lista' : 'Visa som kolumner'}
+        </Link>
+      </button>
     </article >
   );
 }

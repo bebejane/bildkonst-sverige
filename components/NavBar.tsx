@@ -222,10 +222,12 @@ const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
     }).then((result) => {
       if (result.status === 401)
         setError('Felaktigt användarnamn eller lösenord')
+      else if (result.status !== 200)
+        setError(`Något gick fel, försök igen. ${result.error}`)
       else
         onSuccess()
     }).catch((error) => {
-      setError('Något gick fel, försök igen')
+      setError(`Något gick fel, försök igen. ${error.message ?? error}`)
     }).finally(() => {
       setSubmitting(false)
     })

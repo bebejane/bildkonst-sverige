@@ -4,7 +4,6 @@ import s from './page.module.scss'
 import { AllPoliticByCategoryDocument, AllPoliticCategoriesDocument, PoliticCategoryDocument } from "@graphql";
 import { apiQuery, DraftMode } from "next-dato-utils";
 import { render as structuredToText } from 'datocms-structured-text-to-plain-text';
-import StructuredContent from '@components/StructuredContent';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';

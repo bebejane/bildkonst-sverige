@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { AllResourcesDocument } from "@graphql";
 import { apiQuery } from "next-dato-utils";
 import { Metadata } from 'next';
-import { StructuredContent } from 'next-dato-utils';
+import Content from '@components/Content';
 import Link from 'next/link';
 
 export const dynamic = 'auto'
@@ -68,7 +68,7 @@ export default async function Resources({ searchParams }) {
                     </header>
                     <h5>{title} {subtitle && <><br />—<br />{subtitle}</>}</h5>
 
-                    <StructuredContent className="small" content={summary} />
+                    <Content className="small" content={summary} />
                     <div className={s.meta}>
                       <span className="meta">{[author, publisher].filter(s => s).join(', ')}</span>
                     </div>

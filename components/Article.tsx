@@ -1,7 +1,7 @@
 'use server'
 
 import cn from 'classnames';
-import StructuredContent from '@components/StructuredContent';
+import Content from '@components/Content';
 import { format } from 'date-fns';
 import Image from '@components/Image';
 
@@ -42,12 +42,12 @@ export default async function Article({
         {intro &&
           <section className="intro">
             {publishedAt && <span className="date">{format(new Date(publishedAt), 'yyyy-MM-dd')}</span>}
-            <StructuredContent content={intro} id={id} />
+            <Content content={intro} id={id} />
           </section>
         }
         {content &&
           <section className={cn("grid", "structured")}>
-            <StructuredContent content={content} id={id} />
+            <Content content={content} id={id} />
           </section>
         }
         {children}

@@ -3,7 +3,7 @@ import cn from 'classnames'
 import Link from "next/link"
 import Image from '@components/Image';
 import { format } from "date-fns"
-import StructuredContent from '@components/StructuredContent'
+import Content from '@components/Content'
 import ReadMore from '../ReadMore';
 
 type Props = {
@@ -26,7 +26,7 @@ export default function StartPoliticBlock({ data: { record: { id, slug, category
           <h2>{title}</h2>
           <div className={cn(layout === 'big' && 'intro')}>
             <span className="date">{category?.title} • {format(new Date(_publishedAt), 'yyyy-MM-dd')}</span>
-            <StructuredContent content={intro} id={id} />
+            <Content content={intro} id={id} />
             <ReadMore className="date" />
           </div>
         </div>

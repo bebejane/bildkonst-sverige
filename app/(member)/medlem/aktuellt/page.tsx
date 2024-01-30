@@ -7,7 +7,7 @@ import { apiQuery } from "next-dato-utils";
 import { Metadata } from 'next';
 import Image from '@components/Image';
 import Link from 'next/link';
-import { StructuredContent } from 'next-dato-utils';
+import Content from '@components/Content';
 import { format } from 'date-fns';
 import ReadMore from '@components/ReadMore';
 
@@ -41,7 +41,7 @@ export default async function News() {
                 }
                 <h2>{title}</h2>
                 <span className="date">{category?.title} • {format(new Date(_publishedAt), 'yyyy-MM-dd')}</span>
-                <StructuredContent className="intro" content={intro} /> &nbsp;<span className="date">Läs mer »</span>
+                <Content className="intro" content={intro} /> &nbsp;<span className="date">Läs mer »</span>
                 {link &&
                   <ReadMore link={link as InternalLinkRecord} />
                 }
@@ -60,7 +60,7 @@ export default async function News() {
               <span className="date">{category?.title} • {format(new Date(_publishedAt), 'yyyy-MM-dd')}<br />
               </span>
               <h4>{title}</h4>
-              <StructuredContent className="small" content={intro} />
+              <Content className="small" content={intro} />
               {link &&
                 <ReadMore link={link as InternalLinkRecord} />
               }

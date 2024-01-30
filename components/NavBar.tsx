@@ -220,7 +220,10 @@ const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
       username: formData.get('email'),
       password: formData.get('password'),
     }).then((result) => {
-      onSuccess()
+      if (result.status === 401)
+        setError('Felaktigt användarnamn eller lösenord')
+      else
+        onSuccess()
     }).catch((error) => {
       setError('Något gick fel, försök igen')
     }).finally(() => {
@@ -250,9 +253,10 @@ const LoginForm = ({ onSuccess }: { onSuccess: () => void }) => {
           placeholder="Lösenord"
           autoComplete="current-password"
         />
+
         <button onClick={(e) => e.stopPropagation()}>Logga in</button>
       </form>
-      {error && <p className={s.error}>{error}</p>}
+      {error && <p className={s.loginError}>{error}</p>}
     </>
   );
 }

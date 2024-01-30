@@ -12,7 +12,7 @@
   }
 
   figure div {
-    aspect-ratio: 5/4;
+    aspect-ratio: var(--apsect-ratio);
     img {
       object-fit: cover;
     }
@@ -26,11 +26,15 @@
     figure {
       grid-column-start: 1;
       grid-column-end: 7;
-      aspect-ratio: 5/4;
+      aspect-ratio: 4/4;
       display: flex;
 
       div {
-        aspect-ratio: 5/4;
+        aspect-ratio: var(--apsect-ratio);
+
+        @include mq($from: desktop) {
+          aspect-ratio: 4/4;
+        }
       }
 
       img {

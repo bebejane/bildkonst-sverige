@@ -1,11 +1,12 @@
 import { basicAuth, cors } from 'next-dato-utils';
 import { NextResponse } from "next/server";
 import { buildClient } from '@datocms/cma-client-browser';
-import { MailDocument } from '@graphql';
-import { apiQuery } from 'next-dato-utils';
 import { sendMail } from '@lib/postmark';
 
-const client = buildClient({ apiToken: process.env.DATOCMS_API_TOKEN, environment: process.env.DATOCMS_ENVIRONMENT })
+const client = buildClient({
+  apiToken: process.env.DATOCMS_API_TOKEN,
+  environment: process.env.DATOCMS_ENVIRONMENT
+})
 
 export const runtime = "nodejs"
 

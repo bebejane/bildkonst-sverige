@@ -46,7 +46,7 @@ dependencies:
     version: 4.24.5(next@14.1.1-canary.21)(react-dom@18.2.0)(react@18.2.0)
   next-dato-utils:
     specifier: github:bebejane/next-dato-utils
-    version: github.com/bebejane/next-dato-utils/d836aaa1ecca484b3a7ef8ffa7bb1b7fe88aaa01(@datocms/cma-client-browser@3.0.4)(@datocms/cma-client-node@3.0.4)(@types/react-dom@18.2.15)(@types/react@18.2.37)(datocms-structured-text-utils@2.0.4)(graphql@16.8.1)(react-datocms@4.1.3)(react-dom@18.2.0)(react@18.2.0)(sass@1.69.5)
+    version: github.com/bebejane/next-dato-utils/9f0ea2d43c858839c26f01f724939fe1041e8b27(@datocms/cma-client-browser@3.0.4)(@datocms/cma-client-node@3.0.4)(@types/react-dom@18.2.15)(@types/react@18.2.37)(datocms-structured-text-utils@2.0.4)(graphql@16.8.1)(react-datocms@4.1.3)(react-dom@18.2.0)(react@18.2.0)(sass@1.69.5)
   next-impl-getters:
     specifier: ^0.2.0
     version: 0.2.0(next@14.1.1-canary.21)(react-dom@18.2.0)(react@18.2.0)
@@ -6861,11 +6861,11 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: false
 
-  github.com/bebejane/next-dato-utils/d836aaa1ecca484b3a7ef8ffa7bb1b7fe88aaa01(@datocms/cma-client-browser@3.0.4)(@datocms/cma-client-node@3.0.4)(@types/react-dom@18.2.15)(@types/react@18.2.37)(datocms-structured-text-utils@2.0.4)(graphql@16.8.1)(react-datocms@4.1.3)(react-dom@18.2.0)(react@18.2.0)(sass@1.69.5):
-    resolution: {tarball: https://codeload.github.com/bebejane/next-dato-utils/tar.gz/d836aaa1ecca484b3a7ef8ffa7bb1b7fe88aaa01}
-    id: github.com/bebejane/next-dato-utils/d836aaa1ecca484b3a7ef8ffa7bb1b7fe88aaa01
+  github.com/bebejane/next-dato-utils/9f0ea2d43c858839c26f01f724939fe1041e8b27(@datocms/cma-client-browser@3.0.4)(@datocms/cma-client-node@3.0.4)(@types/react-dom@18.2.15)(@types/react@18.2.37)(datocms-structured-text-utils@2.0.4)(graphql@16.8.1)(react-datocms@4.1.3)(react-dom@18.2.0)(react@18.2.0)(sass@1.69.5):
+    resolution: {tarball: https://codeload.github.com/bebejane/next-dato-utils/tar.gz/9f0ea2d43c858839c26f01f724939fe1041e8b27}
+    id: github.com/bebejane/next-dato-utils/9f0ea2d43c858839c26f01f724939fe1041e8b27
     name: next-dato-utils
-    version: 1.0.489
+    version: 1.0.490
     engines: {node: '>=0.18'}
     hasBin: true
     peerDependencies:

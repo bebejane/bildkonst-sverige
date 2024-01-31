@@ -2,6 +2,7 @@ export { test as GET } from 'next-dato-utils'
 import { cors } from 'next-dato-utils'
 
 export const runtime = "edge"
+export const dynamic = 'force-dynamic'
 
 export async function OPTIONS(req: Request) {
 

@@ -18,7 +18,7 @@ export default function LoginForm({ onSuccess }: { onSuccess: () => void }) {
     const formData = new FormData(e.target)
 
     signIn('credentials', {
-      redirect: true,
+      redirect: false,
       callbackUrl: '/medlem/aktuellt',
       username: formData.get('email'),
       password: formData.get('password'),

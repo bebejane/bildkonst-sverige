@@ -118,6 +118,14 @@ figure {
 }
 
 .content {
+	hr {
+		width: 100%;
+		border: 0;
+		border-bottom: 1px solid var(--black);
+		margin-bottom: var(--space);
+		margin-top: var(--space-small);
+	}
+
 	figure {
 		margin-bottom: var(--space-small);
 		padding-top: 1rem;
@@ -148,6 +156,7 @@ figure {
 	ul,
 	ol,
 	h3,
+	hr,
 	form {
 		display: grid;
 		grid-column: span 12 / span 12;

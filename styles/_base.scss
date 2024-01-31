@@ -323,7 +323,7 @@ select {
 	&:focus {
 	}
 	&::placeholder {
-		color: rgb(230, 149, 112);
+		color: var(--orange);
 	}
 }
 

@@ -21,6 +21,7 @@ h3.headline {
       &:last-child {
         @include mq($from: desktop) {
           border-bottom: 0;
+          padding-bottom: 0;
         }
       }
 

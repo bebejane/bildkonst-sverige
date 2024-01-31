@@ -18,7 +18,6 @@ export default function Content({ id, content, className, onClick }: Props) {
     <StructuredContent
       blocks={Blocks}
       className={className}
-      styles={{}}
       content={content}
       onClick={onClick}
     />

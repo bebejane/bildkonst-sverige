@@ -31,7 +31,7 @@ export default async function News() {
       <div className="grid">
 
         <ul className={s.main}>
-          {extendedNews.map(({ image, slug, title, intro, _publishedAt, category, link, twoColumns }) => (
+          {extendedNews.map(({ image, slug, title, intro, _createdAt, category, link, twoColumns }) => (
             <li key={slug} className={cn(twoColumns && s.two)}>
               <Link href={`/medlem/aktuellt/${slug}`}>
                 {image &&
@@ -40,7 +40,7 @@ export default async function News() {
                   </figure>
                 }
                 <h2>{title}</h2>
-                <span className="date">{category?.title} • {format(new Date(_publishedAt), 'yyyy-MM-dd')}</span>
+                <span className="date">{category?.title} • {format(new Date(_createdAt), 'yyyy-MM-dd')}</span>
                 <Content className="intro" content={intro} /> &nbsp;<span className="date">Läs mer »</span>
                 {link &&
                   <ReadMore link={link as InternalLinkRecord} />
@@ -50,14 +50,14 @@ export default async function News() {
           ))}
         </ul>
         <ul className={s.right}>
-          {shortNews.map(({ image, slug, title, intro, _publishedAt, category, link }) => (
+          {shortNews.map(({ image, slug, title, intro, _createdAt, category, link }) => (
             <li key={slug}>
               {image &&
                 <figure>
                   <Image data={image.responsiveImage} />
                 </figure>
               }
-              <span className="date">{category?.title} • {format(new Date(_publishedAt), 'yyyy-MM-dd')}<br />
+              <span className="date">{category?.title} • {format(new Date(_createdAt), 'yyyy-MM-dd')}<br />
               </span>
               <h4>{title}</h4>
               <Content className="small" content={intro} />

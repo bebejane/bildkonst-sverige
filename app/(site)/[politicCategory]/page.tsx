@@ -33,13 +33,13 @@ export default async function Page({ params }: { params: { politicCategory: stri
         <h3>{politicCategory.title}</h3>
         {allPolitics.length > 0 ?
           <ul className={s.articles}>
-            {allPolitics.map(({ id, title, image, intro, slug, category, _publishedAt }) =>
+            {allPolitics.map(({ id, title, image, intro, slug, category, _createdAt }) =>
               <li key={id}>
                 <Link href={`/${category.slug}/${slug}`}>
                   <h2>{title}</h2>
                   <div className="grid">
                     <div className={cn(s.content, "intro", image && s.image)}>
-                      <span className="date">{format(new Date(_publishedAt), 'yyyy-MM-dd')}</span>
+                      <span className="date">{format(new Date(_createdAt), 'yyyy-MM-dd')}</span>
                       <p>{structuredToText(intro as unknown as StructuredText)}</p>
                     </div>
                     {image &&

@@ -15,7 +15,7 @@ export default async function Page({ params }: { params: { politic: string } }) 
 
   if (!politic) return notFound()
 
-  const { id, title, intro, image, content, category, _publishedAt } = politic
+  const { id, title, intro, image, content, category, _createdAt } = politic
 
   return (
     <>
@@ -25,7 +25,7 @@ export default async function Page({ params }: { params: { politic: string } }) 
         intro={intro}
         image={image as FileField}
         content={content}
-        publishedAt={_publishedAt}
+        publishedAt={_createdAt}
       >
         <Link href={`/${category.slug}`}>
           <button>Visa alla {category.title}</button>

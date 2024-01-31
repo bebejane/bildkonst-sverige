@@ -19,8 +19,9 @@ export default async function Membership() {
   return (
     <>
       <Article id={id} className={s.container} title={title} intro={intro} content={content}>
+
         <div className="structured grid">
-          <h3>Årsomsättning</h3>
+          <h3 className={s.levelhead}>Årsomsättning</h3>
           <ul className={s.levels}>
             {allMemberLevels.map(({ id, level, turnoverMax, turnoverMin }) =>
               <li key={id}>

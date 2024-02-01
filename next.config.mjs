@@ -22,6 +22,40 @@ const nextConfig = {
 			fullUrl: false,
 		},
 	},
+	async redirects() {
+		return [
+			{
+				source: "/press",
+				destination: "/om-oss/press",
+				permanent: true,
+			},
+			{
+				source: "/om-oss",
+				destination: "/om-oss/om-bildkonst-sverige",
+				permanent: true,
+			},
+			{
+				source: "/styrelsen",
+				destination: "/om-oss/styrelsen",
+				permanent: true,
+			},
+			{
+				source: "/kontakta-oss",
+				destination: "/kontakt",
+				permanent: true,
+			},
+			{
+				source: "/medlemskap",
+				destination: "/bli-medlem",
+				permanent: true,
+			},
+			{
+				source: "/stadgar",
+				destination: "/om-oss/stadgar",
+				permanent: true,
+			},
+		];
+	},
 	async headers() {
 		return [
 			{

@@ -18,11 +18,6 @@ export default function Content({ id, content, className, onClick }: Props) {
     <StructuredContent
       blocks={Blocks}
       className={className}
-      styles={{
-        'purple': 'purple',
-        'small-text': 'small-text',
-        'page-title': 'page-title',
-      }}
       content={content}
       onClick={onClick}
     />

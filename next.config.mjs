@@ -36,7 +36,7 @@ const nextConfig = {
 			},
 			{
 				source: "/styrelsen",
-				destination: "/om-oss/styrelsen",
+				destination: "/om-oss/styrelse",
 				permanent: true,
 			},
 			{

@@ -33,6 +33,7 @@
           margin-left: 20%;
           margin-right: 20%;
           margin-bottom: var(--space-small);
+          max-width: 100%;
           div {
             aspect-ratio: 4 / 3;
           }
@@ -40,11 +41,11 @@
 
         @include mq($from: desktop) {
           margin-top: 0.5rem;
+          grid-column-start: 10;
+          grid-column-end: 13;
+          aspect-ratio: 4 / 3;
         }
 
-        grid-column-start: 10;
-        grid-column-end: 13;
-        aspect-ratio: 4 / 3;
         display: flex;
 
         img {

@@ -9,7 +9,7 @@ import { usePathname } from "next/navigation";
 import Hamburger from 'hamburger-react'
 import useNextAuthSession from "@lib/hooks/useNextAuthSession";
 import { Menu, MenuItem } from "@lib/menu";
-import { useScrollInfo } from 'next-dato-utils'
+import { useScrollInfo } from 'next-dato-utils/hooks'
 import LoginForm from './LoginForm'
 import NewsletterForm from "./NewsLetterForm";
 

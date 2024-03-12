@@ -3,7 +3,8 @@
 import Article from '@components/Article';
 import s from './page.module.scss'
 import { MemberPageDocument } from "@graphql";
-import { apiQuery, DraftMode } from "next-dato-utils";
+import { apiQuery, } from "next-dato-utils/api";
+import { DraftMode } from "next-dato-utils/components";
 import MemberForm from '@components/MemberForm';
 import { Metadata } from 'next';
 

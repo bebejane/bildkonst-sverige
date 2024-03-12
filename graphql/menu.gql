@@ -3,6 +3,9 @@ query Menu {
 		id
 		slug
 		title
+		_allReferencingPoliticsMeta {
+			count
+		}
 	}
 	allAbouts(first: 100) {
 		id

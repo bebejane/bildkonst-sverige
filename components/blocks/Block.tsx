@@ -1,13 +1,8 @@
+import { Block } from 'next-dato-utils/components';
 import * as Components from './'
 
-type BlockProps = { data: any, onClick?: Function }
+type BlockProps = { data: any, onClick?: (ids: string) => void }
 
-export default function Block({ data, onClick }: BlockProps) {
-  const type = data.__typename.replace('Record', '');
-  const BlockComponent = Components[type]
-
-  if (!BlockComponent)
-    return <div>No block match {data.__typename}</div>
-
-  return <BlockComponent data={data} onClick={onClick} />
+export default function StructuredBlock({ data, onClick }: BlockProps) {
+  return <Block data={data} onClick={onClick} components={Components} />
 }

@@ -1,6 +1,6 @@
 'use server'
 
-import { apiQuery } from 'next-dato-utils';
+import { apiQuery, } from "next-dato-utils/api";
 import { MenuDocument } from '@graphql';
 
 export type MenuItem = {
@@ -18,13 +18,13 @@ export type Menu = MenuItem[]
 
 export const buildMenu = async (): Promise<Menu> => {
   const { allPoliticCategories, allAbouts } = await apiQuery<MenuQuery, MenuQueryVariables>(MenuDocument, {
-    tags: ['politic_category', 'about']
+    tags: ['politic_category', 'about', 'politic']
   })
 
   const menu: Menu = [{
     id: 'politic',
     title: 'Kulturpolitik',
-    sub: allPoliticCategories.map(({ id, slug, title }) => ({ id, title, slug: `/${slug}` })),
+    sub: allPoliticCategories.filter(({ _allReferencingPoliticsMeta: { count } }) => count > 0).map(({ id, slug, title }) => ({ id, title, slug: `/${slug}` })),
     position: 'left'
   }, {
     id: 'about',

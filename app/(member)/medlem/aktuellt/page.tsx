@@ -3,7 +3,7 @@
 import s from './page.module.scss'
 import cn from 'classnames'
 import { AllNewsDocument } from "@graphql";
-import { apiQuery } from "next-dato-utils";
+import { apiQuery } from "next-dato-utils/api";
 import { Metadata } from 'next';
 import Image from '@components/Image';
 import Link from 'next/link';

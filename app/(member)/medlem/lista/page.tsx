@@ -1,7 +1,7 @@
 'use server'
 
 import { AllApprovedMembersDocument } from '@graphql'
-import { apiQuery } from 'next-dato-utils';
+import { apiQuery } from "next-dato-utils/api";
 import s from './page.module.scss'
 
 export default async function Member() {

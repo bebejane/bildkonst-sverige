@@ -1,4 +1,4 @@
-import { basicAuth, cors } from 'next-dato-utils';
+import { basicAuth, cors } from 'next-dato-utils/route-handlers';
 import { NextResponse } from "next/server";
 import { buildClient } from '@datocms/cma-client-browser';
 import { sendMail } from '@lib/postmark';

@@ -218,7 +218,7 @@ const Image = forwardRef<HTMLDivElement, ImagePropTypes>(
       fadeInDuration = 500,
       intersectionTreshold,
       intersectionThreshold,
-      intersectionMargin,
+      intersectionMargin = '0px 0px 100% 0px',
       pictureClassName,
       lazyLoad: rawLazyLoad = true,
       style,

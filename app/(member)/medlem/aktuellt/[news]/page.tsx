@@ -2,7 +2,7 @@
 
 import Article from "@components/Article";
 import { AllNewsDocument, NewsDocument } from "@graphql";
-import { apiQuery } from "next-dato-utils";
+import { apiQuery } from "next-dato-utils/api";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";

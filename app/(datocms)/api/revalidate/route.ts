@@ -1,6 +1,6 @@
 
 import { buildRoute } from '@lib/routes';
-import { revalidate } from 'next-dato-utils'
+import { revalidate } from 'next-dato-utils/route-handlers'
 
 export const runtime = "edge"
 export const dynamic = "force-dynamic"

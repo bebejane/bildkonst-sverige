@@ -2,7 +2,7 @@
 
 import s from './page.module.scss'
 import { AllToolsDocument } from "@graphql";
-import { apiQuery } from "next-dato-utils";
+import { apiQuery } from "next-dato-utils/api";
 import { Metadata } from 'next';
 import Link from 'next/link';
 

@@ -1,4 +1,4 @@
-import { webPreviews, cors } from 'next-dato-utils'
+import { webPreviews, cors } from 'next-dato-utils/route-handlers'
 import { buildRoute } from '@lib/routes';
 import { NextRequest } from 'next/server';
 

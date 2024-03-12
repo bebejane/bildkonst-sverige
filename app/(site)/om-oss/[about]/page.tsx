@@ -1,7 +1,8 @@
 'use server'
 
 import { AllAboutsDocument, AboutDocument } from "@graphql";
-import { apiQuery, DraftMode } from "next-dato-utils";
+import { apiQuery } from "next-dato-utils/api";
+import { DraftMode } from "next-dato-utils/components";
 import { notFound } from 'next/navigation';
 import Article from '@components/Article';
 import { Metadata } from "next";

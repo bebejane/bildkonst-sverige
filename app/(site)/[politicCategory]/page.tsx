@@ -2,7 +2,8 @@
 
 import s from './page.module.scss'
 import { AllPoliticByCategoryDocument, AllPoliticCategoriesDocument, PoliticCategoryDocument } from "@graphql";
-import { apiQuery, DraftMode } from "next-dato-utils";
+import { apiQuery, } from "next-dato-utils/api";
+import { DraftMode } from "next-dato-utils/components";
 import { render as structuredToText } from 'datocms-structured-text-to-plain-text';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';

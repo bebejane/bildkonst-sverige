@@ -1,4 +1,4 @@
-import { draft } from 'next-dato-utils'
+import { draft } from 'next-dato-utils/route-handlers'
 
 export const dynamic = 'force-dynamic'
 export const runtime = "edge"

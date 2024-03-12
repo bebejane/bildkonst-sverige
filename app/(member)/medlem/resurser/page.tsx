@@ -1,7 +1,7 @@
 import s from './page.module.scss'
 import cn from 'classnames';
 import { AllResourcesDocument } from "@graphql";
-import { apiQuery } from "next-dato-utils";
+import { apiQuery } from "next-dato-utils/api";
 import { Metadata } from 'next';
 import Content from '@components/Content';
 import Link from 'next/link';
@@ -19,7 +19,6 @@ export default async function Resources({ searchParams }) {
     },
     tags: ['resource']
   })
-
 
   const allThemes = []
   allResources.map(({ theme }) => theme.map(({ title }) => title)).flat().forEach(theme => !allThemes.includes(theme) && allThemes.push(theme))
@@ -101,7 +100,7 @@ export default async function Resources({ searchParams }) {
   );
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata() {
 
   return {
     title: 'Resurser',

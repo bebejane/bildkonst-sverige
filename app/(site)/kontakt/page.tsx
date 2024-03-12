@@ -3,7 +3,8 @@
 import s from './page.module.scss'
 import Article from '@components/Article';
 import { ContactDocument } from "@graphql";
-import { apiQuery, DraftMode } from "next-dato-utils";
+import { apiQuery } from "next-dato-utils/api";
+import { DraftMode } from "next-dato-utils/components";
 import { Metadata } from 'react-datocms';
 import Image from '@components/Image';
 import { notFound } from 'next/navigation';

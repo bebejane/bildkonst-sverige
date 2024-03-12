@@ -1,6 +1,7 @@
 fragment PoliticCategoryFragment on PoliticCategoryRecord {
 	id
 	title
+	titlePlural
 	slug
 	position
 }

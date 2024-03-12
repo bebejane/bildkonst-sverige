@@ -29,7 +29,7 @@ export default async function Page({ params }: { params: { politic: string } }) 
         publishedAt={_createdAt}
       >
         <Link href={`/${category.slug}`}>
-          <button>Visa alla {category.title}</button>
+          <button>Visa alla {category.titlePlural}</button>
         </Link>
       </Article>
       <DraftMode url={draftUrl} tag={id} />

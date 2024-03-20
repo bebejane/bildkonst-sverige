@@ -36,9 +36,7 @@ export default async function Resources({ searchParams }) {
 
   return (
     <article className={s.container}>
-      <h3>
-        Resurser
-      </h3>
+      <h3>Resurser</h3>
       <nav className={cn(s.filter, filter && s.show)}>
         <ul>
           {allThemes.map((theme, idx) => {

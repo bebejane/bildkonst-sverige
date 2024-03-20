@@ -69,18 +69,21 @@
         }
 
         &.selected {
-          background-color: var(--orange);
+          background-color: var(--orange) !important;
 
           a {
-            color: var(--black);
+            color: var(--black) !important;
           }
         }
 
         @include mq($from: desktop) {
+          display: inline-block;
+
           &:hover {
-            background-color: var(--orange);
+            background-color: rgba(0, 0, 0, 0.05);
 
             a {
+
               color: var(--black);
             }
           }
@@ -132,6 +135,7 @@
       }
 
       p {
+
         //display: none;
         &:first-of-type {
           //padding-top: 1em;
@@ -182,6 +186,7 @@
       padding-top: var(--space-small);
 
       @include mq($until: desktop) {
+
         &:first-child,
         &:last-child,
         &:nth-last-child(2) {
@@ -191,6 +196,7 @@
     }
 
     tr:hover {
+
       td,
       a {
         color: var(--orange) !important;

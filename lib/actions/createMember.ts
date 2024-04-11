@@ -51,6 +51,11 @@ export default async function createMember(prevState: any, formData: FormData): 
       confirmation: mail.confirmation
     })
 
+    await sendMail(process.env.POSTMARK_FROM_EMAIL as string, 'new-member', {
+      name: record.contact,
+      url: `https://bildkonst-sverige.admin.datocms.com/editor/item_types/${record.id}`
+    })
+
     return { data: record }
 
   } catch (e) {

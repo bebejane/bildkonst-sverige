@@ -3,7 +3,7 @@
 	--white: #fdf3e9;
 	--red: #bf0000;
 	--orange: #ff7a00;
-	--member-color: #fdf3e9;
+	--member-color: #efefef;
 	--start-color: #ffe5cc;
 	//--start-color: #ff7b0085;
 	--outer-margin: 2.5rem;
@@ -243,7 +243,7 @@ figure {
 		padding-left: 1.5rem;
 		padding-right: 1.4rem;
 		padding-bottom: calc(0.9 * var(--space-small));
-		font-size: 0.65rem;
+		font-size: 0.75rem;
 
 		&:hover {
 			border-color: var(--orange);

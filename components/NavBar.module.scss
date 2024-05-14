@@ -98,7 +98,7 @@
     list-style: none;
   }
 
-  >ul {
+  > ul {
     padding-bottom: 120px;
     padding-left: var(--outer-margin);
     padding-right: var(--outer-margin);
@@ -184,7 +184,7 @@
     transition: color ease-in-out 0.3s;
   }
 
-  >ul>li:hover,
+  > ul > li:hover,
   a:hover {
     color: var(--orange) !important;
   }
@@ -223,6 +223,7 @@
         justify-content: flex-end;
         border-color: transparent;
         border-left-width: 1px;
+        background-color: var(--member-color);
       }
 
       @keyframes to-black {
@@ -243,7 +244,7 @@
       flex-direction: column;
     }
 
-    >li {
+    > li {
       position: relative;
       cursor: pointer;
       white-space: nowrap;
@@ -258,7 +259,7 @@
       }
 
       @include mq($from: desktop) {
-        >form {
+        > form {
           display: none;
         }
       }
@@ -328,12 +329,12 @@
   }
 }
 
-.selected>a,
+.selected > a,
 .selected {
   color: var(--orange) !important;
 }
 
-.selectedSub>a,
+.selectedSub > a,
 .selectedSub {
   color: var(--orange) !important;
 }
@@ -360,10 +361,11 @@
   --dot-size: 15%;
   --square-size: 8px;
   background-image: radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size)),
-  radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size));
+    radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size));
   background-color: var(--member-color);
-  background-position: 0 0,
-  calc(var(--square-size) / 2) calc(var(--square-size) / 2);
+  background-position:
+    0 0,
+    calc(var(--square-size) / 2) calc(var(--square-size) / 2);
   background-size: var(--square-size) var(--square-size);
 
   button {

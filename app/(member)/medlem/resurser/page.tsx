@@ -3,8 +3,10 @@ import cn from 'classnames';
 import { AllResourcesDocument } from "@graphql";
 import { apiQuery } from "next-dato-utils/api";
 import { Metadata } from 'next';
+//import { useOptimistic } from 'react'
 import Content from '@components/Content';
 import Link from 'next/link';
+import FilterBar from './FilterBar';
 
 export const dynamic = 'auto'
 export const runtime = 'edge'
@@ -37,22 +39,7 @@ export default async function Resources({ searchParams }) {
   return (
     <article className={s.container}>
       <h3>Resurser</h3>
-      <nav className={cn(s.filter, filter && s.show)}>
-        <ul>
-          {allThemes.map((theme, idx) => {
-            const qs = (themes.includes(theme) ? themes.filter(c => c !== theme) : [...themes, theme]).filter(c => c)
-            const isSelected = themes.includes(theme)
-
-            return (
-              <li key={idx} className={cn(isSelected && s.selected, "date")}>
-                <Link href={qs.length ? `?list=${list ? '1' : '0'}&tema=${qs.join(',')}` : `?list=${list ? '1' : '0'}`}>
-                  {theme}
-                </Link>
-              </li>
-            )
-          })}
-        </ul>
-      </nav>
+      <FilterBar searchParams={searchParams} allResources={allResources} />
       {
         !list ?
           <ul className={cn("grid", s.resources)}>

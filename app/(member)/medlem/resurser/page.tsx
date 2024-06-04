@@ -3,7 +3,6 @@ import cn from 'classnames';
 import { AllResourcesDocument } from "@graphql";
 import { apiQuery } from "next-dato-utils/api";
 import { Metadata } from 'next';
-//import { useOptimistic } from 'react'
 import Content from '@components/Content';
 import Link from 'next/link';
 import FilterBar from './FilterBar';
@@ -25,7 +24,6 @@ export default async function Resources({ searchParams }) {
   const allThemes = []
   allResources.map(({ theme }) => theme.map(({ title }) => title)).flat().forEach(theme => !allThemes.includes(theme) && allThemes.push(theme))
 
-  const filter = !searchParams.filter ? true : searchParams.filter === '0' ? false : true
   const list = searchParams.list === '1' ? true : false
   const themes: string[] = searchParams.tema ? searchParams.tema.split(',') : []
   const filterResources = allResources.filter(({ theme }) => themes.length === 0 || theme.some(({ title }) => themes.includes(title)))

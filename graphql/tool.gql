@@ -32,7 +32,7 @@ fragment ToolFragment on ToolRecord {
 	}
 	content {
 		blocks {
-			... on ImageRecord {
+			... on ImageBlockRecord {
 				__typename
 				id
 				image {

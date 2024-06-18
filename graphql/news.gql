@@ -75,7 +75,7 @@ fragment NewsFragment on NewsRecord {
 	extended
 	content {
 		blocks {
-			... on ImageRecord {
+			... on ImageBlockRecord {
 				__typename
 				id
 				image {

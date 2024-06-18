@@ -1,4 +1,4 @@
-//import { StructuredContent } from 'next-dato-utils'
+//import { StructuredContent } from 'next-dato-utils/components'
 import StructuredContent from './StructuredContent'
 import * as Blocks from './blocks'
 

@@ -58,6 +58,10 @@ const routes: Routes = {
     typeName: "ToolRecord",
     path: async (item) => `/medlem/verktygslada/${item.slug}`
   },
+  "tool_category": {
+    typeName: "ToolCategoryRecord",
+    path: async (item) => `/medlem/verktygslada`
+  },
   "staff": {
     typeName: "StaffRecord",
     path: async (item) => '/kontakt'

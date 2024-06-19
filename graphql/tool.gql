@@ -1,10 +1,13 @@
 query AllTools($first: IntType = 100, $skip: IntType = 0) {
 	allTools(first: $first, skip: $skip) {
+		...ToolFragment
+	}
+	toolIntro {
 		id
-		title
-		slug
-		image {
-			...ImageFragment
+		intro {
+			blocks
+			value
+			links
 		}
 	}
 	_allToolsMeta {
@@ -21,6 +24,7 @@ query Tool($slug: String!) {
 fragment ToolFragment on ToolRecord {
 	id
 	title
+	subtitle
 	slug
 	image {
 		...ImageFragment

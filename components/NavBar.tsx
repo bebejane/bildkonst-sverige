@@ -65,7 +65,7 @@ const MobileMenu = ({
 }) => {
 
   const { session, error, status, refresh } = useNextAuthSession()
-  const initialSubId = menu.find(({ sub }) => sub?.find(({ slug }) => slug === pathname))?.id
+  const initialSubId = menu.find(({ sub }) => sub?.find((el) => el?.slug === pathname))?.id
   const [subId, setSubId] = useState<string | null>(initialSubId ?? null)
   return (
     <>
@@ -204,9 +204,9 @@ const DesktopMenuPanel = ({ position, menu, pathname, backgroundColor, setShowNe
 
 
 const isMenuItemIsOpen = (pathname: string, item: MenuItem) => {
-  return item.slug === pathname || item.sub?.find(({ slug }) => pathname === slug) !== undefined
+  return item.slug === pathname || item.sub?.find((el) => pathname === el?.slug) !== undefined
 }
 
 const isParentMenuActive = (pathname: string, sub?: MenuItem[]) => {
-  return sub?.find(({ slug }) => pathname.split('/')[1] === slug.split('/')[1]) !== undefined
+  return sub?.find((el) => pathname.split('/')[1] === el?.slug.split('/')[1]) !== undefined
 }

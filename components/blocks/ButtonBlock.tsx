@@ -12,7 +12,7 @@ export default async function ButtonBlock({ data: { text, url } }: Props) {
   //const target = link.__typename === 'ExternalLinkRecord' ? "_blank" : undefined
 
   return (
-    <p>
+    <p className={s.wrapper}>
       <Link href={url} className={s.button}>
         <button className={s.button}>
           {text}

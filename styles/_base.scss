@@ -249,6 +249,10 @@ figure {
 			border-color: var(--orange);
 		}
 	}
+
+	figure > div {
+		aspect-ratio: auto !important;
+	}
 }
 
 p a {

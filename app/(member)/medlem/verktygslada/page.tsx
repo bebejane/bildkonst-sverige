@@ -1,45 +1,41 @@
-import s from './page.module.scss'
-import cn from 'classnames';
-import { AllToolsDocument } from "@graphql";
+"use server";
+
+import Article from "@components/Article";
+import { ToolboxDocument } from "@graphql";
 import { apiQuery } from "next-dato-utils/api";
-import Content from '@components/Content';
-import Link from 'next/link';
-import Article from '@components/Article';
-import { Metadata } from 'next';
+import { Metadata } from "next";
+import { notFound } from "next/navigation";
+import Link from "next/link";
 
-export const dynamic = 'auto'
-export const runtime = 'edge'
+export default async function ToolboxPage({ params }: { params: { toolbox: string } }) {
+  const { toolbox } = await apiQuery<ToolboxQuery, ToolboxQueryVariables>(ToolboxDocument);
 
-export default async function Tools() {
+  if (!toolbox) return notFound();
 
-  const { allTools, toolIntro } = await apiQuery<AllToolsQuery, AllToolsQueryVariables>(AllToolsDocument, {
-    all: true,
-    tags: ['tool']
-  })
+  const { id, title, intro, image, content, _publishedAt } = toolbox;
 
   return (
-    <Article id={toolIntro.id} title={'Verktygslåda'} intro={toolIntro.intro} className={s.container}>
-      <ul className={cn("grid", s.resources)}>
-        {allTools.map(({ id, title, subtitle, slug, intro }) => (
-          <li key={id}>
-            <Link href={`/medlem/verktygslada/${slug}`} className={s.wrapper}>
-              <div>
-                <h5>{title}</h5>
-                {subtitle}
-                <Content className="small" content={intro} />
-                <div className={s.meta}></div>
-              </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </Article >
+    <>
+      <Article
+        id={id}
+        title={title}
+        intro={intro}
+        image={image as FileField}
+        content={content}
+        publishedAt={_publishedAt}
+      />
+      <Link href={'/medlem/aktuellt'}>
+        <button>Tillbaka till Aktuellt</button>
+      </Link>
+    </>
   );
 }
 
-export async function generateMetadata() {
+
+export async function generateMetadata({ params }) {
+  const { toolbox } = await apiQuery<ToolboxQuery, ToolboxQueryVariables>(ToolboxDocument);
 
   return {
-    title: 'Verktygslåda',
-  } as Metadata
+    title: toolbox.title,
+  } as Metadata;
 }

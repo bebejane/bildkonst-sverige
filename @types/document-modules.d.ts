@@ -194,12 +194,10 @@ declare module '*/start.gql' {
 }
     
 
-declare module '*/tool.gql' {
+declare module '*/toolbox.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
-  export const AllTools: DocumentNode;
-export const Tool: DocumentNode;
-export const ToolFragment: DocumentNode;
+  export const Toolbox: DocumentNode;
 
   export default defaultDocument;
 }

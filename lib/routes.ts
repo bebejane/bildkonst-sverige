@@ -54,9 +54,9 @@ const routes: Routes = {
     typeName: "NewsRecord",
     path: async (item) => `/medlem/aktuellt/${item.slug}`
   },
-  "tool": {
-    typeName: "ToolRecord",
-    path: async (item) => `/medlem/verktygslada/${item.slug}`
+  "toolbox": {
+    typeName: "ToolboxRecord",
+    path: async (item) => `/medlem/verktygslada`
   },
   "tool_category": {
     typeName: "ToolCategoryRecord",

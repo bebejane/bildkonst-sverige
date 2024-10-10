@@ -1,0 +1,36 @@
+query Toolbox {
+	toolbox {
+		id
+		title
+		slug
+		image {
+			...ImageFragment
+		}
+		intro {
+			blocks
+			value
+			links
+		}
+		content {
+			blocks {
+				... on ImageBlockRecord {
+					__typename
+					id
+					image {
+						...ImageFragment
+					}
+					layout
+				}
+				... on ButtonBlockRecord {
+					__typename
+					id
+					text
+					url
+				}
+			}
+			value
+			links
+		}
+		_publishedAt
+	}
+}

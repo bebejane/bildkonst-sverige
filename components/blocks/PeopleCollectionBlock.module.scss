@@ -28,6 +28,10 @@
         object-fit: cover;
       }
 
+      & > div {
+        aspect-ratio: var(--apsect-ratio) !important;
+      }
+
       .picture {
       }
     }

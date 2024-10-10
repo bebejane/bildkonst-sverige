@@ -12,7 +12,7 @@ export default async function ToolboxPage({ params }: { params: { toolbox: strin
 
   if (!toolbox) return notFound();
 
-  const { id, title, intro, image, content, _publishedAt } = toolbox;
+  const { id, title, intro, image, content } = toolbox;
 
   return (
     <>
@@ -22,7 +22,6 @@ export default async function ToolboxPage({ params }: { params: { toolbox: strin
         intro={intro}
         image={image as FileField}
         content={content}
-        publishedAt={_publishedAt}
       />
       <Link href={'/medlem/aktuellt'}>
         <button>Tillbaka till Aktuellt</button>

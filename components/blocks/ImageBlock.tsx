@@ -9,9 +9,15 @@ type Props = {
 
 export default async function ImageBlock({ data: { id, image } }: Props) {
 
+
   return (
     <figure className={s.figure}>
-      <Image data={image.responsiveImage} pictureClassName={s.picture} />
+      {image.format !== 'svg' ?
+        <Image data={image.responsiveImage} pictureClassName={s.picture} />
+        :
+        <img src={image.url} alt={image.alt} className={s.picture} />
+      }
+
     </figure>
   )
 }

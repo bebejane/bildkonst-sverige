@@ -56,8 +56,7 @@ export const buildMenu = async (): Promise<Menu> => {
       id: 'resources',
       title: 'Resurser',
       slug: '/medlem/resurser'
-    },
-    {
+    }, {
       id: 'logout',
       title: 'Logga ut',
       slug: '/medlem/logga-ut'

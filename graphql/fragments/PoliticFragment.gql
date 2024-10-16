@@ -19,6 +19,14 @@ fragment PoliticFragment on PoliticRecord {
 				text
 				url
 			}
+			... on ImageBlockRecord {
+				__typename
+				id
+				image {
+					...ImageFragment
+				}
+				layout
+			}
 		}
 	}
 	image {

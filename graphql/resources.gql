@@ -14,7 +14,6 @@ query AllResources($first: IntType = 100, $skip: IntType = 0) {
 			title
 		}
 		summary {
-			blocks
 			links
 			value
 		}

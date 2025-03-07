@@ -13,19 +13,24 @@ fragment PoliticFragment on PoliticRecord {
 		value
 		links
 		blocks {
+			__typename
 			... on ButtonBlockRecord {
-				__typename
 				id
 				text
 				url
 			}
 			... on ImageBlockRecord {
-				__typename
 				id
 				image {
 					...ImageFragment
 				}
 				layout
+			}
+			... on VideoBlockRecord {
+				id
+				video {
+					...ExternalVideoFragment
+				}
 			}
 		}
 	}

@@ -1,0 +1,8 @@
+fragment ExternalVideoFragment on VideoField {
+	height
+	width
+	provider
+	url
+	thumbnailUrl
+	providerUid
+}

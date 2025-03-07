@@ -1,0 +1,24 @@
+.video {
+  --height: 50vh;
+  display: block;
+  height: var(--height);
+  width: 100%;
+
+  @include mq($until: desktop) {
+    --height: 30vh;
+  }
+
+  .player {
+    width: 100%;
+    height: (--height);
+
+    iframe {
+      width: 100%;
+      height: var(--height);
+    }
+  }
+
+  .caption {
+    padding-top: var(--space-small);
+  }
+}

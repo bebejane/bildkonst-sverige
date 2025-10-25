@@ -30,7 +30,7 @@
     "hamburger-react": "^2.5.0",
     "next": "14.2.32",
     "next-auth": "^4.24.5",
-    "next-dato-utils": "github:bebejane/next-dato-utils",
+    "next-dato-utils": "github:bebejane/next-dato-utils#dev",
     "next-impl-getters": "^0.2.0",
     "next-seo": "^5.15.0",
     "next-sitemap": "^3.1.55",

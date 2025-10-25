@@ -51,8 +51,8 @@ importers:
         specifier: ^4.24.5
         version: 4.24.7(next@14.2.32(@babel/core@7.24.6)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(sass@1.77.4))(react-dom@18.3.1(react@18.2.0))(react@18.2.0)
       next-dato-utils:
-        specifier: github:bebejane/next-dato-utils
-        version: https://codeload.github.com/bebejane/next-dato-utils/tar.gz/279b8610eab38ab3457e1bdeacdbac6eff0460cb(@datocms/cma-client-browser@5.0.1)(@datocms/cma-client-node@5.0.1)(@datocms/cma-client@5.0.1)(@types/react-dom@18.3.0)(@types/react@18.3.3)(datocms-structured-text-utils@5.0.0)(graphql@16.8.1)(postmark@3.11.0)(react-datocms@4.2.2(@types/react-dom@18.3.0)(@types/react@18.3.3)(graphql@16.8.1)(react-dom@18.3.1(react@18.2.0))(react@18.2.0))(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(sass@1.77.4)(zod@3.23.8)
+        specifier: github:bebejane/next-dato-utils#dev
+        version: https://codeload.github.com/bebejane/next-dato-utils/tar.gz/5151526b8152e076e9521ff36d34a7a29bca1f81(@datocms/cma-client-browser@5.0.1)(@datocms/cma-client-node@5.0.1)(@datocms/cma-client@5.0.1)(@types/react-dom@18.3.0)(@types/react@18.3.3)(datocms-structured-text-utils@5.0.0)(graphql@16.8.1)(next@14.2.32(@babel/core@7.24.6)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(sass@1.77.4))(postmark@3.11.0)(react-datocms@4.2.2(@types/react-dom@18.3.0)(@types/react@18.3.3)(graphql@16.8.1)(react-dom@18.3.1(react@18.2.0))(react@18.2.0))(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(sass@1.77.4)(zod@3.23.8)
       next-impl-getters:
         specifier: ^0.2.0
         version: 0.2.0(next@14.2.32(@babel/core@7.24.6)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(sass@1.77.4))(react-dom@18.3.1(react@18.2.0))(react@18.2.0)
@@ -752,6 +752,7 @@ packages:
   '@graphql-tools/prisma-loader@8.0.4':
     resolution: {integrity: sha512-hqKPlw8bOu/GRqtYr0+dINAI13HinTVYBDqhwGAPIFmLr5s+qKskzgCiwbsckdrb5LWVFmVZc+UXn80OGiyBzg==}
     engines: {node: '>=16.0.0'}
+    deprecated: 'This package was intended to be used with an older versions of Prisma.\nThe newer versions of Prisma has a different approach to GraphQL integration.\nTherefore, this package is no longer needed and has been deprecated and removed.\nLearn more: https://www.prisma.io/graphql'
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
 
@@ -2088,6 +2089,9 @@ packages:
     resolution: {integrity: sha512-wlwpilI7YdjSkWaQ/7omYBMTliDcmCN8OLihO6I9B86g06lMyAoqgoDpV0XqoaPOKj+0DIdAvnsWfyAAhmimcg==}
     engines: {node: '>= 14'}
 
+  ico-utils@0.1.5:
+    resolution: {integrity: sha512-us1gAi8xD7GKxcqWNNt97ZtY7V6hWa1TLqxoj/3+Hrajapnkys2kfGyQS0Foxs3n9j5nUm7ActvdsaiNREWhWg==}
+
   iconv-lite@0.4.24:
     resolution: {integrity: sha512-v3MXnZAcvnywkTUEZomIActle7RXXeedOR31wwl7VlyoXO4Qi9arvSenNQWne1TcRwhCL1HwLI21bEqdpj8/rA==}
     engines: {node: '>=0.10.0'}
@@ -2698,21 +2702,20 @@ packages:
       nodemailer:
         optional: true
 
-  next-dato-utils@https://codeload.github.com/bebejane/next-dato-utils/tar.gz/279b8610eab38ab3457e1bdeacdbac6eff0460cb:
-    resolution: {tarball: https://codeload.github.com/bebejane/next-dato-utils/tar.gz/279b8610eab38ab3457e1bdeacdbac6eff0460cb}
-    version: 1.0.581
+  next-dato-utils@https://codeload.github.com/bebejane/next-dato-utils/tar.gz/5151526b8152e076e9521ff36d34a7a29bca1f81:
+    resolution: {tarball: https://codeload.github.com/bebejane/next-dato-utils/tar.gz/5151526b8152e076e9521ff36d34a7a29bca1f81}
+    version: 1.0.765
     engines: {node: '>=0.18'}
     hasBin: true
     peerDependencies:
-      '@datocms/cma-client': '>=3.0.0'
-      '@datocms/cma-client-browser': '>=3.0.0'
-      '@datocms/cma-client-node': '>=3.0.0'
-      '@types/react': '>=18.2.3'
+      '@datocms/cma-client': '>=5.0.0'
+      '@datocms/cma-client-browser': '>=5.0.0'
+      '@datocms/cma-client-node': '>=5.0.0'
       '@types/react-dom': '>=18.2.1'
       datocms-structured-text-utils: '>=2.0.0'
       graphql: '>=16.8.0'
+      next: '>=14.0.0'
       postmark: '>=4.0.0'
-      react: '>=18.2.0'
       react-datocms: '>=4.0.0'
       react-dom: '>=18.2.0'
       sass: '>=1.69.0'
@@ -6298,6 +6301,8 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  ico-utils@0.1.5: {}
+
   iconv-lite@0.4.24:
     dependencies:
       safer-buffer: 2.1.2
@@ -7084,13 +7089,12 @@ snapshots:
       react-dom: 18.3.1(react@18.2.0)
       uuid: 8.3.2
 
-  next-dato-utils@https://codeload.github.com/bebejane/next-dato-utils/tar.gz/279b8610eab38ab3457e1bdeacdbac6eff0460cb(@datocms/cma-client-browser@5.0.1)(@datocms/cma-client-node@5.0.1)(@datocms/cma-client@5.0.1)(@types/react-dom@18.3.0)(@types/react@18.3.3)(datocms-structured-text-utils@5.0.0)(graphql@16.8.1)(postmark@3.11.0)(react-datocms@4.2.2(@types/react-dom@18.3.0)(@types/react@18.3.3)(graphql@16.8.1)(react-dom@18.3.1(react@18.2.0))(react@18.2.0))(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(sass@1.77.4)(zod@3.23.8):
+  next-dato-utils@https://codeload.github.com/bebejane/next-dato-utils/tar.gz/5151526b8152e076e9521ff36d34a7a29bca1f81(@datocms/cma-client-browser@5.0.1)(@datocms/cma-client-node@5.0.1)(@datocms/cma-client@5.0.1)(@types/react-dom@18.3.0)(@types/react@18.3.3)(datocms-structured-text-utils@5.0.0)(graphql@16.8.1)(next@14.2.32(@babel/core@7.24.6)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(sass@1.77.4))(postmark@3.11.0)(react-datocms@4.2.2(@types/react-dom@18.3.0)(@types/react@18.3.3)(graphql@16.8.1)(react-dom@18.3.1(react@18.2.0))(react@18.2.0))(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(sass@1.77.4)(zod@3.23.8):
     dependencies:
       '@datocms/cma-client': 5.0.1
       '@datocms/cma-client-browser': 5.0.1
       '@datocms/cma-client-node': 5.0.1
       '@types/is-integer': 1.0.2
-      '@types/react': 18.3.3
       '@types/react-dom': 18.3.0
       commander: 11.1.0
       datocms-listen: 0.1.15(graphql@16.8.1)
@@ -7098,13 +7102,14 @@ snapshots:
       dedent-js: 1.0.1
       dotenv: 16.4.5
       graphql: 16.8.1
+      ico-utils: 0.1.5
       is-integer: 1.0.7
+      next: 14.2.32(@babel/core@7.24.6)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(sass@1.77.4)
       object-traversal: 1.0.1
       pluralize: 8.0.0
       postmark: 3.11.0
       prettier: 3.6.2
       pretty-bytes: 6.1.1
-      react: 18.2.0
       react-datocms: 4.2.2(@types/react-dom@18.3.0)(@types/react@18.3.3)(graphql@16.8.1)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)
       react-dom: 18.3.1(react@18.2.0)
       react-markdown: 9.0.1(@types/react@18.3.3)(react@18.2.0)
@@ -7114,6 +7119,8 @@ snapshots:
       table: 6.8.2
       zod: 3.23.8
     transitivePeerDependencies:
+      - '@types/react'
+      - react
       - supports-color
 
   next-impl-getters@0.2.0(next@14.2.32(@babel/core@7.24.6)(react-dom@18.3.1(react@18.2.0))(react@18.2.0)(sass@1.77.4))(react-dom@18.3.1(react@18.2.0))(react@18.2.0):

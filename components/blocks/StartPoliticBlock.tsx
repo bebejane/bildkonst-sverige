@@ -3,9 +3,18 @@ import cn from 'classnames';
 import Link from 'next/link';
 import Image from '@/components/Image';
 import { format } from 'date-fns';
-import { render as structuredToMarkdown } from 'datocms-structured-text-to-plain-text';
+import { render as structuredToMarkdown, renderNodeRule } from 'datocms-structured-text-to-markdown';
+import { isLink } from 'datocms-structured-text-utils';
 import ReadMore from '../ReadMore';
 import { Markdown } from 'next-dato-utils/components';
+
+const markdownRenderOptions = {
+	customNodeRules: [
+		renderNodeRule(isLink, ({ node, children, adapter: { renderFragment } }) => {
+			return renderFragment(children);
+		}),
+	],
+};
 
 type Props = {
 	data: StartPoliticBlockRecord & {
@@ -33,8 +42,7 @@ export default function StartPoliticBlock({
 						<span className='date'>
 							{category?.title} • {format(new Date(_createdAt), 'yyyy-MM-dd')}
 						</span>
-						<Markdown content={structuredToMarkdown(intro as any)} />
-
+						<Markdown content={structuredToMarkdown(intro as any, markdownRenderOptions)} />
 						<ReadMore className='date' />
 					</div>
 				</div>

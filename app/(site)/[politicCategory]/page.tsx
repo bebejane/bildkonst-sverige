@@ -11,28 +11,19 @@ import { format } from 'date-fns';
 import Image from '@components/Image';
 import cn from 'classnames';
 import { Metadata } from 'next';
-import { StructuredText } from 'datocms-structured-text-utils';
 
 export default async function Page({ params }: { params: { politicCategory: string } }) {
-	const { politicCategory } = await apiQuery<PoliticCategoryQuery, PoliticCategoryQueryVariables>(
-		PoliticCategoryDocument,
-		{
-			variables: { slug: params.politicCategory },
-		}
-	);
+	const { politicCategory } = await apiQuery(PoliticCategoryDocument, {
+		variables: { slug: params.politicCategory },
+	});
 
 	if (!politicCategory) return notFound();
 
-	const { allPolitics, draftUrl } = await apiQuery<AllPoliticByCategoryQuery, AllPoliticByCategoryQueryVariables>(
-		AllPoliticByCategoryDocument,
-		{
-			variables: { id: politicCategory.id },
-			all: true,
-			tags: ['politic'],
-		}
-	);
+	const { allPolitics, draftUrl } = await apiQuery(AllPoliticByCategoryDocument, {
+		variables: { id: politicCategory.id },
+		all: true,
+	});
 
-	console.log(allPolitics);
 	return (
 		<>
 			<article>
@@ -46,7 +37,7 @@ export default async function Page({ params }: { params: { politicCategory: stri
 									<div className='grid'>
 										<div className={cn(s.content, 'intro', image && s.image)}>
 											<span className='date'>{format(new Date(_createdAt), 'yyyy-MM-dd')}</span>
-											<p>{structuredToText(intro as unknown as StructuredText)}</p>
+											<p>{structuredToText(intro)}</p>
 										</div>
 										{image && (
 											<figure>
@@ -68,23 +59,16 @@ export default async function Page({ params }: { params: { politicCategory: stri
 }
 
 export async function generateStaticParams() {
-	const { allPoliticCategories } = await apiQuery<AllPoliticCategoriesQuery, AllPoliticCategoriesQueryVariables>(
-		AllPoliticCategoriesDocument,
-		{
-			all: true,
-			tags: ['politic_category'],
-		}
-	);
+	const { allPoliticCategories } = await apiQuery(AllPoliticCategoriesDocument, {
+		all: true,
+	});
 	return allPoliticCategories.map(({ slug: politicCategory }) => ({ politicCategory }));
 }
 
 export async function generateMetadata({ params }) {
-	const { politicCategory } = await apiQuery<PoliticCategoryQuery, PoliticCategoryQueryVariables>(
-		PoliticCategoryDocument,
-		{
-			variables: { slug: params.politicCategory },
-		}
-	);
+	const { politicCategory } = await apiQuery(PoliticCategoryDocument, {
+		variables: { slug: params.politicCategory },
+	});
 	if (!politicCategory) return notFound();
 
 	return {

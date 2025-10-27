@@ -5,9 +5,7 @@ fragment PoliticFragment on PoliticRecord {
 		...PoliticCategoryFragment
 	}
 	intro {
-		blocks
 		value
-		links
 	}
 	content {
 		value

@@ -9,12 +9,9 @@ import Article from '@components/Article';
 import { Metadata } from 'next';
 
 export default async function Page({ params }: { params: { politic: string } }) {
-	const { politic, draftUrl } = await apiQuery<PoliticQuery, PoliticQueryVariables>(
-		PoliticDocument,
-		{
-			variables: { slug: params.politic },
-		}
-	);
+	const { politic, draftUrl } = await apiQuery(PoliticDocument, {
+		variables: { slug: params.politic },
+	});
 
 	if (!politic) return notFound();
 
@@ -40,18 +37,14 @@ export default async function Page({ params }: { params: { politic: string } }) 
 }
 
 export async function generateStaticParams() {
-	const { allPolitics } = await apiQuery<AllPoliticQuery, AllPoliticQueryVariables>(
-		AllPoliticDocument,
-		{
-			all: true,
-			tags: ['politic'],
-		}
-	);
+	const { allPolitics } = await apiQuery(AllPoliticDocument, {
+		all: true,
+	});
 	return allPolitics.map(({ slug: politic }) => ({ politic }));
 }
 
 export async function generateMetadata({ params }) {
-	const { politic } = await apiQuery<PoliticQuery, PoliticQueryVariables>(PoliticDocument, {
+	const { politic } = await apiQuery(PoliticDocument, {
 		variables: { slug: params.politic },
 	});
 

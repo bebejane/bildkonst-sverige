@@ -24,12 +24,7 @@ fragment MemberPageFragment on MemberPageRecord {
 }
 
 query AllApprovedMembers($first: IntType = 100, $skip: IntType = 0) {
-	allMembers(
-		first: $first
-		skip: $skip
-		orderBy: organization_ASC
-		filter: { approved: { eq: true } }
-	) {
+	allMembers(first: $first, skip: $skip, orderBy: organization_ASC, filter: { approved: { eq: true } }) {
 		...MemberFragment
 	}
 	_allMembersMeta(filter: { approved: { eq: true } }) {
@@ -48,4 +43,11 @@ fragment MemberFragment on MemberRecord {
 		...MemberLevelFragment
 	}
 	approved
+}
+
+fragment MemberLevelFragment on MemberLevelRecord {
+	id
+	level
+	turnoverMax
+	turnoverMin
 }

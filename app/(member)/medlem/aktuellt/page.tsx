@@ -2,14 +2,14 @@
 
 import s from './page.module.scss';
 import cn from 'classnames';
-import { AllNewsDocument } from '@graphql';
+import { AllNewsDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { Metadata } from 'next';
-import Image from '@components/Image';
+import Image from '@/components/Image';
 import Link from 'next/link';
-import Content from '@components/Content';
+import Content from '@/components/Content';
 import { format } from 'date-fns';
-import ReadMore from '@components/ReadMore';
+import ReadMore from '@/components/ReadMore';
 
 export default async function News() {
 	const { allNews } = await apiQuery(AllNewsDocument, {
@@ -69,7 +69,7 @@ export default async function News() {
 	);
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata(): Promise<Metadata> {
 	return {
 		title: 'Aktuellt',
 	} as Metadata;

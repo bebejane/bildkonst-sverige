@@ -18,8 +18,10 @@
 	--foreground: var(--black);
 	--line-height: 1.35em;
 	--apsect-ratio: 6/4;
+
 	--z-transition-background: 800ms;
 	--z-navbar-pane: 900;
+	--z-image-overlay: 900;
 	--z-navbar: 1000;
 	--z-logo: 1100;
 	--z-hamburger: 1200;
@@ -43,7 +45,7 @@ body {
 	background-color: var(--background);
 	font-family: $body-font;
 	-webkit-font-smoothing: antialiased;
-	font-feature-settings: "liga", "kern";
+	font-feature-settings: 'liga', 'kern';
 }
 
 .bodyfade {
@@ -61,7 +63,7 @@ body {
 			border-color: var(--foreground) !important;
 		}
 
-		div[data-image-overlay="true"] {
+		div[data-image-overlay='true'] {
 			animation: fade-out 700ms ease-in-out 50ms forwards;
 
 			@keyframes fade-out {
@@ -195,7 +197,7 @@ figure {
 		position: relative;
 
 		&:before {
-			content: "”";
+			content: '”';
 			position: absolute;
 			font-size: 3rem;
 			top: 1.08rem;

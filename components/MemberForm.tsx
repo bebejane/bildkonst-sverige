@@ -1,62 +1,92 @@
-'use client'
+'use client';
 
-import s from './MemberForm.module.scss'
-import { useFormState, useFormStatus } from 'react-dom'
-import createMember from '@lib/actions/createMember';
+import s from './MemberForm.module.scss';
+import { useActionState } from 'react';
+import createMember from '@/lib/actions/createMember';
 
 export type Props = {
-  allMemberLevels: MemberPageQuery['allMemberLevels']
-}
+	allMemberLevels: MemberPageQuery['allMemberLevels'];
+};
+
+const inititalState = {
+	organiszation: '',
+	organiszation_no: '',
+	contact: '',
+	email: '',
+	invoice_address: '',
+	level: null,
+	invalid: null,
+	data: null,
+	error: null,
+};
 
 export default function MemberForm({ allMemberLevels }: Props) {
+	const [state, formAction, pending] = useActionState(createMember, inititalState);
+	const errors = (id: string) => {
+		const el = state.invalid?.find((e) => e?.path?.includes(id));
+		return el ? <div className={s.invalid}>{el.message}</div> : null;
+	};
 
-  const [state, formAction] = useFormState(createMember, {})
+	return (
+		<form action={formAction} className={s.form}>
+			<label htmlFor='organization'>Organisation *</label>
+			<input type='text' id='organization' name='organization' required={false} defaultValue={state.organization} />
+			{errors('organization')}
 
-  const errors = (id: string) => {
-    const el = state.invalid?.find(e => e?.path?.includes(id))
-    return el ? <div className={s.invalid}>{el.message}</div> : null
-  }
+			<label htmlFor='organization_no'>Organisationsnummer *</label>
+			<input
+				type='text'
+				id='organization_no'
+				name='organization_no'
+				required={false}
+				defaultValue={state.organization_no}
+			/>
+			{errors('organization_no')}
 
-  return (
-    <form action={formAction} className={s.form}>
-      <label htmlFor='organization'>Organisation *</label>
-      <input type='text' id="organization" name="organization" required={false} />
-      {errors('organization')}
+			<label htmlFor='contact'>Kontaktperson *</label>
+			<input type='text' id='contact' name='contact' required={false} defaultValue={state.contact} />
+			{errors('contact')}
 
-      <label htmlFor='organization_no'>Organisationsnummer *</label>
-      <input type='text' id="organization_no" name="organization_no" required={false} />
-      {errors('organization_no')}
+			<label htmlFor='email'>E-post *</label>
+			<input type='email' autoComplete='on' id='email' name='email' required={false} defaultValue={state.email} />
+			{errors('email')}
 
-      <label htmlFor='contact'>Kontaktperson *</label>
-      <input type='text' id="contact" name="contact" required={false} />
-      {errors('contact')}
+			<label htmlFor='invoice_address'>Faktureringsadress *</label>
+			<input
+				type='text'
+				id='invoice_address'
+				name='invoice_address'
+				required={false}
+				defaultValue={state.invoice_address}
+			/>
+			{errors('invoice_address')}
 
-      <label htmlFor='email'>E-post *</label>
-      <input type='email' autoComplete='on' id="email" name="email" required={false} />
-      {errors('email')}
+			<label htmlFor='level'>Medlemsnivå *</label>
+			<select id='level' name='level' required={false} defaultValue={state.level}>
+				<option value={'false'}>Välj nivå</option>
+				{allMemberLevels.map(({ id, level }) => (
+					<option key={id} value={id}>
+						Medlemnivå {level}
+					</option>
+				))}
+			</select>
+			{errors('level')}
 
-      <label htmlFor='invoice_address'>Faktureringsadress *</label>
-      <input type='text' id="invoice_address" name="invoice_address" required={false} />
-      {errors('invoice_address')}
+			<button type='submit' disabled={pending}>
+				Skicka
+			</button>
 
-      <label htmlFor='level'>Medlemsnivå *</label>
-      <select id="level" name="level" required={false}>
-        <option value={'false'}>Välj nivå</option>
-        {allMemberLevels.map(({ id, level }) =>
-          <option key={id} value={id}>Medlemnivå {level}</option>
-        )}
-      </select>
-      {errors('level')}
-      <SubmitButton />
-
-      {state.data && <div className={s.success}><h1>Tack för din ansökan!</h1></div>}
-      {state.error && <div className={s.error}><h1>Det uppstod ett fel!</h1>{state.error}</div>}
-    </form >
-
-  );
-}
-
-function SubmitButton() {
-  const status = useFormStatus();
-  return <button type="submit" disabled={status.pending}>Skicka</button>
+			{state.data && (
+				<div className={s.success}>
+					<h1>Tack för din ansökan!</h1>
+				</div>
+			)}
+			{state.error && (
+				<div className={s.error}>
+					<h1>Det uppstod ett fel!</h1>
+					{state.error}
+				</div>
+			)}
+		</form>
+	);
 }

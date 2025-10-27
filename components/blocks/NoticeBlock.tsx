@@ -1,8 +1,8 @@
 import s from './NoticeBlock.module.scss';
 import cn from 'classnames';
 import Link from 'next/link';
-import Image from '@components/Image';
-import { recordToRoute } from '@lib/routes';
+import Image from '@/components/Image';
+import { recordToRoute } from '@/lib/routes';
 import { format } from 'date-fns';
 import ReadMore from '../ReadMore';
 

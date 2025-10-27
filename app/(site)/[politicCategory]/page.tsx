@@ -1,20 +1,21 @@
 'use server';
 
 import s from './page.module.scss';
-import { AllPoliticByCategoryDocument, AllPoliticCategoriesDocument, PoliticCategoryDocument } from '@graphql';
+import { AllPoliticByCategoryDocument, AllPoliticCategoriesDocument, PoliticCategoryDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { render as structuredToText } from 'datocms-structured-text-to-plain-text';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { format } from 'date-fns';
-import Image from '@components/Image';
+import Image from '@/components/Image';
 import cn from 'classnames';
 import { Metadata } from 'next';
 
-export default async function Page({ params }: { params: { politicCategory: string } }) {
+export default async function Page({ params }) {
+	const slug = (await params).politicCategory;
 	const { politicCategory } = await apiQuery(PoliticCategoryDocument, {
-		variables: { slug: params.politicCategory },
+		variables: { slug },
 	});
 
 	if (!politicCategory) return notFound();
@@ -37,7 +38,7 @@ export default async function Page({ params }: { params: { politicCategory: stri
 									<div className='grid'>
 										<div className={cn(s.content, 'intro', image && s.image)}>
 											<span className='date'>{format(new Date(_createdAt), 'yyyy-MM-dd')}</span>
-											<p>{structuredToText(intro)}</p>
+											<p>{structuredToText(intro as any)}</p>
 										</div>
 										{image && (
 											<figure>
@@ -65,9 +66,10 @@ export async function generateStaticParams() {
 	return allPoliticCategories.map(({ slug: politicCategory }) => ({ politicCategory }));
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }): Promise<Metadata> {
+	const slug = (await params).politicCategory;
 	const { politicCategory } = await apiQuery(PoliticCategoryDocument, {
-		variables: { slug: params.politicCategory },
+		variables: { slug },
 	});
 	if (!politicCategory) return notFound();
 

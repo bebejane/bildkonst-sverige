@@ -1,12 +1,11 @@
 'use client';
 
 import s from './NewsLetterForm.module.scss';
-import { useFormState, useFormStatus } from 'react-dom';
-import newsletterSignup from '@lib/actions/newsletterSignup';
-import { useEffect, useState } from 'react';
+import newsletterSignup from '@/lib/actions/newsletterSignup';
+import { useActionState, useEffect, useState } from 'react';
 
 export default function NewsletterForm({}) {
-	const [state, formAction] = useFormState(newsletterSignup, {});
+	const [state, formAction, pending] = useActionState(newsletterSignup, {});
 	const [error, setError] = useState(null);
 	const [success, setSuccess] = useState(null);
 
@@ -24,7 +23,9 @@ export default function NewsletterForm({}) {
 	return (
 		<form action={formAction} className={s.form}>
 			<input name='email' type='email' placeholder='Din e-post adress...' required={true} />
-			<SubmitButton />
+			<button type='submit' disabled={pending}>
+				Skicka
+			</button>
 			{success && (
 				<div className={s.success}>
 					<h3>Tack för din ansökan!</h3>
@@ -39,14 +40,5 @@ export default function NewsletterForm({}) {
 				</div>
 			)}
 		</form>
-	);
-}
-
-function SubmitButton() {
-	const status = useFormStatus();
-	return (
-		<button type='submit' disabled={status.pending}>
-			Skicka
-		</button>
 	);
 }

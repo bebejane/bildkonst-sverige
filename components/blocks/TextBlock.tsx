@@ -1,8 +1,8 @@
 import s from './TextBlock.module.scss';
 import cn from 'classnames';
 import Link from 'next/link';
-import Image from '@components/Image';
-import { recordToRoute } from '@lib/routes';
+import Image from '@/components/Image';
+import { recordToRoute } from '@/lib/routes';
 import ReadMore from '../ReadMore';
 
 type Props = {

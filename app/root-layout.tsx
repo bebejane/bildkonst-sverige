@@ -1,13 +1,13 @@
 'use server';
 
-import '@styles/index.scss';
-import NavBar from '@components/NavBar';
-import Footer from '@components/Footer';
+import '@/styles/index.scss';
+import NavBar from '@/components/NavBar';
+import Footer from '@/components/Footer';
 import { apiQuery } from 'next-dato-utils/api';
-import { GlobalDocument } from '@graphql';
+import { GlobalDocument } from '@/graphql';
 import { Metadata } from 'next';
 import { Icon } from 'next/dist/lib/metadata/types/metadata-types';
-import { buildMenu } from '@lib/menu';
+import { buildMenu } from '@/lib/menu';
 
 export type LayoutProps = {
 	children: React.ReactNode;

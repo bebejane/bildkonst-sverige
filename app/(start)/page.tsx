@@ -4,8 +4,8 @@ import s from './page.module.scss';
 import cn from 'classnames';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
-import { StartDocument } from '@graphql';
-import Block from '@components/blocks/Block';
+import { StartDocument } from '@/graphql';
+import Block from '@/components/blocks/Block';
 
 export default async function Home() {
 	const { start, draftUrl } = await apiQuery(StartDocument);

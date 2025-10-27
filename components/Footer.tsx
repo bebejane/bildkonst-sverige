@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import s from './Footer.module.scss';
 import cn from 'classnames';
-import NewsletterForm from '@components/NewsLetterForm';
+import NewsletterForm from '@/components/NewsLetterForm';
 import { useEffect, useState } from 'react';
 
 export default function Footer() {

@@ -23,7 +23,7 @@ export default function VideoBlock({ data }) {
 	const style = { height: `${height}px`, width: '100%' };
 
 	return (
-		<p className={s.video} ref={ref}>
+		<div className={s.video} ref={ref}>
 			{provider === 'youtube' ? (
 				<Youtube
 					opts={{
@@ -45,6 +45,6 @@ export default function VideoBlock({ data }) {
 					<figcaption>{caption}</figcaption>
 				</div>
 			)}
-		</p>
+		</div>
 	);
 }

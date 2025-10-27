@@ -1,46 +1,47 @@
-'use client'
+'use client';
 
-import s from './FilterBar.module.scss'
+import s from './FilterBar.module.scss';
 import cn from 'classnames';
-import { useOptimistic } from 'react'
+import { startTransition, useOptimistic } from 'react';
 import Link from 'next/link';
 
 type Props = {
-  searchParams: {
-    filter: string
-    list: string
-    tema: string
-  }
-  allResources: AllResourcesQuery['allResources']
-}
+	searchParams: {
+		filter: string;
+		list: string;
+		tema: string;
+	};
+	allResources: AllResourcesQuery['allResources'];
+};
 
 export default function FilterBar({ searchParams, allResources }: Props) {
+	const [themes, setThemes] = useOptimistic(searchParams.tema ? searchParams.tema.split(',') : []);
+	console.log(searchParams.tema);
+	const allThemes = [];
+	allResources
+		.map(({ theme }) => theme.map(({ title }) => title))
+		.flat()
+		.forEach((theme) => !allThemes.includes(theme) && allThemes.push(theme));
+	const filter = !searchParams.filter ? true : searchParams.filter === '0' ? false : true;
+	const list = searchParams.list === '1' ? true : false;
 
-  const [themes, setThemes] = useOptimistic(searchParams.tema ? searchParams.tema.split(',') : [])
+	return (
+		<nav className={cn(s.filter, filter && s.show)}>
+			<ul>
+				{allThemes.map((theme, idx) => {
+					const qs = (themes.includes(theme) ? themes.filter((c) => c !== theme) : [...themes, theme]).filter((c) => c);
+					const isSelected = themes.includes(theme);
+					const href = qs.length ? `?list=${list ? '1' : '0'}&tema=${qs.join(',')}` : `?list=${list ? '1' : '0'}`;
 
-  const allThemes = []
-  allResources.map(({ theme }) => theme.map(({ title }) => title)).flat().forEach(theme => !allThemes.includes(theme) && allThemes.push(theme))
-  const filter = !searchParams.filter ? true : searchParams.filter === '0' ? false : true
-  const list = searchParams.list === '1' ? true : false
-
-  return (
-    <nav className={cn(s.filter, filter && s.show)}>
-      <ul>
-        {allThemes.map((theme, idx) => {
-          const qs = (themes.includes(theme) ? themes.filter(c => c !== theme) : [...themes, theme]).filter(c => c)
-          const isSelected = themes.includes(theme)
-          const href = qs.length ? `?list=${list ? '1' : '0'}&tema=${qs.join(',')}` : `?list=${list ? '1' : '0'}`
-
-          return (
-            <li key={idx} className={cn(isSelected && s.selected, "date")}>
-              <Link href={href} onClick={() => setThemes(qs)}>
-                {theme}
-              </Link>
-            </li>
-          )
-        })}
-      </ul>
-    </nav>
-
-  );
+					return (
+						<li key={idx} className={cn(isSelected && s.selected, 'date')}>
+							<Link href={href} onClick={() => startTransition(() => setThemes(qs))}>
+								{theme}
+							</Link>
+						</li>
+					);
+				})}
+			</ul>
+		</nav>
+	);
 }

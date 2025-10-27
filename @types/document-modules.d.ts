@@ -16,6 +16,7 @@ declare module '*/contact.gql' {
   const defaultDocument: DocumentNode;
   export const Contact: DocumentNode;
 export const ContactPageFragment: DocumentNode;
+export const StaffFragment: DocumentNode;
 
   export default defaultDocument;
 }
@@ -48,55 +49,10 @@ declare module '*/ImageThumbnailFragment.gql' {
 }
     
 
-declare module '*/MemberLevelFragment.gql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const MemberLevelFragment: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/PoliticCategoryFragment.gql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const PoliticCategoryFragment: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/PoliticFragment.gql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const PoliticFragment: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/PoliticLightFragment.gql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const PoliticLightFragment: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
 declare module '*/SEOFragment.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const SEOFragment: DocumentNode;
-
-  export default defaultDocument;
-}
-    
-
-declare module '*/StaffFragment.gql' {
-  import { DocumentNode } from 'graphql';
-  const defaultDocument: DocumentNode;
-  export const StaffFragment: DocumentNode;
 
   export default defaultDocument;
 }
@@ -136,6 +92,7 @@ declare module '*/member.gql' {
 export const MemberPageFragment: DocumentNode;
 export const AllApprovedMembers: DocumentNode;
 export const MemberFragment: DocumentNode;
+export const MemberLevelFragment: DocumentNode;
 
   export default defaultDocument;
 }
@@ -169,6 +126,9 @@ export const Politic: DocumentNode;
 export const PoliticCategory: DocumentNode;
 export const AllPoliticByCategory: DocumentNode;
 export const AllPoliticCategories: DocumentNode;
+export const PoliticCategoryFragment: DocumentNode;
+export const PoliticFragment: DocumentNode;
+export const PoliticLightFragment: DocumentNode;
 
   export default defaultDocument;
 }

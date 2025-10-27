@@ -1,20 +1,21 @@
 import s from './page.module.scss';
 import cn from 'classnames';
-import { AllResourcesDocument } from '@graphql';
+import { AllResourcesDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { Metadata } from 'next';
-import Content from '@components/Content';
+import Content from '@/components/Content';
 import Link from 'next/link';
 import FilterBar from './FilterBar';
 
 export const dynamic = 'auto';
-export const runtime = 'edge';
 
 export default async function Resources({ searchParams }) {
+	const sParams = await searchParams;
+
 	const { allResources } = await apiQuery(AllResourcesDocument, {
 		all: true,
 		variables: {
-			first: 100,
+			first: 500,
 			skip: 0,
 		},
 	});
@@ -40,7 +41,7 @@ export default async function Resources({ searchParams }) {
 	return (
 		<article className={s.container}>
 			<h3>Resurser</h3>
-			<FilterBar searchParams={searchParams} allResources={allResources} />
+			<FilterBar searchParams={sParams} allResources={allResources} />
 			{!list ? (
 				<ul className={cn('grid', s.resources)}>
 					{filterResources.map(({ id, link, title, summary, subtitle, author, publisher, category, theme }) => (
@@ -115,7 +116,7 @@ export default async function Resources({ searchParams }) {
 	);
 }
 
-export async function generateMetadata() {
+export async function generateMetadata(): Promise<Metadata> {
 	return {
 		title: 'Resurser',
 	} as Metadata;

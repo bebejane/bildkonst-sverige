@@ -1,12 +1,12 @@
 'use server';
 
 import s from './page.module.scss';
-import Article from '@components/Article';
-import { ContactDocument } from '@graphql';
+import Article from '@/components/Article';
+import { ContactDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { Metadata } from 'react-datocms';
-import Image from '@components/Image';
+import Image from '@/components/Image';
 import { notFound } from 'next/navigation';
 
 export default async function Contact() {
@@ -22,9 +22,7 @@ export default async function Contact() {
 				<ul className={s.staff}>
 					{staff.map((staff) => (
 						<li key={staff.id}>
-							<figure>
-								<Image data={staff.image.responsiveImage} />
-							</figure>
+							<figure>{staff.image && <Image data={staff.image.responsiveImage} />}</figure>
 							<h3>{staff.name}</h3>
 							<p>{staff.description}</p>
 							<p>
@@ -39,7 +37,7 @@ export default async function Contact() {
 	);
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata(): Promise<Metadata> {
 	return {
 		title: 'Kontakt',
 	} as Metadata;

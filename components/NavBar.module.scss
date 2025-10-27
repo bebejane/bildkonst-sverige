@@ -1,401 +1,402 @@
 .logo {
-  position: fixed;
-  top: var(--navbar-offset);
-  left: 0;
-  width: 100%;
-  text-align: center;
-  padding: 0;
-  margin: 0;
-  text-transform: uppercase;
-  z-index: var(--z-logo);
-  pointer-events: none;
+	position: fixed;
+	top: var(--navbar-offset);
+	left: 0;
+	width: 100%;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+	text-transform: uppercase;
+	z-index: var(--z-logo);
+	pointer-events: none;
 
-  a {
-    pointer-events: all;
-    transition: color 0.5s ease-in-out;
-  }
+	a {
+		pointer-events: all;
+		transition: color 0.5s ease-in-out;
+	}
 
-  @include mq($until: desktop) {
-    a {
-      color: var(--black);
-    }
+	@include mq($until: desktop) {
+		a {
+			color: var(--black);
+		}
 
-    &.open {
-      a {
-        color: var(--white);
-      }
-    }
-  }
+		&.open {
+			a {
+				color: var(--white);
+			}
+		}
+	}
 }
 
 .onScroll {
-  -webkit-text-stroke-width: 0.02em;
+	-webkit-text-stroke-width: 0.02em;
 
-  @include mq($from: desktop) {
-    -webkit-text-stroke-width: 1px;
-  }
+	@include mq($from: desktop) {
+		-webkit-text-stroke-width: 1px;
+	}
 
-  -webkit-text-stroke-color: var(--black);
-  -webkit-text-fill-color: transparent;
+	-webkit-text-stroke-color: var(--black);
+	-webkit-text-fill-color: transparent;
 }
 
 .hamburger {
-  position: fixed;
-  top: 0;
-  right: 0.2em;
-  z-index: var(--z-hamburger);
-  color: var(--black);
+	position: fixed;
+	top: 0;
+	right: 0.2em;
+	z-index: var(--z-hamburger);
+	color: var(--black);
 
-  &.open {
-    color: var(--white);
-  }
+	&.open {
+		color: var(--white);
+	}
 
-  @include mq($from: desktop) {
-    display: none;
-  }
+	@include mq($from: desktop) {
+		display: none;
+	}
 }
 
 .mobile {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 100vh;
-  overflow-y: scroll;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding-top: var(--navbar-height);
-  background-color: var(--black);
-  z-index: var(--z-navbar);
-  color: var(--white);
-  transition: transform 0.3s ease-in-out;
-  transform: translateX(100%);
-  font-size: 1.2rem;
-  line-height: 1.8;
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	overflow-y: scroll;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	padding-top: var(--navbar-height);
+	background-color: var(--black);
+	z-index: var(--z-navbar);
+	color: var(--white);
+	transition: transform 0.3s ease-in-out;
+	transform: translateX(100%);
+	font-size: 1.2rem;
+	line-height: 1.8;
 
-  @include mq($from: desktop) {
-    display: none;
-  }
+	@include mq($from: desktop) {
+		display: none;
+	}
 
-  &.show {
-    transform: translateX(0%);
-  }
+	&.show {
+		transform: translateX(0%);
+	}
 
-  a {
-    color: var(--white);
+	a {
+		color: var(--white);
 
-    &:hover {
-      color: var(--white);
-    }
-  }
+		&:hover {
+			color: var(--white);
+		}
+	}
 
-  .hamburger {
-    background-color: green;
-  }
+	.hamburger {
+		background-color: green;
+	}
 
-  ul {
-    text-align: center;
-    list-style: none;
-  }
+	ul {
+		text-align: center;
+		list-style: none;
+	}
 
-  > ul {
-    padding-bottom: 120px;
-    padding-left: var(--outer-margin);
-    padding-right: var(--outer-margin);
+	> ul {
+		padding-bottom: 120px;
+		padding-left: var(--outer-margin);
+		padding-right: var(--outer-margin);
 
-    li {
-      cursor: pointer;
+		li {
+			cursor: pointer;
 
-      ul {
-        li {
-          animation-name: hide;
-          animation-timing-function: linear;
-          animation-fill-mode: both;
-          max-height: 0;
-          overflow: hidden;
+			ul {
+				li {
+					animation-name: hide;
+					animation-timing-function: linear;
+					animation-fill-mode: both;
+					max-height: 0;
+					overflow: hidden;
 
-          &.login {
-            animation-name: none !important;
-            max-height: unset;
-            overflow: visible;
+					&.login {
+						animation-name: none !important;
+						max-height: unset;
+						overflow: visible;
 
-            button {
-              color: var(--white);
-            }
-          }
+						button {
+							color: var(--white);
+						}
+					}
 
-          @keyframes hide {
-            0% {
-              max-height: 2em;
-            }
+					@keyframes hide {
+						0% {
+							max-height: 2em;
+						}
 
-            100% {
-              max-height: 0;
-            }
-          }
+						100% {
+							max-height: 0;
+						}
+					}
 
-          @keyframes show {
-            0% {
-              max-height: 0;
-            }
+					@keyframes show {
+						0% {
+							max-height: 0;
+						}
 
-            100% {
-              max-height: 2em;
-            }
-          }
-        }
+						100% {
+							max-height: 2em;
+						}
+					}
+				}
 
-        &.open {
-          margin-bottom: 1em;
+				&.open {
+					margin-bottom: 1em;
 
-          li {
-            animation-name: show;
-          }
-        }
-      }
-    }
-  }
+					li {
+						animation-name: show;
+					}
+				}
+			}
+		}
+	}
 
-  .separator {
-    height: 1em;
-  }
+	.separator {
+		height: 1em;
+	}
 }
 
 .desktop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: var(--z-navbar);
-  height: var(--navbar-height);
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: var(--z-navbar);
+	height: var(--navbar-height);
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+	width: 100%;
 
-  @include mq($until: desktop) {
-    display: none;
-  }
+	@include mq($until: desktop) {
+		display: none;
+	}
 
-  ul {
-    list-style: none;
-  }
+	ul {
+		list-style: none;
+	}
 
-  ul li {
-    transition: color ease-in-out 0.3s;
-  }
+	ul li {
+		transition: color ease-in-out 0.3s;
+	}
 
-  > ul > li:hover,
-  a:hover {
-    color: var(--orange) !important;
-  }
+	> ul > li:hover,
+	a:hover {
+		color: var(--orange) !important;
+	}
 
-  .separator {
-    flex: 1 1 100%;
-    pointer-events: none;
-  }
+	.separator {
+		flex: 1 1 100%;
+		pointer-events: none;
+	}
 
-  .menu {
-    position: relative;
-    flex: 1 1 auto;
-    list-style: none;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    z-index: var(--z-navbar);
-    padding-left: var(--outer-margin);
-    padding-right: var(--outer-margin);
-    height: var(--navbar-height);
+	.menu {
+		position: relative;
+		flex: 1 1 auto;
+		list-style: none;
+		display: flex;
+		flex-direction: row;
+		align-items: flex-start;
+		z-index: var(--z-navbar);
+		padding-left: var(--outer-margin);
+		padding-right: var(--outer-margin);
+		height: var(--navbar-height);
 
-    &.open {
-      background-color: var(--white);
-      height: 100vh;
-      border-color: var(--black) !important;
-      border-style: solid;
-      border-width: 0;
+		&.open {
+			background-color: var(--white);
+			height: 100vh;
+			border-color: var(--black) !important;
+			border-style: solid;
+			border-width: 0;
 
-      &.left {
-        justify-content: flex-start;
-        border-color: transparent;
-        border-right-width: 1px;
-      }
+			&.left {
+				justify-content: flex-start;
+				border-color: transparent;
+				border-right-width: 1px;
+			}
 
-      &.right {
-        justify-content: flex-end;
-        border-color: transparent;
-        border-left-width: 1px;
-        background-color: var(--member-color);
-      }
+			&.right {
+				justify-content: flex-end;
+				border-color: transparent;
+				border-left-width: 1px;
+				background-color: var(--member-color);
+			}
 
-      @keyframes to-black {
-        to {
-          background-color: var(--black);
-        }
-      }
+			@keyframes to-black {
+				to {
+					background-color: var(--black);
+				}
+			}
 
-      li,
-      a {
-        color: var(--black);
-      }
-    }
+			li,
+			a {
+				color: var(--black);
+			}
+		}
 
-    @include mq($until: desktop) {
-      height: auto;
-      flex: 0 0 auto;
-      flex-direction: column;
-    }
+		@include mq($until: desktop) {
+			height: auto;
+			flex: 0 0 auto;
+			flex-direction: column;
+		}
 
-    > li {
-      position: relative;
-      cursor: pointer;
-      white-space: nowrap;
-      margin-right: 1ch;
-      text-align: center;
-      height: var(--navbar-height);
-      display: flex;
-      align-items: center;
+		> li {
+			position: relative;
+			cursor: pointer;
+			white-space: nowrap;
+			margin-right: 1ch;
+			text-align: center;
+			height: var(--navbar-height);
+			display: flex;
+			align-items: center;
 
-      &:last-child {
-        margin-right: 0;
-      }
+			&:last-child {
+				margin-right: 0;
+			}
 
-      @include mq($from: desktop) {
-        > form {
-          display: none;
-        }
-      }
-    }
+			@include mq($from: desktop) {
+				> form {
+					display: none;
+				}
+			}
+		}
 
-    .sub {
-      position: absolute;
-      top: var(--navbar-height);
-      left: 0;
-      display: none;
-      flex-direction: column;
-      padding-top: 1.3rem;
-      font-size: 0.75rem;
-      line-height: 2em;
+		.sub {
+			position: absolute;
+			top: var(--navbar-height);
+			left: 0;
+			display: none;
+			flex-direction: column;
+			padding-top: 1.3rem;
+			font-size: 0.75rem;
+			line-height: 2em;
 
-      &.left {
-        padding-left: var(--outer-margin);
-      }
+			&.left {
+				padding-left: var(--outer-margin);
+			}
 
-      &.right {
-        padding-left: var(--outer-margin);
-      }
+			&.right {
+				padding-left: var(--outer-margin);
+			}
 
-      &.open {
-        display: flex;
-      }
+			&.open {
+				display: flex;
+			}
 
-      @include mq($from: desktop) {
-        li {
-          opacity: 0;
+			@include mq($from: desktop) {
+				li {
+					opacity: 0;
 
-          animation-name: hide;
-          animation-timing-function: linear;
-          animation-fill-mode: both;
+					animation-name: hide;
+					animation-timing-function: linear;
+					animation-fill-mode: both;
 
-          @keyframes hide {
-            0% {
-              opacity: 1;
-            }
+					@keyframes hide {
+						0% {
+							opacity: 1;
+						}
 
-            100% {
-              opacity: 0;
-            }
-          }
+						100% {
+							opacity: 0;
+						}
+					}
 
-          @keyframes show {
-            0% {
-              opacity: 0;
-            }
+					@keyframes show {
+						0% {
+							opacity: 0;
+						}
 
-            100% {
-              opacity: 1;
-            }
-          }
+						100% {
+							opacity: 1;
+						}
+					}
 
-          &.show,
-          &.login {
-            animation-name: show;
-          }
-        }
-      }
-    }
-  }
+					&.show,
+					&.login {
+						animation-name: show;
+					}
+				}
+			}
+		}
+	}
 
-  ul.links {
-    justify-content: flex-end;
-  }
+	ul.links {
+		justify-content: flex-end;
+	}
 }
 
 .selected > a,
 .selected {
-  color: var(--orange) !important;
+	color: var(--orange) !important;
 }
 
 .selectedSub > a,
 .selectedSub {
-  color: var(--orange) !important;
+	color: var(--orange) !important;
 }
 
 .newsletter {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  padding: var(--outer-margin);
-  z-index: var(--z-newsletter-popup);
-  transform: translateY(100vh);
-  transition: transform 0.3s ease-in-out;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 100%;
+	padding: var(--outer-margin);
+	z-index: var(--z-newsletter-popup);
+	transform: translateY(100vh);
+	transition: transform 0.3s ease-in-out;
 
-  &.show {
-    transform: translateY(0vh);
-  }
+	&.show {
+		transform: translateY(0vh);
+	}
 
-  --dot-size: 15%;
-  --square-size: 8px;
-  background-image: radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size)),
-    radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size));
-  background-color: var(--member-color);
-  background-position:
-    0 0,
-    calc(var(--square-size) / 2) calc(var(--square-size) / 2);
-  background-size: var(--square-size) var(--square-size);
+	--dot-size: 15%;
+	--square-size: 8px;
+	background-image:
+		radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size)),
+		radial-gradient(var(--orange), var(--dot-size), transparent var(--dot-size));
+	background-color: var(--member-color);
+	background-position:
+		0 0,
+		calc(var(--square-size) / 2) calc(var(--square-size) / 2);
+	background-size: var(--square-size) var(--square-size);
 
-  button {
-    padding-top: 0;
-    transition: color ease-in-out 0.3s;
+	button {
+		padding-top: 0;
+		transition: color ease-in-out 0.3s;
 
-    @include mq($from: desktop) {
-      &:hover {
-        color: var(--orange);
-      }
-    }
-  }
+		@include mq($from: desktop) {
+			&:hover {
+				color: var(--orange);
+			}
+		}
+	}
 
-  input {
-    border: 0px;
-    background-color: var(--member-color);
-  }
+	input {
+		border: 0px;
+		background-color: var(--member-color);
+	}
 
-  .close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: var(--outer-margin) !important;
-    width: auto;
+	.close {
+		position: absolute;
+		top: 0;
+		right: 0;
+		margin: var(--outer-margin) !important;
+		width: auto;
 
-    @include mq($from: desktop) {
-      &:hover {
-        cursor: pointer;
-        color: var(--orange);
-      }
-    }
-  }
+		@include mq($from: desktop) {
+			&:hover {
+				cursor: pointer;
+				color: var(--orange);
+			}
+		}
+	}
 }

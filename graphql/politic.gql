@@ -43,3 +43,76 @@ query AllPoliticCategories($first: IntType = 100, $skip: IntType = 0) {
 		count
 	}
 }
+
+fragment PoliticCategoryFragment on PoliticCategoryRecord {
+	id
+	title
+	titlePlural
+	slug
+	position
+}
+
+fragment PoliticFragment on PoliticRecord {
+	id
+	title
+	category {
+		...PoliticCategoryFragment
+	}
+	intro {
+		__typename
+		blocks
+		value
+		value
+	}
+	content {
+		value
+		links
+		blocks {
+			__typename
+			... on ButtonBlockRecord {
+				id
+				text
+				url
+			}
+			... on ImageBlockRecord {
+				id
+				image {
+					...ImageFragment
+				}
+				layout
+			}
+			... on VideoBlockRecord {
+				id
+				video {
+					...ExternalVideoFragment
+				}
+			}
+		}
+	}
+	image {
+		...ImageFragment
+	}
+	slug
+	_createdAt
+	_publishedAt
+}
+
+fragment PoliticLightFragment on PoliticRecord {
+	id
+	title
+	category {
+		...PoliticCategoryFragment
+	}
+	intro {
+		__typename
+		blocks
+		value
+		links
+	}
+	image {
+		...ImageFragment
+	}
+	slug
+	_publishedAt
+	_createdAt
+}

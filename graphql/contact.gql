@@ -17,3 +17,13 @@ fragment ContactPageFragment on ContactPageRecord {
 		...StaffFragment
 	}
 }
+
+fragment StaffFragment on StaffRecord {
+	id
+	name
+	description
+	email
+	image {
+		...ImageFragment
+	}
+}

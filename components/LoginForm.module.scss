@@ -1,31 +1,47 @@
 .loginForm {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 
-  @include mq($until: desktop) {
-    margin-top: 1em;
-  }
+	@include mq($until: desktop) {
+		margin-top: 1em;
+	}
 
-  input {
-    background-color: var(--member-color);
-  }
+	input {
+		background-color: var(--member-color);
+	}
 
-  button {
-    color: var(--black);
+	button {
+		color: var(--black);
 
-    &:hover {
-      color: var(--orange);
-    }
-  }
+		&:hover {
+			color: var(--orange);
+		}
+	}
 
-  &.submitting {
-    opacity: 0.5;
-    pointer-events: none;
-  }
+	&.submitting {
+		opacity: 0.5;
+		pointer-events: none;
+	}
 }
 
 .loginError {
-  padding-left: var(--outer-margin);
-  padding-right: var(--outer-margin);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	width: 100%;
+
+	text-align: center;
+	color: var(--red);
+	span {
+		max-width: 200px;
+		line-height: initial;
+	}
+	@include mq($from: desktop) {
+		span {
+			line-height: initial;
+		}
+	}
 }

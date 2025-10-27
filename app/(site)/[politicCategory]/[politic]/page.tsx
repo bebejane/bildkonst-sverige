@@ -1,16 +1,17 @@
 'use server';
 
-import { AllPoliticDocument, PoliticDocument } from '@graphql';
+import { AllPoliticDocument, PoliticDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import Article from '@components/Article';
+import Article from '@/components/Article';
 import { Metadata } from 'next';
 
-export default async function Page({ params }: { params: { politic: string } }) {
+export default async function Page({ params }) {
+	const slug = (await params).politic;
 	const { politic, draftUrl } = await apiQuery(PoliticDocument, {
-		variables: { slug: params.politic },
+		variables: { slug },
 	});
 
 	if (!politic) return notFound();
@@ -43,9 +44,10 @@ export async function generateStaticParams() {
 	return allPolitics.map(({ slug: politic }) => ({ politic }));
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata({ params }): Promise<Metadata> {
+	const slug = (await params).politic;
 	const { politic } = await apiQuery(PoliticDocument, {
-		variables: { slug: params.politic },
+		variables: { slug },
 	});
 
 	if (!politic) return notFound();

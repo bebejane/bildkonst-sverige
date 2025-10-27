@@ -1,12 +1,13 @@
 'use server';
 
-import Article from '@components/Article';
+import Article from '@/components/Article';
 import s from './page.module.scss';
-import { MemberPageDocument } from '@graphql';
+import { MemberPageDocument } from '@/graphql';
 import { apiQuery } from 'next-dato-utils/api';
 import { DraftMode } from 'next-dato-utils/components';
-import MemberForm from '@components/MemberForm';
+import MemberForm from '@/components/MemberForm';
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 
 const formatter = new Intl.NumberFormat('se-Sv', {
 	maximumFractionDigits: 0,
@@ -14,6 +15,7 @@ const formatter = new Intl.NumberFormat('se-Sv', {
 
 export default async function Membership() {
 	const { memberPage, allMemberLevels, draftUrl } = await apiQuery(MemberPageDocument);
+	if (!memberPage) return notFound();
 	const { id, title, intro, content } = memberPage;
 
 	return (
@@ -42,7 +44,7 @@ export default async function Membership() {
 	);
 }
 
-export async function generateMetadata({ params }) {
+export async function generateMetadata(): Promise<Metadata> {
 	return {
 		title: 'Bli medlem',
 	} as Metadata;

@@ -1,24 +1,26 @@
 .video {
-  --height: 50vh;
-  display: block;
-  height: var(--height);
-  width: 100%;
+	--height: 50vh;
+	display: block;
+	height: var(--height);
+	margin-bottom: 1rem;
+	width: 100%;
+	grid-column: span 12 / span 12;
 
-  @include mq($until: desktop) {
-    --height: 30vh;
-  }
+	@include mq($until: desktop) {
+		--height: 30vh;
+	}
 
-  .player {
-    width: 100%;
-    height: (--height);
+	.player {
+		width: 100%;
+		height: (--height);
 
-    iframe {
-      width: 100%;
-      height: var(--height);
-    }
-  }
+		iframe {
+			width: 100%;
+			height: var(--height);
+		}
+	}
 
-  .caption {
-    padding-top: var(--space-small);
-  }
+	.caption {
+		padding-top: var(--space-small);
+	}
 }

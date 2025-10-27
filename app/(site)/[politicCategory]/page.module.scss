@@ -1,57 +1,58 @@
 .articles {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
+	list-style: none;
+	display: flex;
+	flex-direction: column;
 
-  li {
-    margin-top: var(--space);
-    padding-top: var(--space);
+	li {
+		margin-top: var(--space);
+		padding-top: var(--space);
 
-    border-top: 1px solid var(--black);
+		border-top: 1px solid var(--black);
 
-    a {
-      display: flex;
-      flex-direction: column;
+		a {
+			display: flex;
+			flex-direction: column;
+			word-break: break-all !important;
 
-      .content {
-        grid-column-start: 1;
-        grid-column-end: 12;
+			.content {
+				grid-column-start: 1;
+				grid-column-end: 12;
 
-        &.image {
-          grid-column-start: 1;
-          grid-column-end: 10;
-        }
+				&.image {
+					grid-column-start: 1;
+					grid-column-end: 10;
+				}
 
-        > p {
-          display: inline;
-        }
-      }
+				> p {
+					display: inline;
+				}
+			}
 
-      figure {
-        @include mq($until: desktop) {
-          order: -1;
-          margin-left: 20%;
-          margin-right: 20%;
-          margin-bottom: var(--space-small);
-          max-width: 100%;
-          div {
-            aspect-ratio: 4 / 3;
-          }
-        }
+			figure {
+				@include mq($until: desktop) {
+					order: -1;
+					margin-left: 20%;
+					margin-right: 20%;
+					margin-bottom: var(--space-small);
+					max-width: 100%;
+					div {
+						aspect-ratio: 4 / 3;
+					}
+				}
 
-        @include mq($from: desktop) {
-          margin-top: 0.5rem;
-          grid-column-start: 10;
-          grid-column-end: 13;
-          aspect-ratio: 4 / 3;
-        }
+				@include mq($from: desktop) {
+					margin-top: 0.5rem;
+					grid-column-start: 10;
+					grid-column-end: 13;
+					aspect-ratio: 4 / 3;
+				}
 
-        display: flex;
+				display: flex;
 
-        img {
-          object-fit: cover;
-        }
-      }
-    }
-  }
+				img {
+					object-fit: cover;
+				}
+			}
+		}
+	}
 }

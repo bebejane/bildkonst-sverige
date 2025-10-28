@@ -1,4 +1,5 @@
 import { NextConfig } from 'next';
+import path from 'path';
 
 const nextConfig: NextConfig = {
 	sassOptions: {
@@ -18,6 +19,16 @@ const nextConfig: NextConfig = {
 	logging: {
 		fetches: {
 			fullUrl: false,
+		},
+	},
+	webpack: (config) => {
+		config.module.exprContextCritical = false;
+		config.resolve.alias['datocms.config'] = path.join(__dirname, 'datocms.config.ts');
+		return config;
+	},
+	turbopack: {
+		resolveAlias: {
+			'datocms.config': './datocms.config.ts',
 		},
 	},
 	async redirects() {

@@ -3,16 +3,13 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "npm run dev:watch",
-		"dev:watch": "next dev & npm run codegen",
+		"dev": "next dev & npm run codegen",
 		"dev:email": "email dev",
 		"build": "next build",
 		"codegen": "graphql-codegen --watch",
 		"start": "next start",
 		"lint": "next lint",
 		"preview": "npm run build && npm run start",
-		"barrel": "barrelsby -D -d ./components",
-		"barrel:watch": "chokidar './components/**/*.tsx' -c 'npm run --silent barrel'",
 		"reset": "rm -rf .next node_modules pnpm-lock.yaml ; pnpm i"
 	},
 	"dependencies": {
@@ -31,7 +28,7 @@
 		"hamburger-react": "^2.5.0",
 		"next": "15.5.6",
 		"next-auth": "^4.24.11",
-		"next-dato-utils": "github:bebejane/next-dato-utils#v2.0.1",
+		"next-dato-utils": "github:bebejane/next-dato-utils",
 		"next-impl-getters": "^0.2.0",
 		"next-seo": "^5.15.0",
 		"next-sitemap": "^3.1.55",

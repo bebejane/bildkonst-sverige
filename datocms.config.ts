@@ -29,7 +29,7 @@ export default {
 		resource: async (record) => ['/medlem/resurser'],
 		resource_category: async (record) => ['/medlem/resurser'],
 		resource_theme: async (record) => ['/medlem/resurser'],
-		upload: async (record) => await getUploadReferenceRoutes(record.id, this),
+		upload: async ({ id }) => getUploadReferenceRoutes(id),
 	},
 	manifest: async () => {
 		return {

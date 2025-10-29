@@ -7,7 +7,6 @@ const nextConfig: NextConfig = {
 		prependData: `
     	@use "sass:math";
     	@import "./styles/mediaqueries"; 
-    	@import "./styles/fonts";
   	`,
 	},
 	typescript: {
